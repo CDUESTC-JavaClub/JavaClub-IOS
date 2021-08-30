@@ -27,7 +27,7 @@ extension JCAccountManager {
                 let jsonStr = (try JSON(data: data))["data"].stringValue
                 completion(jsonStr)
             } catch {
-                print("ERROR: \(error.localizedDescription)")
+                print("ERR: \(error.localizedDescription)")
             }
         }
     }
@@ -81,12 +81,12 @@ extension JCAccountManager {
                             completion(nil)
                         }
                     } catch {
-                        print("ERROR: (Load JSON) \(error.localizedDescription)")
+                        print("ERR: (Load JSON) \(error.localizedDescription)")
                         completion(nil)
                     }
                 }
             } catch {
-                print("ERROR: (Encrypt) \(error.localizedDescription)")
+                print("ERR: (Encrypt) \(error.localizedDescription)")
                 completion(nil)
             }
         }
