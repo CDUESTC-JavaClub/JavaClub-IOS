@@ -6,10 +6,9 @@
 //
 
 import Foundation
+import Defaults
 
-struct JCLoginInfo {
-    let id = UUID().uuidString
-    
+struct JCLoginInfo: Codable, DefaultsSerializable {
     var username: String
     var password: String
 }

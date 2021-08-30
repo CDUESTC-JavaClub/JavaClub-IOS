@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct JCLoginView: View {
     @Environment(\.presentationMode) var presentationMode
     @Binding var showingLogin: Bool
+    @Binding var rememberedUser: JCLoginInfo?
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var showingLoginFailedAlert: Bool = false
@@ -102,14 +104,22 @@ struct JCLoginView: View {
                         // Login Button
                         Button {
                             if !username.isEmpty && !password.isEmpty {
+                                let loginInfo = JCLoginInfo(username: username, password: password)
+                                
                                 JCAccountManager.shared.login(
-                                    info: JCLoginInfo(username: username, password: password)
+                                    info: loginInfo
                                 ) { user in
                                     if let user = user {
                                         JCUserState.shared.isLoggedIn = true
                                         JCUserState.shared.url = user.redirectionURL
                                         
                                         showingLogin = false
+                                        
+                                        if rememberMe {
+                                            rememberedUser = loginInfo
+                                        } else {
+                                            rememberedUser = nil
+                                        }
                                     } else {
                                         showingLoginFailedAlert = true
                                     }
@@ -140,7 +150,30 @@ struct JCLoginView: View {
                     }
                     .padding(.horizontal, 50)
                 }
+                .onTapGesture {
+                    hideKeyboard()
+                }
             }
         }
     }
+}
+
+
+#if canImport(UIKit)
+extension View {
+    
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(
+            #selector(UIResponder.resignFirstResponder),
+            to: nil,
+            from: nil,
+            for: nil
+        )
+    }
+}
+#endif
+
+
+extension Defaults.Keys {
+    static let rememberedUser = Key<JCLoginInfo?>("rememberedUserKey", default: nil)
 }
