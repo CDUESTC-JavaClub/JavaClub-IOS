@@ -53,26 +53,33 @@ extension JCAccountManager {
                     guard let data = response.data else { return }
                     
                     do {
-                        let userJson = (try JSON(data: data))["data"]
-                        let user = JCUser(
-                            username: userJson["username"].stringValue,
-                            email: userJson["bindEmail"].stringValue,
-                            redirectionURL: userJson["index"].stringValue,
-                            avatar: userJson["headerUrl"].stringValue.isEmpty
-                                ? nil
-                                : userJson["headerUrl"].stringValue,
-                            banner: userJson["backgroundUrl"].stringValue.isEmpty
-                                ? nil
-                                : userJson["backgroundUrl"].stringValue,
-                            signature: userJson["signature"].stringValue.isEmpty
-                                ? nil
-                                : userJson["signature"].stringValue,
-                            studentID: userJson["bindId"].stringValue.isEmpty
-                                ? nil
-                                : userJson["bindId"].stringValue
-                        )
-                        
-                        completion(user)
+                        if
+                            let status = (try JSON(data: data))["status"].int,
+                            status == 200
+                        {
+                            let userJson = (try JSON(data: data))["data"]
+                            let user = JCUser(
+                                username: userJson["username"].stringValue,
+                                email: userJson["bindEmail"].stringValue,
+                                redirectionURL: userJson["index"].stringValue,
+                                avatar: userJson["headerUrl"].stringValue.isEmpty
+                                    ? nil
+                                    : userJson["headerUrl"].stringValue,
+                                banner: userJson["backgroundUrl"].stringValue.isEmpty
+                                    ? nil
+                                    : userJson["backgroundUrl"].stringValue,
+                                signature: userJson["signature"].stringValue.isEmpty
+                                    ? nil
+                                    : userJson["signature"].stringValue,
+                                studentID: userJson["bindId"].stringValue.isEmpty
+                                    ? nil
+                                    : userJson["bindId"].stringValue
+                            )
+                            
+                            completion(user)
+                        } else {
+                            completion(nil)
+                        }
                     } catch {
                         print("ERROR: (Load JSON) \(error.localizedDescription)")
                         completion(nil)
