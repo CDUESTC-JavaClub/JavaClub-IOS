@@ -1,5 +1,5 @@
 //
-//  JCContentView.swift
+//  JCLoginView.swift
 //  JavaClub-iOS
 //
 //  Created by Roy Rao on 2021/8/30.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct JCContentView: View {
+struct JCLoginView: View {
     
     var body: some View {
-        JCWebView()
+        Text("Hello, World!")
     }
 }

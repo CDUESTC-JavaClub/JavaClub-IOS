@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B0093C4026DCC2F000D142F4 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = B0093C3F26DCC2F000D142F4 /* SwiftyJSON */; };
 		B092F52226DC7D1F007FA006 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B092F52126DC7D1F007FA006 /* AppDelegate.swift */; };
 		B092F52426DC7D1F007FA006 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B092F52326DC7D1F007FA006 /* SceneDelegate.swift */; };
 		B092F52626DC7D1F007FA006 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B092F52526DC7D1F007FA006 /* ContentView.swift */; };
@@ -22,11 +23,12 @@
 		B092F55326DC90DA007FA006 /* UIKitColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B092F55226DC90DA007FA006 /* UIKitColorExtension.swift */; };
 		B092F55526DC90EC007FA006 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B092F55426DC90EC007FA006 /* StringExtension.swift */; };
 		B092F55726DC90F4007FA006 /* ConditionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B092F55626DC90F4007FA006 /* ConditionalView.swift */; };
-		B092F55A26DC9A0B007FA006 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B092F55926DC9A0B007FA006 /* WebView.swift */; };
 		B092F56026DCA6D6007FA006 /* LoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B092F55F26DCA6D6007FA006 /* LoginInfo.swift */; };
 		B092F56326DCA7CF007FA006 /* JCAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B092F56226DCA7CF007FA006 /* JCAccountManager.swift */; };
 		B0B0213826DCB16F0059C202 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B0B0213726DCB16F0059C202 /* Alamofire */; };
 		B0B0213E26DCB3EA0059C202 /* SwiftyRSA in Frameworks */ = {isa = PBXBuildFile; productRef = B0B0213D26DCB3EA0059C202 /* SwiftyRSA */; };
+		B0B0214026DCBCB20059C202 /* JCWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B0213F26DCBCB20059C202 /* JCWebView.swift */; };
+		B0B0214226DCBCF50059C202 /* JCLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B0214126DCBCF50059C202 /* JCLoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,9 +49,10 @@
 		B092F55226DC90DA007FA006 /* UIKitColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitColorExtension.swift; sourceTree = "<group>"; };
 		B092F55426DC90EC007FA006 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		B092F55626DC90F4007FA006 /* ConditionalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionalView.swift; sourceTree = "<group>"; };
-		B092F55926DC9A0B007FA006 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		B092F55F26DCA6D6007FA006 /* LoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfo.swift; sourceTree = "<group>"; };
 		B092F56226DCA7CF007FA006 /* JCAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCAccountManager.swift; sourceTree = "<group>"; };
+		B0B0213F26DCBCB20059C202 /* JCWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCWebView.swift; sourceTree = "<group>"; };
+		B0B0214126DCBCF50059C202 /* JCLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCLoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0093C4026DCC2F000D142F4 /* SwiftyJSON in Frameworks */,
 				B0B0213826DCB16F0059C202 /* Alamofire in Frameworks */,
 				B0B0213E26DCB3EA0059C202 /* SwiftyRSA in Frameworks */,
 			);
@@ -182,7 +186,8 @@
 			isa = PBXGroup;
 			children = (
 				B092F53A26DC7F1D007FA006 /* JCContentView.swift */,
-				B092F55926DC9A0B007FA006 /* WebView.swift */,
+				B0B0213F26DCBCB20059C202 /* JCWebView.swift */,
+				B0B0214126DCBCF50059C202 /* JCLoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 			packageProductDependencies = (
 				B0B0213726DCB16F0059C202 /* Alamofire */,
 				B0B0213D26DCB3EA0059C202 /* SwiftyRSA */,
+				B0093C3F26DCC2F000D142F4 /* SwiftyJSON */,
 			);
 			productName = "JavaClub-iOS";
 			productReference = B092F51E26DC7D1F007FA006 /* JavaClub-iOS.app */;
@@ -253,6 +259,7 @@
 			packageReferences = (
 				B0B0213626DCB16F0059C202 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				B0B0213C26DCB3EA0059C202 /* XCRemoteSwiftPackageReference "SwiftyRSA" */,
+				B0093C3E26DCC2F000D142F4 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = B092F51F26DC7D1F007FA006 /* Products */;
 			projectDirPath = "";
@@ -293,9 +300,10 @@
 				B092F56026DCA6D6007FA006 /* LoginInfo.swift in Sources */,
 				B092F54726DC8187007FA006 /* Tab.swift in Sources */,
 				B092F52626DC7D1F007FA006 /* ContentView.swift in Sources */,
+				B0B0214026DCBCB20059C202 /* JCWebView.swift in Sources */,
+				B0B0214226DCBCF50059C202 /* JCLoginView.swift in Sources */,
 				B092F55526DC90EC007FA006 /* StringExtension.swift in Sources */,
 				B092F54126DC7F52007FA006 /* SettingsContentView.swift in Sources */,
-				B092F55A26DC9A0B007FA006 /* WebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +503,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B0093C3E26DCC2F000D142F4 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 		B0B0213626DCB16F0059C202 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -514,6 +530,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B0093C3F26DCC2F000D142F4 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0093C3E26DCC2F000D142F4 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
 		B0B0213726DCB16F0059C202 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B0B0213626DCB16F0059C202 /* XCRemoteSwiftPackageReference "Alamofire" */;
