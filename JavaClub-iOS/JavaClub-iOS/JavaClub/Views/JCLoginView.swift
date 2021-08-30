@@ -13,6 +13,7 @@ struct JCLoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var showingLoginFailedAlert: Bool = false
+    @State private var rememberMe: Bool = false
     
     var body: some View {
         GeometryReader { geo in
@@ -24,12 +25,19 @@ struct JCLoginView: View {
                         .edgesIgnoringSafeArea(.all)
                     
                     VStack(alignment: .center) {
+                        // Dismiss Notice
+                        Text("下滑关闭")
+                            .fixedSize()
+                            .foregroundColor(.white)
+                            .padding(.top, 10)
+                            .edgesIgnoringSafeArea(.top)
+                        
                         // Icon
-                        Image("bai")
+                        Image("logo")
                             .resizable()
                             .frame(width: 150, height: 150)
                             .padding(.top)
-                            .padding(.bottom, 100)
+                            .padding(.bottom, 70)
                         
                         // Textfields
                         HStack(spacing: 15) {
@@ -52,7 +60,7 @@ struct JCLoginView: View {
                             Image(systemName: "key.fill")
                                 .foregroundColor(.black)
                             
-                            TextField("".localized(), text: $password)
+                            SecureField("".localized(), text: $password)
                                 .placeholder(when: password.isEmpty) {
                                     Text("密码")
                                         .fixedSize()
@@ -63,6 +71,33 @@ struct JCLoginView: View {
                         .padding(.horizontal)
                         .background(Color.white.opacity(0.3))
                         .clipShape(Capsule())
+                        
+                        // Register & Forgot Password
+                        HStack {
+                            NavigationLink(
+                                destination: JCRegisterView(),
+                                label: {
+                                    Text("注册账号")
+                                        .foregroundColor(.black)
+                                        .underline()
+                                        .fixedSize()
+                                })
+                            
+                            Spacer()
+                            
+                            NavigationLink(
+                                destination: JCForgotView(),
+                                label: {
+                                    Text("忘记密码？")
+                                        .foregroundColor(.black)
+                                        .underline()
+                                        .fixedSize()
+                                })
+                        }
+                        .padding(.top, 20)
+                        
+                        CheckBoxView(checked: $rememberMe, label: "自动登录")
+                            .padding(.vertical)
                         
                         // Login Button
                         Button {
@@ -88,41 +123,19 @@ struct JCLoginView: View {
                                     .shadow(radius: 5)
                                     .opacity(0.5)
                                 
-                                Text("Login")
+                                Text("登录")
                                     .font(.system(size: 15))
                                     .fixedSize()
                                     .padding()
                             }
                         }
+                        .padding(.top, 20)
                         .alert(isPresented: $showingLoginFailedAlert) {
                             Alert(
                                 title: Text("错误"),
                                 message: Text("登录失败，请检查账号密码后重试。"),
                                 dismissButton: .default(Text("Got it!"))
                             )
-                        }
-                        
-                        // Register & Forgot Password
-                        HStack {
-                            NavigationLink(
-                                destination: JCRegisterView(),
-                                label: {
-                                    Text("注册账号")
-                                        .foregroundColor(.black)
-                                        .underline()
-                                        .fixedSize()
-                                })
-                            
-                            Spacer()
-                            
-                            NavigationLink(
-                                destination: JCForgotView(),
-                                label: {
-                                    Text("忘记密码？")
-                                        .foregroundColor(.black)
-                                        .underline()
-                                        .fixedSize()
-                                })
                         }
                     }
                     .padding(.horizontal, 50)

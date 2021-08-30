@@ -14,6 +14,7 @@
 		B015ADDB26DD0BFB0047C5A3 /* JCRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015ADDA26DD0BFB0047C5A3 /* JCRegisterView.swift */; };
 		B015ADDD26DD0C0F0047C5A3 /* JCForgotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015ADDC26DD0C0F0047C5A3 /* JCForgotView.swift */; };
 		B015ADE026DD123E0047C5A3 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = B015ADDF26DD123E0047C5A3 /* Defaults */; };
+		B015ADE326DD1F6A0047C5A3 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015ADE226DD1F6A0047C5A3 /* CheckBoxView.swift */; };
 		B092F52226DC7D1F007FA006 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B092F52126DC7D1F007FA006 /* AppDelegate.swift */; };
 		B092F52426DC7D1F007FA006 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B092F52326DC7D1F007FA006 /* SceneDelegate.swift */; };
 		B092F52626DC7D1F007FA006 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B092F52526DC7D1F007FA006 /* ContentView.swift */; };
@@ -43,6 +44,7 @@
 		B015ADD826DCF7410047C5A3 /* ColorfulPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorfulPlaceholder.swift; sourceTree = "<group>"; };
 		B015ADDA26DD0BFB0047C5A3 /* JCRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCRegisterView.swift; sourceTree = "<group>"; };
 		B015ADDC26DD0C0F0047C5A3 /* JCForgotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCForgotView.swift; sourceTree = "<group>"; };
+		B015ADE226DD1F6A0047C5A3 /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
 		B092F51E26DC7D1F007FA006 /* JavaClub-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JavaClub-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B092F52126DC7D1F007FA006 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B092F52326DC7D1F007FA006 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				B0B0214126DCBCF50059C202 /* JCLoginView.swift */,
 				B015ADDA26DD0BFB0047C5A3 /* JCRegisterView.swift */,
 				B015ADDC26DD0C0F0047C5A3 /* JCForgotView.swift */,
+				B015ADE226DD1F6A0047C5A3 /* CheckBoxView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				B092F55326DC90DA007FA006 /* UIKitColorExtension.swift in Sources */,
 				B0093C4226DCCEC700D142F4 /* JCUser.swift in Sources */,
 				B092F55126DC8A9E007FA006 /* TabBarButton.swift in Sources */,
+				B015ADE326DD1F6A0047C5A3 /* CheckBoxView.swift in Sources */,
 				B092F53B26DC7F1D007FA006 /* JCContentView.swift in Sources */,
 				B092F55726DC90F4007FA006 /* ConditionalView.swift in Sources */,
 				B092F56326DCA7CF007FA006 /* JCAccountManager.swift in Sources */,

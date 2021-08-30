@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import Defaults
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
         return true
     }
 
@@ -33,19 +36,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // FIXME: Cache cannot be cleaned
+        // TODO: Test If Can Clean Caches & Cookies
         
         HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
-          
+        
         WKWebsiteDataStore
             .default()
-            .fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
-                WKWebsiteDataStore.default().removeData(
-                    ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(),
-                    for: records,
-                    completionHandler: { print("DEBUG: Cookies Cleaned.") }
-                )
-            }
+            .removeData(
+                ofTypes: [WKWebsiteDataTypeCookies],
+                modifiedSince: Date.distantPast,
+                completionHandler: {}
+            )
     }
 }
 
