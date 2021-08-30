@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct JCContentView: View {
+    @ObservedObject var state: JCUserState = JCUserState.shared
     
     var body: some View {
-        JCWebView()
+        JCWebView(isLoggedIn: $state.isLoggedIn, url: $state.url)
     }
 }

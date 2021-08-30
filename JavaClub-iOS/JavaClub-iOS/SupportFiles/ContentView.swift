@@ -23,7 +23,6 @@ struct ContentView: View {
                     JCContentView()
                         .navigationBarTitle("JavaClub", displayMode: .large)
                         .tag(Tab.club)
-                        .edgesIgnoringSafeArea(.top)
                     
                     
                     NavigationView {

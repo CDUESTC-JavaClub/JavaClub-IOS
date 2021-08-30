@@ -14,6 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        JCAccountManager.shared.login(
+            info: JCLoginInfo(username: "royrao2333@126.com", password: "roy20000215")
+        ) { user in
+            if let user = user {
+                JCUserState.shared.isLoggedIn = true
+                JCUserState.shared.url = user.redirectionURL
+            }
+        }
+        
         return true
     }
 

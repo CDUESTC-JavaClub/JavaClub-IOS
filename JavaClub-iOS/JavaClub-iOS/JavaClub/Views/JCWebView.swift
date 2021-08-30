@@ -9,9 +9,18 @@ import SwiftUI
 import WebKit
 
 struct JCWebView: View {
+    @Binding var isLoggedIn: Bool
+    @Binding var url: String
     
     var body: some View {
-        WebView(request: URLRequest(url: URL(string: "https://www.baidu.com/")!))
+        if isLoggedIn, !url.isEmpty {
+            WebView(request: URLRequest(url: URL(string: url)!))
+                .padding(.bottom, 50)
+        } else {
+            Text("Logging in...")
+                .font(.title)
+                .fixedSize()
+        }
     }
 }
 
