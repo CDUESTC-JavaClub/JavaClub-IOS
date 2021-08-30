@@ -9,6 +9,6 @@ import SwiftUI
 
 struct JCContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        WebView(request: URLRequest(url: URL(string: "https://www.baidu.com/")!))
     }
 }

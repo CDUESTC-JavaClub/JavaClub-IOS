@@ -9,6 +9,6 @@ import SwiftUI
 
 struct BAContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        Text("BAContentView")
     }
 }

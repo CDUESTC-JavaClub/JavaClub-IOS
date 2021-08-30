@@ -9,6 +9,6 @@ import SwiftUI
 
 struct KAContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        Text("KAContentView")
     }
 }

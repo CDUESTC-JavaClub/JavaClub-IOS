@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "state": {
+          "branch": null,
+          "revision": "f96b619bcb2383b43d898402283924b80e2c4bae",
+          "version": "5.4.3"
+        }
+      },
+      {
+        "package": "SwiftyRSA",
+        "repositoryURL": "https://github.com/swift-package-manager/SwiftyRSA.git",
+        "state": {
+          "branch": null,
+          "revision": "293684cdc66afb8c9b70a7433f66c7acab332ea4",
+          "version": "1.6.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
