@@ -45,15 +45,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // TODO: Test If Can Clean Caches & Cookies
         
-        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+//        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+//
+//        WKWebsiteDataStore
+//            .default()
+//            .removeData(
+//                ofTypes: [WKWebsiteDataTypeCookies],
+//                modifiedSince: Date.distantPast,
+//                completionHandler: {}
+//            )
         
-        WKWebsiteDataStore
-            .default()
-            .removeData(
-                ofTypes: [WKWebsiteDataTypeCookies],
-                modifiedSince: Date.distantPast,
-                completionHandler: {}
-            )
+        JCAccountManager.shared.logout()
     }
 }
 
