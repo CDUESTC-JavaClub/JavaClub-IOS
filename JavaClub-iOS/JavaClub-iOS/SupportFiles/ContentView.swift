@@ -21,7 +21,6 @@ struct ContentView: View {
                 TabView(selection: $selected) {
                     
                     JCContentView()
-                        .navigationBarTitle("JavaClub", displayMode: .large)
                         .tag(Tab.club)
                     
                     
@@ -39,12 +38,8 @@ struct ContentView: View {
                     .tag(Tab.bai)
                     .edgesIgnoringSafeArea(.top)
                     
-                    NavigationView {
-                        SettingsContentView()
-                            .navigationBarTitle("设置", displayMode: .large)
-                    }
-                    .tag(Tab.settings)
-                    .edgesIgnoringSafeArea(.top)
+                    STContentView()
+                        .tag(Tab.settings)
                 }
                 
                 TabBarView(selected: $selected, centerX: $centerX)

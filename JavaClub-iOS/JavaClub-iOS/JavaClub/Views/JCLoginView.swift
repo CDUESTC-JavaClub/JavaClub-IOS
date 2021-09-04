@@ -112,6 +112,7 @@ struct JCLoginView: View {
                                     if let user = user {
                                         JCUserState.shared.isLoggedIn = true
                                         JCUserState.shared.url = user.redirectionURL
+                                        JCUserState.shared.currentUser = user
                                         
                                         showingLogin = false
                                         

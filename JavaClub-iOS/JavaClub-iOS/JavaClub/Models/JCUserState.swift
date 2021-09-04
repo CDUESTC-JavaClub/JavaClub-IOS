@@ -11,6 +11,7 @@ class JCUserState: ObservableObject {
     static let shared = JCUserState()
     @Published var isLoggedIn: Bool = false
     @Published var url: String = ""
+    @Published var currentUser: JCUser?
     
     private init() {}
 }

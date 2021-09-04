@@ -19,15 +19,26 @@ struct JCWebView: View {
 
 
 struct WebView : UIViewRepresentable {
-    
+    static var cache = [URL: WKWebView]()
     let request: URLRequest
     
     func makeUIView(context: Context) -> WKWebView  {
-        return WKWebView()
+        guard let url = request.url else { fatalError("URL cannot be used.") }
+
+        if let webView = WebView.cache[url] {
+            return webView
+        }
+
+        let webView = WKWebView()
+        WebView.cache[url] = webView
+        
+        return webView
     }
     
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        uiView.load(request)
+        if uiView.url == nil {
+            uiView.load(request)
+        }
     }
     
 }

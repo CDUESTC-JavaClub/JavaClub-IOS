@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct JCUser {
+struct JCUser: Equatable {
     let id = UUID().uuidString
     
     var username: String
