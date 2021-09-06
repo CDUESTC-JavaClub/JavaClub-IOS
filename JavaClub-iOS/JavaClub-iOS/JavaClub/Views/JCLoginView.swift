@@ -11,11 +11,10 @@ import Defaults
 struct JCLoginView: View {
     @Environment(\.presentationMode) var presentationMode
     @Binding var showingLogin: Bool
-    @Binding var rememberedUser: JCLoginInfo?
+    @Binding var loginInfo: JCLoginInfo?
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var showingLoginFailedAlert: Bool = false
-    @State private var rememberMe: Bool = false
     
     var body: some View {
         GeometryReader { geo in
@@ -98,33 +97,15 @@ struct JCLoginView: View {
                         }
                         .padding(.top, 20)
                         
-                        CheckBoxView(checked: $rememberMe, label: "自动登录")
-                            .padding(.vertical)
-                        
                         // Login Button
                         Button {
                             if !username.isEmpty && !password.isEmpty {
-                                let loginInfo = JCLoginInfo(username: username, password: password)
+                                let appDelegate = UIApplication.shared.delegate as? AppDelegate
                                 
-                                JCAccountManager.shared.login(
-                                    info: loginInfo
-                                ) { user in
-                                    if let user = user {
-                                        JCUserState.shared.isLoggedIn = true
-                                        JCUserState.shared.url = user.redirectionURL
-                                        JCUserState.shared.currentUser = user
-                                        
-                                        showingLogin = false
-                                        
-                                        if rememberMe {
-                                            rememberedUser = loginInfo
-                                        } else {
-                                            rememberedUser = nil
-                                        }
-                                    } else {
-                                        showingLoginFailedAlert = true
-                                    }
-                                }
+                                let loginInfo = JCLoginInfo(username: username, password: password)
+                                appDelegate?.loginIfAvailable(loginInfo)
+                            } else {
+                                showingLoginFailedAlert = true
                             }
                         } label: {
                             ZStack {
@@ -173,8 +154,3 @@ extension View {
     }
 }
 #endif
-
-
-extension Defaults.Keys {
-    static let rememberedUser = Key<JCLoginInfo?>("rememberedUserKey", default: nil)
-}

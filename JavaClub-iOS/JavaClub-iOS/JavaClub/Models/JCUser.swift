@@ -6,15 +6,11 @@
 //
 
 import Foundation
+import Defaults
 
-struct JCUser: Equatable {
-    let id = UUID().uuidString
-    
+struct JCUser: Equatable, Codable, DefaultsSerializable {
     var username: String
     var email: String
-    var redirectionURL: String
-    var avatar: String?
-    var banner: String?
     var signature: String?
     var studentID: String?
 }

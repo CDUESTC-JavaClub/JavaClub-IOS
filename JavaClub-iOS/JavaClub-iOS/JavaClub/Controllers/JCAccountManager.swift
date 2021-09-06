@@ -9,6 +9,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import SwiftyRSA
+import Defaults
 
 class JCAccountManager {
     static let shared = JCAccountManager()
@@ -49,9 +50,9 @@ extension JCAccountManager {
      *
      *  - Parameters:
      *      - info: One's login info containing username and password. Username can be one's user ID or email address.
-     *      - completion: A block of what you wanna do with the user's info.
+     *      - completion: A block to check if it's logged in.
      */
-    func login(info: JCLoginInfo, _ completion: @escaping (JCUser?) -> Void) {
+    func login(info: JCLoginInfo, _ completion: @escaping (Bool?) -> Void) {
         requestPubKey { key in
             
             do {
@@ -78,26 +79,8 @@ extension JCAccountManager {
                             let status = (try JSON(data: data))["status"].int,
                             status == 200
                         {
-                            let userJson = (try JSON(data: data))["data"]
-                            let user = JCUser(
-                                username: userJson["username"].stringValue,
-                                email: userJson["bindEmail"].stringValue,
-                                redirectionURL: userJson["index"].stringValue,
-                                avatar: userJson["headerUrl"].stringValue.isEmpty
-                                    ? nil
-                                    : userJson["headerUrl"].stringValue,
-                                banner: userJson["backgroundUrl"].stringValue.isEmpty
-                                    ? nil
-                                    : userJson["backgroundUrl"].stringValue,
-                                signature: userJson["signature"].stringValue.isEmpty
-                                    ? nil
-                                    : userJson["signature"].stringValue,
-                                studentID: userJson["bindId"].stringValue.isEmpty
-                                    ? nil
-                                    : userJson["bindId"].stringValue
-                            )
-                            
-                            completion(user)
+                            let resultJson = (try JSON(data: data))["data"]
+                            completion(resultJson.boolValue)
                         } else {
                             completion(nil)
                         }
@@ -109,6 +92,111 @@ extension JCAccountManager {
             } catch {
                 print("ERR: (Encrypt) \(error.localizedDescription)")
                 completion(nil)
+            }
+        }
+    }
+    
+    /**
+     *  Get one's info in forum.
+     *
+     *  - Parameters:
+     *      - completion: A block of what you wanna do with the user's info.
+     */
+    func getInfo(_ completion: @escaping (JCUser?) -> Void) {
+        AF.request("http://api.cduestc.club/api/auth/info").response { response in
+            guard let data = response.data else {
+                completion(nil)
+                return
+            }
+            
+            do {
+                if
+                    let status = (try JSON(data: data))["status"].int,
+                    status == 200
+                {
+                    let json = (try JSON(data: data))["data"]
+                    let user = JCUser(
+                        username: json["username"].stringValue,
+                        email: json["email"].stringValue,
+                        signature: json["signature"].stringValue.isEmpty
+                            ? nil
+                            : json["signature"].stringValue,
+                        studentID: json["bindId"].stringValue.isEmpty
+                            ? nil
+                            : json["bindId"].stringValue
+                    )
+                    
+                    completion(user)
+                } else {
+                    completion(nil)
+                }
+            } catch {
+                completion(nil)
+                print("ERR: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    /**
+     *  Refresh an user's avatar and banner.
+     *
+     *  - Parameters:
+     *      - completion: A block that tells the process is complete.
+     */
+    func refreshUserMedia() {
+        if let avatarURL = Defaults[.avatarURL] {
+            JCImageManager.shared.loadImage(url: avatarURL) { img in
+                if let img = img {
+                    Defaults[.avatarLocal] = JCImageManager.shared.saveToDisk("avatar", img: img)
+                }
+            }
+        }
+        
+        if let bannerURL = Defaults[.bannerURL] {
+            JCImageManager.shared.loadImage(url: bannerURL) { img in
+                if let img = img {
+                    Defaults[.bannerLocal] = JCImageManager.shared.saveToDisk("banner", img: img)
+                }
+            }
+        }
+    }
+    
+    /**
+     *  Refresh an user's all session data.
+     *
+     *  - Parameters:
+     *      - completion: A block that tells the process is complete.
+     */
+    func refreshCompletely() {
+        if Defaults[.sessionURL] == nil {
+            JCAccountManager.shared.getSession { urlStr, avatar, banner in
+                Defaults[.sessionURL] = urlStr
+                
+                if let avatar = avatar {
+                    Defaults[.avatarURL] = avatar
+                }
+                
+                if let banner = banner {
+                    Defaults[.bannerURL] = banner
+                }
+                
+                // Save Avatar To Local If Possible
+                if let avatar = avatar {
+                    JCImageManager.shared.loadImage(url: avatar) { img in
+                        if let img = img {
+                            Defaults[.avatarLocal] = JCImageManager.shared.saveToDisk("avatar", img: img)
+                        }
+                    }
+                }
+                
+                // Save Banner To Local If Possible
+                if let banner = banner {
+                    JCImageManager.shared.loadImage(url: banner) { img in
+                        if let img = img {
+                            Defaults[.bannerLocal] = JCImageManager.shared.saveToDisk("banner", img: img)
+                        }
+                    }
+                }
             }
         }
     }
@@ -148,8 +236,9 @@ extension JCAccountManager {
                             let status = (try JSON(data: data))["status"].int,
                             status == 200
                         {
-                            completion(true)
-                            print("DEBUG: Binding Successful.")
+                            let json = (try JSON(data: data))["data"]
+                            completion(json["data"].boolValue)
+                            print("DEBUG: Binding \(json["data"].boolValue)")
                         }
                     } catch {
                         completion(false)
@@ -177,9 +266,61 @@ extension JCAccountManager {
                     let status = (try JSON(data: data))["status"].int,
                     status == 200
                 {
+                    Defaults[.avatarURL] = nil
+                    Defaults[.avatarLocal] = nil
+                    Defaults[.bannerURL] = nil
+                    Defaults[.bannerLocal] = nil
+                    Defaults[.loginInfo] = nil
+                    Defaults[.sessionURL] = nil
+                    Defaults[.user] = nil
+                    Defaults[.sessionExpired] = false
                     print("DEBUG: Logged Out Successfully.")
                 }
             } catch {
+                print("ERR: \(error.localizedDescription)")
+            }
+        }
+    }
+}
+
+
+// MARK: Private Methods -
+extension JCAccountManager {
+    
+    /**
+     *  Get one's login session. (`URL`...)
+     *
+     *  - Parameters:
+     *      - completion: A block of what you wanna do with the login session.
+     */
+    private func getSession(_ completion: @escaping (URL?, URL?, URL?) -> Void) {
+        AF.request("http://api.cduestc.club/api/auth/forum").response { response in
+            guard let data = response.data else {
+                completion(nil, nil, nil)
+                return
+            }
+            
+            do {
+                if
+                    let status = (try JSON(data: data))["status"].int,
+                    status == 200
+                {
+                    let json = (try JSON(data: data))["data"]
+                    
+                    let urlStr = json["index"].stringValue
+                    let avatar = json["urlAvatar"].stringValue
+                    let banner = json["urlBackground"].stringValue
+                    
+                    let url = URL(string: urlStr)
+                    let avatarURL = URL(string: avatar)
+                    let bannerURL = URL(string: banner)
+                    
+                    completion(url, avatarURL, bannerURL)
+                } else {
+                    completion(nil, nil, nil)
+                }
+            } catch {
+                completion(nil, nil, nil)
                 print("ERR: \(error.localizedDescription)")
             }
         }

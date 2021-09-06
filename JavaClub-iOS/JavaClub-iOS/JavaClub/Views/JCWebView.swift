@@ -9,11 +9,21 @@ import SwiftUI
 import WebKit
 
 struct JCWebView: View {
-    @Binding var url: String
+    @Binding var url: URL?
+    @Binding var sessionExpired: Bool
     
     var body: some View {
-        WebView(request: URLRequest(url: URL(string: url)!))
-            .padding(.bottom, 50)
+        if let url = url {
+            if !sessionExpired {
+                WebView(request: URLRequest(url: url), completion: {
+                    sessionExpired = true
+                })
+                .padding(.bottom, 50)
+            } else {
+                WebView(request: URLRequest(url: URL(string: "https://study.cduestc.club/index.php")!))
+                    .padding(.bottom, 50)
+            }
+        }
     }
 }
 
@@ -21,6 +31,7 @@ struct JCWebView: View {
 struct WebView : UIViewRepresentable {
     static var cache = [URL: WKWebView]()
     let request: URLRequest
+    var completion: (() -> Void)?
     
     func makeUIView(context: Context) -> WKWebView  {
         guard let url = request.url else { fatalError("URL cannot be used.") }
@@ -31,6 +42,8 @@ struct WebView : UIViewRepresentable {
 
         let webView = WKWebView()
         WebView.cache[url] = webView
+        
+        completion?()
         
         return webView
     }

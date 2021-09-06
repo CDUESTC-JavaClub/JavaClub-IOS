@@ -7,56 +7,68 @@
 
 import SwiftUI
 import Kingfisher
+import Defaults
 
 struct STHeaderView: View {
     @Binding var user: JCUser?
-    @State var avatar: URL?
-    @State var banner: URL?
+    @Default(.avatarURL) var avatarURL
+    @Default(.avatarLocal) var avatarLocal
+    @Default(.bannerURL) var bannerURL
+    @Default(.bannerLocal) var bannerLocal
+    @State var avatarImg: UIImage?
+    @State var bannerImg: UIImage?
     
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .bottom) {
-                KFImage(banner)
-                    .placeholder {
-                        Text("封面加载中...")
-                            .fixedSize()
-                    }
-                    .retry(maxCount: 5, interval: .seconds(3))
-                    .cacheOriginalImage()
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: geo.size.width, height: 230)
-                    .clipped()
-                
-                KFImage(avatar)
-                    .placeholder {
-                        Text("头像加载中...")
-                            .fixedSize()
-                    }
-                    .retry(maxCount: 5, interval: .seconds(3))
-                    .cacheOriginalImage()
-                    .resizable()
-                    .frame(width: 120, height: 120)
-                    .clipShape(Circle())
-                    .offset(y: 60)
-            }
-            // FIXME: Images not loaded if View is not showing for the first time
-            .valueChanged(value: user) { newUser in
-                
-                if
-                    let avatarStr = newUser?.avatar,
-                    let avatarURL = URL(string: avatarStr)
-                {
-                    avatar = avatarURL
+                if let bannerPath = bannerLocal, let img = loadImg(fileURL: bannerPath) {
+                    Image(uiImage: img)
+                        .centerCropped(height: 230)
+                } else {
+                    KFImage(bannerURL)
+                        .placeholder {
+                            Text("封面加载中...")
+                                .fixedSize()
+                        }
+                        .retry(maxCount: 5, interval: .seconds(3))
+                        .cacheOriginalImage()
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: geo.size.width, height: 230)
+                        .clipped()
                 }
-
-                if
-                    let bannerStr = newUser?.banner,
-                    let bannerURL = URL(string: bannerStr)
-                {
-                    banner = bannerURL
+                
+                if let avatarPath = avatarLocal, let img = loadImg(fileURL: avatarPath) {
+                    Image(uiImage: img)
+                        .resizable()
+                        .frame(width: 120, height: 120)
+                        .clipShape(Circle())
+                } else {
+                    KFImage(avatarURL)
+                        .placeholder {
+                            Text("头像加载中...")
+                                .fixedSize()
+                        }
+                        .retry(maxCount: 5, interval: .seconds(3))
+                        .cacheOriginalImage()
+                        .resizable()
+                        .frame(width: 120, height: 120)
+                        .clipShape(Circle())
+                        .offset(y: 60)
                 }
             }
         }
+    }
+    
+    private func loadImg(fileURL: URL) -> UIImage? {
+        do {
+            let imageData = try Data(contentsOf: fileURL)
+            
+            return UIImage(data: imageData)
+        } catch {
+            print("Error loading image : \(error.localizedDescription)")
+        }
+        
+        return nil
     }
 }

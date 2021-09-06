@@ -7,14 +7,18 @@
 
 import UIKit
 import SwiftUI
+import Defaults
 
 struct STContentView: View {
+    @Default(.user) var user
     
     var body: some View {
-        VStack {
-            STUserInfoView()
-            
-            Spacer()
+        List {
+            VStack {
+                STUserInfoView(user: $user)
+                
+                Spacer()
+            }
         }
     }
 }

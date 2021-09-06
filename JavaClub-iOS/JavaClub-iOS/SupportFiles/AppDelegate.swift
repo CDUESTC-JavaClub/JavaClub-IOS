@@ -16,14 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        if let info = Defaults[.rememberedUser] {
-            JCAccountManager.shared.login(info: info) { user in
-                if let user = user {
-                    JCUserState.shared.isLoggedIn = true
-                    JCUserState.shared.url = user.redirectionURL
-                    JCUserState.shared.currentUser = user
-                }
-            }
+        if let info = Defaults[.loginInfo] {
+            loginIfAvailable(info)
         }
         
         return true
@@ -34,7 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+        return UISceneConfiguration(
+            name: "Default Configuration",
+            sessionRole: connectingSceneSession.role
+        )
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
@@ -46,17 +43,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // TODO: Test If Can Clean Caches & Cookies
         
-//        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
-//
-//        WKWebsiteDataStore
-//            .default()
-//            .removeData(
-//                ofTypes: [WKWebsiteDataTypeCookies],
-//                modifiedSince: Date.distantPast,
-//                completionHandler: {}
-//            )
+        if Defaults[.loginInfo] == nil {
+            HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+
+            WKWebsiteDataStore
+                .default()
+                .removeData(
+                    ofTypes: [WKWebsiteDataTypeCookies],
+                    modifiedSince: Date.distantPast,
+                    completionHandler: {}
+                )
+        }
         
         JCAccountManager.shared.logout()
     }
+    
+    func loginIfAvailable(_ loginInfo: JCLoginInfo?) {
+        if let loginInfo = loginInfo {
+            JCAccountManager.shared.login(info: loginInfo) { result in
+                if let result = result, result == true {
+                    // Login Successful
+                    JCAccountManager.shared.getInfo { user in
+                        Defaults[.user] = user
+                        Defaults[.loginInfo] = loginInfo
+                    }
+                    
+                    // Re-login
+                    if Defaults[.sessionURL] == nil {
+                        JCAccountManager.shared.refreshCompletely()
+                    }
+                }
+            }
+        }
+    }
 }
 
+
+extension Defaults.Keys {
+    static let loginInfo = Key<JCLoginInfo?>("loginInfoKey", default: nil)
+    static let user = Key<JCUser?>("userKey", default: nil)
+    static let sessionURL = Key<URL?>("sessionURLKey", default: nil)
+    static let sessionExpired = Key<Bool>("sessionExpiredKey", default: false)
+    static let avatarLocal = Key<URL?>("avatarLocalKey", default: nil)
+    static let bannerLocal = Key<URL?>("bannerLocalKey", default: nil)
+    static let avatarURL = Key<URL?>("avatarURLKey", default: nil)
+    static let bannerURL = Key<URL?>("bannerURLKey", default: nil)
+}

@@ -9,15 +9,16 @@ import SwiftUI
 import Defaults
 
 struct JCContentView: View {
-    @ObservedObject var state: JCUserState = JCUserState.shared
     @State private var showingLogin: Bool = false
-    @Default(.rememberedUser) var rememberedUser
+    @Default(.loginInfo) var loginInfo
+    @Default(.sessionURL) var sessionURL
+    @Default(.sessionExpired) var sessionExpired
     
     var body: some View {
-        if state.isLoggedIn, !state.url.isEmpty {
-            JCWebView(url: $state.url)
+        if sessionURL != nil {
+            JCWebView(url: $sessionURL, sessionExpired: $sessionExpired)
         } else {
-            if rememberedUser == nil {
+            if loginInfo == nil {
                 Button {
                     showingLogin = true
                 } label: {
@@ -33,7 +34,7 @@ struct JCContentView: View {
                     }
                 }
                 .sheet(isPresented: $showingLogin) {
-                    JCLoginView(showingLogin: $showingLogin, rememberedUser: $rememberedUser)
+                    JCLoginView(showingLogin: $showingLogin, loginInfo: $loginInfo)
                 }
             } else {
                 Text("登陆中...")

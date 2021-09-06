@@ -27,12 +27,9 @@ extension JCImageManager {
      *      - urlString: URL string for the image.
      *      - completion: A block of what you wanna do with the retrieved image.
      */
-    func loadImage(urlString: String, _ completion: @escaping (UIImage?) -> Void) {
+    func loadImage(url: URL, _ completion: @escaping (UIImage?) -> Void) {
         utilityQueue.async {
-            guard
-                let url = URL(string: urlString),
-                let data = try? Data(contentsOf: url)
-            else { return }
+            guard let data = try? Data(contentsOf: url) else { return }
             
             let image = UIImage(data: data)
             
@@ -40,6 +37,30 @@ extension JCImageManager {
                 completion(image)
             }
         }
+    }
+    
+    /**
+     *  Save an `UIImage` to disk.
+     *
+     *  - Parameters:
+     *      - img: An `UIImage` you wanna store.
+     */
+    func saveToDisk(_ fileName: String, img: UIImage) -> URL? {
+        if let imgData = img.pngData() {
+            let fileURL = getDocumentsDirectory()
+                .appendingPathComponent(fileName)
+                .appendingPathExtension("png")
+            
+            do {
+                try imgData.write(to: fileURL, options: [.atomic])
+                
+                return fileURL
+            } catch {
+                print("ERR: \(error.localizedDescription)")
+            }
+        }
+        
+        return nil
     }
     
     /**
@@ -61,5 +82,11 @@ extension JCImageManager {
      */
     func cacheImage(_ image: UIImage, forKey key: NSString) {
         cache.setObject(image, forKey: key)
+    }
+    
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
     }
 }

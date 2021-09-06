@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B0093C4026DCC2F000D142F4 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = B0093C3F26DCC2F000D142F4 /* SwiftyJSON */; };
 		B0093C4226DCCEC700D142F4 /* JCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0093C4126DCCEC700D142F4 /* JCUser.swift */; };
-		B0093C4426DCD94800D142F4 /* JCUserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0093C4326DCD94800D142F4 /* JCUserState.swift */; };
 		B015ADD926DCF7410047C5A3 /* ColorfulPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015ADD826DCF7410047C5A3 /* ColorfulPlaceholder.swift */; };
 		B015ADDB26DD0BFB0047C5A3 /* JCRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015ADDA26DD0BFB0047C5A3 /* JCRegisterView.swift */; };
 		B015ADDD26DD0C0F0047C5A3 /* JCForgotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015ADDC26DD0C0F0047C5A3 /* JCForgotView.swift */; };
@@ -46,7 +45,6 @@
 
 /* Begin PBXFileReference section */
 		B0093C4126DCCEC700D142F4 /* JCUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCUser.swift; sourceTree = "<group>"; };
-		B0093C4326DCD94800D142F4 /* JCUserState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCUserState.swift; sourceTree = "<group>"; };
 		B015ADD826DCF7410047C5A3 /* ColorfulPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorfulPlaceholder.swift; sourceTree = "<group>"; };
 		B015ADDA26DD0BFB0047C5A3 /* JCRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCRegisterView.swift; sourceTree = "<group>"; };
 		B015ADDC26DD0C0F0047C5A3 /* JCForgotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCForgotView.swift; sourceTree = "<group>"; };
@@ -229,7 +227,6 @@
 			children = (
 				B0093C4126DCCEC700D142F4 /* JCUser.swift */,
 				B092F55F26DCA6D6007FA006 /* JCLoginInfo.swift */,
-				B0093C4326DCD94800D142F4 /* JCUserState.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -384,7 +381,6 @@
 				B0F007F526E3C4A2004526E8 /* ImageExtension.swift in Sources */,
 				B092F54726DC8187007FA006 /* Tab.swift in Sources */,
 				B0F007F126E345B2004526E8 /* AvailabilityCheck.swift in Sources */,
-				B0093C4426DCD94800D142F4 /* JCUserState.swift in Sources */,
 				B092F52626DC7D1F007FA006 /* ContentView.swift in Sources */,
 				B0F007FA26E3E7A2004526E8 /* JCImageManager.swift in Sources */,
 				B0B0214026DCBCB20059C202 /* JCWebView.swift in Sources */,

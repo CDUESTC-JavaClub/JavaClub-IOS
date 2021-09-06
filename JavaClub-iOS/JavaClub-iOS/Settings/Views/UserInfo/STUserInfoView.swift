@@ -6,22 +6,23 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct STUserInfoView: View {
-    @ObservedObject var state = JCUserState.shared
+    @Binding var user: JCUser?
     
     var body: some View {
         VStack {
-            STHeaderView(user: $state.currentUser)
+            STHeaderView(user: $user)
                 .frame(height: 290)
                 .edgesIgnoringSafeArea(.horizontal)
                 .padding(.bottom, 10)
             
-            Text(state.currentUser?.username ?? "")
+            Text(user?.username ?? "")
                 .font(.system(size: 20, design: .monospaced))
                 .padding(.bottom, 5)
             
-            Text(state.currentUser?.signature ?? "")
+            Text(user?.signature ?? "")
                 .font(.system(size: 12, design: .monospaced))
         }
         .edgesIgnoringSafeArea(.top)
