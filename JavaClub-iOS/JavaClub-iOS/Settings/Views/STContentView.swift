@@ -13,12 +13,21 @@ struct STContentView: View {
     @Default(.user) var user
     
     var body: some View {
-        List {
-            VStack {
-                STUserInfoView(user: $user)
+        VStack {
+            STUserInfoView(user: $user)
+            
+            Form {
+                STBindingView(user: $user)
                 
-                Spacer()
+                STOptionView()
+                
+                STActionView()
             }
+            .listStyle(GroupedListStyle())
+            .environment(\.horizontalSizeClass, .regular)
+            .offset(y: -50)
+            
+            Spacer()
         }
     }
 }

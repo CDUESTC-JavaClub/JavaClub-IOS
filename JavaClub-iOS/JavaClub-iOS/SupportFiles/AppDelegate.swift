@@ -80,6 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 extension Defaults.Keys {
+    // User Info
     static let loginInfo = Key<JCLoginInfo?>("loginInfoKey", default: nil)
     static let user = Key<JCUser?>("userKey", default: nil)
     static let sessionURL = Key<URL?>("sessionURLKey", default: nil)
@@ -88,4 +89,8 @@ extension Defaults.Keys {
     static let bannerLocal = Key<URL?>("bannerLocalKey", default: nil)
     static let avatarURL = Key<URL?>("avatarURLKey", default: nil)
     static let bannerURL = Key<URL?>("bannerURLKey", default: nil)
+    
+    // Settings
+    static let useDarkMode = Key<Bool>("useDarkModeKey", default: true)
+    static let useSystemAppearance = Key<Bool>("useSystemAppearanceKey", default: true)
 }
