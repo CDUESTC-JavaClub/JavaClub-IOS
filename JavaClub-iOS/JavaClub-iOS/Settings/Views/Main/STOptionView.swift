@@ -13,7 +13,7 @@ struct STOptionView: View {
     @Default(.useSystemAppearance) private var useSystemAppearance: Bool
     
     var body: some View {
-        Section {
+        Section(header: Text("设置")) {
             HStack {
                 Text("使用深色模式")
                 

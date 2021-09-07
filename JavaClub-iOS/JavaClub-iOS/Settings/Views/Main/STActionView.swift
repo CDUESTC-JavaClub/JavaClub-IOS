@@ -11,7 +11,7 @@ struct STActionView: View {
     @Environment(\.colorScheme) var scheme
     
     var body: some View {
-        Section {
+        Section(header: Text("操作")) {
             Button {
                 checkUpdates()
             } label: {

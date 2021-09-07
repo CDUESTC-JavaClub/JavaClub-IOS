@@ -18,11 +18,11 @@ struct STUserInfoView: View {
                 .edgesIgnoringSafeArea(.horizontal)
                 .padding(.bottom, 10)
             
-            Text(user?.username ?? "")
+            Text(user?.username ?? "N/A")
                 .font(.system(size: 20, design: .monospaced))
                 .padding(.bottom, 5)
             
-            Text(user?.signature ?? "")
+            Text(user?.signature ?? "N/A")
                 .font(.system(size: 12, design: .monospaced))
         }
         .edgesIgnoringSafeArea(.top)

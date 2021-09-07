@@ -44,7 +44,10 @@ struct TabBarView: View {
             (scheme == .light ? Color.white : Color.black)
                 .clipShape(AnimatedShape(centerX: centerX))
         )
-        .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: -5)
+        .shadow(
+            color: (scheme == .light ? Color.black : .white).opacity(0.1),
+            radius: 5, x: 0, y: -5
+        )
         .padding(.top, -15)
     }
 }

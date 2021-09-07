@@ -11,7 +11,7 @@ struct STBindingView: View {
     @Binding var user: JCUser?
     
     var body: some View {
-        Section {
+        Section(header: Text("个人信息")) {
             HStack {
                 Text("已绑定学号")
                 

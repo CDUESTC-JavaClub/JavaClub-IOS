@@ -73,4 +73,11 @@ extension View {
             }
         }
     }
+    
+    /// Set if enable the scroll function in `List`s.
+    func scrollEnabled(_ value: Bool) -> some View {
+        self.onAppear {
+            UITableView.appearance().isScrollEnabled = value
+        }
+    }
 }
