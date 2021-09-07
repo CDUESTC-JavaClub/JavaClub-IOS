@@ -18,7 +18,6 @@ struct BAContentView: View {
             }
             .listStyle(PlainListStyle())
             .environment(\.horizontalSizeClass, .regular)
-            .scrollEnabled(false)
             
             Spacer()
         }
