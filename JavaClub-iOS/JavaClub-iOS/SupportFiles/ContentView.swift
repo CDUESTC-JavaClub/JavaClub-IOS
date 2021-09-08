@@ -13,6 +13,7 @@ struct ContentView: View {
     
     init() {
         UITabBar.appearance().isHidden = true
+        UITableView.appearance().showsVerticalScrollIndicator = false
     }
     
     var body: some View {
@@ -23,20 +24,13 @@ struct ContentView: View {
                     JCContentView()
                         .tag(Tab.club)
                     
+                    KAContentView()
+                        .tag(Tab.kc)
+                        .edgesIgnoringSafeArea(.top)
                     
-                    NavigationView {
-                        KAContentView()
-                            .navigationBarTitle("教务", displayMode: .large)
-                    }
-                    .tag(Tab.kc)
-                    .edgesIgnoringSafeArea(.top)
-                    
-                    NavigationView {
-                        BAContentView()
-                            .navigationBarTitle("百叶计划", displayMode: .large)
-                    }
-                    .tag(Tab.bai)
-                    .edgesIgnoringSafeArea(.top)
+                    BAContentView()
+                        .tag(Tab.bai)
+                        .edgesIgnoringSafeArea(.top)
                     
                     STContentView()
                         .tag(Tab.settings)

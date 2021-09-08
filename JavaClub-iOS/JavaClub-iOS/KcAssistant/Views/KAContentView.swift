@@ -12,12 +12,17 @@ struct KAContentView: View {
     var body: some View {
         VStack {
             Form {
-                AnnouncementView(textStr: "以下功能模块的网络请求，会直接访问教务系统接口，无需经过App服务器进行数据传输或中转，全力保证个人隐私数据不会泄露。")
+                KAHeaderView()
+                
+                KAUserInfoView()
+                
+                KAAnnouncementView()
                 
                 KAActionView()
             }
             .listStyle(PlainListStyle())
             .environment(\.horizontalSizeClass, .regular)
+            .offset(y: -50)
             
             Spacer()
         }

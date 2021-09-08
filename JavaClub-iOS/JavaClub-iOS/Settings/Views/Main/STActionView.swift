@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct STActionView: View {
-    @Environment(\.colorScheme) var scheme
+    @Environment(\.colorScheme) private var scheme
     
     var body: some View {
         Section(header: Text("操作")) {

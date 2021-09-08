@@ -89,6 +89,7 @@ extension Defaults.Keys {
     static let bannerLocal = Key<URL?>("bannerLocalKey", default: nil)
     static let avatarURL = Key<URL?>("avatarURLKey", default: nil)
     static let bannerURL = Key<URL?>("bannerURLKey", default: nil)
+    static let enrollment = Key<KAEnrollment?>("bannerURLKey", default: nil)
     
     // Settings
     static let useDarkMode = Key<Bool>("useDarkModeKey", default: true)

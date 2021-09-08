@@ -14,26 +14,18 @@ struct STOptionView: View {
     
     var body: some View {
         Section(header: Text("设置")) {
-            HStack {
+            Toggle(isOn: $useDarkMode) {
                 Text("使用深色模式")
-                
-                Spacer()
-                
-                Toggle("", isOn: $useDarkMode)
-                    .disabled(useSystemAppearance)
             }
+            .disabled(useSystemAppearance)
             
-            HStack {
+            Toggle(isOn: $useSystemAppearance) {
                 Text("主题外观跟随系统")
-                
-                Spacer()
-                
-                Toggle("", isOn: $useSystemAppearance)
-                    .valueChanged(value: useSystemAppearance) { newValue in
-                        if newValue {
-                            useDarkMode = newValue
-                        }
-                    }
+            }
+            .valueChanged(value: useSystemAppearance) { newValue in
+                if newValue {
+                    useDarkMode = newValue
+                }
             }
         }
     }

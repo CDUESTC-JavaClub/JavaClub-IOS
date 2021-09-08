@@ -11,12 +11,10 @@ import Defaults
 
 struct STHeaderView: View {
     @Binding var user: JCUser?
-    @Default(.avatarURL) var avatarURL
-    @Default(.avatarLocal) var avatarLocal
-    @Default(.bannerURL) var bannerURL
-    @Default(.bannerLocal) var bannerLocal
-    @State var avatarImg: UIImage?
-    @State var bannerImg: UIImage?
+    @Default(.avatarURL) private var avatarURL
+    @Default(.avatarLocal) private var avatarLocal
+    @Default(.bannerURL) private var bannerURL
+    @Default(.bannerLocal) private var bannerLocal
     
     var body: some View {
         GeometryReader { geo in
