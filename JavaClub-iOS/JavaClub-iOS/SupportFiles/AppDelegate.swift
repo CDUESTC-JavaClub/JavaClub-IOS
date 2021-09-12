@@ -60,12 +60,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func loginIfAvailable(_ loginInfo: JCLoginInfo?) {
         if let loginInfo = loginInfo {
-            JCAccountManager.shared.login(info: loginInfo) { result in
-                if let result = result, result == true {
+            JCAccountManager.shared.login(info: loginInfo) { loginRes in
+                if let response = try? loginRes.get(), response == true {
                     // Login Successful
-                    JCAccountManager.shared.getInfo { user in
-                        Defaults[.user] = user
-                        Defaults[.loginInfo] = loginInfo
+                    JCAccountManager.shared.getInfo { infoRes in
+                        if let user = try? infoRes.get() {
+                            Defaults[.user] = user
+                            Defaults[.loginInfo] = loginInfo
+                        }
                     }
                     
                     // Re-login
@@ -82,6 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension Defaults.Keys {
     // User Info
     static let loginInfo = Key<JCLoginInfo?>("loginInfoKey", default: nil)
+    static let jwInfo = Key<KCLoginInfo?>("jwInfoKey", default: nil)
     static let user = Key<JCUser?>("userKey", default: nil)
     static let sessionURL = Key<URL?>("sessionURLKey", default: nil)
     static let sessionExpired = Key<Bool>("sessionExpiredKey", default: false)

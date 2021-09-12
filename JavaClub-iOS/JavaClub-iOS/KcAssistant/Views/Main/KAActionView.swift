@@ -47,7 +47,10 @@ struct KAActionView: View {
             }
             
             Button {
-                
+                JCAccountManager.shared.getEnrollmentInfo { result in
+                    let enrollment = try? result.get() 
+                    print("ENROLLMENT: \(enrollment)")
+                }
             } label: {
                 HStack {
                     Image(systemName: "person.crop.circle")

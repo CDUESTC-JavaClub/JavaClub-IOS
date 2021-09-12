@@ -6,23 +6,29 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct BAContentView: View {
+    @ObservedObject private var verify = JCBindingVerify.shared
     
     var body: some View {
-        VStack {
-            Form {
-                BaiHeaderView()
+        if verify.verified {
+            VStack {
+                Form {
+                    BaiHeaderView()
+                    
+                    BaiUserInfoView()
+                    
+                    BaiActionView()
+                }
+                .listStyle(PlainListStyle())
+                .environment(\.horizontalSizeClass, .regular)
+                .offset(y: -50)
                 
-                BaiUserInfoView()
-                
-                BaiActionView()
+                Spacer()
             }
-            .listStyle(PlainListStyle())
-            .environment(\.horizontalSizeClass, .regular)
-            .offset(y: -50)
-            
-            Spacer()
+        } else {
+            JCBindIDView(verify: $verify.verified)
         }
     }
 }

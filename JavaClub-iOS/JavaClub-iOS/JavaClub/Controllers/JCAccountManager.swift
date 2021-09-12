@@ -11,6 +11,17 @@ import SwiftyJSON
 import SwiftyRSA
 import Defaults
 
+enum JCError: Error {
+    case pubKeyReqFailure
+    case badRequest
+    case noData
+    case parseErr
+    case encryptKeyErr
+    case notLogin
+    case inputErr
+}
+
+
 class JCAccountManager {
     static let shared = JCAccountManager()
     
@@ -18,32 +29,8 @@ class JCAccountManager {
 }
 
 
+// MARK: Shared Methods
 extension JCAccountManager {
-    
-    /**
-     *  Request public key from the server.
-     *
-     *  One should request the public key before one can continue to login or else.
-     *
-     *  - Parameters:
-     *      - completion: A block of what you wanna do with the public key.
-     */
-    func requestPubKey(_ completion: @escaping (String) -> Void) {
-        AF.request("http://api.cduestc.club/api/auth/public-key").response { response in
-            guard let data = response.data else {
-                completion("")
-                return
-            }
-            
-            do {
-                let jsonStr = (try JSON(data: data))["data"].stringValue
-                completion(jsonStr)
-            } catch {
-                completion("")
-                print("ERR: \(error.localizedDescription)")
-            }
-        }
-    }
     
     /**
      *  Login to one's JavaClub account.
@@ -52,17 +39,19 @@ extension JCAccountManager {
      *      - info: One's login info containing username and password. Username can be one's user ID or email address.
      *      - completion: A block to check if it's logged in.
      */
-    func login(info: JCLoginInfo, _ completion: @escaping (Bool?) -> Void) {
-        requestPubKey { key in
+    func login(info: JCLoginInfo, _ completion: @escaping (Result<Bool, JCError>) -> Void) {
+        requestPubKey { [weak self] result in
+            guard let key = try? result.get() else {
+                completion(.failure(.pubKeyReqFailure))
+                return
+            }
             
             do {
                 // Encrypt Password
-                let pubKey = try PublicKey(pemEncoded: key)
-                let clear = try ClearMessage(string: info.password, using: .utf8)
-                let encrypted = try clear.encrypted(with: pubKey, padding: .PKCS1)
+                let encryptedStr = try self?.encrypt(info.password, with: key)
                 let parameters = [
                     "id": info.username,
-                    "password": encrypted.base64String,
+                    "password": encryptedStr,
                     "remember-me": "false"
                 ]
                 
@@ -72,7 +61,10 @@ extension JCAccountManager {
                     method: .post,
                     parameters: parameters
                 ).response { response in
-                    guard let data = response.data else { return }
+                    guard let data = response.data else {
+                        completion(.failure(.noData))
+                        return
+                    }
                     
                     do {
                         if
@@ -80,18 +72,50 @@ extension JCAccountManager {
                             status == 200
                         {
                             let resultJson = (try JSON(data: data))["data"]
-                            completion(resultJson.boolValue)
+                            completion(.success(resultJson.boolValue))
                         } else {
-                            completion(nil)
+                            completion(.failure(.badRequest))
                         }
                     } catch {
                         print("ERR: (Load JSON) \(error.localizedDescription)")
-                        completion(nil)
+                        completion(.failure(.parseErr))
                     }
                 }
             } catch {
                 print("ERR: (Encrypt) \(error.localizedDescription)")
-                completion(nil)
+                completion(.failure(.encryptKeyErr))
+            }
+        }
+    }
+    
+    /**
+     *  Logout one's JavaClub account.
+     *
+     *  By default, JavaClub app will logout one's account by the time they terminate the app.
+     */
+    func logout() {
+        AF.request("http://api.cduestc.club/api/auth/logout").response { response in
+            guard let data = response.data else { return }
+            
+            do {
+                if
+                    let status = (try JSON(data: data))["status"].int,
+                    status == 200
+                {
+                    Defaults[.avatarURL] = nil
+                    Defaults[.avatarLocal] = nil
+                    Defaults[.bannerURL] = nil
+                    Defaults[.bannerLocal] = nil
+                    Defaults[.loginInfo] = nil
+                    Defaults[.sessionURL] = nil
+                    Defaults[.user] = nil
+                    Defaults[.jwInfo] = nil
+                    Defaults[.sessionExpired] = false
+                    JCBindingVerify.shared.verified = false
+                    print("DEBUG: Logged Out Successfully.")
+                }
+            } catch {
+                print("ERR: \(error.localizedDescription)")
             }
         }
     }
@@ -102,10 +126,10 @@ extension JCAccountManager {
      *  - Parameters:
      *      - completion: A block of what you wanna do with the user's info.
      */
-    func getInfo(_ completion: @escaping (JCUser?) -> Void) {
+    func getInfo(_ completion: @escaping (Result<JCUser, JCError>) -> Void) {
         AF.request("http://api.cduestc.club/api/auth/info").response { response in
             guard let data = response.data else {
-                completion(nil)
+                completion(.failure(.noData))
                 return
             }
             
@@ -126,12 +150,12 @@ extension JCAccountManager {
                             : json["bindId"].stringValue
                     )
                     
-                    completion(user)
+                    completion(.success(user))
                 } else {
-                    completion(nil)
+                    completion(.failure(.badRequest))
                 }
             } catch {
-                completion(nil)
+                completion(.failure(.parseErr))
                 print("ERR: \(error.localizedDescription)")
             }
         }
@@ -210,17 +234,19 @@ extension JCAccountManager {
      *      - id: One's student ID.
      *      - completion: A block of what you wanna do with the result of the binding process.
      */
-    func bindStudentID(info: JCLoginInfo, _ completion: @escaping (Bool) -> Void) {
-        requestPubKey { key in
+    func bindStudentID(info: KCLoginInfo, _ completion: @escaping (Result<Bool, JCError>) -> Void) {
+        requestPubKey { [weak self] result in
+            guard let key = try? result.get() else {
+                completion(.failure(.pubKeyReqFailure))
+                return
+            }
             
             do {
                 // Encrypt Password
-                let pubKey = try PublicKey(pemEncoded: key)
-                let clear = try ClearMessage(string: info.password, using: .utf8)
-                let encrypted = try clear.encrypted(with: pubKey, padding: .PKCS1)
+                let encryptedStr = try self?.encrypt(info.password, with: key)
                 let parameters = [
-                    "id": info.username,
-                    "password": encrypted.base64String
+                    "id": info.id,
+                    "password": encryptedStr
                 ]
                 
                 // Request To Bind StudentID
@@ -229,7 +255,10 @@ extension JCAccountManager {
                     method: .post,
                     parameters: parameters
                 ).response { response in
-                    guard let data = response.data else { return }
+                    guard let data = response.data else {
+                        completion(.failure(.noData))
+                        return
+                    }
                     
                     do {
                         if
@@ -237,47 +266,79 @@ extension JCAccountManager {
                             status == 200
                         {
                             let json = (try JSON(data: data))["data"]
-                            completion(json["data"].boolValue)
-                            print("DEBUG: Binding \(json["data"].boolValue)")
+                            if json.boolValue {
+                                completion(.success(true))
+                                Defaults[.jwInfo] = info
+                                print("DEBUG: Binding Successful.")
+                            } else {
+                                completion(.failure(.inputErr))
+                                print("DEBUG: Binding Failed.")
+                            }
+                        } else {
+                            completion(.failure(.badRequest))
                         }
                     } catch {
-                        completion(false)
+                        completion(.failure(.parseErr))
                         print("ERR: \(error.localizedDescription)")
                     }
                 }
             } catch {
-                completion(false)
+                completion(.failure(.encryptKeyErr))
                 print("ERR: (Encrypt) \(error.localizedDescription)")
             }
         }
     }
     
     /**
-     *  Logout one's JavaClub account.
+     *  Get one's enrollment info of CDUESTC.
      *
-     *  By default, JavaClub app will logout one's account by the time they terminate the app.
+     *  - Parameters:
+     *      - completion: A block of what you wanna do with the result of one's enrollment info.
      */
-    func logout() {
-        AF.request("http://api.cduestc.club/api/auth/logout").response { response in
-            guard let data = response.data else { return }
+    func getEnrollmentInfo(completion: @escaping (Result<String, JCError>) -> Void) {
+        guard let loginInfo = Defaults[.loginInfo] else {
+            completion(.failure(.notLogin))
+            return
+        }
+        
+        requestPubKey { [weak self] result in
+            guard let key = try? result.get() else {
+                completion(.failure(.pubKeyReqFailure))
+                return
+            }
             
             do {
-                if
-                    let status = (try JSON(data: data))["status"].int,
-                    status == 200
-                {
-                    Defaults[.avatarURL] = nil
-                    Defaults[.avatarLocal] = nil
-                    Defaults[.bannerURL] = nil
-                    Defaults[.bannerLocal] = nil
-                    Defaults[.loginInfo] = nil
-                    Defaults[.sessionURL] = nil
-                    Defaults[.user] = nil
-                    Defaults[.sessionExpired] = false
-                    print("DEBUG: Logged Out Successfully.")
+                let encryptedStr = try self?.encrypt(loginInfo.password, with: key) ?? ""
+                let parameters: [String: String] = ["password": encryptedStr]
+                
+                AF.request(
+                    "http://api.cduestc.club/api/kc/info",
+                    method: .post,
+                    parameters: parameters
+                ).response { response in
+                    guard let data = response.data else {
+                        completion(.failure(.noData))
+                        return
+                    }
+                    
+                    do {
+                        if
+                            let status = (try JSON(data: data))["status"].int,
+                            status == 200
+                        {
+                            let json = (try JSON(data: data))["data"]
+                            completion(.success(json.stringValue))
+                        } else {
+                            completion(.failure(.badRequest))
+                        }
+                    } catch {
+                        completion(.failure(.parseErr))
+                        print("ERR: \(error.localizedDescription)")
+                    }
                 }
             } catch {
-                print("ERR: \(error.localizedDescription)")
+                completion(.failure(.encryptKeyErr))
+                print(error.localizedDescription)
             }
         }
     }
@@ -287,12 +348,35 @@ extension JCAccountManager {
 // MARK: Private Methods -
 extension JCAccountManager {
     
-    /**
-     *  Get one's login session. (`URL`...)
-     *
-     *  - Parameters:
-     *      - completion: A block of what you wanna do with the login session.
-     */
+    private func encrypt(_ content: String, with key: String) throws -> String? {
+        do {
+            let pubKey = try PublicKey(pemEncoded: key)
+            let clear = try ClearMessage(string: content, using: .utf8)
+            let encrypted = try clear.encrypted(with: pubKey, padding: .PKCS1)
+            
+            return encrypted.base64String
+        } catch {
+            throw JCError.encryptKeyErr
+        }
+    }
+    
+    private func requestPubKey(_ completion: @escaping (Result<String, JCError>) -> Void) {
+        AF.request("http://api.cduestc.club/api/auth/public-key").response { response in
+            guard let data = response.data else {
+                completion(.failure(.noData))
+                return
+            }
+            
+            do {
+                let jsonStr = (try JSON(data: data))["data"].stringValue
+                completion(.success(jsonStr))
+            } catch {
+                completion(.failure(.parseErr))
+                print("ERR: \(error.localizedDescription)")
+            }
+        }
+    }
+    
     private func getSession(_ completion: @escaping (URL?, URL?, URL?) -> Void) {
         AF.request("http://api.cduestc.club/api/auth/forum").response { response in
             guard let data = response.data else {

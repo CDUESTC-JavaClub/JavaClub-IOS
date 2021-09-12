@@ -20,7 +20,7 @@ struct BaiActionView: View {
                         .renderingMode(.template)
                         .resizable()
                         .frame(width: 21, height: 15)
-                        .padding(.trailing, 4)
+                        .padding(.trailing, 13)
                     
                     Text("所有活动")
                     
@@ -37,7 +37,7 @@ struct BaiActionView: View {
                         .renderingMode(.template)
                         .resizable()
                         .frame(width: 20, height: 20)
-                        .padding(.trailing, 5)
+                        .padding(.trailing, 14)
                     
                     Text("管理我的活动")
                     
@@ -50,10 +50,10 @@ struct BaiActionView: View {
                 
             } label: {
                 HStack {
-                    Image(systemName: "square.and.pencil")
+                    Image(systemName: "rectangle.and.pencil.and.ellipsis")
                         .renderingMode(.template)
                         .resizable()
-                        .frame(width: 20, height: 20)
+                        .frame(width: 29, height: 20)
                         .padding(.trailing, 5)
                     
                     Text("百叶积分")

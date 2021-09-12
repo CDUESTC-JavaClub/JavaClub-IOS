@@ -4,7 +4,7 @@
 //  Created by Roy Rao on 2021/2/22.
 //
 
-
+// MARK: Cocoa -
 #if canImport(Cocoa)
 
 import Cocoa
@@ -60,6 +60,7 @@ extension NSColor {
 #endif
 
 
+// MARK: UIKit -
 #if canImport(UIKit)
 
 import UIKit
@@ -122,6 +123,7 @@ extension UIColor {
 #endif
 
 
+// MARK: SwiftUI -
 #if canImport(SwiftUI)
 
 import SwiftUI

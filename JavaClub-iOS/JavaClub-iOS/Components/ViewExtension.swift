@@ -73,6 +73,13 @@ extension View {
             }
         }
     }
+}
+
+
+// MARK: iOS Methods -
+#if canImport(UIKit)
+
+extension View {
     
     /// Set if enable the scroll function in `List`s.
     func scrollEnabled(_ value: Bool) -> some View {
@@ -80,4 +87,37 @@ extension View {
             UITableView.appearance().isScrollEnabled = value
         }
     }
+    
+    /// Hide keyboard when tap outside the TextField
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(
+            #selector(UIResponder.resignFirstResponder),
+            to: nil,
+            from: nil,
+            for: nil
+        )
+    }
 }
+
+#endif
+
+
+// MARK: macOS Methods -
+#if canImport(Cocoa)
+
+extension NSView {
+    
+    /// Shake
+    func shake(count: Float = 4, for duration: TimeInterval = 0.2, withTranslation translation: Float = 3) {
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        animation.repeatCount = count
+        animation.duration = duration/TimeInterval(animation.repeatCount)
+        animation.autoreverses = true
+        animation.values = [translation, -translation]
+        self.layer?.add(animation, forKey: "shake")
+    }
+    
+}
+
+#endif
