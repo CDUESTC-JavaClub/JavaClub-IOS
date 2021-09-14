@@ -20,20 +20,20 @@ struct KAUserInfoView: View {
                     .padding(.trailing)
                 
                 VStack(alignment: .leading) {
-                    Text("Roy")
+                    Text(enrollment?.name ?? "N/A")
                         .font(.title)
                         .foregroundColor(.secondary)
                         .padding(.bottom, 2)
                     
-                    Text("2018级 计算机类")
+                    Text("\(enrollment?.grade ?? "?")级 \(enrollment?.subject ?? "?")")
                         .font(.footnote)
                         .foregroundColor(.secondary)
                     
-                    Text("学号：1840610908")
+                    Text("学号：\(enrollment?.studentID ?? "?")")
                         .font(.footnote)
                         .foregroundColor(.secondary)
                     
-                    Text("所属：计算机学院（本科）")
+                    Text("所属：\(enrollment?.department ?? "?")（\(enrollment?.degree ?? "?")）")
                         .font(.footnote)
                         .foregroundColor(.secondary)
                 }

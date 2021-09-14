@@ -21,7 +21,7 @@ struct JCBindIDView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("请先绑定学号")
+                Text("请先登录教务")
                     .font(.title)
                 
                 Spacer()
@@ -151,6 +151,11 @@ struct JCBindIDView: View {
                     {
                         bindState = true
                         verify = true
+                        
+                        JCAccountManager.shared.getEnrollmentInfo { result in
+                            let enrollment = try? result.get()
+                            Defaults[.enrollment] = enrollment
+                        }
                     } else {
                         bindState = false
                         verify = false

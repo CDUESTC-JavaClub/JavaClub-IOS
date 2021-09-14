@@ -41,9 +41,14 @@
 		B0B0214026DCBCB20059C202 /* JCWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B0213F26DCBCB20059C202 /* JCWebView.swift */; };
 		B0B0214226DCBCF50059C202 /* JCLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B0214126DCBCF50059C202 /* JCLoginView.swift */; };
 		B0B6587B26E67469004DFAD8 /* STBindingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B6587A26E67469004DFAD8 /* STBindingView.swift */; };
+		B0BBEE5726F044950046F5D0 /* KAClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BBEE5626F044950046F5D0 /* KAClass.swift */; };
+		B0BBEE5C26F0478F0046F5D0 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BBEE5B26F0478F0046F5D0 /* DBManager.swift */; };
+		B0BBEE5E26F054060046F5D0 /* KAEnrollmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BBEE5D26F054060046F5D0 /* KAEnrollmentView.swift */; };
 		B0D7F4B626EDCD7200286D1A /* JCBindIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D7F4B526EDCD7200286D1A /* JCBindIDView.swift */; };
 		B0D7F4B826EDE35000286D1A /* KCLoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D7F4B726EDE35000286D1A /* KCLoginInfo.swift */; };
 		B0D7F4BA26EDF35900286D1A /* JCBindingVerify.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D7F4B926EDF35900286D1A /* JCBindingVerify.swift */; };
+		B0D7F4BD26EE06BD00286D1A /* KAClassTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D7F4BC26EE06BD00286D1A /* KAClassTableView.swift */; };
+		B0D7F4C026EE0EF900286D1A /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B0D7F4BF26EE0EF900286D1A /* SQLite */; };
 		B0E6CD5826E8DDBF0003662B /* BaiHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E6CD5726E8DDBF0003662B /* BaiHeaderView.swift */; };
 		B0E6CD5A26E8DE410003662B /* KAHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E6CD5926E8DE410003662B /* KAHeaderView.swift */; };
 		B0E6CD5C26E8E2BB0003662B /* KAUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E6CD5B26E8E2BB0003662B /* KAUserInfoView.swift */; };
@@ -94,9 +99,13 @@
 		B0B0213F26DCBCB20059C202 /* JCWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCWebView.swift; sourceTree = "<group>"; };
 		B0B0214126DCBCF50059C202 /* JCLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCLoginView.swift; sourceTree = "<group>"; };
 		B0B6587A26E67469004DFAD8 /* STBindingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STBindingView.swift; sourceTree = "<group>"; };
+		B0BBEE5626F044950046F5D0 /* KAClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAClass.swift; sourceTree = "<group>"; };
+		B0BBEE5B26F0478F0046F5D0 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		B0BBEE5D26F054060046F5D0 /* KAEnrollmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAEnrollmentView.swift; sourceTree = "<group>"; };
 		B0D7F4B526EDCD7200286D1A /* JCBindIDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCBindIDView.swift; sourceTree = "<group>"; };
 		B0D7F4B726EDE35000286D1A /* KCLoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KCLoginInfo.swift; sourceTree = "<group>"; };
 		B0D7F4B926EDF35900286D1A /* JCBindingVerify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCBindingVerify.swift; sourceTree = "<group>"; };
+		B0D7F4BC26EE06BD00286D1A /* KAClassTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAClassTableView.swift; sourceTree = "<group>"; };
 		B0E6CD5726E8DDBF0003662B /* BaiHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiHeaderView.swift; sourceTree = "<group>"; };
 		B0E6CD5926E8DE410003662B /* KAHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAHeaderView.swift; sourceTree = "<group>"; };
 		B0E6CD5B26E8E2BB0003662B /* KAUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAUserInfoView.swift; sourceTree = "<group>"; };
@@ -118,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0D7F4C026EE0EF900286D1A /* SQLite in Frameworks */,
 				B015ADE026DD123E0047C5A3 /* Defaults in Frameworks */,
 				B0093C4026DCC2F000D142F4 /* SwiftyJSON in Frameworks */,
 				B0B0213826DCB16F0059C202 /* Alamofire in Frameworks */,
@@ -129,18 +139,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B06D3CF826E7C10600254719 /* Views */ = {
+		B06D3CF826E7C10600254719 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				B06D3CFF26E7C3BE00254719 /* Main */,
 				B092F53C26DC7F36007FA006 /* KAContentView.swift */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
 		B06D3CFF26E7C3BE00254719 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				B0D7F4BB26EE06A300286D1A /* DetailViews */,
 				B0E6CD5926E8DE410003662B /* KAHeaderView.swift */,
 				B0E6CD5B26E8E2BB0003662B /* KAUserInfoView.swift */,
 				B0E6CD6226E8E6880003662B /* KAAnnouncementView.swift */,
@@ -205,8 +216,9 @@
 		B092F53626DC7E73007FA006 /* KcAssistant */ = {
 			isa = PBXGroup;
 			children = (
-				B06D3CF826E7C10600254719 /* Views */,
-				B0E6CD5F26E8E53B0003662B /* Models */,
+				B0BBEE5926F0477B0046F5D0 /* Controller */,
+				B06D3CF826E7C10600254719 /* View */,
+				B0E6CD5F26E8E53B0003662B /* Model */,
 			);
 			path = KcAssistant;
 			sourceTree = "<group>";
@@ -223,9 +235,10 @@
 		B092F53826DC7EB3007FA006 /* JavaClub */ = {
 			isa = PBXGroup;
 			children = (
-				B092F56126DCA7A7007FA006 /* Controllers */,
-				B092F55826DC99F9007FA006 /* Views */,
-				B092F55E26DCA6B7007FA006 /* Models */,
+				B092F56126DCA7A7007FA006 /* Controller */,
+				B092F55826DC99F9007FA006 /* View */,
+				B0BBEE5826F0470D0046F5D0 /* ViewModel */,
+				B092F55E26DCA6B7007FA006 /* Model */,
 			);
 			path = JavaClub;
 			sourceTree = "<group>";
@@ -277,7 +290,7 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		B092F55826DC99F9007FA006 /* Views */ = {
+		B092F55826DC99F9007FA006 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				B092F53A26DC7F1D007FA006 /* JCContentView.swift */,
@@ -289,26 +302,25 @@
 				B0D7F4B526EDCD7200286D1A /* JCBindIDView.swift */,
 				B015ADE226DD1F6A0047C5A3 /* CheckBoxView.swift */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
-		B092F55E26DCA6B7007FA006 /* Models */ = {
+		B092F55E26DCA6B7007FA006 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				B0093C4126DCCEC700D142F4 /* JCUser.swift */,
 				B092F55F26DCA6D6007FA006 /* JCLoginInfo.swift */,
-				B0D7F4B926EDF35900286D1A /* JCBindingVerify.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		B092F56126DCA7A7007FA006 /* Controllers */ = {
+		B092F56126DCA7A7007FA006 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				B0F007F926E3E7A2004526E8 /* JCImageManager.swift */,
 				B092F56226DCA7CF007FA006 /* JCAccountManager.swift */,
 			);
-			path = Controllers;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		B0B6587326E67346004DFAD8 /* Main */ = {
@@ -321,13 +333,39 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		B0E6CD5F26E8E53B0003662B /* Models */ = {
+		B0BBEE5826F0470D0046F5D0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B0D7F4B926EDF35900286D1A /* JCBindingVerify.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B0BBEE5926F0477B0046F5D0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B0BBEE5B26F0478F0046F5D0 /* DBManager.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B0D7F4BB26EE06A300286D1A /* DetailViews */ = {
+			isa = PBXGroup;
+			children = (
+				B0BBEE5D26F054060046F5D0 /* KAEnrollmentView.swift */,
+				B0D7F4BC26EE06BD00286D1A /* KAClassTableView.swift */,
+			);
+			path = DetailViews;
+			sourceTree = "<group>";
+		};
+		B0E6CD5F26E8E53B0003662B /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				B0D7F4B726EDE35000286D1A /* KCLoginInfo.swift */,
 				B0E6CD6026E8E5560003662B /* KAEnrollment.swift */,
+				B0BBEE5626F044950046F5D0 /* KAClass.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B0E6CD6426E8EE250003662B /* UserInfo */ = {
@@ -383,6 +421,7 @@
 				B0093C3F26DCC2F000D142F4 /* SwiftyJSON */,
 				B015ADDF26DD123E0047C5A3 /* Defaults */,
 				B0F007F726E3E1A8004526E8 /* Kingfisher */,
+				B0D7F4BF26EE0EF900286D1A /* SQLite */,
 			);
 			productName = "JavaClub-iOS";
 			productReference = B092F51E26DC7D1F007FA006 /* JavaClub-iOS.app */;
@@ -417,6 +456,7 @@
 				B0093C3E26DCC2F000D142F4 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				B015ADDE26DD123E0047C5A3 /* XCRemoteSwiftPackageReference "Defaults" */,
 				B0F007F626E3E1A8004526E8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				B0D7F4BE26EE0EF900286D1A /* XCRemoteSwiftPackageReference "SQLite" */,
 			);
 			productRefGroup = B092F51F26DC7D1F007FA006 /* Products */;
 			projectDirPath = "";
@@ -464,6 +504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0D7F4BD26EE06BD00286D1A /* KAClassTableView.swift in Sources */,
 				B015ADDD26DD0C0F0047C5A3 /* JCForgotView.swift in Sources */,
 				B06D3CFA26E7C24700254719 /* JCNoticeView.swift in Sources */,
 				B092F52226DC7D1F007FA006 /* AppDelegate.swift in Sources */,
@@ -488,6 +529,7 @@
 				B092F53F26DC7F42007FA006 /* BAContentView.swift in Sources */,
 				B0D7F4B826EDE35000286D1A /* KCLoginInfo.swift in Sources */,
 				B092F52426DC7D1F007FA006 /* SceneDelegate.swift in Sources */,
+				B0BBEE5E26F054060046F5D0 /* KAEnrollmentView.swift in Sources */,
 				B092F56026DCA6D6007FA006 /* JCLoginInfo.swift in Sources */,
 				B0E6CD5826E8DDBF0003662B /* BaiHeaderView.swift in Sources */,
 				B0F007F526E3C4A2004526E8 /* ImageExtension.swift in Sources */,
@@ -503,8 +545,10 @@
 				B0E6CD6A26E8F61A0003662B /* BaiScoreMiniView.swift in Sources */,
 				B0E6CD5A26E8DE410003662B /* KAHeaderView.swift in Sources */,
 				B06D3CF726E7B88900254719 /* STActionView.swift in Sources */,
+				B0BBEE5726F044950046F5D0 /* KAClass.swift in Sources */,
 				B0D7F4BA26EDF35900286D1A /* JCBindingVerify.swift in Sources */,
 				B092F55526DC90EC007FA006 /* StringExtension.swift in Sources */,
+				B0BBEE5C26F0478F0046F5D0 /* DBManager.swift in Sources */,
 				B0B6587B26E67469004DFAD8 /* STBindingView.swift in Sources */,
 				B015ADDB26DD0BFB0047C5A3 /* JCRegisterView.swift in Sources */,
 				B0E6CD6626E8EE640003662B /* BaiScoreOverallView.swift in Sources */,
@@ -740,6 +784,14 @@
 				minimumVersion = 1.6.0;
 			};
 		};
+		B0D7F4BE26EE0EF900286D1A /* XCRemoteSwiftPackageReference "SQLite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.13.0;
+			};
+		};
 		B0F007F626E3E1A8004526E8 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -770,6 +822,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B0B0213C26DCB3EA0059C202 /* XCRemoteSwiftPackageReference "SwiftyRSA" */;
 			productName = SwiftyRSA;
+		};
+		B0D7F4BF26EE0EF900286D1A /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0D7F4BE26EE0EF900286D1A /* XCRemoteSwiftPackageReference "SQLite" */;
+			productName = SQLite;
 		};
 		B0F007F726E3E1A8004526E8 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

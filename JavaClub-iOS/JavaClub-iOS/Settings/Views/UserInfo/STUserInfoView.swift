@@ -18,11 +18,11 @@ struct STUserInfoView: View {
                 .edgesIgnoringSafeArea(.horizontal)
                 .padding(.bottom, 10)
             
-            Text(user?.username ?? "N/A")
+            Text(user?.username ?? "请先登录")
                 .font(.system(size: 20, design: .monospaced))
                 .padding(.bottom, 5)
             
-            Text(user?.signature ?? "N/A")
+            Text(user?.signature ?? "")
                 .font(.system(size: 12, design: .monospaced))
         }
         .edgesIgnoringSafeArea(.top)

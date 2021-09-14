@@ -24,13 +24,21 @@ struct ContentView: View {
                     JCContentView()
                         .tag(Tab.club)
                     
-                    KAContentView()
-                        .tag(Tab.kc)
-                        .edgesIgnoringSafeArea(.top)
+                    NavigationView {
+                        KAContentView()
+                            .navigationBarTitle("")
+                            .navigationBarHidden(true)
+                    }
+                    .tag(Tab.kc)
+                    .edgesIgnoringSafeArea(.top)
                     
-                    BAContentView()
-                        .tag(Tab.bai)
-                        .edgesIgnoringSafeArea(.top)
+                    NavigationView {
+                        BAContentView()
+                            .navigationBarTitle("")
+                            .navigationBarHidden(true)
+                    }
+                    .tag(Tab.bai)
+                    .edgesIgnoringSafeArea(.top)
                     
                     STContentView()
                         .tag(Tab.settings)

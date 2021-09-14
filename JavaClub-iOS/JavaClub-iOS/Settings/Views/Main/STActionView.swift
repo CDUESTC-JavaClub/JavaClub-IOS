@@ -53,6 +53,6 @@ struct STActionView: View {
     }
     
     private func logout() {
-        
+        JCAccountManager.shared.logout(clean: true)
     }
 }

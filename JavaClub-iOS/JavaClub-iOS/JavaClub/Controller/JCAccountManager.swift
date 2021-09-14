@@ -93,7 +93,7 @@ extension JCAccountManager {
      *
      *  By default, JavaClub app will logout one's account by the time they terminate the app.
      */
-    func logout() {
+    func logout(clean: Bool) {
         AF.request("http://api.cduestc.club/api/auth/logout").response { response in
             guard let data = response.data else { return }
             
@@ -102,16 +102,19 @@ extension JCAccountManager {
                     let status = (try JSON(data: data))["status"].int,
                     status == 200
                 {
-                    Defaults[.avatarURL] = nil
-                    Defaults[.avatarLocal] = nil
-                    Defaults[.bannerURL] = nil
-                    Defaults[.bannerLocal] = nil
-                    Defaults[.loginInfo] = nil
-                    Defaults[.sessionURL] = nil
-                    Defaults[.user] = nil
-                    Defaults[.jwInfo] = nil
-                    Defaults[.sessionExpired] = false
-                    JCBindingVerify.shared.verified = false
+                    if clean {
+                        Defaults[.avatarURL] = nil
+                        Defaults[.avatarLocal] = nil
+                        Defaults[.bannerURL] = nil
+                        Defaults[.bannerLocal] = nil
+                        Defaults[.loginInfo] = nil
+                        Defaults[.sessionURL] = nil
+                        Defaults[.user] = nil
+                        Defaults[.jwInfo] = nil
+                        Defaults[.sessionExpired] = false
+                        Defaults[.enrollment] = nil
+                        JCBindingVerify.shared.verified = false
+                    }
                     print("DEBUG: Logged Out Successfully.")
                 }
             } catch {
@@ -192,6 +195,7 @@ extension JCAccountManager {
      *      - completion: A block that tells the process is complete.
      */
     func refreshCompletely() {
+        // Refresh User Media
         if Defaults[.sessionURL] == nil {
             JCAccountManager.shared.getSession { urlStr, avatar, banner in
                 Defaults[.sessionURL] = urlStr
@@ -267,8 +271,8 @@ extension JCAccountManager {
                         {
                             let json = (try JSON(data: data))["data"]
                             if json.boolValue {
-                                completion(.success(true))
                                 Defaults[.jwInfo] = info
+                                completion(.success(json.boolValue))
                                 print("DEBUG: Binding Successful.")
                             } else {
                                 completion(.failure(.inputErr))
@@ -295,8 +299,8 @@ extension JCAccountManager {
      *  - Parameters:
      *      - completion: A block of what you wanna do with the result of one's enrollment info.
      */
-    func getEnrollmentInfo(completion: @escaping (Result<String, JCError>) -> Void) {
-        guard let loginInfo = Defaults[.loginInfo] else {
+    func getEnrollmentInfo(_ completion: @escaping (Result<KAEnrollment, JCError>) -> Void) {
+        guard let loginInfo = Defaults[.jwInfo] else {
             completion(.failure(.notLogin))
             return
         }
@@ -313,6 +317,72 @@ extension JCAccountManager {
                 
                 AF.request(
                     "http://api.cduestc.club/api/kc/info",
+                    method: .post,
+                    parameters: parameters
+                ).response { response in
+                    guard let data = response.data else {
+                        completion(.failure(.noData))
+                        return
+                    }
+                    
+                    do {
+                        if
+                            let status = (try JSON(data: data))["status"].int,
+                            status == 200
+                        {
+                            let json = (try JSON(data: data))["data"]
+                            let enrollment = KAEnrollment(
+                                campus: json["所属校区"].stringValue,
+                                degree: json["学历层次"].stringValue,
+                                system: json["学制"].stringValue,
+                                dateEnrolled: json["入校时间"].stringValue,
+                                dateGraduation: json["毕业时间"].stringValue,
+                                department: json["院系"].stringValue,
+                                subject: json["专业"].stringValue,
+                                grade: json["年级"].stringValue,
+                                direction: json["方向"].stringValue,
+                                _class: json["所属班级"].stringValue,
+                                enrollmentForm: json["学习形式"].stringValue,
+                                enrollmentStatus: json["学籍状态"].stringValue,
+                                name: json["姓名"].stringValue,
+                                engName: json["英文名"].stringValue,
+                                gender: json["性别"].stringValue,
+                                studentID: json["学号"].stringValue
+                            )
+                            completion(.success(enrollment))
+                        } else {
+                            completion(.failure(.badRequest))
+                        }
+                    } catch {
+                        completion(.failure(.parseErr))
+                        print("ERR: \(error.localizedDescription)")
+                    }
+                }
+            } catch {
+                completion(.failure(.encryptKeyErr))
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getScore(_ completion: @escaping (Result<String, JCError>) -> Void) {
+        guard let loginInfo = Defaults[.jwInfo] else {
+            completion(.failure(.notLogin))
+            return
+        }
+        
+        requestPubKey { [weak self] result in
+            guard let key = try? result.get() else {
+                completion(.failure(.pubKeyReqFailure))
+                return
+            }
+            
+            do {
+                let encryptedStr = try self?.encrypt(loginInfo.password, with: key) ?? ""
+                let parameters: [String: String] = ["password": encryptedStr]
+                
+                AF.request(
+                    "http://api.cduestc.club/api/kc/score",
                     method: .post,
                     parameters: parameters
                 ).response { response in

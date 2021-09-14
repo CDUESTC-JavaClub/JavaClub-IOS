@@ -25,8 +25,7 @@ struct STHeaderView: View {
                 } else {
                     KFImage(bannerURL)
                         .placeholder {
-                            Text("封面加载中...")
-                                .fixedSize()
+                            Color.secondary
                         }
                         .retry(maxCount: 5, interval: .seconds(3))
                         .cacheOriginalImage()
@@ -44,8 +43,7 @@ struct STHeaderView: View {
                 } else {
                     KFImage(avatarURL)
                         .placeholder {
-                            Text("头像加载中...")
-                                .fixedSize()
+                            Color.gray
                         }
                         .retry(maxCount: 5, interval: .seconds(3))
                         .cacheOriginalImage()

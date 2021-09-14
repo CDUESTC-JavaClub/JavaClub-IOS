@@ -25,7 +25,7 @@ struct KAContentView: View {
                 }
                 .listStyle(PlainListStyle())
                 .environment(\.horizontalSizeClass, .regular)
-                .offset(y: -50)
+                .offset(y: -40)
                 
                 Spacer()
             }

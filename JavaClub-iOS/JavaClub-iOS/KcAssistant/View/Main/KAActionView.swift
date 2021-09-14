@@ -13,7 +13,10 @@ struct KAActionView: View {
     var body: some View {
         Section {
             Button {
-                
+                JCAccountManager.shared.getScore { result in
+                    let score = try? result.get()
+                    print("SCORE: \(score)")
+                }
             } label: {
                 HStack {
                     Image(systemName: "square.and.pencil")
@@ -29,9 +32,7 @@ struct KAActionView: View {
                 .foregroundColor(scheme == .dark ? .white : .black)
             }
             
-            Button {
-                
-            } label: {
+            NavigationLink(destination: KAClassTableView()) {
                 HStack {
                     Image(systemName: "clock")
                         .renderingMode(.template)
@@ -46,12 +47,7 @@ struct KAActionView: View {
                 .foregroundColor(scheme == .dark ? .white : .black)
             }
             
-            Button {
-                JCAccountManager.shared.getEnrollmentInfo { result in
-                    let enrollment = try? result.get() 
-                    print("ENROLLMENT: \(enrollment)")
-                }
-            } label: {
+            NavigationLink(destination: KAEnrollmentView()) {
                 HStack {
                     Image(systemName: "person.crop.circle")
                         .renderingMode(.template)

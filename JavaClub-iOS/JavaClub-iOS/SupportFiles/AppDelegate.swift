@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 )
         }
         
-        JCAccountManager.shared.logout()
+        JCAccountManager.shared.logout(clean: false)
     }
     
     func loginIfAvailable(_ loginInfo: JCLoginInfo?) {
