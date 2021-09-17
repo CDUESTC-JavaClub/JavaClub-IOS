@@ -29,7 +29,7 @@ class JCAccountManager {
 }
 
 
-// MARK: Shared Methods
+// MARK: Shared Methods -
 extension JCAccountManager {
     
     /**
@@ -365,6 +365,12 @@ extension JCAccountManager {
         }
     }
     
+    /**
+     *  Get one's scores.
+     *
+     *  - Parameters:
+     *      - completion: A block of what you wanna do with the result of one's scores.
+     */
     func getScore(_ completion: @escaping (Result<String, JCError>) -> Void) {
         guard let loginInfo = Defaults[.jwInfo] else {
             completion(.failure(.notLogin))
@@ -398,6 +404,68 @@ extension JCAccountManager {
                         {
                             let json = (try JSON(data: data))["data"]
                             completion(.success(json.stringValue))
+                        } else {
+                            completion(.failure(.badRequest))
+                        }
+                    } catch {
+                        completion(.failure(.parseErr))
+                        print("ERR: \(error.localizedDescription)")
+                    }
+                }
+            } catch {
+                completion(.failure(.encryptKeyErr))
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    /**
+     *  Get one's class table.
+     *
+     *  - Parameters:
+     *      - completion: A block of what you wanna do with the result of one's class table.
+     */
+    func getClassTable(term: Int, _ completion: @escaping (Result<String, JCError>) -> Void) {
+        guard let loginInfo = Defaults[.jwInfo] else {
+            completion(.failure(.notLogin))
+            return
+        }
+        
+        guard (1 ... 8).contains(term) else {
+            completion(.failure(.badRequest))
+            return
+        }
+        
+        requestPubKey { [weak self] result in
+            guard let key = try? result.get() else {
+                completion(.failure(.pubKeyReqFailure))
+                return
+            }
+            
+            do {
+                let encryptedStr = try self?.encrypt(loginInfo.password, with: key) ?? ""
+                let parameters: [String: String] = [
+                    "password": encryptedStr,
+                    "term": "\(term)"
+                ]
+                
+                AF.request(
+                    "http://api.cduestc.club/api/kc/table",
+                    method: .post,
+                    parameters: parameters
+                ).response { response in
+                    guard let data = response.data else {
+                        completion(.failure(.noData))
+                        return
+                    }
+                    
+                    do {
+                        if
+                            let status = (try JSON(data: data))["status"].int,
+                            status == 200
+                        {
+                            let json = (try JSON(data: data))["data"]
+                            completion(.success(String(data: data, encoding: .utf8) ?? "N/A"))
                         } else {
                             completion(.failure(.badRequest))
                         }
@@ -478,5 +546,9 @@ extension JCAccountManager {
                 print("ERR: \(error.localizedDescription)")
             }
         }
+    }
+    
+    private func processClassTable() {
+        
     }
 }

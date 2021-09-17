@@ -9,5 +9,10 @@ import Foundation
 import SQLite
 
 class DBManager {
+    static let shared = DBManager()
     
+    private init() {}
 }
+
+
+// MARK: Shared Methods -

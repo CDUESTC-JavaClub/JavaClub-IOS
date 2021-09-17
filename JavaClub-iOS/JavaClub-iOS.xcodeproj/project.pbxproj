@@ -141,6 +141,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B049F8CD26F4EEB9003F445F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B0BBEE5B26F0478F0046F5D0 /* DBManager.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		B066D70826F4E5D900436DA9 /* ClassTable */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,7 +213,7 @@
 				B092F53626DC7E73007FA006 /* KcAssistant */,
 				B092F53726DC7EA2007FA006 /* BaiAssistant */,
 				B092F53926DC7ED9007FA006 /* Settings */,
-				B092F54D26DC8432007FA006 /* Components */,
+				B092F54D26DC8432007FA006 /* Extra */,
 				B092F53526DC7D7D007FA006 /* SupportFiles */,
 			);
 			path = "JavaClub-iOS";
@@ -227,7 +235,6 @@
 		B092F53626DC7E73007FA006 /* KcAssistant */ = {
 			isa = PBXGroup;
 			children = (
-				B0BBEE5926F0477B0046F5D0 /* Controller */,
 				B06D3CF826E7C10600254719 /* View */,
 				B0E6CD5F26E8E53B0003662B /* Model */,
 			);
@@ -288,9 +295,10 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		B092F54D26DC8432007FA006 /* Components */ = {
+		B092F54D26DC8432007FA006 /* Extra */ = {
 			isa = PBXGroup;
 			children = (
+				B049F8CD26F4EEB9003F445F /* Controller */,
 				B0F007F426E3C4A2004526E8 /* ImageExtension.swift */,
 				B092F55226DC90DA007FA006 /* ColorExtension.swift */,
 				B092F55426DC90EC007FA006 /* StringExtension.swift */,
@@ -298,7 +306,7 @@
 				B015ADD826DCF7410047C5A3 /* ColorfulPlaceholder.swift */,
 				B0F007F026E345B2004526E8 /* AvailabilityCheck.swift */,
 			);
-			path = Components;
+			path = Extra;
 			sourceTree = "<group>";
 		};
 		B092F55826DC99F9007FA006 /* View */ = {
@@ -350,14 +358,6 @@
 				B0D7F4B926EDF35900286D1A /* JCBindingVerify.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		B0BBEE5926F0477B0046F5D0 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				B0BBEE5B26F0478F0046F5D0 /* DBManager.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		B0D7F4BB26EE06A300286D1A /* DetailViews */ = {

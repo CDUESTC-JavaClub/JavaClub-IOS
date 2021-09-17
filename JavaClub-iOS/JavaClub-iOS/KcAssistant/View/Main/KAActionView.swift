@@ -13,9 +13,9 @@ struct KAActionView: View {
     var body: some View {
         Section {
             Button {
-                JCAccountManager.shared.getScore { result in
-                    let score = try? result.get()
-                    print("SCORE: \(score)")
+                JCAccountManager.shared.getClassTable(term: 6) { result in
+                    let table = try? result.get()
+                    print("CLASSTABLE: \(table)")
                 }
             } label: {
                 HStack {

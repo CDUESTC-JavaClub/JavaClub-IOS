@@ -18,6 +18,7 @@ class JCImageManager {
 }
 
 
+// MARK: Shared Methods -
 extension JCImageManager {
     
     /**
