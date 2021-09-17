@@ -7,9 +7,11 @@
 
 import Foundation
 
-struct KAClass {
-    var date: String
-    var order: String
+struct KAClass: Identifiable, Hashable {
+    let id = UUID().uuidString
+    
     var name: String
     var classroom: String
+    var teacher: String
+    var time: String
 }

@@ -14,6 +14,7 @@
 		B015ADDD26DD0C0F0047C5A3 /* JCForgotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015ADDC26DD0C0F0047C5A3 /* JCForgotView.swift */; };
 		B015ADE026DD123E0047C5A3 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = B015ADDF26DD123E0047C5A3 /* Defaults */; };
 		B015ADE326DD1F6A0047C5A3 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015ADE226DD1F6A0047C5A3 /* CheckBoxView.swift */; };
+		B066D70C26F4E63700436DA9 /* KAClassItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B066D70B26F4E63700436DA9 /* KAClassItemView.swift */; };
 		B06D3CF526E7B07800254719 /* STOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06D3CF426E7B07800254719 /* STOptionView.swift */; };
 		B06D3CF726E7B88900254719 /* STActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06D3CF626E7B88900254719 /* STActionView.swift */; };
 		B06D3CFA26E7C24700254719 /* JCNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06D3CF926E7C24700254719 /* JCNoticeView.swift */; };
@@ -72,6 +73,7 @@
 		B015ADDA26DD0BFB0047C5A3 /* JCRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCRegisterView.swift; sourceTree = "<group>"; };
 		B015ADDC26DD0C0F0047C5A3 /* JCForgotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCForgotView.swift; sourceTree = "<group>"; };
 		B015ADE226DD1F6A0047C5A3 /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
+		B066D70B26F4E63700436DA9 /* KAClassItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAClassItemView.swift; sourceTree = "<group>"; };
 		B06D3CF426E7B07800254719 /* STOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STOptionView.swift; sourceTree = "<group>"; };
 		B06D3CF626E7B88900254719 /* STActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STActionView.swift; sourceTree = "<group>"; };
 		B06D3CF926E7C24700254719 /* JCNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCNoticeView.swift; sourceTree = "<group>"; };
@@ -139,6 +141,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B066D70826F4E5D900436DA9 /* ClassTable */ = {
+			isa = PBXGroup;
+			children = (
+				B0D7F4BC26EE06BD00286D1A /* KAClassTableView.swift */,
+				B066D70B26F4E63700436DA9 /* KAClassItemView.swift */,
+			);
+			path = ClassTable;
+			sourceTree = "<group>";
+		};
 		B06D3CF826E7C10600254719 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,8 +363,8 @@
 		B0D7F4BB26EE06A300286D1A /* DetailViews */ = {
 			isa = PBXGroup;
 			children = (
+				B066D70826F4E5D900436DA9 /* ClassTable */,
 				B0BBEE5D26F054060046F5D0 /* KAEnrollmentView.swift */,
-				B0D7F4BC26EE06BD00286D1A /* KAClassTableView.swift */,
 			);
 			path = DetailViews;
 			sourceTree = "<group>";
@@ -528,6 +539,7 @@
 				B092F53D26DC7F36007FA006 /* KAContentView.swift in Sources */,
 				B092F53F26DC7F42007FA006 /* BAContentView.swift in Sources */,
 				B0D7F4B826EDE35000286D1A /* KCLoginInfo.swift in Sources */,
+				B066D70C26F4E63700436DA9 /* KAClassItemView.swift in Sources */,
 				B092F52426DC7D1F007FA006 /* SceneDelegate.swift in Sources */,
 				B0BBEE5E26F054060046F5D0 /* KAEnrollmentView.swift in Sources */,
 				B092F56026DCA6D6007FA006 /* JCLoginInfo.swift in Sources */,
@@ -621,7 +633,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -676,7 +688,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -695,7 +707,7 @@
 				DEVELOPMENT_TEAM = S6ZX968578;
 				ENABLE_PREVIEWS = NO;
 				INFOPLIST_FILE = "JavaClub-iOS/SupportFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -716,7 +728,7 @@
 				DEVELOPMENT_TEAM = S6ZX968578;
 				ENABLE_PREVIEWS = NO;
 				INFOPLIST_FILE = "JavaClub-iOS/SupportFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
