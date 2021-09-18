@@ -24,52 +24,9 @@ struct KAClassTableView: View {
             .background(Color.green.opacity(0.1))
             
             ScrollView(.vertical, showsIndicators: false) {
-                LazyVGrid(columns: columns, spacing: 5) {
-                    ForEach(items, id: \.id) { item in
-                        KAClassItemView(item: item)
-                    }
-                }
+                
             }
         }
         .padding(.horizontal)
     }
 }
-
-
-fileprivate let items: [KAClass] = [
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "", classroom: "", teacher: "", time: ""),
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "", classroom: "", teacher: "", time: ""),
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "", classroom: "", teacher: "", time: ""),
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "", classroom: "", teacher: "", time: ""),
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "", classroom: "", teacher: "", time: ""),
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "", classroom: "", teacher: "", time: ""),
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "", classroom: "", teacher: "", time: ""),
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "", classroom: "", teacher: "", time: ""),
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "", classroom: "", teacher: "", time: ""),
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "", classroom: "", teacher: "", time: ""),
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "", classroom: "", teacher: "", time: ""),
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "", classroom: "", teacher: "", time: ""),
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "", classroom: "", teacher: "", time: ""),
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "", classroom: "", teacher: "", time: ""),
-    KAClass(name: "语文", classroom: "二教 305", teacher: "张三", time: "0:00"),
-    KAClass(name: "", classroom: "", teacher: "", time: ""),
-]

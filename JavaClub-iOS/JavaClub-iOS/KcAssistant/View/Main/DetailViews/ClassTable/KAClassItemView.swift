@@ -15,13 +15,13 @@ struct KAClassItemView: View {
             let fontSize = min(geo.size.width * 0.2, 28)
             
             VStack(spacing: 3) {
-                Text(item.time)
+                Text(item.day)
                     .font(.system(size: fontSize, design: .rounded))
                 
                 Text(item.name)
                     .font(.system(size: fontSize, weight: .bold, design: .rounded))
                 
-                Text(item.classroom.isEmpty ? "" : "@\(item.classroom)")
+                Text(item.locale.isEmpty ? "" : "@\(item.locale)")
                     .font(.system(size: fontSize, design: .rounded))
                 
                 Text(item.teacher.isEmpty ? "" : "「\(item.teacher)」")
