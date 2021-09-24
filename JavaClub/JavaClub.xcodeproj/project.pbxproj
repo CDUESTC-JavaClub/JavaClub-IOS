@@ -18,10 +18,19 @@
 		B02EEF1D26FDBA050010515A /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF1C26FDBA050010515A /* SQLite */; };
 		B02EEF2026FDBA300010515A /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF1F26FDBA300010515A /* SwiftyJSON */; };
 		B02EEF2326FDBA770010515A /* SwiftyRSA in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF2226FDBA770010515A /* SwiftyRSA */; };
-		B02EEF2926FDC0A00010515A /* JCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF2826FDC0A00010515A /* JCViewController.swift */; };
+		B02EEF2926FDC0A00010515A /* JCWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF2826FDC0A00010515A /* JCWebViewController.swift */; };
 		B02EEF2B26FDC0AB0010515A /* KAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF2A26FDC0AB0010515A /* KAViewController.swift */; };
 		B02EEF2D26FDC0B30010515A /* BAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF2C26FDC0B30010515A /* BAViewController.swift */; };
 		B02EEF2F26FDC0CC0010515A /* STViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF2E26FDC0CC0010515A /* STViewController.swift */; };
+		B02EEF3726FDC8600010515A /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3126FDC8600010515A /* ColorExtension.swift */; };
+		B02EEF3826FDC8600010515A /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3226FDC8600010515A /* StringExtension.swift */; };
+		B02EEF3926FDC8600010515A /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3326FDC8600010515A /* ImageExtension.swift */; };
+		B02EEF3A26FDC8600010515A /* AvailabilityCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3426FDC8600010515A /* AvailabilityCheck.swift */; };
+		B02EEF3B26FDC8600010515A /* ColorfulPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3526FDC8600010515A /* ColorfulPlaceholder.swift */; };
+		B02EEF3C26FDC8600010515A /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3626FDC8600010515A /* ViewExtension.swift */; };
+		B02EEF3E26FDD7BD0010515A /* JCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */; };
+		B02EEF4126FDDA140010515A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF4026FDDA140010515A /* SnapKit */; };
+		B02EEF4426FDDA870010515A /* JavaClub.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B02EEF4326FDDA870010515A /* JavaClub.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,10 +41,18 @@
 		B02EEF0326FDB2780010515A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B02EEF0526FDB2780010515A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B02EEF1026FDB5760010515A /* JCTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCTabBarController.swift; sourceTree = "<group>"; };
-		B02EEF2826FDC0A00010515A /* JCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCViewController.swift; sourceTree = "<group>"; };
+		B02EEF2826FDC0A00010515A /* JCWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCWebViewController.swift; sourceTree = "<group>"; };
 		B02EEF2A26FDC0AB0010515A /* KAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAViewController.swift; sourceTree = "<group>"; };
 		B02EEF2C26FDC0B30010515A /* BAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAViewController.swift; sourceTree = "<group>"; };
 		B02EEF2E26FDC0CC0010515A /* STViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STViewController.swift; sourceTree = "<group>"; };
+		B02EEF3126FDC8600010515A /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ColorExtension.swift"; sourceTree = "<group>"; };
+		B02EEF3226FDC8600010515A /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/StringExtension.swift"; sourceTree = "<group>"; };
+		B02EEF3326FDC8600010515A /* ImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ImageExtension.swift"; sourceTree = "<group>"; };
+		B02EEF3426FDC8600010515A /* AvailabilityCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvailabilityCheck.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/AvailabilityCheck.swift"; sourceTree = "<group>"; };
+		B02EEF3526FDC8600010515A /* ColorfulPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorfulPlaceholder.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ColorfulPlaceholder.swift"; sourceTree = "<group>"; };
+		B02EEF3626FDC8600010515A /* ViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ViewExtension.swift"; sourceTree = "<group>"; };
+		B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCLoginViewController.swift; sourceTree = "<group>"; };
+		B02EEF4326FDDA870010515A /* JavaClub.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JavaClub.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +63,7 @@
 				B02EEF1D26FDBA050010515A /* SQLite in Frameworks */,
 				B02EEF1A26FDB91E0010515A /* Kingfisher in Frameworks */,
 				B02EEF1426FDB9030010515A /* Defaults in Frameworks */,
+				B02EEF4126FDDA140010515A /* SnapKit in Frameworks */,
 				B02EEF2026FDBA300010515A /* SwiftyJSON in Frameworks */,
 				B02EEF1726FDB9110010515A /* Alamofire in Frameworks */,
 				B02EEF2326FDBA770010515A /* SwiftyRSA in Frameworks */,
@@ -74,11 +92,12 @@
 		B02EEEF626FDB2760010515A /* JavaClub */ = {
 			isa = PBXGroup;
 			children = (
+				B02EEF0F26FDB5610010515A /* TabBar */,
 				B02EEF2426FDBB190010515A /* JavaClub */,
 				B02EEF2526FDBB330010515A /* KcAssistant */,
 				B02EEF2726FDC0810010515A /* BaiAssistant */,
 				B02EEF2626FDC0730010515A /* Settings */,
-				B02EEF0F26FDB5610010515A /* TabBar */,
+				B02EEF3026FDC82A0010515A /* Components */,
 				B02EEF0B26FDB5140010515A /* Support Files */,
 				B02EEF0026FDB2780010515A /* Assets.xcassets */,
 				B02EEF0226FDB2780010515A /* LaunchScreen.storyboard */,
@@ -107,7 +126,9 @@
 		B02EEF2426FDBB190010515A /* JavaClub */ = {
 			isa = PBXGroup;
 			children = (
-				B02EEF2826FDC0A00010515A /* JCViewController.swift */,
+				B02EEF2826FDC0A00010515A /* JCWebViewController.swift */,
+				B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */,
+				B02EEF4226FDDA6A0010515A /* Resource */,
 			);
 			path = JavaClub;
 			sourceTree = "<group>";
@@ -136,6 +157,27 @@
 			path = BaiAssistant;
 			sourceTree = "<group>";
 		};
+		B02EEF3026FDC82A0010515A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B02EEF3426FDC8600010515A /* AvailabilityCheck.swift */,
+				B02EEF3126FDC8600010515A /* ColorExtension.swift */,
+				B02EEF3526FDC8600010515A /* ColorfulPlaceholder.swift */,
+				B02EEF3326FDC8600010515A /* ImageExtension.swift */,
+				B02EEF3226FDC8600010515A /* StringExtension.swift */,
+				B02EEF3626FDC8600010515A /* ViewExtension.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		B02EEF4226FDDA6A0010515A /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				B02EEF4326FDDA870010515A /* JavaClub.storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,6 +201,7 @@
 				B02EEF1C26FDBA050010515A /* SQLite */,
 				B02EEF1F26FDBA300010515A /* SwiftyJSON */,
 				B02EEF2226FDBA770010515A /* SwiftyRSA */,
+				B02EEF4026FDDA140010515A /* SnapKit */,
 			);
 			productName = JavaClub;
 			productReference = B02EEEF426FDB2760010515A /* JavaClub.app */;
@@ -195,6 +238,7 @@
 				B02EEF1B26FDBA050010515A /* XCRemoteSwiftPackageReference "SQLite" */,
 				B02EEF1E26FDBA300010515A /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				B02EEF2126FDBA770010515A /* XCRemoteSwiftPackageReference "SwiftyRSA" */,
+				B02EEF3F26FDDA140010515A /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = B02EEEF526FDB2760010515A /* Products */;
 			projectDirPath = "";
@@ -210,6 +254,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B02EEF4426FDDA870010515A /* JavaClub.storyboard in Resources */,
 				B02EEF0426FDB2780010515A /* LaunchScreen.storyboard in Resources */,
 				B02EEF0126FDB2780010515A /* Assets.xcassets in Resources */,
 			);
@@ -223,12 +268,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				B02EEF2B26FDC0AB0010515A /* KAViewController.swift in Sources */,
+				B02EEF3B26FDC8600010515A /* ColorfulPlaceholder.swift in Sources */,
 				B02EEEF826FDB2760010515A /* AppDelegate.swift in Sources */,
+				B02EEF3A26FDC8600010515A /* AvailabilityCheck.swift in Sources */,
 				B02EEF2F26FDC0CC0010515A /* STViewController.swift in Sources */,
-				B02EEF2926FDC0A00010515A /* JCViewController.swift in Sources */,
+				B02EEF3926FDC8600010515A /* ImageExtension.swift in Sources */,
+				B02EEF3726FDC8600010515A /* ColorExtension.swift in Sources */,
+				B02EEF2926FDC0A00010515A /* JCWebViewController.swift in Sources */,
+				B02EEF3826FDC8600010515A /* StringExtension.swift in Sources */,
 				B02EEEFA26FDB2760010515A /* SceneDelegate.swift in Sources */,
 				B02EEF1126FDB5760010515A /* JCTabBarController.swift in Sources */,
+				B02EEF3E26FDD7BD0010515A /* JCLoginViewController.swift in Sources */,
 				B02EEF2D26FDC0B30010515A /* BAViewController.swift in Sources */,
+				B02EEF3C26FDC8600010515A /* ViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,7 +432,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.RoyRao.work.JavaClub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -407,7 +459,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.RoyRao.work.JavaClub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -488,6 +540,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		B02EEF3F26FDDA140010515A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -520,6 +580,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B02EEF2126FDBA770010515A /* XCRemoteSwiftPackageReference "SwiftyRSA" */;
 			productName = SwiftyRSA;
+		};
+		B02EEF4026FDDA140010515A /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B02EEF3F26FDDA140010515A /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

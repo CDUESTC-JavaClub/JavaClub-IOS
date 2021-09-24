@@ -13,7 +13,7 @@ class JCTabBarController: UITabBarController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
-        UITabBar.appearance().barTintColor = .systemBackground
+        tabBar.barTintColor = .systemBackground
         tabBar.tintColor = .label
         
         setupVCs()
@@ -26,10 +26,10 @@ extension JCTabBarController {
     
     private func setupVCs() {
         viewControllers = [
-            createNavController(for: JCViewController(), title: "JavaClub", image: UIImage(systemName: "house.fill")!),
+            createNavController(for: JCWebViewController(url: URL(string: "https://www.google.com/")!), title: "JavaClub", image: UIImage(systemName: "house")!),
             createNavController(for: KAViewController(), title: "教务", image: UIImage(systemName: "square.and.pencil")!),
-            createNavController(for: KAViewController(), title: "百叶计划", image: UIImage(systemName: "newspaper.fill")!),
-            createNavController(for: KAViewController(), title: "设置", image: UIImage(systemName: "gearshape.fill")!),
+            createNavController(for: KAViewController(), title: "百叶计划", image: UIImage(systemName: "chart.pie")!),
+            createNavController(for: KAViewController(), title: "设置", image: UIImage(systemName: "gear")!),
         ]
     }
     
