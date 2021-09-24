@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B02032CB26FE05910048B6F6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032C526FE05910048B6F6 /* StringExtension.swift */; };
+		B02032CC26FE05910048B6F6 /* ColorfulPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032C626FE05910048B6F6 /* ColorfulPlaceholder.swift */; };
+		B02032CD26FE05910048B6F6 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032C726FE05910048B6F6 /* ImageExtension.swift */; };
+		B02032CE26FE05910048B6F6 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032C826FE05910048B6F6 /* ColorExtension.swift */; };
+		B02032CF26FE05910048B6F6 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032C926FE05910048B6F6 /* ViewExtension.swift */; };
+		B02032D026FE05910048B6F6 /* AvailabilityCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032CA26FE05910048B6F6 /* AvailabilityCheck.swift */; };
 		B02EEEF826FDB2760010515A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEEF726FDB2760010515A /* AppDelegate.swift */; };
 		B02EEEFA26FDB2760010515A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEEF926FDB2760010515A /* SceneDelegate.swift */; };
 		B02EEF0126FDB2780010515A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B02EEF0026FDB2780010515A /* Assets.xcassets */; };
@@ -22,18 +28,18 @@
 		B02EEF2B26FDC0AB0010515A /* KAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF2A26FDC0AB0010515A /* KAViewController.swift */; };
 		B02EEF2D26FDC0B30010515A /* BAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF2C26FDC0B30010515A /* BAViewController.swift */; };
 		B02EEF2F26FDC0CC0010515A /* STViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF2E26FDC0CC0010515A /* STViewController.swift */; };
-		B02EEF3726FDC8600010515A /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3126FDC8600010515A /* ColorExtension.swift */; };
-		B02EEF3826FDC8600010515A /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3226FDC8600010515A /* StringExtension.swift */; };
-		B02EEF3926FDC8600010515A /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3326FDC8600010515A /* ImageExtension.swift */; };
-		B02EEF3A26FDC8600010515A /* AvailabilityCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3426FDC8600010515A /* AvailabilityCheck.swift */; };
-		B02EEF3B26FDC8600010515A /* ColorfulPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3526FDC8600010515A /* ColorfulPlaceholder.swift */; };
-		B02EEF3C26FDC8600010515A /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3626FDC8600010515A /* ViewExtension.swift */; };
 		B02EEF3E26FDD7BD0010515A /* JCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */; };
 		B02EEF4126FDDA140010515A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF4026FDDA140010515A /* SnapKit */; };
 		B02EEF4426FDDA870010515A /* JavaClub.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B02EEF4326FDDA870010515A /* JavaClub.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B02032C526FE05910048B6F6 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/StringExtension.swift"; sourceTree = "<group>"; };
+		B02032C626FE05910048B6F6 /* ColorfulPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorfulPlaceholder.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ColorfulPlaceholder.swift"; sourceTree = "<group>"; };
+		B02032C726FE05910048B6F6 /* ImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ImageExtension.swift"; sourceTree = "<group>"; };
+		B02032C826FE05910048B6F6 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ColorExtension.swift"; sourceTree = "<group>"; };
+		B02032C926FE05910048B6F6 /* ViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ViewExtension.swift"; sourceTree = "<group>"; };
+		B02032CA26FE05910048B6F6 /* AvailabilityCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvailabilityCheck.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/AvailabilityCheck.swift"; sourceTree = "<group>"; };
 		B02EEEF426FDB2760010515A /* JavaClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JavaClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B02EEEF726FDB2760010515A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B02EEEF926FDB2760010515A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,12 +51,6 @@
 		B02EEF2A26FDC0AB0010515A /* KAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAViewController.swift; sourceTree = "<group>"; };
 		B02EEF2C26FDC0B30010515A /* BAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAViewController.swift; sourceTree = "<group>"; };
 		B02EEF2E26FDC0CC0010515A /* STViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STViewController.swift; sourceTree = "<group>"; };
-		B02EEF3126FDC8600010515A /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ColorExtension.swift"; sourceTree = "<group>"; };
-		B02EEF3226FDC8600010515A /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/StringExtension.swift"; sourceTree = "<group>"; };
-		B02EEF3326FDC8600010515A /* ImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ImageExtension.swift"; sourceTree = "<group>"; };
-		B02EEF3426FDC8600010515A /* AvailabilityCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvailabilityCheck.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/AvailabilityCheck.swift"; sourceTree = "<group>"; };
-		B02EEF3526FDC8600010515A /* ColorfulPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorfulPlaceholder.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ColorfulPlaceholder.swift"; sourceTree = "<group>"; };
-		B02EEF3626FDC8600010515A /* ViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ViewExtension.swift"; sourceTree = "<group>"; };
 		B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCLoginViewController.swift; sourceTree = "<group>"; };
 		B02EEF4326FDDA870010515A /* JavaClub.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JavaClub.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +73,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B02032C426FE05760048B6F6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B02032CA26FE05910048B6F6 /* AvailabilityCheck.swift */,
+				B02032C826FE05910048B6F6 /* ColorExtension.swift */,
+				B02032C626FE05910048B6F6 /* ColorfulPlaceholder.swift */,
+				B02032C726FE05910048B6F6 /* ImageExtension.swift */,
+				B02032C526FE05910048B6F6 /* StringExtension.swift */,
+				B02032C926FE05910048B6F6 /* ViewExtension.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		B02EEEEB26FDB2760010515A = {
 			isa = PBXGroup;
 			children = (
@@ -97,7 +110,7 @@
 				B02EEF2526FDBB330010515A /* KcAssistant */,
 				B02EEF2726FDC0810010515A /* BaiAssistant */,
 				B02EEF2626FDC0730010515A /* Settings */,
-				B02EEF3026FDC82A0010515A /* Components */,
+				B02032C426FE05760048B6F6 /* Components */,
 				B02EEF0B26FDB5140010515A /* Support Files */,
 				B02EEF0026FDB2780010515A /* Assets.xcassets */,
 				B02EEF0226FDB2780010515A /* LaunchScreen.storyboard */,
@@ -155,19 +168,6 @@
 				B02EEF2C26FDC0B30010515A /* BAViewController.swift */,
 			);
 			path = BaiAssistant;
-			sourceTree = "<group>";
-		};
-		B02EEF3026FDC82A0010515A /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				B02EEF3426FDC8600010515A /* AvailabilityCheck.swift */,
-				B02EEF3126FDC8600010515A /* ColorExtension.swift */,
-				B02EEF3526FDC8600010515A /* ColorfulPlaceholder.swift */,
-				B02EEF3326FDC8600010515A /* ImageExtension.swift */,
-				B02EEF3226FDC8600010515A /* StringExtension.swift */,
-				B02EEF3626FDC8600010515A /* ViewExtension.swift */,
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		B02EEF4226FDDA6A0010515A /* Resource */ = {
@@ -268,19 +268,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				B02EEF2B26FDC0AB0010515A /* KAViewController.swift in Sources */,
-				B02EEF3B26FDC8600010515A /* ColorfulPlaceholder.swift in Sources */,
 				B02EEEF826FDB2760010515A /* AppDelegate.swift in Sources */,
-				B02EEF3A26FDC8600010515A /* AvailabilityCheck.swift in Sources */,
 				B02EEF2F26FDC0CC0010515A /* STViewController.swift in Sources */,
-				B02EEF3926FDC8600010515A /* ImageExtension.swift in Sources */,
-				B02EEF3726FDC8600010515A /* ColorExtension.swift in Sources */,
+				B02032CE26FE05910048B6F6 /* ColorExtension.swift in Sources */,
 				B02EEF2926FDC0A00010515A /* JCWebViewController.swift in Sources */,
-				B02EEF3826FDC8600010515A /* StringExtension.swift in Sources */,
 				B02EEEFA26FDB2760010515A /* SceneDelegate.swift in Sources */,
+				B02032CB26FE05910048B6F6 /* StringExtension.swift in Sources */,
 				B02EEF1126FDB5760010515A /* JCTabBarController.swift in Sources */,
+				B02032CC26FE05910048B6F6 /* ColorfulPlaceholder.swift in Sources */,
+				B02032D026FE05910048B6F6 /* AvailabilityCheck.swift in Sources */,
 				B02EEF3E26FDD7BD0010515A /* JCLoginViewController.swift in Sources */,
+				B02032CD26FE05910048B6F6 /* ImageExtension.swift in Sources */,
 				B02EEF2D26FDC0B30010515A /* BAViewController.swift in Sources */,
-				B02EEF3C26FDC8600010515A /* ViewExtension.swift in Sources */,
+				B02032CF26FE05910048B6F6 /* ViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
