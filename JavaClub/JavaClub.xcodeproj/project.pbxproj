@@ -13,6 +13,7 @@
 		B02032CE26FE05910048B6F6 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032C826FE05910048B6F6 /* ColorExtension.swift */; };
 		B02032CF26FE05910048B6F6 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032C926FE05910048B6F6 /* ViewExtension.swift */; };
 		B02032D026FE05910048B6F6 /* AvailabilityCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032CA26FE05910048B6F6 /* AvailabilityCheck.swift */; };
+		B02032D326FE37C20048B6F6 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032D226FE37C20048B6F6 /* DesignableView.swift */; };
 		B02EEEF826FDB2760010515A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEEF726FDB2760010515A /* AppDelegate.swift */; };
 		B02EEEFA26FDB2760010515A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEEF926FDB2760010515A /* SceneDelegate.swift */; };
 		B02EEF0126FDB2780010515A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B02EEF0026FDB2780010515A /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		B02032C826FE05910048B6F6 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ColorExtension.swift"; sourceTree = "<group>"; };
 		B02032C926FE05910048B6F6 /* ViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ViewExtension.swift"; sourceTree = "<group>"; };
 		B02032CA26FE05910048B6F6 /* AvailabilityCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvailabilityCheck.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/AvailabilityCheck.swift"; sourceTree = "<group>"; };
+		B02032D226FE37C20048B6F6 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		B02EEEF426FDB2760010515A /* JavaClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JavaClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B02EEEF726FDB2760010515A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B02EEEF926FDB2760010515A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		B02032C426FE05760048B6F6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B02032D126FE37B40048B6F6 /* View */,
 				B02032CA26FE05910048B6F6 /* AvailabilityCheck.swift */,
 				B02032C826FE05910048B6F6 /* ColorExtension.swift */,
 				B02032C626FE05910048B6F6 /* ColorfulPlaceholder.swift */,
@@ -84,6 +87,14 @@
 				B02032C926FE05910048B6F6 /* ViewExtension.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		B02032D126FE37B40048B6F6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B02032D226FE37C20048B6F6 /* DesignableView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B02EEEEB26FDB2760010515A = {
@@ -275,6 +286,7 @@
 				B02EEEFA26FDB2760010515A /* SceneDelegate.swift in Sources */,
 				B02032CB26FE05910048B6F6 /* StringExtension.swift in Sources */,
 				B02EEF1126FDB5760010515A /* JCTabBarController.swift in Sources */,
+				B02032D326FE37C20048B6F6 /* DesignableView.swift in Sources */,
 				B02032CC26FE05910048B6F6 /* ColorfulPlaceholder.swift in Sources */,
 				B02032D026FE05910048B6F6 /* AvailabilityCheck.swift in Sources */,
 				B02EEF3E26FDD7BD0010515A /* JCLoginViewController.swift in Sources */,

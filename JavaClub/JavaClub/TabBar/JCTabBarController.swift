@@ -15,6 +15,7 @@ class JCTabBarController: UITabBarController {
         view.backgroundColor = .systemBackground
         tabBar.barTintColor = .systemBackground
         tabBar.tintColor = .label
+        tabBar.isHidden = true
         
         setupVCs()
     }
@@ -25,8 +26,12 @@ class JCTabBarController: UITabBarController {
 extension JCTabBarController {
     
     private func setupVCs() {
+        let loginVC = UIStoryboard(name: "JavaClub", bundle: .main)
+            .instantiateViewController(withIdentifier: "JCLoginViewController")
+        as! JCLoginViewController
+        
         viewControllers = [
-            createNavController(for: JCWebViewController(url: URL(string: "https://www.google.com/")!), title: "JavaClub", image: UIImage(systemName: "house")!),
+            createNavController(for: loginVC, title: "JavaClub", image: UIImage(systemName: "house")!),
             createNavController(for: KAViewController(), title: "教务", image: UIImage(systemName: "square.and.pencil")!),
             createNavController(for: KAViewController(), title: "百叶计划", image: UIImage(systemName: "chart.pie")!),
             createNavController(for: KAViewController(), title: "设置", image: UIImage(systemName: "gear")!),
