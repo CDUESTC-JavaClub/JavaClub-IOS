@@ -18,6 +18,10 @@
 		B02EEF1D26FDBA050010515A /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF1C26FDBA050010515A /* SQLite */; };
 		B02EEF2026FDBA300010515A /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF1F26FDBA300010515A /* SwiftyJSON */; };
 		B02EEF2326FDBA770010515A /* SwiftyRSA in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF2226FDBA770010515A /* SwiftyRSA */; };
+		B02EEF2926FDC0A00010515A /* JCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF2826FDC0A00010515A /* JCViewController.swift */; };
+		B02EEF2B26FDC0AB0010515A /* KAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF2A26FDC0AB0010515A /* KAViewController.swift */; };
+		B02EEF2D26FDC0B30010515A /* BAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF2C26FDC0B30010515A /* BAViewController.swift */; };
+		B02EEF2F26FDC0CC0010515A /* STViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF2E26FDC0CC0010515A /* STViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		B02EEF0326FDB2780010515A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B02EEF0526FDB2780010515A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B02EEF1026FDB5760010515A /* JCTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCTabBarController.swift; sourceTree = "<group>"; };
+		B02EEF2826FDC0A00010515A /* JCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCViewController.swift; sourceTree = "<group>"; };
+		B02EEF2A26FDC0AB0010515A /* KAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAViewController.swift; sourceTree = "<group>"; };
+		B02EEF2C26FDC0B30010515A /* BAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAViewController.swift; sourceTree = "<group>"; };
+		B02EEF2E26FDC0CC0010515A /* STViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +74,10 @@
 		B02EEEF626FDB2760010515A /* JavaClub */ = {
 			isa = PBXGroup;
 			children = (
+				B02EEF2426FDBB190010515A /* JavaClub */,
+				B02EEF2526FDBB330010515A /* KcAssistant */,
+				B02EEF2726FDC0810010515A /* BaiAssistant */,
+				B02EEF2626FDC0730010515A /* Settings */,
 				B02EEF0F26FDB5610010515A /* TabBar */,
 				B02EEF0B26FDB5140010515A /* Support Files */,
 				B02EEF0026FDB2780010515A /* Assets.xcassets */,
@@ -90,6 +102,38 @@
 				B02EEF1026FDB5760010515A /* JCTabBarController.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		B02EEF2426FDBB190010515A /* JavaClub */ = {
+			isa = PBXGroup;
+			children = (
+				B02EEF2826FDC0A00010515A /* JCViewController.swift */,
+			);
+			path = JavaClub;
+			sourceTree = "<group>";
+		};
+		B02EEF2526FDBB330010515A /* KcAssistant */ = {
+			isa = PBXGroup;
+			children = (
+				B02EEF2A26FDC0AB0010515A /* KAViewController.swift */,
+			);
+			path = KcAssistant;
+			sourceTree = "<group>";
+		};
+		B02EEF2626FDC0730010515A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B02EEF2E26FDC0CC0010515A /* STViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		B02EEF2726FDC0810010515A /* BaiAssistant */ = {
+			isa = PBXGroup;
+			children = (
+				B02EEF2C26FDC0B30010515A /* BAViewController.swift */,
+			);
+			path = BaiAssistant;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,9 +222,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B02EEF2B26FDC0AB0010515A /* KAViewController.swift in Sources */,
 				B02EEEF826FDB2760010515A /* AppDelegate.swift in Sources */,
+				B02EEF2F26FDC0CC0010515A /* STViewController.swift in Sources */,
+				B02EEF2926FDC0A00010515A /* JCViewController.swift in Sources */,
 				B02EEEFA26FDB2760010515A /* SceneDelegate.swift in Sources */,
 				B02EEF1126FDB5760010515A /* JCTabBarController.swift in Sources */,
+				B02EEF2D26FDC0B30010515A /* BAViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

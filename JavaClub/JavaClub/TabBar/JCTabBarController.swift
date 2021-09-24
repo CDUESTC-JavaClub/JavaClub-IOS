@@ -9,6 +9,15 @@ import UIKit
 
 class JCTabBarController: UITabBarController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .systemBackground
+        UITabBar.appearance().barTintColor = .systemBackground
+        tabBar.tintColor = .label
+        
+        setupVCs()
+    }
 }
 
 
@@ -16,7 +25,12 @@ class JCTabBarController: UITabBarController {
 extension JCTabBarController {
     
     private func setupVCs() {
-        
+        viewControllers = [
+            createNavController(for: JCViewController(), title: "JavaClub", image: UIImage(systemName: "house.fill")!),
+            createNavController(for: KAViewController(), title: "教务", image: UIImage(systemName: "square.and.pencil")!),
+            createNavController(for: KAViewController(), title: "百叶计划", image: UIImage(systemName: "newspaper.fill")!),
+            createNavController(for: KAViewController(), title: "设置", image: UIImage(systemName: "gearshape.fill")!),
+        ]
     }
     
     private func createNavController(
@@ -27,7 +41,7 @@ extension JCTabBarController {
         let navController = UINavigationController(rootViewController: rootViewController)
         navController.tabBarItem.title = title
         navController.tabBarItem.image = image
-        navController.navigationBar.prefersLargeTitles = true
+        navController.isNavigationBarHidden = true
         
         return navController
     }
