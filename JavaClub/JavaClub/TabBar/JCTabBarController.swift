@@ -15,7 +15,7 @@ class JCTabBarController: UITabBarController {
         view.backgroundColor = .systemBackground
         tabBar.barTintColor = .systemBackground
         tabBar.tintColor = .label
-        tabBar.isHidden = true
+        UITabBar.appearance().isHidden = true
         
         setupVCs()
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B01AA9B126FF2ADD000D3E4A /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01AA9B026FF2ADD000D3E4A /* LoadingIndicatorView.swift */; };
 		B02032CB26FE05910048B6F6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032C526FE05910048B6F6 /* StringExtension.swift */; };
 		B02032CC26FE05910048B6F6 /* ColorfulPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032C626FE05910048B6F6 /* ColorfulPlaceholder.swift */; };
 		B02032CD26FE05910048B6F6 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032C726FE05910048B6F6 /* ImageExtension.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B01AA9B026FF2ADD000D3E4A /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		B02032C526FE05910048B6F6 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/StringExtension.swift"; sourceTree = "<group>"; };
 		B02032C626FE05910048B6F6 /* ColorfulPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorfulPlaceholder.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ColorfulPlaceholder.swift"; sourceTree = "<group>"; };
 		B02032C726FE05910048B6F6 /* ImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ImageExtension.swift"; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				B02032D226FE37C20048B6F6 /* DesignableView.swift */,
+				B01AA9B026FF2ADD000D3E4A /* LoadingIndicatorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				B02EEF2F26FDC0CC0010515A /* STViewController.swift in Sources */,
 				B02032CE26FE05910048B6F6 /* ColorExtension.swift in Sources */,
 				B02EEF2926FDC0A00010515A /* JCWebViewController.swift in Sources */,
+				B01AA9B126FF2ADD000D3E4A /* LoadingIndicatorView.swift in Sources */,
 				B02EEEFA26FDB2760010515A /* SceneDelegate.swift in Sources */,
 				B02032CB26FE05910048B6F6 /* StringExtension.swift in Sources */,
 				B02EEF1126FDB5760010515A /* JCTabBarController.swift in Sources */,
