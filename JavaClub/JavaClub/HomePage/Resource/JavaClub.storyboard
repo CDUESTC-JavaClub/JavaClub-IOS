@@ -103,6 +103,9 @@
                                                         <integer key="value" value="25"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="login" destination="EM6-ZV-m79" eventType="touchUpInside" id="s9g-Qz-Jqi"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
@@ -146,6 +149,13 @@
                             <constraint firstItem="BKF-aJ-5Sq" firstAttribute="top" secondItem="TGz-3j-88c" secondAttribute="top" constant="50" id="pc5-hJ-wyl"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ForgotBtn" destination="IHe-WN-xRB" id="JFw-jy-Mdd"/>
+                        <outlet property="createBtn" destination="KnU-vk-8zH" id="pLD-vQ-emx"/>
+                        <outlet property="loginBtn" destination="2hH-2x-huI" id="Xc9-Qd-jAR"/>
+                        <outlet property="passwordField" destination="FW3-n3-SBr" id="p2F-SW-Yps"/>
+                        <outlet property="usernameField" destination="axa-ga-oqA" id="MW8-pv-a5K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2g-hv-oZY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

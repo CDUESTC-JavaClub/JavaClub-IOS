@@ -13,9 +13,15 @@ class JCTabBarController: UITabBarController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
-        tabBar.barTintColor = .systemBackground
+        
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .systemBackground
         tabBar.tintColor = .label
-        UITabBar.appearance().isHidden = true
+        tabBar.standardAppearance = appearance
+        if #available(iOS 15.0, *) {
+            tabBar.scrollEdgeAppearance = appearance
+        }
         
         setupVCs()
     }
@@ -26,15 +32,13 @@ class JCTabBarController: UITabBarController {
 extension JCTabBarController {
     
     private func setupVCs() {
-        let loginVC = UIStoryboard(name: "JavaClub", bundle: .main)
-            .instantiateViewController(withIdentifier: "JCLoginViewController")
-        as! JCLoginViewController
+        let url = URL(string: "https://royrao.me/")!
         
         viewControllers = [
-            createNavController(for: loginVC, title: "JavaClub", image: UIImage(systemName: "house")!),
+            createNavController(for: JCWebViewController(url: url), title: "JavaClub", image: UIImage(systemName: "house")!),
             createNavController(for: KAViewController(), title: "教务", image: UIImage(systemName: "square.and.pencil")!),
-            createNavController(for: KAViewController(), title: "百叶计划", image: UIImage(systemName: "chart.pie")!),
-            createNavController(for: KAViewController(), title: "设置", image: UIImage(systemName: "gear")!),
+            createNavController(for: BAViewController(), title: "百叶计划", image: UIImage(systemName: "chart.pie")!),
+            createNavController(for: STViewController(), title: "设置", image: UIImage(systemName: "gear")!),
         ]
     }
     

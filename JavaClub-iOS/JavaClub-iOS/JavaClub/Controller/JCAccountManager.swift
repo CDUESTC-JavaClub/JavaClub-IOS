@@ -113,7 +113,7 @@ extension JCAccountManager {
                         Defaults[.jwInfo] = nil
                         Defaults[.sessionExpired] = false
                         Defaults[.enrollment] = nil
-                        JCBindingVerify.shared.verified = false
+                        JCLoginState.shared.isBound = false
                     }
                     print("DEBUG: Logged Out Successfully.")
                 }

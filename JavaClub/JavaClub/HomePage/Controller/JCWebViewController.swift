@@ -10,6 +10,7 @@ import WebKit
 
 class JCWebViewController: UIViewController {
     private let url: URL
+    private let loginVC: JCLoginViewController!
     
     private let webView: WKWebView = {
         let preferences = WKWebpagePreferences()
@@ -27,6 +28,10 @@ class JCWebViewController: UIViewController {
     init(url: URL) {
         self.url = url
         
+        loginVC = UIStoryboard(name: "JavaClub", bundle: .main)
+            .instantiateViewController(withIdentifier: "JCLoginViewController")
+        as? JCLoginViewController
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -39,6 +44,9 @@ class JCWebViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.addSubview(webView)
         webView.load(URLRequest(url: url))
+        
+        UITabBar.appearance().isHidden = true
+        present(loginVC, animated: true, completion: nil)
     }
     
     override func viewDidLayoutSubviews() {

@@ -11,17 +11,31 @@ import SnapKit
 
 class JCLoginViewController: UIViewController {
     private let indicatorView = _UIHostingView(rootView: LoadingIndicatorView())
+    @IBOutlet var usernameField: UITextField!
+    @IBOutlet var passwordField: UITextField!
+    @IBOutlet var loginBtn: UIButton!
+    @IBOutlet var createBtn: UIButton!
+    @IBOutlet var ForgotBtn: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        showIndicator()
     }
 }
 
 
 extension JCLoginViewController {
+    
+    @IBAction func login() {
+        showIndicator()
+        loginBtn.isEnabled = false
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            self?.dismiss(animated: true)
+            self?.removeIndicator()
+            UITabBar.appearance().isHidden = false
+        }
+    }
     
     private func showIndicator() {
         view.addSubview(indicatorView)
@@ -31,10 +45,6 @@ extension JCLoginViewController {
             make.width.equalTo(200)
             make.height.equalTo(100)
         }
-        
-//        indicatorView.animate(indicatorView.rectangle1, counter: 1)
-//        indicatorView.animate(indicatorView.rectangle2, counter: 0)
-//        indicatorView.animate(indicatorView.rectangle3, counter: 1)
     }
     
     private func removeIndicator() {

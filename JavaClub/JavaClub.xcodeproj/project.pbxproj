@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		B01AA9B126FF2ADD000D3E4A /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01AA9B026FF2ADD000D3E4A /* LoadingIndicatorView.swift */; };
+		B01AA9B726FF4C55000D3E4A /* JCLoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01AA9B626FF4C55000D3E4A /* JCLoginState.swift */; };
+		B01AA9BB26FF4CD3000D3E4A /* JCImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01AA9B926FF4CD3000D3E4A /* JCImageManager.swift */; };
+		B01AA9BC26FF4CD3000D3E4A /* JCAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01AA9BA26FF4CD3000D3E4A /* JCAccountManager.swift */; };
+		B01AA9BE26FF4CE1000D3E4A /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01AA9BD26FF4CE1000D3E4A /* DBManager.swift */; };
 		B02032CB26FE05910048B6F6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032C526FE05910048B6F6 /* StringExtension.swift */; };
-		B02032CC26FE05910048B6F6 /* ColorfulPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032C626FE05910048B6F6 /* ColorfulPlaceholder.swift */; };
+		B02032CC26FE05910048B6F6 /* ViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032C626FE05910048B6F6 /* ViewPlaceholder.swift */; };
 		B02032CD26FE05910048B6F6 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032C726FE05910048B6F6 /* ImageExtension.swift */; };
 		B02032CE26FE05910048B6F6 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032C826FE05910048B6F6 /* ColorExtension.swift */; };
 		B02032CF26FE05910048B6F6 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032C926FE05910048B6F6 /* ViewExtension.swift */; };
@@ -33,12 +37,21 @@
 		B02EEF3E26FDD7BD0010515A /* JCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */; };
 		B02EEF4126FDDA140010515A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF4026FDDA140010515A /* SnapKit */; };
 		B02EEF4426FDDA870010515A /* JavaClub.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B02EEF4326FDDA870010515A /* JavaClub.storyboard */; };
+		B0EE321D26FF4DDD00C847F3 /* JCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE321B26FF4DDC00C847F3 /* JCUser.swift */; };
+		B0EE321E26FF4DDD00C847F3 /* JCLoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE321C26FF4DDC00C847F3 /* JCLoginInfo.swift */; };
+		B0EE322426FF4E0000C847F3 /* KAClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE322126FF4E0000C847F3 /* KAClass.swift */; };
+		B0EE322526FF4E0000C847F3 /* KAEnrollment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE322226FF4E0000C847F3 /* KAEnrollment.swift */; };
+		B0EE322626FF4E0000C847F3 /* KCLoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EE322326FF4E0000C847F3 /* KCLoginInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B01AA9B026FF2ADD000D3E4A /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
+		B01AA9B626FF4C55000D3E4A /* JCLoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCLoginState.swift; sourceTree = "<group>"; };
+		B01AA9B926FF4CD3000D3E4A /* JCImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JCImageManager.swift; path = "../../../../JavaClub-iOS/JavaClub-iOS/JavaClub/Controller/JCImageManager.swift"; sourceTree = "<group>"; };
+		B01AA9BA26FF4CD3000D3E4A /* JCAccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JCAccountManager.swift; path = "../../../../JavaClub-iOS/JavaClub-iOS/JavaClub/Controller/JCAccountManager.swift"; sourceTree = "<group>"; };
+		B01AA9BD26FF4CE1000D3E4A /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DBManager.swift; path = "../../../../JavaClub-iOS/JavaClub-iOS/Extra/Controller/DBManager.swift"; sourceTree = "<group>"; };
 		B02032C526FE05910048B6F6 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/StringExtension.swift"; sourceTree = "<group>"; };
-		B02032C626FE05910048B6F6 /* ColorfulPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorfulPlaceholder.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ColorfulPlaceholder.swift"; sourceTree = "<group>"; };
+		B02032C626FE05910048B6F6 /* ViewPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewPlaceholder.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ViewPlaceholder.swift"; sourceTree = "<group>"; };
 		B02032C726FE05910048B6F6 /* ImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ImageExtension.swift"; sourceTree = "<group>"; };
 		B02032C826FE05910048B6F6 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ColorExtension.swift"; sourceTree = "<group>"; };
 		B02032C926FE05910048B6F6 /* ViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewExtension.swift; path = "../../../JavaClub-iOS/JavaClub-iOS/Extra/ViewExtension.swift"; sourceTree = "<group>"; };
@@ -57,6 +70,11 @@
 		B02EEF2E26FDC0CC0010515A /* STViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STViewController.swift; sourceTree = "<group>"; };
 		B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCLoginViewController.swift; sourceTree = "<group>"; };
 		B02EEF4326FDDA870010515A /* JavaClub.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JavaClub.storyboard; sourceTree = "<group>"; };
+		B0EE321B26FF4DDC00C847F3 /* JCUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JCUser.swift; path = "../../../../JavaClub-iOS/JavaClub-iOS/JavaClub/Model/JCUser.swift"; sourceTree = "<group>"; };
+		B0EE321C26FF4DDC00C847F3 /* JCLoginInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JCLoginInfo.swift; path = "../../../../JavaClub-iOS/JavaClub-iOS/JavaClub/Model/JCLoginInfo.swift"; sourceTree = "<group>"; };
+		B0EE322126FF4E0000C847F3 /* KAClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KAClass.swift; path = "../../../../JavaClub-iOS/JavaClub-iOS/KcAssistant/Model/KAClass.swift"; sourceTree = "<group>"; };
+		B0EE322226FF4E0000C847F3 /* KAEnrollment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KAEnrollment.swift; path = "../../../../JavaClub-iOS/JavaClub-iOS/KcAssistant/Model/KAEnrollment.swift"; sourceTree = "<group>"; };
+		B0EE322326FF4E0000C847F3 /* KCLoginInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KCLoginInfo.swift; path = "../../../../JavaClub-iOS/JavaClub-iOS/KcAssistant/Model/KCLoginInfo.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,13 +95,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B01AA9B426FF421E000D3E4A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B02EEF2826FDC0A00010515A /* JCWebViewController.swift */,
+				B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B01AA9B526FF4C39000D3E4A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B01AA9B626FF4C55000D3E4A /* JCLoginState.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B01AA9B826FF4CBB000D3E4A /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B01AA9BA26FF4CD3000D3E4A /* JCAccountManager.swift */,
+				B01AA9B926FF4CD3000D3E4A /* JCImageManager.swift */,
+				B01AA9BD26FF4CE1000D3E4A /* DBManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		B02032C426FE05760048B6F6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B01AA9B826FF4CBB000D3E4A /* Manager */,
 				B02032D126FE37B40048B6F6 /* View */,
 				B02032CA26FE05910048B6F6 /* AvailabilityCheck.swift */,
 				B02032C826FE05910048B6F6 /* ColorExtension.swift */,
-				B02032C626FE05910048B6F6 /* ColorfulPlaceholder.swift */,
+				B02032C626FE05910048B6F6 /* ViewPlaceholder.swift */,
 				B02032C726FE05910048B6F6 /* ImageExtension.swift */,
 				B02032C526FE05910048B6F6 /* StringExtension.swift */,
 				B02032C926FE05910048B6F6 /* ViewExtension.swift */,
@@ -120,15 +166,12 @@
 			isa = PBXGroup;
 			children = (
 				B02EEF0F26FDB5610010515A /* TabBar */,
-				B02EEF2426FDBB190010515A /* JavaClub */,
+				B02EEF2426FDBB190010515A /* HomePage */,
 				B02EEF2526FDBB330010515A /* KcAssistant */,
 				B02EEF2726FDC0810010515A /* BaiAssistant */,
 				B02EEF2626FDC0730010515A /* Settings */,
 				B02032C426FE05760048B6F6 /* Components */,
 				B02EEF0B26FDB5140010515A /* Support Files */,
-				B02EEF0026FDB2780010515A /* Assets.xcassets */,
-				B02EEF0226FDB2780010515A /* LaunchScreen.storyboard */,
-				B02EEF0526FDB2780010515A /* Info.plist */,
 			);
 			path = JavaClub;
 			sourceTree = "<group>";
@@ -138,6 +181,9 @@
 			children = (
 				B02EEEF726FDB2760010515A /* AppDelegate.swift */,
 				B02EEEF926FDB2760010515A /* SceneDelegate.swift */,
+				B02EEF0026FDB2780010515A /* Assets.xcassets */,
+				B02EEF0226FDB2780010515A /* LaunchScreen.storyboard */,
+				B02EEF0526FDB2780010515A /* Info.plist */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -150,20 +196,22 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
-		B02EEF2426FDBB190010515A /* JavaClub */ = {
+		B02EEF2426FDBB190010515A /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
-				B02EEF2826FDC0A00010515A /* JCWebViewController.swift */,
-				B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */,
+				B01AA9B426FF421E000D3E4A /* Controller */,
+				B01AA9B526FF4C39000D3E4A /* ViewModel */,
+				B0EE321A26FF4DCD00C847F3 /* Model */,
 				B02EEF4226FDDA6A0010515A /* Resource */,
 			);
-			path = JavaClub;
+			path = HomePage;
 			sourceTree = "<group>";
 		};
 		B02EEF2526FDBB330010515A /* KcAssistant */ = {
 			isa = PBXGroup;
 			children = (
-				B02EEF2A26FDC0AB0010515A /* KAViewController.swift */,
+				B0EE321F26FF4DE700C847F3 /* Controller */,
+				B0EE322026FF4DEF00C847F3 /* Model */,
 			);
 			path = KcAssistant;
 			sourceTree = "<group>";
@@ -190,6 +238,33 @@
 				B02EEF4326FDDA870010515A /* JavaClub.storyboard */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		B0EE321A26FF4DCD00C847F3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B0EE321C26FF4DDC00C847F3 /* JCLoginInfo.swift */,
+				B0EE321B26FF4DDC00C847F3 /* JCUser.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B0EE321F26FF4DE700C847F3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B02EEF2A26FDC0AB0010515A /* KAViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B0EE322026FF4DEF00C847F3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B0EE322126FF4E0000C847F3 /* KAClass.swift */,
+				B0EE322226FF4E0000C847F3 /* KAEnrollment.swift */,
+				B0EE322326FF4E0000C847F3 /* KCLoginInfo.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,21 +357,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				B02EEF2B26FDC0AB0010515A /* KAViewController.swift in Sources */,
+				B0EE322526FF4E0000C847F3 /* KAEnrollment.swift in Sources */,
 				B02EEEF826FDB2760010515A /* AppDelegate.swift in Sources */,
+				B01AA9BB26FF4CD3000D3E4A /* JCImageManager.swift in Sources */,
+				B0EE322426FF4E0000C847F3 /* KAClass.swift in Sources */,
 				B02EEF2F26FDC0CC0010515A /* STViewController.swift in Sources */,
 				B02032CE26FE05910048B6F6 /* ColorExtension.swift in Sources */,
 				B02EEF2926FDC0A00010515A /* JCWebViewController.swift in Sources */,
 				B01AA9B126FF2ADD000D3E4A /* LoadingIndicatorView.swift in Sources */,
 				B02EEEFA26FDB2760010515A /* SceneDelegate.swift in Sources */,
 				B02032CB26FE05910048B6F6 /* StringExtension.swift in Sources */,
+				B0EE321D26FF4DDD00C847F3 /* JCUser.swift in Sources */,
+				B0EE321E26FF4DDD00C847F3 /* JCLoginInfo.swift in Sources */,
 				B02EEF1126FDB5760010515A /* JCTabBarController.swift in Sources */,
 				B02032D326FE37C20048B6F6 /* DesignableView.swift in Sources */,
-				B02032CC26FE05910048B6F6 /* ColorfulPlaceholder.swift in Sources */,
+				B02032CC26FE05910048B6F6 /* ViewPlaceholder.swift in Sources */,
 				B02032D026FE05910048B6F6 /* AvailabilityCheck.swift in Sources */,
+				B0EE322626FF4E0000C847F3 /* KCLoginInfo.swift in Sources */,
+				B01AA9BC26FF4CD3000D3E4A /* JCAccountManager.swift in Sources */,
 				B02EEF3E26FDD7BD0010515A /* JCLoginViewController.swift in Sources */,
+				B01AA9BE26FF4CE1000D3E4A /* DBManager.swift in Sources */,
 				B02032CD26FE05910048B6F6 /* ImageExtension.swift in Sources */,
 				B02EEF2D26FDC0B30010515A /* BAViewController.swift in Sources */,
 				B02032CF26FE05910048B6F6 /* ViewExtension.swift in Sources */,
+				B01AA9B726FF4C55000D3E4A /* JCLoginState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,7 +523,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S6ZX968578;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = JavaClub/Info.plist;
+				INFOPLIST_FILE = "JavaClub/Support Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -466,7 +550,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S6ZX968578;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = JavaClub/Info.plist;
+				INFOPLIST_FILE = "JavaClub/Support Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

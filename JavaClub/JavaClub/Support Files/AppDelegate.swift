@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Defaults
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,7 +31,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
 
+
+extension Defaults.Keys {
+    // User Info
+    static let loginInfo = Key<JCLoginInfo?>("loginInfoKey", default: nil)
+    static let jwInfo = Key<KCLoginInfo?>("jwInfoKey", default: nil)
+    static let user = Key<JCUser?>("userKey", default: nil)
+    static let sessionURL = Key<URL?>("sessionURLKey", default: nil)
+    static let sessionExpired = Key<Bool>("sessionExpiredKey", default: false)
+    static let avatarLocal = Key<URL?>("avatarLocalKey", default: nil)
+    static let bannerLocal = Key<URL?>("bannerLocalKey", default: nil)
+    static let avatarURL = Key<URL?>("avatarURLKey", default: nil)
+    static let bannerURL = Key<URL?>("bannerURLKey", default: nil)
+    static let enrollment = Key<KAEnrollment?>("bannerURLKey", default: nil)
+    
+    // Settings
+    static let useDarkMode = Key<Bool>("useDarkModeKey", default: true)
+    static let useSystemAppearance = Key<Bool>("useSystemAppearanceKey", default: true)
+}
