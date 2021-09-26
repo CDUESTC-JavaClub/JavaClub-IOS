@@ -5,13 +5,35 @@
 //  Created by Roy Rao on 2021/9/25.
 //
 
-import Combine
+import Foundation
+import Defaults
 
-class JCLoginState {
+extension Notification.Name {
+    static let didUpdateLoginState = Notification.Name("didUpdateLoginStateName")
+    static let didUpdateBindingState = Notification.Name("didUpdateBindingStateName")
+}
+
+class JCLoginState: ObservableObject {
     static let shared = JCLoginState()
     
-    var isLoggedIn: Bool = false
-    var isBound: Bool = false
+    @Published var isLoggedIn: Bool! {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateLoginState, object: nil)
+        }
+    }
     
-    private init() {}
+    @Published var isBound: Bool! {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateBindingState, object: nil)
+        }
+    }
+    
+    private init() {
+        setProperties()
+    }
+    
+    private func setProperties() {
+        isLoggedIn = Defaults[.loginInfo] != nil
+        isBound = Defaults[.bindingInfo] != nil
+    }
 }

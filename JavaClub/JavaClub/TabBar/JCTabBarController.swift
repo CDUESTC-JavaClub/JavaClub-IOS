@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class JCTabBarController: UITabBarController {
     
@@ -32,13 +33,14 @@ class JCTabBarController: UITabBarController {
 extension JCTabBarController {
     
     private func setupVCs() {
-        let url = URL(string: "https://royrao.me/")!
+        let kaVC = UIHostingController(rootView: KAContentView())
+        let baVC = UIHostingController(rootView: BAContentView())
         
         viewControllers = [
-            createNavController(for: JCWebViewController(url: url), title: "JavaClub", image: UIImage(systemName: "house")!),
-            createNavController(for: KAViewController(), title: "教务", image: UIImage(systemName: "square.and.pencil")!),
-            createNavController(for: BAViewController(), title: "百叶计划", image: UIImage(systemName: "chart.pie")!),
-            createNavController(for: STViewController(), title: "设置", image: UIImage(systemName: "gear")!),
+            createNavController(for: JCMainViewController(), title: "JavaClub", image: UIImage(systemName: "house")!),
+            createNavController(for: kaVC, title: "教务", image: UIImage(systemName: "square.and.pencil")!),
+            createNavController(for: baVC, title: "百叶计划", image: UIImage(systemName: "chart.pie")!),
+            createNavController(for: STMainViewController(), title: "设置", image: UIImage(systemName: "gear")!),
         ]
     }
     

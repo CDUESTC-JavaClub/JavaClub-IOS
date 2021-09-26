@@ -34,6 +34,7 @@ extension JCLoginViewController {
             self?.dismiss(animated: true)
             self?.removeIndicator()
             UITabBar.appearance().isHidden = false
+            JCLoginState.shared.isLoggedIn = true
         }
     }
     

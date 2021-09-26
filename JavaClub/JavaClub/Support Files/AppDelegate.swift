@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension Defaults.Keys {
     // User Info
     static let loginInfo = Key<JCLoginInfo?>("loginInfoKey", default: nil)
-    static let jwInfo = Key<KCLoginInfo?>("jwInfoKey", default: nil)
+    static let bindingInfo = Key<KCLoginInfo?>("bindingInfoKey", default: nil)
     static let user = Key<JCUser?>("userKey", default: nil)
     static let sessionURL = Key<URL?>("sessionURLKey", default: nil)
     static let sessionExpired = Key<Bool>("sessionExpiredKey", default: false)
