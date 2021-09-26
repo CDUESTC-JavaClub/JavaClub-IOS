@@ -29,6 +29,8 @@ extension JCLoginViewController {
     @IBAction func login() {
         showIndicator()
         loginBtn.isEnabled = false
+        createBtn.isEnabled = false
+        ForgotBtn.isEnabled = false
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
             self?.dismiss(animated: true)
