@@ -16,23 +16,19 @@ extension Notification.Name {
 class JCLoginState: ObservableObject {
     static let shared = JCLoginState()
     
-    @Published var isLoggedIn: Bool! {
+    @Published var isLoggedIn: Bool {
         didSet {
             NotificationCenter.default.post(name: .didUpdateLoginState, object: nil)
         }
     }
     
-    @Published var isBound: Bool! {
+    @Published var isBound: Bool {
         didSet {
             NotificationCenter.default.post(name: .didUpdateBindingState, object: nil)
         }
     }
     
     private init() {
-        setProperties()
-    }
-    
-    private func setProperties() {
         isLoggedIn = Defaults[.loginInfo] != nil
         isBound = Defaults[.bindingInfo] != nil
     }

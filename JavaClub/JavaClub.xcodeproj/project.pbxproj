@@ -57,6 +57,8 @@
 		B08F6FCD270040010015B354 /* JCLoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FCB270040010015B354 /* JCLoginInfo.swift */; };
 		B08F6FCE270040010015B354 /* JCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FCC270040010015B354 /* JCUser.swift */; };
 		B08F6FD02700401E0015B354 /* STMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FCF2700401E0015B354 /* STMainViewController.swift */; };
+		B08F6FD32700488F0015B354 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B08F6FD22700488F0015B354 /* Settings.storyboard */; };
+		B08F6FD5270048B40015B354 /* STContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FD4270048B40015B354 /* STContentViewController.swift */; };
 		B0D3A18F27000AC80095229C /* JCMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D3A18E27000AC80095229C /* JCMainViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +108,8 @@
 		B08F6FCB270040010015B354 /* JCLoginInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCLoginInfo.swift; sourceTree = "<group>"; };
 		B08F6FCC270040010015B354 /* JCUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCUser.swift; sourceTree = "<group>"; };
 		B08F6FCF2700401E0015B354 /* STMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STMainViewController.swift; sourceTree = "<group>"; };
+		B08F6FD22700488F0015B354 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		B08F6FD4270048B40015B354 /* STContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STContentViewController.swift; sourceTree = "<group>"; };
 		B0D3A18E27000AC80095229C /* JCMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCMainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -239,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				B0D3A1BF270017810095229C /* View */,
+				B08F6FD1270048760015B354 /* Resource */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -255,6 +260,14 @@
 			isa = PBXGroup;
 			children = (
 				B02EEF4326FDDA870010515A /* JavaClub.storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		B08F6FD1270048760015B354 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				B08F6FD22700488F0015B354 /* Settings.storyboard */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -370,6 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				B08F6FCF2700401E0015B354 /* STMainViewController.swift */,
+				B08F6FD4270048B40015B354 /* STContentViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -466,6 +480,7 @@
 				B02EEF4426FDDA870010515A /* JavaClub.storyboard in Resources */,
 				B02EEF0426FDB2780010515A /* LaunchScreen.storyboard in Resources */,
 				B02EEF0126FDB2780010515A /* Assets.xcassets in Resources */,
+				B08F6FD32700488F0015B354 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +530,7 @@
 				B02032CD26FE05910048B6F6 /* ImageExtension.swift in Sources */,
 				B02032CF26FE05910048B6F6 /* ViewExtension.swift in Sources */,
 				B01AA9B726FF4C55000D3E4A /* JCLoginState.swift in Sources */,
+				B08F6FD5270048B40015B354 /* STContentViewController.swift in Sources */,
 				B08F6FC927003FD60015B354 /* JCBindIDView.swift in Sources */,
 				B08F6FAA27003EAD0015B354 /* KAUserInfoView.swift in Sources */,
 			);

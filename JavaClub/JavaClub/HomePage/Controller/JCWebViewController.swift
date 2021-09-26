@@ -10,22 +10,12 @@ import WebKit
 
 class JCWebViewController: UIViewController {
     private let url: URL
-    
-    private let webView: WKWebView = {
-        let preferences = WKWebpagePreferences()
-        if #available(iOS 14.0, *) {
-            preferences.allowsContentJavaScript = true
-        }
-        let configuration = WKWebViewConfiguration()
-        configuration.defaultWebpagePreferences = preferences
-        let webView = WKWebView(frame: .zero, configuration: configuration)
-        
-        return webView
-    }()
+    private let webView: WKWebView
     
     
     init(url: URL) {
         self.url = url
+        self.webView = WebView(request: URLRequest(url: url)).make()
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -45,5 +35,40 @@ class JCWebViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         webView.frame = view.bounds
+    }
+}
+
+
+class WebView {
+    static var cache = [URL: WKWebView]()
+    let request: URLRequest
+    var completion: (() -> Void)?
+    
+    
+    init(request: URLRequest, _ completion: (() -> Void)? = nil) {
+        self.request = request
+        self.completion = completion
+    }
+    
+    func make() -> WKWebView {
+        guard let url = request.url else { fatalError("URL cannot be used.") }
+
+        if let webView = WebView.cache[url] {
+            return webView
+        }
+        
+        let preferences = WKWebpagePreferences()
+        if #available(iOS 14.0, *) {
+            preferences.allowsContentJavaScript = true
+        }
+        let configuration = WKWebViewConfiguration()
+        configuration.defaultWebpagePreferences = preferences
+        
+        let webView = WKWebView(frame: .zero, configuration: configuration)
+        WebView.cache[url] = webView
+        
+        completion?()
+        
+        return webView
     }
 }

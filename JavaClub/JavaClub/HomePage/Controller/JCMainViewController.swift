@@ -42,7 +42,12 @@ class JCMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
+        didUpdateLoginState(Notification(name: .didUpdateLoginState, object: nil, userInfo: nil))
     }
 }
 
@@ -53,14 +58,18 @@ extension JCMainViewController {
         if !JCLoginState.shared.isLoggedIn {
             UITabBar.appearance().isHidden = true
             present(loginVC, animated: true) { [self] in
-                webVC.view.removeFromSuperview()
-                webVC = nil
+                if webVC != nil {
+                    webVC.view.removeFromSuperview()
+                    webVC = nil
+                }
             }
         } else {
-            webVC = JCWebViewController(url: url)
-            view.addSubview(webVC.view)
-            webVC.view.snp.makeConstraints { make in
-                make.edges.equalTo(view)
+            if webVC == nil {
+                webVC = JCWebViewController(url: url)
+                view.addSubview(webVC.view)
+                webVC.view.snp.makeConstraints { make in
+                    make.edges.equalTo(view)
+                }
             }
         }
     }
