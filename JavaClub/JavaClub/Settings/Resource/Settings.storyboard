@@ -70,26 +70,36 @@
                                     <constraint firstItem="gQA-xG-Trp" firstAttribute="centerX" secondItem="wa0-0D-gbw" secondAttribute="centerX" id="vdD-9i-PSa"/>
                                 </constraints>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HmV-wV-zTF">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HmV-wV-zTF">
                                 <rect key="frame" x="20" y="496" width="374" height="400"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="t2X-vp-wPL"/>
                                 </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="settingsCell" id="A0z-na-tdM">
+                                        <rect key="frame" x="20" y="49.5" width="334" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A0z-na-tdM" id="SMn-Dj-iYy">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lkv-Wi-Ys8" customClass="DesignableView" customModule="JavaClub" customModuleProvider="target">
-                                <rect key="frame" x="20" y="376" width="374" height="100"/>
+                                <rect key="frame" x="20" y="396" width="374" height="80"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你可以对你的学号（教务账号）、百叶计划账号进行绑定，我们只会在云端保存你的学号，个人信息和密码都存储在本地，并且这些敏感信息会随着软件卸载一并移除。" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpq-kh-f91">
-                                        <rect key="frame" x="10" y="10" width="354" height="80"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你可以对你的学号（教务账号）、百叶计划账号进行绑定，我们只会在云端保存你的学号，个人信息和密码都存储在本地，并且这些敏感信息会随着软件卸载一并移除。" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpq-kh-f91">
+                                        <rect key="frame" x="10" y="10" width="354" height="60"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="Br3-8J-d7R"/>
+                                    <constraint firstAttribute="height" constant="80" id="Br3-8J-d7R"/>
                                     <constraint firstItem="wpq-kh-f91" firstAttribute="leading" secondItem="lkv-Wi-Ys8" secondAttribute="leading" constant="10" id="Y8L-RM-Rs6"/>
                                     <constraint firstAttribute="bottom" secondItem="wpq-kh-f91" secondAttribute="bottom" constant="10" id="a3x-fp-W92"/>
                                     <constraint firstItem="wpq-kh-f91" firstAttribute="top" secondItem="lkv-Wi-Ys8" secondAttribute="top" constant="10" id="eMY-zb-eEb"/>
