@@ -6,18 +6,14 @@
 //
 
 import UIKit
+import Defaults
 
 class JCMainViewController: UIViewController {
-    private let loginVC: JCLoginViewController!
+    private var loginVC: JCLoginViewController!
     private var webVC: JCWebViewController!
-    private let url = URL(string: "https://royrao.me/")!
     
     
     init() {
-        loginVC = UIStoryboard(name: "JavaClub", bundle: .main)
-            .instantiateViewController(withIdentifier: "JCLoginViewController")
-        as? JCLoginViewController
-        
         super.init(nibName: nil, bundle: nil)
         
         NotificationCenter.default.addObserver(
@@ -56,6 +52,10 @@ extension JCMainViewController {
     
     private func didUpdateLoginState(_ notification: Notification) {
         if !JCLoginState.shared.isLoggedIn {
+            loginVC = UIStoryboard(name: "JavaClub", bundle: .main)
+                .instantiateViewController(withIdentifier: "JCLoginViewController")
+            as? JCLoginViewController
+            
             UITabBar.appearance().isHidden = true
             present(loginVC, animated: true) { [self] in
                 if webVC != nil {
@@ -64,7 +64,9 @@ extension JCMainViewController {
                 }
             }
         } else {
-            if webVC == nil {
+            loginVC = nil
+            
+            if webVC == nil, let url = Defaults[.sessionURL] { 
                 webVC = JCWebViewController(url: url)
                 view.addSubview(webVC.view)
                 webVC.view.snp.makeConstraints { make in

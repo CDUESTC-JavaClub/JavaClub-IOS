@@ -71,8 +71,7 @@ extension JCAccountManager {
                             let status = (try JSON(data: data))["status"].int,
                             status == 200
                         {
-                            let resultJson = (try JSON(data: data))["data"]
-                            completion(.success(resultJson.boolValue))
+                            completion(.success(true))
                         } else {
                             completion(.failure(.badRequest))
                         }

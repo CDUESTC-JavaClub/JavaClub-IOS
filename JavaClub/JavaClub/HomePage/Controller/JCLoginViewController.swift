@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import Defaults
 import SnapKit
 
 class JCLoginViewController: UIViewController {
@@ -32,11 +33,31 @@ extension JCLoginViewController {
         createBtn.isEnabled = false
         ForgotBtn.isEnabled = false
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            self?.dismiss(animated: true)
-            self?.removeIndicator()
-            UITabBar.appearance().isHidden = false
-            JCLoginState.shared.isLoggedIn = true
+        if
+            let username = usernameField.text,
+            let password = passwordField.text,
+            !username.isEmpty,
+            !password.isEmpty
+        {
+            let info = JCLoginInfo(username: username, password: password)
+            JCAccountManager.shared.login(info: info) { [weak self] result in
+                if let success = try? result.get(), success {
+                    Defaults[.loginInfo] = info
+                    
+                    JCAccountManager.shared.getInfo { result in
+                        let userInfo = try? result.get()
+                        JCLoginState.shared.isLoggedIn = userInfo != nil
+                        Defaults[.user] = userInfo
+                    }
+                    
+                    JCAccountManager.shared.refreshCompletely()
+                    
+                    self?.dismiss(animated: true)
+                    self?.removeIndicator()
+                    UITabBar.appearance().isHidden = false
+                    JCLoginState.shared.isLoggedIn = true
+                }
+            }
         }
     }
     
