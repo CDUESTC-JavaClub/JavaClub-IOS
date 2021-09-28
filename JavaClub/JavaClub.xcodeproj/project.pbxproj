@@ -61,6 +61,7 @@
 		B08F6FD32700488F0015B354 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B08F6FD22700488F0015B354 /* Settings.storyboard */; };
 		B08F6FD5270048B40015B354 /* STContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FD4270048B40015B354 /* STContentViewController.swift */; };
 		B0D3A18F27000AC80095229C /* JCMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D3A18E27000AC80095229C /* JCMainViewController.swift */; };
+		B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F900C9270300420056A016 /* ViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +114,7 @@
 		B08F6FD22700488F0015B354 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		B08F6FD4270048B40015B354 /* STContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STContentViewController.swift; sourceTree = "<group>"; };
 		B0D3A18E27000AC80095229C /* JCMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCMainViewController.swift; sourceTree = "<group>"; };
+		B0F900C9270300420056A016 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -408,6 +410,7 @@
 				B02032C726FE05910048B6F6 /* ImageExtension.swift */,
 				B02032C526FE05910048B6F6 /* StringExtension.swift */,
 				B02032C926FE05910048B6F6 /* ViewExtension.swift */,
+				B0F900C9270300420056A016 /* ViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				B02032CD26FE05910048B6F6 /* ImageExtension.swift in Sources */,
 				B02032CF26FE05910048B6F6 /* ViewExtension.swift in Sources */,
 				B01AA9B726FF4C55000D3E4A /* JCLoginState.swift in Sources */,
+				B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */,
 				B08F6FD5270048B40015B354 /* STContentViewController.swift in Sources */,
 				B08F6FC927003FD60015B354 /* JCBindIDView.swift in Sources */,
 				B08F6FAA27003EAD0015B354 /* KAUserInfoView.swift in Sources */,

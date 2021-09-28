@@ -27,7 +27,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="-60" translatesAutoresizingMaskIntoConstraints="NO" id="hTu-Xz-hlB">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="260"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="UFv-Kj-7eu">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="UFv-Kj-7eu">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="PP7-Nt-fiC"/>
@@ -308,11 +308,15 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="actionSection" destination="NHk-mo-6jK" id="d1n-Ti-3St"/>
+                        <outlet property="announcementSection" destination="lkv-Wi-Ys8" id="o7t-TU-h08"/>
                         <outlet property="avatar" destination="ueD-IB-fdK" id="1zS-EJ-uS0"/>
                         <outlet property="banner" destination="UFv-Kj-7eu" id="BmO-CK-imQ"/>
+                        <outlet property="bindingSection" destination="xj9-8l-yUJ" id="Ra3-cy-FBh"/>
                         <outlet property="checkUpdateBtn" destination="jtL-WK-14m" id="V9x-vp-BdY"/>
                         <outlet property="emailLabel" destination="fzN-km-bZy" id="YIJ-yk-zAU"/>
                         <outlet property="logoutBtn" destination="TWn-2K-Xwr" id="hhg-09-dC4"/>
+                        <outlet property="optionSection" destination="FeE-uZ-gGn" id="oX7-g2-JON"/>
                         <outlet property="signatureLabel" destination="peL-ct-QeK" id="buG-Cq-obQ"/>
                         <outlet property="studentIDLabel" destination="aKt-Zg-n3P" id="dr9-D4-GJq"/>
                         <outlet property="useDarkModeSwitch" destination="II6-sJ-PFc" id="gkd-fV-vh2"/>
