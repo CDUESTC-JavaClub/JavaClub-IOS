@@ -10,7 +10,8 @@ import Combine
 import Defaults
 
 struct JCBindIDView: View {
-    @Binding var verify: Bool
+    @Binding var verifyLogin: Bool
+    @Binding var verifyBinding: Bool
     @State private var id = ""
     @State private var pw = ""
     @State private var idIsTapped = false
@@ -142,26 +143,29 @@ struct JCBindIDView: View {
             
             // Submit Button
             Button {
-                JCAccountManager.shared.bindStudentID(
-                    info: KCLoginInfo(id: id, password: pw)
-                ) { result in
-                    if
-                        let response = try? result.get(),
-                        response
-                    {
-                        bindState = true
-                        verify = true
-                        
-                        JCAccountManager.shared.getEnrollmentInfo { result in
-                            let enrollment = try? result.get()
-                            Defaults[.enrollment] = enrollment
-                        }
-                    } else {
-                        bindState = false
-                        verify = false
-                    }
-                    
-                    presentAlert = true
+//                JCAccountManager.shared.bindStudentID(
+//                    info: KCLoginInfo(id: id, password: pw)
+//                ) { result in
+//                    if
+//                        let response = try? result.get(),
+//                        response
+//                    {
+//                        bindState = true
+//                        verify = true
+//
+//                        JCAccountManager.shared.getEnrollmentInfo { result in
+//                            let enrollment = try? result.get()
+//                            Defaults[.enrollment] = enrollment
+//                        }
+//                    } else {
+//                        bindState = false
+//                        verify = false
+//                    }
+//
+//                    presentAlert = true
+//                }
+                if verifyLogin {
+                    verifyBinding = true
                 }
             } label: {
                 Image(systemName: "arrow.right")

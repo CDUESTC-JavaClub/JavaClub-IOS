@@ -30,7 +30,7 @@ struct KAContentView: View {
                 Spacer()
             }
         } else {
-            JCBindIDView(verify: $verify.isBound)
+            JCBindIDView(verifyLogin: $verify.isLoggedIn, verifyBinding: $verify.isBound)
         }
     }
 }
