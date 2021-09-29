@@ -9,16 +9,23 @@ import Foundation
 import Defaults
 
 extension Notification.Name {
-    static let didUpdateLoginState = Notification.Name("didUpdateLoginStateName")
+    static let didUpdateJCLoginState = Notification.Name("didUpdateJCLoginStateName")
+    static let didUpdateJWLoginState = Notification.Name("didUpdateJWLoginStateName")
     static let didUpdateBindingState = Notification.Name("didUpdateBindingStateName")
 }
 
 class JCLoginState: ObservableObject {
     static let shared = JCLoginState()
     
-    @Published var isLoggedIn: Bool {
+    @Published var jc: Bool {
         didSet {
-            NotificationCenter.default.post(name: .didUpdateLoginState, object: nil)
+            NotificationCenter.default.post(name: .didUpdateJCLoginState, object: nil)
+        }
+    }
+    
+    @Published var jw: Bool {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateJWLoginState, object: nil)
         }
     }
     
@@ -29,7 +36,8 @@ class JCLoginState: ObservableObject {
     }
     
     private init() {
-        isLoggedIn = Defaults[.loginInfo] != nil
-        isBound = Defaults[.bindingInfo] != nil
+        jc = Defaults[.loginInfo] != nil
+        jw = Defaults[.jwInfo] != nil
+        isBound = Defaults[.user]?.studentID != nil
     }
 }

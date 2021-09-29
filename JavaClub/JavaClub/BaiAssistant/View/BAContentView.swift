@@ -10,9 +10,11 @@ import Defaults
 
 struct BAContentView: View {
     @ObservedObject private var verify = JCLoginState.shared
+    @Default(.enrollment) private var enrollment
+    @Default(.jwInfo) private var jwInfo
     
     var body: some View {
-        if verify.isLoggedIn, verify.isBound {
+        if verify.jc, verify.jw {
             VStack {
                 Form {
                     BaiHeaderView()
@@ -28,7 +30,7 @@ struct BAContentView: View {
                 Spacer()
             }
         } else {
-            JCBindIDView(verifyLogin: $verify.isLoggedIn, verifyBinding: $verify.isBound)
+            JCBindIDView(verifyJC: $verify.jc, verifyJW: $verify.jw, verifyBinding: $verify.isBound, enrollment: $enrollment, jwInfo: $jwInfo)
         }
     }
 }

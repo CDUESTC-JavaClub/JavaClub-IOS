@@ -9,7 +9,7 @@ import SwiftUI
 import Defaults
 
 struct KAUserInfoView: View {
-    @Default(.enrollment) private var enrollment
+    @Binding var enrollment: KAEnrollment?
     
     var body: some View {
         Section {

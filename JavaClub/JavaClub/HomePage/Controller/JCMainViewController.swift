@@ -17,17 +17,17 @@ class JCMainViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         NotificationCenter.default.addObserver(
-            forName: .didUpdateLoginState,
+            forName: .didUpdateJCLoginState,
             object: nil,
             queue: .main,
             using: didUpdateLoginState(_:)
         )
         
         NotificationCenter.default.addObserver(
-            forName: .didUpdateBindingState,
+            forName: .didUpdateJWLoginState,
             object: nil,
             queue: .main,
-            using: didUpdateBindingState(_:)
+            using: didUpdateJWLoginState(_:)
         )
     }
     
@@ -43,7 +43,7 @@ class JCMainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        didUpdateLoginState(Notification(name: .didUpdateLoginState, object: nil, userInfo: nil))
+        didUpdateLoginState(Notification(name: .didUpdateJCLoginState, object: nil, userInfo: nil))
     }
 }
 
@@ -51,7 +51,7 @@ class JCMainViewController: UIViewController {
 extension JCMainViewController {
     
     private func didUpdateLoginState(_ notification: Notification) {
-        if !JCLoginState.shared.isLoggedIn {
+        if !JCLoginState.shared.jc {
             loginVC = UIStoryboard(name: "JavaClub", bundle: .main)
                 .instantiateViewController(withIdentifier: "JCLoginViewController")
             as? JCLoginViewController
@@ -76,7 +76,7 @@ extension JCMainViewController {
         }
     }
     
-    private func didUpdateBindingState(_ notification: Notification) {
+    private func didUpdateJWLoginState(_ notification: Notification) {
         
     }
 }

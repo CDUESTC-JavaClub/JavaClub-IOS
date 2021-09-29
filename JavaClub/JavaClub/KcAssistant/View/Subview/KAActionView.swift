@@ -12,12 +12,7 @@ struct KAActionView: View {
     
     var body: some View {
         Section {
-            Button {
-                JCAccountManager.shared.getClassTable(term: 6) { result in
-                    let table = try? result.get()
-                    print("CLASSTABLE: \(table)")
-                }
-            } label: {
+            NavigationLink(destination: KAScoreViewContainer()) {
                 HStack {
                     Image(systemName: "square.and.pencil")
                         .renderingMode(.template)

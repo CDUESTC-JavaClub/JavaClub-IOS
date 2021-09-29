@@ -40,7 +40,7 @@
 		B08F6FA927003EAD0015B354 /* KAActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FA527003EAD0015B354 /* KAActionView.swift */; };
 		B08F6FAA27003EAD0015B354 /* KAUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FA627003EAD0015B354 /* KAUserInfoView.swift */; };
 		B08F6FAC27003EBA0015B354 /* KAContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAB27003EBA0015B354 /* KAContentView.swift */; };
-		B08F6FB027003EEC0015B354 /* KCLoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAD27003EEB0015B354 /* KCLoginInfo.swift */; };
+		B08F6FB027003EEC0015B354 /* KALoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAD27003EEB0015B354 /* KALoginInfo.swift */; };
 		B08F6FB127003EEC0015B354 /* KAEnrollment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAE27003EEB0015B354 /* KAEnrollment.swift */; };
 		B08F6FB227003EEC0015B354 /* KAClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAF27003EEB0015B354 /* KAClass.swift */; };
 		B08F6FB727003F360015B354 /* BaiUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FB327003F350015B354 /* BaiUserInfoView.swift */; };
@@ -60,6 +60,10 @@
 		B08F6FD02700401E0015B354 /* STMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FCF2700401E0015B354 /* STMainViewController.swift */; };
 		B08F6FD32700488F0015B354 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B08F6FD22700488F0015B354 /* Settings.storyboard */; };
 		B08F6FD5270048B40015B354 /* STContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FD4270048B40015B354 /* STContentViewController.swift */; };
+		B0973FA32703FC0300E5C9C6 /* KAScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA22703FC0300E5C9C6 /* KAScoreViewController.swift */; };
+		B0973FA62703FE4200E5C9C6 /* KAScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA52703FE4200E5C9C6 /* KAScore.swift */; };
+		B0973FA8270447E300E5C9C6 /* KAScoreViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA7270447E300E5C9C6 /* KAScoreViewContainer.swift */; };
+		B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA927044BE500E5C9C6 /* KASection.swift */; };
 		B0D3A18F27000AC80095229C /* JCMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D3A18E27000AC80095229C /* JCMainViewController.swift */; };
 		B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F900C9270300420056A016 /* ViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
@@ -93,7 +97,7 @@
 		B08F6FA527003EAD0015B354 /* KAActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAActionView.swift; sourceTree = "<group>"; };
 		B08F6FA627003EAD0015B354 /* KAUserInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAUserInfoView.swift; sourceTree = "<group>"; };
 		B08F6FAB27003EBA0015B354 /* KAContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAContentView.swift; sourceTree = "<group>"; };
-		B08F6FAD27003EEB0015B354 /* KCLoginInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCLoginInfo.swift; sourceTree = "<group>"; };
+		B08F6FAD27003EEB0015B354 /* KALoginInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KALoginInfo.swift; sourceTree = "<group>"; };
 		B08F6FAE27003EEB0015B354 /* KAEnrollment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAEnrollment.swift; sourceTree = "<group>"; };
 		B08F6FAF27003EEB0015B354 /* KAClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAClass.swift; sourceTree = "<group>"; };
 		B08F6FB327003F350015B354 /* BaiUserInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaiUserInfoView.swift; sourceTree = "<group>"; };
@@ -113,6 +117,10 @@
 		B08F6FCF2700401E0015B354 /* STMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STMainViewController.swift; sourceTree = "<group>"; };
 		B08F6FD22700488F0015B354 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		B08F6FD4270048B40015B354 /* STContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STContentViewController.swift; sourceTree = "<group>"; };
+		B0973FA22703FC0300E5C9C6 /* KAScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAScoreViewController.swift; sourceTree = "<group>"; };
+		B0973FA52703FE4200E5C9C6 /* KAScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAScore.swift; sourceTree = "<group>"; };
+		B0973FA7270447E300E5C9C6 /* KAScoreViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAScoreViewContainer.swift; sourceTree = "<group>"; };
+		B0973FA927044BE500E5C9C6 /* KASection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KASection.swift; sourceTree = "<group>"; };
 		B0D3A18E27000AC80095229C /* JCMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCMainViewController.swift; sourceTree = "<group>"; };
 		B0F900C9270300420056A016 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -254,6 +262,7 @@
 		B02EEF2526FDBB330010515A /* KcAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				B0973FA42703FC3B00E5C9C6 /* Controller */,
 				B0D3A197270015450095229C /* View */,
 				B0D3A17A2700004D0095229C /* Model */,
 			);
@@ -294,12 +303,31 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		B0973FA12703FBAC00E5C9C6 /* Score */ = {
+			isa = PBXGroup;
+			children = (
+				B0973FA22703FC0300E5C9C6 /* KAScoreViewController.swift */,
+				B0973FA7270447E300E5C9C6 /* KAScoreViewContainer.swift */,
+			);
+			path = Score;
+			sourceTree = "<group>";
+		};
+		B0973FA42703FC3B00E5C9C6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B0973FA12703FBAC00E5C9C6 /* Score */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		B0D3A17A2700004D0095229C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B08F6FAD27003EEB0015B354 /* KALoginInfo.swift */,
 				B08F6FAF27003EEB0015B354 /* KAClass.swift */,
+				B0973FA927044BE500E5C9C6 /* KASection.swift */,
+				B0973FA52703FE4200E5C9C6 /* KAScore.swift */,
 				B08F6FAE27003EEB0015B354 /* KAEnrollment.swift */,
-				B08F6FAD27003EEB0015B354 /* KCLoginInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -336,10 +364,10 @@
 			isa = PBXGroup;
 			children = (
 				B0D3A1A3270015A60095229C /* DetailView */,
-				B08F6FA527003EAD0015B354 /* KAActionView.swift */,
-				B08F6FA427003EAD0015B354 /* KAAnnouncementView.swift */,
 				B08F6FA327003EAD0015B354 /* KAHeaderView.swift */,
+				B08F6FA427003EAD0015B354 /* KAAnnouncementView.swift */,
 				B08F6FA627003EAD0015B354 /* KAUserInfoView.swift */,
+				B08F6FA527003EAD0015B354 /* KAActionView.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -533,12 +561,14 @@
 				B08F6FB927003F360015B354 /* BaiScoreOverallView.swift in Sources */,
 				B02032CC26FE05910048B6F6 /* ViewPlaceholder.swift in Sources */,
 				B08F6FC427003F8C0015B354 /* JCImageManager.swift in Sources */,
+				B0973FA62703FE4200E5C9C6 /* KAScore.swift in Sources */,
 				B08F6FC627003F8C0015B354 /* JCAccountManager.swift in Sources */,
 				B08F6FA227003E820015B354 /* KAEnrollmentView.swift in Sources */,
+				B0973FA8270447E300E5C9C6 /* KAScoreViewContainer.swift in Sources */,
 				B02032D026FE05910048B6F6 /* AvailabilityCheck.swift in Sources */,
 				B08F6FC027003F4D0015B354 /* BAContentView.swift in Sources */,
 				B02EEF3E26FDD7BD0010515A /* JCLoginViewController.swift in Sources */,
-				B08F6FB027003EEC0015B354 /* KCLoginInfo.swift in Sources */,
+				B08F6FB027003EEC0015B354 /* KALoginInfo.swift in Sources */,
 				B08F6FB127003EEC0015B354 /* KAEnrollment.swift in Sources */,
 				B08F6FA927003EAD0015B354 /* KAActionView.swift in Sources */,
 				B08F6FB827003F360015B354 /* BaiScoreDetailView.swift in Sources */,
@@ -546,6 +576,8 @@
 				B02032CF26FE05910048B6F6 /* ViewExtension.swift in Sources */,
 				B01AA9B726FF4C55000D3E4A /* JCLoginState.swift in Sources */,
 				B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */,
+				B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */,
+				B0973FA32703FC0300E5C9C6 /* KAScoreViewController.swift in Sources */,
 				B08F6FD5270048B40015B354 /* STContentViewController.swift in Sources */,
 				B08F6FC927003FD60015B354 /* JCBindIDView.swift in Sources */,
 				B08F6FAA27003EAD0015B354 /* KAUserInfoView.swift in Sources */,
@@ -617,7 +649,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -672,7 +704,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -696,7 +728,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -724,7 +756,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

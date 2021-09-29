@@ -10,8 +10,11 @@ import Combine
 import Defaults
 
 struct JCBindIDView: View {
-    @Binding var verifyLogin: Bool
+    @Binding var verifyJC: Bool
+    @Binding var verifyJW: Bool
     @Binding var verifyBinding: Bool
+    @Binding var enrollment: KAEnrollment?
+    @Binding var jwInfo: KALoginInfo?
     @State private var id = ""
     @State private var pw = ""
     @State private var idIsTapped = false
@@ -55,6 +58,8 @@ struct JCBindIDView: View {
                             }
                         }
                     }
+                    .disabled(verifyBinding)
+                    .foregroundColor(verifyBinding ? .secondary : .label)
                     .onReceive(Just(id)) { newText in
                         let filtered = newText.filter { "0123456789".contains($0) }
                         if filtered != newText {
@@ -143,29 +148,33 @@ struct JCBindIDView: View {
             
             // Submit Button
             Button {
-//                JCAccountManager.shared.bindStudentID(
-//                    info: KCLoginInfo(id: id, password: pw)
-//                ) { result in
-//                    if
-//                        let response = try? result.get(),
-//                        response
-//                    {
-//                        bindState = true
-//                        verify = true
-//
-//                        JCAccountManager.shared.getEnrollmentInfo { result in
-//                            let enrollment = try? result.get()
-//                            Defaults[.enrollment] = enrollment
-//                        }
-//                    } else {
-//                        bindState = false
-//                        verify = false
-//                    }
-//
-//                    presentAlert = true
-//                }
-                if verifyLogin {
-                    verifyBinding = true
+                if verifyJC {
+                    let info = KALoginInfo(id: id, password: pw)
+                    
+                    JCAccountManager.shared.loginJW(
+                        info: info,
+                        bind: verifyBinding
+                    ) { result in
+                        if
+                            let response = try? result.get(),
+                            response
+                        {
+                            jwInfo = info
+                            bindState = true
+                            verifyJW = true
+
+                            JCAccountManager.shared.getEnrollmentInfo { result in
+                                let enr = try? result.get()
+                                enrollment = enr
+                            }
+                        } else {
+                            bindState = false
+                        }
+                        
+                        presentAlert = true
+                    }
+                } else {
+                    presentAlert = true
                 }
             } label: {
                 Image(systemName: "arrow.right")
@@ -176,18 +185,38 @@ struct JCBindIDView: View {
                     .clipShape(Circle())
             }
             .padding(.vertical)
-            .alert(isPresented: $presentAlert) {
-                Alert(
-                    title: Text(bindState ? "成功" : "失败"),
-                    message: Text(
-                        bindState ? "学号绑定成功！" : "学号绑定失败，请检查输入是否有误，或网络连接是否通畅！"
-                    ),
-                    dismissButton: .default(
-                        Text("Got it!")
-                    )
-                )
-            }
+            .if(verifyJC, if: { content in
+                content
+                    .alert(isPresented: $presentAlert) {
+                        Alert(
+                            title: Text(bindState ? "成功" : "失败"),
+                            message: Text(
+                                bindState ? "登陆成功！" : "登录失败，请检查输入是否有误，或网络连接是否通畅！"
+                            ),
+                            dismissButton: .default(
+                                Text("Got it!")
+                            )
+                        )
+                    }
+            }, else: { content in
+                content
+                    .alert(isPresented: $presentAlert) {
+                        Alert(
+                            title: Text("提示"),
+                            message: Text("请先登录！"),
+                            dismissButton: .default(
+                                Text("Got it!")
+                            )
+                        )
+                    }
+            })
         }
         .padding()
+        .onChange(of: verifyBinding, perform: { newValue in
+            if newValue {
+                id = Defaults[.user]?.studentID ?? ""
+                idIsTapped = true
+            }
+        })
     }
 }

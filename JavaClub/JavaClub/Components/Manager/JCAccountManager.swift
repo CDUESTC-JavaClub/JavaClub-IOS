@@ -71,7 +71,8 @@ extension JCAccountManager {
                             let status = (try JSON(data: data))["status"].int,
                             status == 200
                         {
-                            completion(.success(true))
+                            let success = (try JSON(data: data))["data"].boolValue
+                            completion(.success(success))
                         } else {
                             completion(.failure(.badRequest))
                         }
@@ -109,11 +110,11 @@ extension JCAccountManager {
                         Defaults[.loginInfo] = nil
                         Defaults[.sessionURL] = nil
                         Defaults[.user] = nil
-                        Defaults[.bindingInfo] = nil
+                        Defaults[.jwInfo] = nil
                         Defaults[.sessionExpired] = false
                         Defaults[.enrollment] = nil
-                        JCLoginState.shared.isLoggedIn = false
-                        JCLoginState.shared.isBound = false
+                        JCLoginState.shared.jc = false
+                        JCLoginState.shared.jw = false
                     }
                     print("DEBUG: Logged Out Successfully.")
                 }
@@ -238,7 +239,7 @@ extension JCAccountManager {
      *      - id: One's student ID.
      *      - completion: A block of what you wanna do with the result of the binding process.
      */
-    func bindStudentID(info: KCLoginInfo, _ completion: @escaping (Result<Bool, JCError>) -> Void) {
+    func loginJW(info: KALoginInfo, bind: Bool = false, _ completion: @escaping (Result<Bool, JCError>) -> Void) {
         requestPubKey { [weak self] result in
             guard let key = try? result.get() else {
                 completion(.failure(.pubKeyReqFailure))
@@ -248,16 +249,21 @@ extension JCAccountManager {
             do {
                 // Encrypt Password
                 let encryptedStr = try self?.encrypt(info.password, with: key)
-                let parameters = [
-                    "id": info.id,
-                    "password": encryptedStr
-                ]
                 
                 // Request To Bind StudentID
                 AF.request(
-                    "https://api.cduestc.club/api/auth/bind-id",
+                    bind
+                    ? "https://api.cduestc.club/api/auth/bind-id"
+                    : "https://api.cduestc.club/api/kc/login",
                     method: .post,
-                    parameters: parameters
+                    parameters: bind
+                    ? [
+                        "id": info.id,
+                        "password": encryptedStr
+                    ]
+                    : [
+                        "password": encryptedStr
+                    ]
                 ).response { response in
                     guard let data = response.data else {
                         completion(.failure(.noData))
@@ -269,15 +275,9 @@ extension JCAccountManager {
                             let status = (try JSON(data: data))["status"].int,
                             status == 200
                         {
-                            let json = (try JSON(data: data))["data"]
-                            if json.boolValue {
-                                Defaults[.bindingInfo] = info
-                                completion(.success(json.boolValue))
-                                print("DEBUG: Binding Successful.")
-                            } else {
-                                completion(.failure(.inputErr))
-                                print("DEBUG: Binding Failed.")
-                            }
+                            let success = (try JSON(data: data))["data"].boolValue
+                            print("DEBUG: 教务登录状态为\(success)，code为\(status)")
+                            completion(.success(success))
                         } else {
                             completion(.failure(.badRequest))
                         }
@@ -300,67 +300,53 @@ extension JCAccountManager {
      *      - completion: A block of what you wanna do with the result of one's enrollment info.
      */
     func getEnrollmentInfo(_ completion: @escaping (Result<KAEnrollment, JCError>) -> Void) {
-        guard let loginInfo = Defaults[.bindingInfo] else {
+        guard Defaults[.jwInfo] != nil else {
             completion(.failure(.notLogin))
             return
         }
         
-        requestPubKey { [weak self] result in
-            guard let key = try? result.get() else {
-                completion(.failure(.pubKeyReqFailure))
+        AF.request(
+            "https://api.cduestc.club/api/kc/info",
+            method: .post
+        ).response { response in
+            guard let data = response.data else {
+                completion(.failure(.noData))
                 return
             }
             
+            print("DEBUG: 学籍信息：\(String(data: data, encoding: .utf8))")
+            
             do {
-                let encryptedStr = try self?.encrypt(loginInfo.password, with: key) ?? ""
-                let parameters: [String: String] = ["password": encryptedStr]
-                
-                AF.request(
-                    "https://api.cduestc.club/api/kc/info",
-                    method: .post,
-                    parameters: parameters
-                ).response { response in
-                    guard let data = response.data else {
-                        completion(.failure(.noData))
-                        return
-                    }
-                    
-                    do {
-                        if
-                            let status = (try JSON(data: data))["status"].int,
-                            status == 200
-                        {
-                            let json = (try JSON(data: data))["data"]
-                            let enrollment = KAEnrollment(
-                                campus: json["所属校区"].stringValue,
-                                degree: json["学历层次"].stringValue,
-                                system: json["学制"].stringValue,
-                                dateEnrolled: json["入校时间"].stringValue,
-                                dateGraduation: json["毕业时间"].stringValue,
-                                department: json["院系"].stringValue,
-                                subject: json["专业"].stringValue,
-                                grade: json["年级"].stringValue,
-                                direction: json["方向"].stringValue,
-                                _class: json["所属班级"].stringValue,
-                                enrollmentForm: json["学习形式"].stringValue,
-                                enrollmentStatus: json["学籍状态"].stringValue,
-                                name: json["姓名"].stringValue,
-                                engName: json["英文名"].stringValue,
-                                gender: json["性别"].stringValue,
-                                studentID: json["学号"].stringValue
-                            )
-                            completion(.success(enrollment))
-                        } else {
-                            completion(.failure(.badRequest))
-                        }
-                    } catch {
-                        completion(.failure(.parseErr))
-                        print("ERR: \(error.localizedDescription)")
-                    }
+                if
+                    let status = (try JSON(data: data))["status"].int,
+                    status == 200
+                {
+                    let json = (try JSON(data: data))["data"]
+                    let enrollment = KAEnrollment(
+                        campus: json["所属校区"].stringValue,
+                        degree: json["学历层次"].stringValue,
+                        system: json["学制"].stringValue,
+                        dateEnrolled: json["入校时间"].stringValue,
+                        dateGraduation: json["毕业时间"].stringValue,
+                        department: json["院系"].stringValue,
+                        subject: json["专业"].stringValue,
+                        grade: json["年级"].stringValue,
+                        direction: json["方向"].stringValue,
+                        _class: json["所属班级"].stringValue,
+                        enrollmentForm: json["学习形式"].stringValue,
+                        enrollmentStatus: json["学籍状态"].stringValue,
+                        name: json["姓名"].stringValue,
+                        engName: json["英文名"].stringValue,
+                        gender: json["性别"].stringValue,
+                        studentID: json["学号"].stringValue
+                    )
+                    completion(.success(enrollment))
+                } else {
+                    completion(.failure(.badRequest))
                 }
             } catch {
-                completion(.failure(.encryptKeyErr))
-                print(error.localizedDescription)
+                completion(.failure(.parseErr))
+                print("ERR: \(error.localizedDescription)")
             }
         }
     }
@@ -372,49 +358,33 @@ extension JCAccountManager {
      *      - completion: A block of what you wanna do with the result of one's scores.
      */
     func getScore(_ completion: @escaping (Result<String, JCError>) -> Void) {
-        guard let loginInfo = Defaults[.bindingInfo] else {
+        guard Defaults[.jwInfo] != nil else {
             completion(.failure(.notLogin))
             return
         }
         
-        requestPubKey { [weak self] result in
-            guard let key = try? result.get() else {
-                completion(.failure(.pubKeyReqFailure))
+        AF.request(
+            "https://api.cduestc.club/api/kc/score",
+            method: .post
+        ).response { response in
+            guard let data = response.data else {
+                completion(.failure(.noData))
                 return
             }
             
             do {
-                let encryptedStr = try self?.encrypt(loginInfo.password, with: key) ?? ""
-                let parameters: [String: String] = ["password": encryptedStr]
-                
-                AF.request(
-                    "https://api.cduestc.club/api/kc/score",
-                    method: .post,
-                    parameters: parameters
-                ).response { response in
-                    guard let data = response.data else {
-                        completion(.failure(.noData))
-                        return
-                    }
-                    
-                    do {
-                        if
-                            let status = (try JSON(data: data))["status"].int,
-                            status == 200
-                        {
-                            let json = (try JSON(data: data))["data"]
-                            completion(.success(json.stringValue))
-                        } else {
-                            completion(.failure(.badRequest))
-                        }
-                    } catch {
-                        completion(.failure(.parseErr))
-                        print("ERR: \(error.localizedDescription)")
-                    }
+                if
+                    let status = (try JSON(data: data))["status"].int,
+                    status == 200
+                {
+                    let json = (try JSON(data: data))["data"]
+                    completion(.success(String(data: data, encoding: .utf8)!))
+                } else {
+                    completion(.failure(.badRequest))
                 }
             } catch {
-                completion(.failure(.encryptKeyErr))
-                print(error.localizedDescription)
+                completion(.failure(.parseErr))
+                print("ERR: \(error.localizedDescription)")
             }
         }
     }
@@ -426,7 +396,7 @@ extension JCAccountManager {
      *      - completion: A block of what you wanna do with the result of one's class table.
      */
     func getClassTable(term: Int, _ completion: @escaping (Result<String, JCError>) -> Void) {
-        guard let loginInfo = Defaults[.bindingInfo] else {
+        guard Defaults[.jwInfo] != nil else {
             completion(.failure(.notLogin))
             return
         }
@@ -436,47 +406,28 @@ extension JCAccountManager {
             return
         }
         
-        requestPubKey { [weak self] result in
-            guard let key = try? result.get() else {
-                completion(.failure(.pubKeyReqFailure))
+        AF.request(
+            "httpss://api.cduestc.club/api/kc/table",
+            method: .post
+        ).response { response in
+            guard let data = response.data else {
+                completion(.failure(.noData))
                 return
             }
             
             do {
-                let encryptedStr = try self?.encrypt(loginInfo.password, with: key) ?? ""
-                let parameters: [String: String] = [
-                    "password": encryptedStr,
-                    "term": "\(term)"
-                ]
-                
-                AF.request(
-                    "httpss://api.cduestc.club/api/kc/table",
-                    method: .post,
-                    parameters: parameters
-                ).response { response in
-                    guard let data = response.data else {
-                        completion(.failure(.noData))
-                        return
-                    }
-                    
-                    do {
-                        if
-                            let status = (try JSON(data: data))["status"].int,
-                            status == 200
-                        {
-                            let json = (try JSON(data: data))["data"]
-                            completion(.success(String(data: data, encoding: .utf8) ?? "N/A"))
-                        } else {
-                            completion(.failure(.badRequest))
-                        }
-                    } catch {
-                        completion(.failure(.parseErr))
-                        print("ERR: \(error.localizedDescription)")
-                    }
+                if
+                    let status = (try JSON(data: data))["status"].int,
+                    status == 200
+                {
+                    let json = (try JSON(data: data))["data"]
+                    completion(.success(String(data: data, encoding: .utf8) ?? "N/A"))
+                } else {
+                    completion(.failure(.badRequest))
                 }
             } catch {
-                completion(.failure(.encryptKeyErr))
-                print(error.localizedDescription)
+                completion(.failure(.parseErr))
+                print("ERR: \(error.localizedDescription)")
             }
         }
     }
