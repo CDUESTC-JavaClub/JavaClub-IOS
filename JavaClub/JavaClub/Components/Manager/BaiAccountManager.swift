@@ -14,12 +14,17 @@ class BaiAccountManage{
     static let api = "http://byjh.cduestc.cn"   //http://byjh.cduestc.cn:1356 是外网端口，但是目前失效，可能学校以后会重新启用
     static var account : BaiAccount? = nil
     
-    /*
-     务必在使用前进行初始化，如果希望登陆后立即执行某些操作，可以写在afterLogin进行回调
+    /**
+     *  务必在使用前进行初始化，如果希望登陆后立即执行某些操作，可以写在afterLogin进行回调
+     *  - Parameters:
+     *      - id: 学号
+     *      - password: 密码
+     *      - afterLogin: 登陆成功后同线程操作
+     *      - onFailed: 无法连接教务情况的操作（一般是外网无法访问）
      */
-    static func initAccount(id : String, password : String, afterLogin : @escaping (BaiAccount) -> Void){
+    static func initAccount(id : String, password : String, afterLogin : @escaping (BaiAccount) -> Void, onFailed: @escaping ()-> Void){
         let account = BaiAccount(id: id, password: password)
-        account.login(afterLogin: afterLogin);
+        account.login(afterLogin: afterLogin, onFailed: onFailed);
     }
 }
 
@@ -60,7 +65,7 @@ class BaiAccount{
     /*
      登陆后才能使用其他功能
      */
-    public func login(afterLogin : @escaping (BaiAccount) -> Void){
+    public func login(afterLogin : @escaping (BaiAccount) -> Void, onFailed: @escaping ()-> Void){
         let parameters = [
             "student_id": self.id,
             "password": self.password]
@@ -91,7 +96,7 @@ class BaiAccount{
                     afterLogin(self)
                 }
             }
-        })
+        }, onFailed: onFailed)
     }
     
     /**
@@ -235,14 +240,24 @@ class BaiAccount{
     }
     
     private func netTask(parameters : [String:String?], url : String, task : @escaping (JSON) throws -> Void){
+        self.netTask(parameters: parameters, url: url, task: task) {
+            print(url+" 请求失败！")
+        }
+    }
+    
+    private func netTask(parameters : [String:String?], url : String, task : @escaping (JSON) throws -> Void, onFailed : @escaping () -> Void){
         AF.request(
             BaiAccountManage.api+url,
             method: .post,
             parameters: parameters
         ).response { response in
             do{
-                let data = JSON(response.data!)
-                try task(data)
+                if(response.response == nil || response.response?.statusCode != 200){
+                    onFailed()
+                }else{
+                    let data = JSON(response.data!)
+                    try task(data)
+                }
             }catch{
                 print("Json error")
             }
