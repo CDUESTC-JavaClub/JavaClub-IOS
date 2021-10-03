@@ -66,6 +66,7 @@
 		B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA927044BE500E5C9C6 /* KASection.swift */; };
 		B0D3A18F27000AC80095229C /* JCMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D3A18E27000AC80095229C /* JCMainViewController.swift */; };
 		B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F900C9270300420056A016 /* ViewControllerExtension.swift */; };
+		DD283610270981B200D3D988 /* BaiAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD28360F270981B200D3D988 /* BaiAccountManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +124,7 @@
 		B0973FA927044BE500E5C9C6 /* KASection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KASection.swift; sourceTree = "<group>"; };
 		B0D3A18E27000AC80095229C /* JCMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCMainViewController.swift; sourceTree = "<group>"; };
 		B0F900C9270300420056A016 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		DD28360F270981B200D3D988 /* BaiAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiAccountManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -338,6 +340,7 @@
 				B08F6FC327003F8C0015B354 /* JCAccountManager.swift */,
 				B08F6FC127003F8C0015B354 /* JCImageManager.swift */,
 				B08F6FC227003F8C0015B354 /* DBManager.swift */,
+				DD28360F270981B200D3D988 /* BaiAccountManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				B0973FA32703FC0300E5C9C6 /* KAScoreViewController.swift in Sources */,
 				B08F6FD5270048B40015B354 /* STContentViewController.swift in Sources */,
 				B08F6FC927003FD60015B354 /* JCBindIDView.swift in Sources */,
+				DD283610270981B200D3D988 /* BaiAccountManager.swift in Sources */,
 				B08F6FAA27003EAD0015B354 /* KAUserInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
