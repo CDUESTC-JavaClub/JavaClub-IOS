@@ -61,53 +61,41 @@ class BaiAccount{
             "student_id": self.id,
             "password": self.password]
         
-        AF.request(
-            BaiAccountManage.api+"/Api/Token/login",
-            method: .post,
-            parameters: parameters
-        ).response { response in
-            do {
-                let data = response.data!
-                let status = (try JSON(data: data))["status"].stringValue
-                if status == "10000" {
-                    let json = (try JSON(data: data))["data"]
-                    self.token = json["access_token"].stringValue
+        self.netTask(parameters: parameters, url: "/Api/Token/login", task: { data in
+            let status = data["status"].stringValue
+            if status == "10000" {
+                let json = data["data"]
+                self.token = json["access_token"].stringValue
+                
+                let client = JSON(try json["client"].rawData())
+                self.userName = client["username"].stringValue
+                self.userId = client["student_id"].stringValue
+                self.identity = client["identity"].stringValue
+                self.phone = client["phone"].stringValue
+                self.headImgUrl = client["head_img"].stringValue
+                
+                
+                let parameters2 = [
+                    "token": self.token,
+                    "is_cj": "10001"]
+                self.netTask(parameters: parameters2, url: "/Api/During/information") { data in
+                    let json = try JSON(data["data"].rawData())
+                    self.sex = json["sex"].stringValue
+                    self.major = json["major"].stringValue
+                    self.clazz = json["class"].stringValue
                     
-                    let client = JSON(try json["client"].rawData())
-                    self.userName = client["username"].stringValue
-                    self.userId = client["student_id"].stringValue
-                    self.identity = client["identity"].stringValue
-                    self.phone = client["phone"].stringValue
-                    self.headImgUrl = client["head_img"].stringValue
-                    
-                    
-                    let parameters2 = [
-                        "token": self.token,
-                        "is_cj": "10001"]
-                    AF.request(
-                        BaiAccountManage.api+"/Api/During/information",
-                        method: .post,
-                        parameters: parameters2
-                    ).response { response in
-                        do {
-                            let data = response.data!
-                            let json = JSON(try (try JSON(data: data))["data"].rawData())
-                            self.sex = json["sex"].stringValue
-                            self.major = json["major"].stringValue
-                            self.clazz = json["class"].stringValue
-                            
-                            self.allActivityByType(type: .ALL, type2: .MD, limit: 10, consumer: { a in
-                                print(a.name)
-                            })
-                        }catch{
-                            print("Json error")
+                    //DEBUG
+                    self.myActivity(limit: 10, consumer: { a in
+                        if a is SignedActivity{
+                            let sa = a as! SignedActivity
+                            print("个人活动："+sa.name+String(sa.id)+" > "+sa.check_code)
+                        }else{
+                            print("普通活动："+a.name+String(a.id))
                         }
-                    }
+                    })
                 }
-            }catch{
-                print("Json error")
             }
-        }
+        })
     }
     
     /**
@@ -119,7 +107,7 @@ class BaiAccount{
      *      - consumer: 消费者
      */
     func allActivity(type : StatusType, limit : Int, consumer : @escaping (Activity) -> Void){
-        let parameters = ["status": type.rawValue]
+        let parameters = ["status": String(type.rawValue)]
         self.activitiesRequest(parameters: parameters, url: "/Api/List/index", limit: limit, consumer: consumer)
     }
     
@@ -133,30 +121,35 @@ class BaiAccount{
      *      - consumer: 消费者
      */
     func allActivityByType(type : StatusType, type2 : ActivityType, limit : Int, consumer : @escaping (Activity) -> Void){
-        let parameters = ["status": type.rawValue, "project" : type2.rawValue]
+        let parameters = ["status": String(type.rawValue), "project" : String(type2.rawValue)]
         self.activitiesRequest(parameters: parameters, url: "/Api/List/project", limit: limit, consumer: consumer)
     }
     
-    func activitiesRequest(parameters : [String:Int], url : String, limit : Int, consumer : @escaping (Activity) -> Void){
-        AF.request(
-            BaiAccountManage.api+url,
-            method: .post,
-            parameters: parameters
-        ).response { response in
-            do {
-                let data = response.data!
-                let array : [JSON] = (try JSON(data: data))["data"].arrayValue
-                let size = min(array.count, limit)
-                
-                for i in 0..<size{
-                    let item = array[i]
-                    let activity = Activity(id: item["id"].intValue, name: item["titleing"].stringValue, coverUrl: item["cover"].stringValue, hospital: item["hospital"].stringValue, start: self.string2Date(item["during_start"].stringValue), type: item["project"].stringValue, place: item["place"].stringValue, max: item["minimum"].intValue, reg: item["reg_num"].intValue, status: item["status"].stringValue)
-                    consumer(activity)
-                }
-            }catch{
-                
+    func activitiesRequest(parameters : [String:String?], url : String, limit : Int, consumer : @escaping (Activity) -> Void){
+        self.netTask(parameters: parameters, url: url, task: { data in
+            let array : [JSON] = data["data"].arrayValue
+            let size = min(array.count, limit)
+            
+            for i in 0..<size{
+                let item = array[i]
+                let activity = Activity(id: item["id"].intValue, name: item["titleing"].stringValue, coverUrl: item["cover"].stringValue, hospital: item["hospital"].stringValue, start: self.string2Date(item["during_start"].stringValue), type: item["project"].stringValue, place: item["place"].stringValue, max: item["minimum"].intValue, reg: item["reg_num"].intValue, status: item["status"].stringValue)
+                consumer(activity)
             }
-        }
+        })
+    }
+    
+    func myActivity(limit : Int, consumer : @escaping (Activity) -> Void){
+        let parameters = ["token": self.token]
+        self.netTask(parameters: parameters, url: "/Api/During/myDuring", task: { data in
+            let array : [JSON] = (data)["data"].arrayValue
+            let size = min(array.count, limit)
+            
+            for i in 0..<size{
+                let item = array[i]
+                let activity = SignedActivity(id: item["id"].intValue, name: item["titleing"].stringValue, coverUrl: item["cover"].stringValue, hospital: item["hospital"].stringValue, start: self.string2Date(item["during_start"].stringValue), type: item["project"].stringValue, place: item["place"].stringValue, max: item["minimum"].intValue, reg: item["reg_num"].intValue, status: item["status"].stringValue, qr_code: item["qr_code"].stringValue, check_code: item["check_code"].stringValue, stat: item["stat"].stringValue)
+                consumer(activity)
+            }
+        })
     }
     
     private func string2Date(_ string:String, dateFormat:String = "yyyy-MM-dd") -> Date {
@@ -165,6 +158,21 @@ class BaiAccount{
         formatter.dateFormat = dateFormat
         let date = formatter.date(from: string)
         return date!
+    }
+    
+    private func netTask(parameters : [String:String?], url : String, task : @escaping (JSON) throws -> Void){
+        AF.request(
+            BaiAccountManage.api+url,
+            method: .post,
+            parameters: parameters
+        ).response { response in
+            do{
+                let data = JSON(response.data!)
+                try task(data)
+            }catch{
+                print("Json error")
+            }
+        }
     }
 }
 
@@ -221,5 +229,18 @@ class Activity{
         self.max =  max
         self.reg = reg
         self.status = status
+    }
+}
+
+class SignedActivity : Activity{
+    var qr_code : String
+    var check_code : String
+    var stat : String
+    
+    init(id : Int, name :String, coverUrl : String, hospital : String, start : Date, type : String, place : String, max : Int, reg : Int, status : String, qr_code : String, check_code : String, stat : String){
+        self.qr_code = qr_code
+        self.check_code = check_code
+        self.stat = stat
+        super.init(id: id, name: name, coverUrl: coverUrl, hospital: hospital, start: start, type: type, place: place, max: max, reg: reg, status: status)
     }
 }
