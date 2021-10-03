@@ -20,11 +20,7 @@ class JCLoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        //DEBUG
-        BaiAccountManage.initAccount(id: "1940618833", password: "123456")
-        
+        // Do any additional setup after loading the view.        
         passwordField.isSecureTextEntry = true
     }
 }

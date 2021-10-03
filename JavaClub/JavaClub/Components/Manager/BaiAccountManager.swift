@@ -13,9 +13,13 @@ import SwiftUI
 class BaiAccountManage{
     static let api = "http://byjh.cduestc.cn"   //http://byjh.cduestc.cn:1356 是外网端口，但是目前失效，可能学校以后会重新启用
     static var account : BaiAccount? = nil
-    static func initAccount(id : String, password : String){   //学号密码
+    
+    /*
+     务必在使用前进行初始化，如果希望登陆后立即执行某些操作，可以写在afterLogin进行回调
+     */
+    static func initAccount(id : String, password : String, afterLogin : @escaping (BaiAccount) -> Void){
         let account = BaiAccount(id: id, password: password)
-        account.login();
+        account.login(afterLogin: afterLogin);
     }
 }
 
@@ -56,7 +60,7 @@ class BaiAccount{
     /*
      登陆后才能使用其他功能
      */
-    public func login(){
+    public func login(afterLogin : @escaping (BaiAccount) -> Void){
         let parameters = [
             "student_id": self.id,
             "password": self.password]
@@ -84,15 +88,7 @@ class BaiAccount{
                     self.major = json["major"].stringValue
                     self.clazz = json["class"].stringValue
                     
-                    //DEBUG
-                    self.myActivity(limit: 10, consumer: { a in
-                        if a is SignedActivity{
-                            let sa = a as! SignedActivity
-                            print("个人活动："+sa.name+String(sa.id)+" > "+sa.check_code)
-                        }else{
-                            print("普通活动："+a.name+String(a.id))
-                        }
-                    })
+                    afterLogin(self)
                 }
             }
         })
@@ -138,6 +134,13 @@ class BaiAccount{
         })
     }
     
+    /**
+     *  获取个人已报名和已参加的活动
+     *
+     *  - Parameters:
+     *      - limit: 前n个活动
+     *      - consumer: 消费者
+     */
     func myActivity(limit : Int, consumer : @escaping (Activity) -> Void){
         let parameters = ["token": self.token]
         self.netTask(parameters: parameters, url: "/Api/During/myDuring", task: { data in
@@ -150,6 +153,77 @@ class BaiAccount{
                 consumer(activity)
             }
         })
+    }
+    
+    /**
+     *  报名参加活动
+     *
+     *  - Parameters:
+     *      - activityId: 活动id
+     *      - callback: 报名结果回调
+    */
+    func signActivity(activityId : Int, callback : @escaping (String) -> Void){
+        let parameters = ["token": self.token,
+                          "url":String(activityId)]
+        self.netTask(parameters: parameters, url: "/Api/During/sign") { data in
+            callback(data["type"].stringValue)
+        }
+    }
+    
+    /**
+     *  取消参加活动
+     *
+     *  - Parameters:
+     *      - activityId: 活动id
+     *      - callback: 报名结果回调
+    */
+    func cancelActivity(activityId : Int, callback : @escaping (String) -> Void){
+        let parameters = ["token": self.token,
+                          "url":String(activityId)]
+        self.netTask(parameters: parameters, url: "/Api/During/cancel") { data in
+            callback(data["type"].stringValue)
+        }
+    }
+    
+    /**
+     *  获取用户的百叶积分
+     *
+     *  - Parameters:
+     *      - callback: 百叶积分结果回调
+    */
+    func getScore(callback : @escaping (ScoreData) -> Void){
+        let parameters = ["token": self.token]
+        self.netTask(parameters: parameters, url: "/Api/During/integral") { data in
+            let json = JSON(data["data"].rawValue)
+            let score = ScoreData(a : json["all"].intValue, b : json["bx"].intValue, c : json["dx"].intValue, d : json["md"].intValue, e : json["jm"].intValue)
+            callback(score)
+        }
+    }
+    
+    /**
+     *  获取用户的百叶积分
+     *
+     *  - Parameters:
+     *      - callback: 加分记录结果回调
+    */
+    func getScoreAddList(callback : @escaping (ScoreAdd) -> Void){
+        var parameters = ["token": self.token]
+        self.netTask(parameters: parameters, url: "/Api/Index/integral") { data in   //正常参加活动加分
+            let arr : [JSON] = data["data"].arrayValue
+            for i in 0..<arr.count {
+                let json = arr[i]
+                let dur = JSON(json["during"].rawValue)
+                callback(ScoreAdd(a: dur["titleing"].stringValue, b: json["did"].intValue, c: json["num"].intValue, d: json["project"].stringValue, e: "正常扫码签到加分"))
+            }
+        }
+        parameters["status"] = "2"
+        self.netTask(parameters: parameters, url: "/Api/Apply/record") { data in   //后台加分
+            let arr : [JSON] = data["data"].arrayValue
+            for i in 0..<arr.count {
+                let json = arr[i]
+                callback(ScoreAdd(a: json["remarks"].stringValue.replacingOccurrences(of: "\n", with: ""), b: json["did"].intValue, c: json["num"].intValue, d: json["project"].stringValue, e: json["during"].stringValue))
+            }
+        }
     }
     
     private func string2Date(_ string:String, dateFormat:String = "yyyy-MM-dd") -> Date {
@@ -244,3 +318,46 @@ class SignedActivity : Activity{
         super.init(id: id, name: name, coverUrl: coverUrl, hospital: hospital, start: start, type: type, place: place, max: max, reg: reg, status: status)
     }
 }
+
+class ScoreData{
+    /* 所有分数 */
+    var all : Int
+    /* 博学 */
+    var bx : Int
+    /* 笃行 */
+    var dx : Int
+    /* 明德 */
+    var md : Int
+    /* 尽美 */
+    var jm : Int
+    
+    init(a : Int, b : Int, c:Int, d : Int, e:Int){
+        self.all = a;
+        self.bx = b;
+        self.dx = c;
+        self.md = d;
+        self.jm = e;
+    }
+}
+
+class ScoreAdd{
+    /* 活动名称 */
+    var name : String
+    /* 活动ID */
+    var id : Int
+    /* 加分数量 */
+    var add : Int
+    /* 加分类型 */
+    var type : String
+    /* 加分理由 */
+    var reason : String
+    
+    init(a : String, b : Int, c:Int, d : String, e:String){
+        self.name = a;
+        self.id = b;
+        self.add = c;
+        self.type = d;
+        self.reason = e;
+    }
+}
+
