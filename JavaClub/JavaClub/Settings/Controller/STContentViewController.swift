@@ -83,7 +83,7 @@ extension STContentViewController {
             break
             
         case logoutBtn:
-            JCAccountManager.shared.logout(clean: true)
+            JCAccountManager.shared.logout()
             
         default:
             break

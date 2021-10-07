@@ -58,8 +58,6 @@ struct JCBindIDView: View {
                             }
                         }
                     }
-                    .disabled(verifyBinding)
-                    .foregroundColor(verifyBinding ? .secondary : .label)
                     .onReceive(Just(id)) { newText in
                         let filtered = newText.filter { "0123456789".contains($0) }
                         if filtered != newText {
@@ -153,7 +151,7 @@ struct JCBindIDView: View {
                     
                     JCAccountManager.shared.loginJW(
                         info: info,
-                        bind: verifyBinding
+                        bind: !verifyBinding
                     ) { result in
                         if
                             let response = try? result.get(),

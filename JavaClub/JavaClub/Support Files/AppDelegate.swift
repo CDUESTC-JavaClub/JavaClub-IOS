@@ -15,13 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        addObservers()
         loginIfAvailable()
         
         return true
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        JCAccountManager.shared.logout(clean: false)
+        
     }
 
     // MARK: UISceneSession Lifecycle
@@ -44,16 +45,45 @@ extension AppDelegate {
     
     func loginIfAvailable() {
         if let loginInfo = Defaults[.loginInfo] {
-            JCAccountManager.shared.login(info: loginInfo) { _ in
-                if Defaults[.sessionURL].isNil || Defaults[.sessionExpired] {
-                    JCAccountManager.shared.refreshCompletely()
-                }
-                
-                if Defaults[.avatarLocal].isNil || Defaults[.bannerLocal].isNil {
+            JCAccountManager.shared.login(info: loginInfo) { result in
+                if let success = try? result.get(), success {
+                    if Defaults[.sessionURL].isNil || Defaults[.sessionExpired] {
+                        JCAccountManager.shared.getUserMedia()
+                    }
+                    
                     JCAccountManager.shared.refreshUserMedia()
+                } else {
+                    print("DEBUG: Auto Login JC Failed.")
+                }
+            }
+            
+            if let jwInfo = Defaults[.jwInfo], let user = Defaults[.user] {
+                JCAccountManager.shared.loginJW(info: jwInfo, bind: user.studentID == nil) { result in
+                    if let success = try? result.get(), success {
+                        JCAccountManager.shared.getEnrollmentInfo { result in
+                            let enr = try? result.get()
+                            Defaults[.enrollment] = enr
+                        }
+                    } else {
+                        print("DEBUG: Auto Login JW Failed.")
+                    }
                 }
             }
         }
+    }
+    
+    private func addObservers() {
+        let _ = Defaults.observe(.user) { key in
+            JCLoginState.shared.isBound = key.newValue?.studentID != nil
+        }.tieToLifetime(of: self)
+        
+        let _ = Defaults.observe(.jwInfo) { key in
+            JCLoginState.shared.jw = !key.newValue.isNil
+        }.tieToLifetime(of: self)
+        
+        let _ = Defaults.observe(.loginInfo) { key in
+            JCLoginState.shared.jc = !key.newValue.isNil
+        }.tieToLifetime(of: self)
     }
 }
 

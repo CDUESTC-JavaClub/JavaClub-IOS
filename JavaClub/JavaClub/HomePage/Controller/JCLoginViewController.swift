@@ -44,14 +44,10 @@ extension JCLoginViewController {
                     
                     JCAccountManager.shared.getInfo { result in
                         let userInfo = try? result.get()
-                        JCLoginState.shared.jc = userInfo != nil
                         Defaults[.user] = userInfo
-                        
-                        JCLoginState.shared.jc = true
-                        JCLoginState.shared.isBound = userInfo?.studentID != nil
                     }
                     
-                    JCAccountManager.shared.refreshCompletely()
+                    JCAccountManager.shared.getUserMedia()
                     
                     self?.dismiss(animated: true)
                     self?.removeIndicator()

@@ -10,78 +10,8 @@ import SnapKit
 
 class KAScoreViewController: UIViewController {
     private lazy var dataSource = makeDataSource()
-    private var sections: [KASection] = [
-        KASection(
-            title: "2018-2019",
-            scores: [
-                KAScore(
-                    year: "2018-2019",
-                    term: 1,
-                    className: "C语言",
-                    classCode: "",
-                    classIndex: "",
-                    classType: "",
-                    points: 3,
-                    credits: 1.5,
-                    score: 80,
-                    redoScore: 0
-                ),
-                KAScore(
-                    year: "2018-2019",
-                    term: 1,
-                    className: "C++",
-                    classCode: "",
-                    classIndex: "",
-                    classType: "",
-                    points: 3,
-                    credits: 1.5,
-                    score: 80,
-                    redoScore: 0
-                ),
-                KAScore(
-                    year: "2018-2019",
-                    term: 1,
-                    className: "Java",
-                    classCode: "",
-                    classIndex: "",
-                    classType: "",
-                    points: 3,
-                    credits: 1.5,
-                    score: 80,
-                    redoScore: 0
-                ),
-            ]
-        ),
-        KASection(
-            title: "2019-2020",
-            scores: [
-                KAScore(
-                    year: "2019-2020",
-                    term: 1,
-                    className: "大数据",
-                    classCode: "",
-                    classIndex: "",
-                    classType: "",
-                    points: 3,
-                    credits: 1.5,
-                    score: 80,
-                    redoScore: 0
-                ),
-                KAScore(
-                    year: "2019-2020",
-                    term: 1,
-                    className: "马克思主义",
-                    classCode: "",
-                    classIndex: "",
-                    classType: "",
-                    points: 3,
-                    credits: 1.5,
-                    score: 80,
-                    redoScore: 0
-                ),
-            ]
-        )
-    ]
+    private let refreshControl = UIRefreshControl()
+    private var sections: [KASection] = []
     
     typealias DataSource = UICollectionViewDiffableDataSource<KASection, DataItem>
     typealias Snapshot = NSDiffableDataSourceSnapshot<KASection, DataItem>
@@ -101,13 +31,15 @@ class KAScoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "arrow.clockwise.circle.fill"),
-            style: .done,
-            target: self,
-            action: #selector(refreshDidTap)
+        refreshControl.addTarget(
+            self,
+            action: #selector(didRefresh),
+            for: .valueChanged
         )
+        collectionView.alwaysBounceVertical = true
+        collectionView.refreshControl = refreshControl
         
+//        didRefresh()
         configureCollectionView()
         applySnapshot()
     }
@@ -186,8 +118,14 @@ extension KAScoreViewController {
         }
     }
     
-    @objc private func refreshDidTap() {
+    @objc private func didRefresh() {
+        JCAccountManager.shared.getScore { result in
+            let score = try? result.get()
+            
+            print("成绩：\(score)")
+        }
         
+        refreshControl.endRefreshing()
     }
 }
 

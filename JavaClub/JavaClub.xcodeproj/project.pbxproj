@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,6 +32,10 @@
 		B02EEF3E26FDD7BD0010515A /* JCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */; };
 		B02EEF4126FDDA140010515A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF4026FDDA140010515A /* SnapKit */; };
 		B02EEF4426FDDA870010515A /* JavaClub.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B02EEF4326FDDA870010515A /* JavaClub.storyboard */; };
+		B07399BC270A98330020AEB8 /* BaiAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BB270A98330020AEB8 /* BaiAccount.swift */; };
+		B07399BE270A99220020AEB8 /* ScoreAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BD270A99220020AEB8 /* ScoreAdd.swift */; };
+		B07399C0270A99330020AEB8 /* ScoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BF270A99330020AEB8 /* ScoreData.swift */; };
+		B07399C2270A99A70020AEB8 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399C1270A99A70020AEB8 /* Activity.swift */; };
 		B08F6F9F27003E740015B354 /* KAClassItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6F9D27003E730015B354 /* KAClassItemView.swift */; };
 		B08F6FA027003E740015B354 /* KAClassTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6F9E27003E730015B354 /* KAClassTableView.swift */; };
 		B08F6FA227003E820015B354 /* KAEnrollmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FA127003E820015B354 /* KAEnrollmentView.swift */; };
@@ -90,6 +94,10 @@
 		B02EEF2826FDC0A00010515A /* JCWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCWebViewController.swift; sourceTree = "<group>"; };
 		B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCLoginViewController.swift; sourceTree = "<group>"; };
 		B02EEF4326FDDA870010515A /* JavaClub.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JavaClub.storyboard; sourceTree = "<group>"; };
+		B07399BB270A98330020AEB8 /* BaiAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiAccount.swift; sourceTree = "<group>"; };
+		B07399BD270A99220020AEB8 /* ScoreAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreAdd.swift; sourceTree = "<group>"; };
+		B07399BF270A99330020AEB8 /* ScoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreData.swift; sourceTree = "<group>"; };
+		B07399C1270A99A70020AEB8 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		B08F6F9D27003E730015B354 /* KAClassItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAClassItemView.swift; sourceTree = "<group>"; };
 		B08F6F9E27003E730015B354 /* KAClassTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAClassTableView.swift; sourceTree = "<group>"; };
 		B08F6FA127003E820015B354 /* KAEnrollmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAEnrollmentView.swift; sourceTree = "<group>"; };
@@ -145,6 +153,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B00FF0AB270EE461006688DF /* Enrollment */ = {
+			isa = PBXGroup;
+			children = (
+				B08F6FA127003E820015B354 /* KAEnrollmentView.swift */,
+			);
+			path = Enrollment;
+			sourceTree = "<group>";
+		};
 		B01AA9B426FF421E000D3E4A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				B0D3A1AE270016FF0095229C /* View */,
+				B07399BA270A98100020AEB8 /* Model */,
 			);
 			path = BaiAssistant;
 			sourceTree = "<group>";
@@ -295,6 +312,17 @@
 				B02EEF4326FDDA870010515A /* JavaClub.storyboard */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		B07399BA270A98100020AEB8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B07399BB270A98330020AEB8 /* BaiAccount.swift */,
+				B07399BD270A99220020AEB8 /* ScoreAdd.swift */,
+				B07399BF270A99330020AEB8 /* ScoreData.swift */,
+				B07399C1270A99A70020AEB8 /* Activity.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B08F6FD1270048760015B354 /* Resource */ = {
@@ -338,9 +366,9 @@
 			isa = PBXGroup;
 			children = (
 				B08F6FC327003F8C0015B354 /* JCAccountManager.swift */,
+				DD28360F270981B200D3D988 /* BaiAccountManager.swift */,
 				B08F6FC127003F8C0015B354 /* JCImageManager.swift */,
 				B08F6FC227003F8C0015B354 /* DBManager.swift */,
-				DD28360F270981B200D3D988 /* BaiAccountManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -378,8 +406,8 @@
 		B0D3A1A3270015A60095229C /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
+				B00FF0AB270EE461006688DF /* Enrollment */,
 				B0D3A1A6270015B80095229C /* ClassTable */,
-				B08F6FA127003E820015B354 /* KAEnrollmentView.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -491,7 +519,7 @@
 				};
 			};
 			buildConfigurationList = B02EEEEF26FDB2760010515A /* Build configuration list for PBXProject "JavaClub" */;
-			compatibilityVersion = "Xcode 12.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -552,9 +580,11 @@
 				B02032CE26FE05910048B6F6 /* ColorExtension.swift in Sources */,
 				B08F6FC527003F8C0015B354 /* DBManager.swift in Sources */,
 				B02EEF2926FDC0A00010515A /* JCWebViewController.swift in Sources */,
+				B07399C2270A99A70020AEB8 /* Activity.swift in Sources */,
 				B01AA9B126FF2ADD000D3E4A /* LoadingIndicatorView.swift in Sources */,
 				B02EEEFA26FDB2760010515A /* SceneDelegate.swift in Sources */,
 				B08F6FA727003EAD0015B354 /* KAHeaderView.swift in Sources */,
+				B07399BE270A99220020AEB8 /* ScoreAdd.swift in Sources */,
 				B02032CB26FE05910048B6F6 /* StringExtension.swift in Sources */,
 				B08F6FB727003F360015B354 /* BaiUserInfoView.swift in Sources */,
 				B08F6FB227003EEC0015B354 /* KAClass.swift in Sources */,
@@ -583,7 +613,9 @@
 				B0973FA32703FC0300E5C9C6 /* KAScoreViewController.swift in Sources */,
 				B08F6FD5270048B40015B354 /* STContentViewController.swift in Sources */,
 				B08F6FC927003FD60015B354 /* JCBindIDView.swift in Sources */,
+				B07399C0270A99330020AEB8 /* ScoreData.swift in Sources */,
 				DD283610270981B200D3D988 /* BaiAccountManager.swift in Sources */,
+				B07399BC270A98330020AEB8 /* BaiAccount.swift in Sources */,
 				B08F6FAA27003EAD0015B354 /* KAUserInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

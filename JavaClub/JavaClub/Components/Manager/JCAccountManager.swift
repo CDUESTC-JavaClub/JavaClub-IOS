@@ -10,6 +10,7 @@ import Alamofire
 import SwiftyJSON
 import SwiftyRSA
 import Defaults
+import WebKit
 
 enum JCError: Error {
     case pubKeyReqFailure
@@ -24,6 +25,8 @@ enum JCError: Error {
 
 class JCAccountManager {
     static let shared = JCAccountManager()
+    
+    let javaClubURL = URL(string: "https://study.cduestc.club/index.php")!
     
     private init() {}
 }
@@ -52,7 +55,7 @@ extension JCAccountManager {
                 let parameters = [
                     "id": info.username,
                     "password": encryptedStr,
-                    "remember-me": "false"
+                    "remember-me": "true"
                 ]
                 
                 // Request Login
@@ -93,35 +96,29 @@ extension JCAccountManager {
      *
      *  By default, JavaClub app will logout one's account by the time they terminate the app.
      */
-    func logout(clean: Bool) {
-        AF.request("https://api.cduestc.club/api/auth/logout").response { response in
-            guard let data = response.data else { return }
-            
-            do {
-                if
-                    let status = (try JSON(data: data))["status"].int,
-                    status == 200
-                {
-                    if clean {
-                        Defaults[.avatarURL] = nil
-                        Defaults[.avatarLocal] = nil
-                        Defaults[.bannerURL] = nil
-                        Defaults[.bannerLocal] = nil
-                        Defaults[.loginInfo] = nil
-                        Defaults[.sessionURL] = nil
-                        Defaults[.user] = nil
-                        Defaults[.jwInfo] = nil
-                        Defaults[.sessionExpired] = false
-                        Defaults[.enrollment] = nil
-                        JCLoginState.shared.jc = false
-                        JCLoginState.shared.jw = false
-                    }
-                    print("DEBUG: Logged Out Successfully.")
-                }
-            } catch {
-                print("ERR: \(error.localizedDescription)")
-            }
-        }
+    func logout() {
+        AF.request("https://api.cduestc.club/api/auth/logout").response { _ in }
+        
+        Defaults[.avatarURL] = nil
+        Defaults[.avatarLocal] = nil
+        Defaults[.bannerURL] = nil
+        Defaults[.bannerLocal] = nil
+        Defaults[.loginInfo] = nil
+        Defaults[.sessionURL] = nil
+        Defaults[.user] = nil
+        Defaults[.jwInfo] = nil
+        Defaults[.sessionExpired] = false
+        Defaults[.enrollment] = nil
+        
+        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+        
+        WKWebsiteDataStore
+            .default()
+            .removeData(
+                ofTypes: [WKWebsiteDataTypeCookies],
+                modifiedSince: Date.distantPast,
+                completionHandler: {}
+            )
     }
     
     /**
@@ -131,7 +128,7 @@ extension JCAccountManager {
      *      - completion: A block of what you wanna do with the user's info.
      */
     func getInfo(_ completion: @escaping (Result<JCUser, JCError>) -> Void) {
-        AF.request("https://api.cduestc.club/api/auth/info").response { response in
+        AF.request("https://api.cduestc.club/api/auth/info").response { [unowned self] response in
             guard let data = response.data else {
                 completion(.failure(.noData))
                 return
@@ -156,6 +153,7 @@ extension JCAccountManager {
                     
                     completion(.success(user))
                 } else {
+                    logout()
                     completion(.failure(.badRequest))
                 }
             } catch {
@@ -187,6 +185,11 @@ extension JCAccountManager {
                 }
             }
         }
+        
+        getInfo { result in
+            let user = try? result.get()
+            Defaults[.user] = user
+        }
     }
     
     /**
@@ -195,7 +198,7 @@ extension JCAccountManager {
      *  - Parameters:
      *      - completion: A block that tells the process is complete.
      */
-    func refreshCompletely() {
+    func getUserMedia() {
         // Refresh User Media
         if Defaults[.sessionURL] == nil {
             JCAccountManager.shared.getSession { urlStr, avatar, banner in
@@ -271,12 +274,12 @@ extension JCAccountManager {
                     }
                     
                     do {
+                        print("DEBUG: \((try JSON(data: data))["status"].int)")
                         if
                             let status = (try JSON(data: data))["status"].int,
                             status == 200
                         {
                             let success = (try JSON(data: data))["data"].boolValue
-                            print("DEBUG: 教务登录状态为\(success)，code为\(status)")
                             completion(.success(success))
                         } else {
                             completion(.failure(.badRequest))
@@ -313,8 +316,6 @@ extension JCAccountManager {
                 completion(.failure(.noData))
                 return
             }
-            
-            print("DEBUG: 学籍信息：\(String(data: data, encoding: .utf8))")
             
             do {
                 if

@@ -66,12 +66,15 @@ extension JCMainViewController {
         } else {
             loginVC = nil
             
-            if webVC == nil, let url = Defaults[.sessionURL] { 
+            if webVC == nil, let sessionURL = Defaults[.sessionURL], !Defaults[.sessionExpired] {
+                let url = Defaults[.sessionExpired] ? JCAccountManager.shared.javaClubURL : sessionURL
                 webVC = JCWebViewController(url: url)
                 view.addSubview(webVC.view)
                 webVC.view.snp.makeConstraints { make in
                     make.edges.equalTo(view)
                 }
+                
+                Defaults[.sessionExpired] = true
             }
         }
     }
