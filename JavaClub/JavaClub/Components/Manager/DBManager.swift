@@ -61,7 +61,7 @@ class DBManager {
                 UserDefaults.standard.set(true, forKey: "is_db_created")
             }
         } catch {
-            print("ERR: \(error.localizedDescription)")
+            print("DEBUG: \(error.localizedDescription)")
         }
     }
 }

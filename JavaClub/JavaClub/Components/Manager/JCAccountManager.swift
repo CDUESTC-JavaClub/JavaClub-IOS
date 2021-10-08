@@ -80,12 +80,12 @@ extension JCAccountManager {
                             completion(.failure(.badRequest))
                         }
                     } catch {
-                        print("ERR: (Load JSON) \(error.localizedDescription)")
+                        print("DEBUG: (Load JSON) \(error.localizedDescription)")
                         completion(.failure(.parseErr))
                     }
                 }
             } catch {
-                print("ERR: (Encrypt) \(error.localizedDescription)")
+                print("DEBUG: (Encrypt) \(error.localizedDescription)")
                 completion(.failure(.encryptKeyErr))
             }
         }
@@ -158,7 +158,7 @@ extension JCAccountManager {
                 }
             } catch {
                 completion(.failure(.parseErr))
-                print("ERR: \(error.localizedDescription)")
+                print("DEBUG: \(error.localizedDescription)")
             }
         }
     }
@@ -201,7 +201,7 @@ extension JCAccountManager {
     func getUserMedia() {
         // Refresh User Media
         if Defaults[.sessionURL] == nil {
-            JCAccountManager.shared.getSession { urlStr, avatar, banner in
+            JCAccountManager.shared.getSession { [unowned self] urlStr, avatar, banner in
                 Defaults[.sessionURL] = urlStr
                 
                 if let avatar = avatar {
@@ -212,23 +212,7 @@ extension JCAccountManager {
                     Defaults[.bannerURL] = banner
                 }
                 
-                // Save Avatar To Local If Possible
-                if let avatar = avatar {
-                    JCImageManager.shared.loadImage(url: avatar) { img in
-                        if let img = img {
-                            Defaults[.avatarLocal] = JCImageManager.shared.saveToDisk("avatar", img: img)
-                        }
-                    }
-                }
-                
-                // Save Banner To Local If Possible
-                if let banner = banner {
-                    JCImageManager.shared.loadImage(url: banner) { img in
-                        if let img = img {
-                            Defaults[.bannerLocal] = JCImageManager.shared.saveToDisk("banner", img: img)
-                        }
-                    }
-                }
+                refreshUserMedia()
             }
         }
     }
@@ -286,12 +270,12 @@ extension JCAccountManager {
                         }
                     } catch {
                         completion(.failure(.parseErr))
-                        print("ERR: \(error.localizedDescription)")
+                        print("DEBUG: \(error.localizedDescription)")
                     }
                 }
             } catch {
                 completion(.failure(.encryptKeyErr))
-                print("ERR: (Encrypt) \(error.localizedDescription)")
+                print("DEBUG: (Encrypt) \(error.localizedDescription)")
             }
         }
     }
@@ -347,7 +331,7 @@ extension JCAccountManager {
                 }
             } catch {
                 completion(.failure(.parseErr))
-                print("ERR: \(error.localizedDescription)")
+                print("DEBUG: \(error.localizedDescription)")
             }
         }
     }
@@ -385,7 +369,7 @@ extension JCAccountManager {
                 }
             } catch {
                 completion(.failure(.parseErr))
-                print("ERR: \(error.localizedDescription)")
+                print("DEBUG: \(error.localizedDescription)")
             }
         }
     }
@@ -428,7 +412,7 @@ extension JCAccountManager {
                 }
             } catch {
                 completion(.failure(.parseErr))
-                print("ERR: \(error.localizedDescription)")
+                print("DEBUG: \(error.localizedDescription)")
             }
         }
     }
@@ -462,7 +446,7 @@ extension JCAccountManager {
                 completion(.success(jsonStr))
             } catch {
                 completion(.failure(.parseErr))
-                print("ERR: \(error.localizedDescription)")
+                print("DEBUG: \(error.localizedDescription)")
             }
         }
     }
@@ -495,7 +479,7 @@ extension JCAccountManager {
                 }
             } catch {
                 completion(nil, nil, nil)
-                print("ERR: \(error.localizedDescription)")
+                print("DEBUG: \(error.localizedDescription)")
             }
         }
     }

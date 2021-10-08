@@ -231,57 +231,87 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHk-mo-6jK" customClass="DesignableView" customModule="JavaClub" customModuleProvider="target">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHk-mo-6jK" customClass="DesignableView" customModule="JavaClub" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="300" width="374" height="80"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MKa-xi-hB7">
-                                                <rect key="frame" x="10" y="10" width="364" height="20"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dLn-6U-6oB">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtL-WK-14m">
-                                                        <rect key="frame" x="0.0" y="0.0" width="364" height="20"/>
-                                                        <color key="tintColor" systemColor="labelColor"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise" catalog="system" title="检查更新" imagePadding="10" titleAlignment="leading"/>
-                                                    </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1yL-UB-QHk" customClass="TappableItemView" customModule="JavaClub" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="39.5"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.clockwise" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="znR-Wv-fm2">
+                                                                <rect key="frame" x="10" y="9" width="18" height="20"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="LvG-cK-QpQ"/>
+                                                                    <constraint firstAttribute="width" constant="18" id="kjY-wf-bkA"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="检查更新" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="woY-SQ-dvI">
+                                                                <rect key="frame" x="38" y="11.5" width="57.5" height="17"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="39.5" id="PP8-SJ-CpD"/>
+                                                            <constraint firstItem="znR-Wv-fm2" firstAttribute="centerY" secondItem="1yL-UB-QHk" secondAttribute="centerY" id="Uih-ea-6zC"/>
+                                                            <constraint firstItem="woY-SQ-dvI" firstAttribute="centerY" secondItem="1yL-UB-QHk" secondAttribute="centerY" id="jhn-2q-sW8"/>
+                                                            <constraint firstItem="znR-Wv-fm2" firstAttribute="leading" secondItem="1yL-UB-QHk" secondAttribute="leading" constant="10" id="l36-7p-wBJ"/>
+                                                            <constraint firstItem="woY-SQ-dvI" firstAttribute="leading" secondItem="znR-Wv-fm2" secondAttribute="trailing" constant="10" id="tUO-FL-Blv"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPp-iI-fQk">
+                                                        <rect key="frame" x="0.0" y="39.5" width="374" height="1"/>
+                                                        <color key="backgroundColor" systemColor="separatorColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="GhT-EK-im5"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubo-rE-Dso" customClass="TappableItemView" customModule="JavaClub" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="40.5" width="374" height="39.5"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="power" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Jf1-EJ-5Jg">
+                                                                <rect key="frame" x="10" y="8.5" width="20" height="22"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="20" id="FNR-KA-Zdv"/>
+                                                                    <constraint firstAttribute="height" constant="22.5" id="Xty-iD-38E"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="退出登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Smt-bZ-P1E">
+                                                                <rect key="frame" x="40" y="11.5" width="57.5" height="17"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="Smt-bZ-P1E" firstAttribute="leading" secondItem="Jf1-EJ-5Jg" secondAttribute="trailing" constant="10" id="E3w-dH-HHb"/>
+                                                            <constraint firstAttribute="height" constant="39.5" id="Otq-Jl-LAe"/>
+                                                            <constraint firstItem="Jf1-EJ-5Jg" firstAttribute="centerY" secondItem="ubo-rE-Dso" secondAttribute="centerY" id="X3q-xj-wgM"/>
+                                                            <constraint firstItem="Smt-bZ-P1E" firstAttribute="centerY" secondItem="ubo-rE-Dso" secondAttribute="centerY" id="eAG-Zc-B5e"/>
+                                                            <constraint firstItem="Jf1-EJ-5Jg" firstAttribute="leading" secondItem="ubo-rE-Dso" secondAttribute="leading" constant="10" id="qKB-ga-yHc"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="FpP-AU-AZf"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ubo-rE-Dso" secondAttribute="trailing" id="H73-So-Zc4"/>
+                                                    <constraint firstAttribute="trailing" secondItem="1yL-UB-QHk" secondAttribute="trailing" id="aIz-mI-xOv"/>
+                                                    <constraint firstItem="ubo-rE-Dso" firstAttribute="leading" secondItem="dLn-6U-6oB" secondAttribute="leading" id="nyb-ic-sjb"/>
+                                                    <constraint firstItem="1yL-UB-QHk" firstAttribute="leading" secondItem="dLn-6U-6oB" secondAttribute="leading" id="rnB-oY-Xog"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lvb-RZ-jKD">
-                                                <rect key="frame" x="9" y="50" width="365" height="20"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWn-2K-Xwr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="365" height="20"/>
-                                                        <color key="tintColor" systemColor="labelColor"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" image="power" catalog="system" title="退出登录" imagePadding="9"/>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="98X-vq-IsT"/>
-                                                </constraints>
-                                            </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPp-iI-fQk">
-                                                <rect key="frame" x="20" y="39.5" width="334" height="1"/>
-                                                <color key="backgroundColor" systemColor="separatorColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="GhT-EK-im5"/>
-                                                </constraints>
-                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="aPp-iI-fQk" secondAttribute="trailing" constant="20" id="5Pa-Vc-Jvj"/>
-                                            <constraint firstItem="aPp-iI-fQk" firstAttribute="centerY" secondItem="NHk-mo-6jK" secondAttribute="centerY" id="5pt-Ik-AY0"/>
-                                            <constraint firstItem="MKa-xi-hB7" firstAttribute="leading" secondItem="NHk-mo-6jK" secondAttribute="leading" constant="10" id="Amb-xL-R7Y"/>
-                                            <constraint firstAttribute="trailing" secondItem="Lvb-RZ-jKD" secondAttribute="trailing" id="BBd-rQ-Twb"/>
-                                            <constraint firstItem="Lvb-RZ-jKD" firstAttribute="leading" secondItem="NHk-mo-6jK" secondAttribute="leading" constant="9" id="DMh-nI-fGE"/>
                                             <constraint firstAttribute="height" constant="80" id="Gsb-Fj-Em8"/>
-                                            <constraint firstItem="aPp-iI-fQk" firstAttribute="leading" secondItem="NHk-mo-6jK" secondAttribute="leading" constant="20" id="V0t-g7-Z4U"/>
-                                            <constraint firstAttribute="trailing" secondItem="MKa-xi-hB7" secondAttribute="trailing" id="tFU-h0-KlK"/>
-                                            <constraint firstAttribute="bottom" secondItem="Lvb-RZ-jKD" secondAttribute="bottom" constant="10" id="wNE-IN-urU"/>
-                                            <constraint firstItem="MKa-xi-hB7" firstAttribute="top" secondItem="NHk-mo-6jK" secondAttribute="top" constant="10" id="zFg-nR-TWg"/>
+                                            <constraint firstAttribute="bottom" secondItem="dLn-6U-6oB" secondAttribute="bottom" id="SUg-Ev-Gz7"/>
+                                            <constraint firstItem="dLn-6U-6oB" firstAttribute="leading" secondItem="NHk-mo-6jK" secondAttribute="leading" id="q4c-Rx-NCb"/>
+                                            <constraint firstAttribute="trailing" secondItem="dLn-6U-6oB" secondAttribute="trailing" id="rvJ-1M-0yc"/>
+                                            <constraint firstItem="dLn-6U-6oB" firstAttribute="top" secondItem="NHk-mo-6jK" secondAttribute="top" id="xqU-yT-ygk"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -313,9 +343,9 @@
                         <outlet property="avatar" destination="ueD-IB-fdK" id="1zS-EJ-uS0"/>
                         <outlet property="banner" destination="UFv-Kj-7eu" id="BmO-CK-imQ"/>
                         <outlet property="bindingSection" destination="xj9-8l-yUJ" id="Ra3-cy-FBh"/>
-                        <outlet property="checkUpdateBtn" destination="jtL-WK-14m" id="V9x-vp-BdY"/>
+                        <outlet property="checkUpdateItem" destination="1yL-UB-QHk" id="Hfu-Cg-AFk"/>
                         <outlet property="emailLabel" destination="fzN-km-bZy" id="YIJ-yk-zAU"/>
-                        <outlet property="logoutBtn" destination="TWn-2K-Xwr" id="hhg-09-dC4"/>
+                        <outlet property="logoutItem" destination="ubo-rE-Dso" id="PMc-7q-zRr"/>
                         <outlet property="optionSection" destination="FeE-uZ-gGn" id="oX7-g2-JON"/>
                         <outlet property="signatureLabel" destination="peL-ct-QeK" id="buG-Cq-obQ"/>
                         <outlet property="studentIDLabel" destination="aKt-Zg-n3P" id="dr9-D4-GJq"/>

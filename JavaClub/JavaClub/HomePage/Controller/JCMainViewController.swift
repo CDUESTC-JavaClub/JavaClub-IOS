@@ -66,7 +66,7 @@ extension JCMainViewController {
         } else {
             loginVC = nil
             
-            if webVC == nil, let sessionURL = Defaults[.sessionURL], !Defaults[.sessionExpired] {
+            if webVC == nil, let sessionURL = Defaults[.sessionURL] {
                 let url = Defaults[.sessionExpired] ? JCAccountManager.shared.javaClubURL : sessionURL
                 webVC = JCWebViewController(url: url)
                 view.addSubview(webVC.view)

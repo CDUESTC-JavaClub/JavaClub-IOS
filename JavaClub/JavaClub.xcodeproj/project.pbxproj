@@ -36,14 +36,6 @@
 		B07399BE270A99220020AEB8 /* ScoreAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BD270A99220020AEB8 /* ScoreAdd.swift */; };
 		B07399C0270A99330020AEB8 /* ScoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BF270A99330020AEB8 /* ScoreData.swift */; };
 		B07399C2270A99A70020AEB8 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399C1270A99A70020AEB8 /* Activity.swift */; };
-		B08F6F9F27003E740015B354 /* KAClassItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6F9D27003E730015B354 /* KAClassItemView.swift */; };
-		B08F6FA027003E740015B354 /* KAClassTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6F9E27003E730015B354 /* KAClassTableView.swift */; };
-		B08F6FA227003E820015B354 /* KAEnrollmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FA127003E820015B354 /* KAEnrollmentView.swift */; };
-		B08F6FA727003EAD0015B354 /* KAHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FA327003EAD0015B354 /* KAHeaderView.swift */; };
-		B08F6FA827003EAD0015B354 /* KAAnnouncementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FA427003EAD0015B354 /* KAAnnouncementView.swift */; };
-		B08F6FA927003EAD0015B354 /* KAActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FA527003EAD0015B354 /* KAActionView.swift */; };
-		B08F6FAA27003EAD0015B354 /* KAUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FA627003EAD0015B354 /* KAUserInfoView.swift */; };
-		B08F6FAC27003EBA0015B354 /* KAContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAB27003EBA0015B354 /* KAContentView.swift */; };
 		B08F6FB027003EEC0015B354 /* KALoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAD27003EEB0015B354 /* KALoginInfo.swift */; };
 		B08F6FB127003EEC0015B354 /* KAEnrollment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAE27003EEB0015B354 /* KAEnrollment.swift */; };
 		B08F6FB227003EEC0015B354 /* KAClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAF27003EEB0015B354 /* KAClass.swift */; };
@@ -66,8 +58,12 @@
 		B08F6FD5270048B40015B354 /* STContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FD4270048B40015B354 /* STContentViewController.swift */; };
 		B0973FA32703FC0300E5C9C6 /* KAScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA22703FC0300E5C9C6 /* KAScoreViewController.swift */; };
 		B0973FA62703FE4200E5C9C6 /* KAScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA52703FE4200E5C9C6 /* KAScore.swift */; };
-		B0973FA8270447E300E5C9C6 /* KAScoreViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA7270447E300E5C9C6 /* KAScoreViewContainer.swift */; };
 		B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA927044BE500E5C9C6 /* KASection.swift */; };
+		B0B84350270FE6F800C19B9B /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B8434F270FE6F800C19B9B /* RefreshableScrollView.swift */; };
+		B0B84352270FEB1700C19B9B /* KAContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B84351270FEB1700C19B9B /* KAContentViewController.swift */; };
+		B0B84354270FEBE300C19B9B /* KAMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B84353270FEBE300C19B9B /* KAMainViewController.swift */; };
+		B0B84357270FEC1B00C19B9B /* KcAssistant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B84356270FEC1B00C19B9B /* KcAssistant.storyboard */; };
+		B0B8435B271039F600C19B9B /* TappableItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B8435A271039F600C19B9B /* TappableItemView.swift */; };
 		B0D3A18F27000AC80095229C /* JCMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D3A18E27000AC80095229C /* JCMainViewController.swift */; };
 		B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F900C9270300420056A016 /* ViewControllerExtension.swift */; };
 		DD283610270981B200D3D988 /* BaiAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD28360F270981B200D3D988 /* BaiAccountManager.swift */; };
@@ -98,14 +94,6 @@
 		B07399BD270A99220020AEB8 /* ScoreAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreAdd.swift; sourceTree = "<group>"; };
 		B07399BF270A99330020AEB8 /* ScoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreData.swift; sourceTree = "<group>"; };
 		B07399C1270A99A70020AEB8 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
-		B08F6F9D27003E730015B354 /* KAClassItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAClassItemView.swift; sourceTree = "<group>"; };
-		B08F6F9E27003E730015B354 /* KAClassTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAClassTableView.swift; sourceTree = "<group>"; };
-		B08F6FA127003E820015B354 /* KAEnrollmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAEnrollmentView.swift; sourceTree = "<group>"; };
-		B08F6FA327003EAD0015B354 /* KAHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAHeaderView.swift; sourceTree = "<group>"; };
-		B08F6FA427003EAD0015B354 /* KAAnnouncementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAAnnouncementView.swift; sourceTree = "<group>"; };
-		B08F6FA527003EAD0015B354 /* KAActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAActionView.swift; sourceTree = "<group>"; };
-		B08F6FA627003EAD0015B354 /* KAUserInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAUserInfoView.swift; sourceTree = "<group>"; };
-		B08F6FAB27003EBA0015B354 /* KAContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAContentView.swift; sourceTree = "<group>"; };
 		B08F6FAD27003EEB0015B354 /* KALoginInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KALoginInfo.swift; sourceTree = "<group>"; };
 		B08F6FAE27003EEB0015B354 /* KAEnrollment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAEnrollment.swift; sourceTree = "<group>"; };
 		B08F6FAF27003EEB0015B354 /* KAClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAClass.swift; sourceTree = "<group>"; };
@@ -128,8 +116,12 @@
 		B08F6FD4270048B40015B354 /* STContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STContentViewController.swift; sourceTree = "<group>"; };
 		B0973FA22703FC0300E5C9C6 /* KAScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAScoreViewController.swift; sourceTree = "<group>"; };
 		B0973FA52703FE4200E5C9C6 /* KAScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAScore.swift; sourceTree = "<group>"; };
-		B0973FA7270447E300E5C9C6 /* KAScoreViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAScoreViewContainer.swift; sourceTree = "<group>"; };
 		B0973FA927044BE500E5C9C6 /* KASection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KASection.swift; sourceTree = "<group>"; };
+		B0B8434F270FE6F800C19B9B /* RefreshableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableScrollView.swift; sourceTree = "<group>"; };
+		B0B84351270FEB1700C19B9B /* KAContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAContentViewController.swift; sourceTree = "<group>"; };
+		B0B84353270FEBE300C19B9B /* KAMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAMainViewController.swift; sourceTree = "<group>"; };
+		B0B84356270FEC1B00C19B9B /* KcAssistant.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KcAssistant.storyboard; sourceTree = "<group>"; };
+		B0B8435A271039F600C19B9B /* TappableItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableItemView.swift; sourceTree = "<group>"; };
 		B0D3A18E27000AC80095229C /* JCMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCMainViewController.swift; sourceTree = "<group>"; };
 		B0F900C9270300420056A016 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		DD28360F270981B200D3D988 /* BaiAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiAccountManager.swift; sourceTree = "<group>"; };
@@ -153,14 +145,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B00FF0AB270EE461006688DF /* Enrollment */ = {
-			isa = PBXGroup;
-			children = (
-				B08F6FA127003E820015B354 /* KAEnrollmentView.swift */,
-			);
-			path = Enrollment;
-			sourceTree = "<group>";
-		};
 		B01AA9B426FF421E000D3E4A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +178,8 @@
 			children = (
 				B02032D226FE37C20048B6F6 /* DesignableView.swift */,
 				B01AA9B026FF2ADD000D3E4A /* LoadingIndicatorView.swift */,
+				B0B8434F270FE6F800C19B9B /* RefreshableScrollView.swift */,
+				B0B8435A271039F600C19B9B /* TappableItemView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -281,8 +267,8 @@
 			isa = PBXGroup;
 			children = (
 				B0973FA42703FC3B00E5C9C6 /* Controller */,
-				B0D3A197270015450095229C /* View */,
 				B0D3A17A2700004D0095229C /* Model */,
+				B0B84355270FEBFF00C19B9B /* Resource */,
 			);
 			path = KcAssistant;
 			sourceTree = "<group>";
@@ -333,21 +319,22 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		B0973FA12703FBAC00E5C9C6 /* Score */ = {
-			isa = PBXGroup;
-			children = (
-				B0973FA22703FC0300E5C9C6 /* KAScoreViewController.swift */,
-				B0973FA7270447E300E5C9C6 /* KAScoreViewContainer.swift */,
-			);
-			path = Score;
-			sourceTree = "<group>";
-		};
 		B0973FA42703FC3B00E5C9C6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B0973FA12703FBAC00E5C9C6 /* Score */,
+				B0B84353270FEBE300C19B9B /* KAMainViewController.swift */,
+				B0B84351270FEB1700C19B9B /* KAContentViewController.swift */,
+				B0973FA22703FC0300E5C9C6 /* KAScoreViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		B0B84355270FEBFF00C19B9B /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				B0B84356270FEC1B00C19B9B /* KcAssistant.storyboard */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		B0D3A17A2700004D0095229C /* Model */ = {
@@ -380,45 +367,6 @@
 				B08F6FCC270040010015B354 /* JCUser.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		B0D3A197270015450095229C /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B0D3A19A270015790095229C /* Subview */,
-				B08F6FAB27003EBA0015B354 /* KAContentView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		B0D3A19A270015790095229C /* Subview */ = {
-			isa = PBXGroup;
-			children = (
-				B0D3A1A3270015A60095229C /* DetailView */,
-				B08F6FA327003EAD0015B354 /* KAHeaderView.swift */,
-				B08F6FA427003EAD0015B354 /* KAAnnouncementView.swift */,
-				B08F6FA627003EAD0015B354 /* KAUserInfoView.swift */,
-				B08F6FA527003EAD0015B354 /* KAActionView.swift */,
-			);
-			path = Subview;
-			sourceTree = "<group>";
-		};
-		B0D3A1A3270015A60095229C /* DetailView */ = {
-			isa = PBXGroup;
-			children = (
-				B00FF0AB270EE461006688DF /* Enrollment */,
-				B0D3A1A6270015B80095229C /* ClassTable */,
-			);
-			path = DetailView;
-			sourceTree = "<group>";
-		};
-		B0D3A1A6270015B80095229C /* ClassTable */ = {
-			isa = PBXGroup;
-			children = (
-				B08F6F9D27003E730015B354 /* KAClassItemView.swift */,
-				B08F6F9E27003E730015B354 /* KAClassTableView.swift */,
-			);
-			path = ClassTable;
 			sourceTree = "<group>";
 		};
 		B0D3A1AB270015E50095229C /* View */ = {
@@ -550,6 +498,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0B84357270FEC1B00C19B9B /* KcAssistant.storyboard in Resources */,
 				B02EEF4426FDDA870010515A /* JavaClub.storyboard in Resources */,
 				B02EEF0426FDB2780010515A /* LaunchScreen.storyboard in Resources */,
 				B02EEF0126FDB2780010515A /* Assets.xcassets in Resources */,
@@ -565,13 +514,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B08F6FBA27003F360015B354 /* BaiScoreMiniView.swift in Sources */,
-				B08F6FA827003EAD0015B354 /* KAAnnouncementView.swift in Sources */,
-				B08F6FA027003E740015B354 /* KAClassTableView.swift in Sources */,
-				B08F6F9F27003E740015B354 /* KAClassItemView.swift in Sources */,
 				B08F6FCD270040010015B354 /* JCLoginInfo.swift in Sources */,
 				B02EEEF826FDB2760010515A /* AppDelegate.swift in Sources */,
+				B0B84352270FEB1700C19B9B /* KAContentViewController.swift in Sources */,
+				B0B8435B271039F600C19B9B /* TappableItemView.swift in Sources */,
 				B0D3A18F27000AC80095229C /* JCMainViewController.swift in Sources */,
-				B08F6FAC27003EBA0015B354 /* KAContentView.swift in Sources */,
 				B08F6FCE270040010015B354 /* JCUser.swift in Sources */,
 				B08F6FD02700401E0015B354 /* STMainViewController.swift in Sources */,
 				B08F6FBD27003F410015B354 /* BaiActionView.swift in Sources */,
@@ -583,7 +530,6 @@
 				B07399C2270A99A70020AEB8 /* Activity.swift in Sources */,
 				B01AA9B126FF2ADD000D3E4A /* LoadingIndicatorView.swift in Sources */,
 				B02EEEFA26FDB2760010515A /* SceneDelegate.swift in Sources */,
-				B08F6FA727003EAD0015B354 /* KAHeaderView.swift in Sources */,
 				B07399BE270A99220020AEB8 /* ScoreAdd.swift in Sources */,
 				B02032CB26FE05910048B6F6 /* StringExtension.swift in Sources */,
 				B08F6FB727003F360015B354 /* BaiUserInfoView.swift in Sources */,
@@ -596,16 +542,15 @@
 				B08F6FC427003F8C0015B354 /* JCImageManager.swift in Sources */,
 				B0973FA62703FE4200E5C9C6 /* KAScore.swift in Sources */,
 				B08F6FC627003F8C0015B354 /* JCAccountManager.swift in Sources */,
-				B08F6FA227003E820015B354 /* KAEnrollmentView.swift in Sources */,
-				B0973FA8270447E300E5C9C6 /* KAScoreViewContainer.swift in Sources */,
 				B02032D026FE05910048B6F6 /* AvailabilityCheck.swift in Sources */,
+				B0B84350270FE6F800C19B9B /* RefreshableScrollView.swift in Sources */,
 				B08F6FC027003F4D0015B354 /* BAContentView.swift in Sources */,
 				B02EEF3E26FDD7BD0010515A /* JCLoginViewController.swift in Sources */,
 				B08F6FB027003EEC0015B354 /* KALoginInfo.swift in Sources */,
 				B08F6FB127003EEC0015B354 /* KAEnrollment.swift in Sources */,
-				B08F6FA927003EAD0015B354 /* KAActionView.swift in Sources */,
 				B08F6FB827003F360015B354 /* BaiScoreDetailView.swift in Sources */,
 				B02032CD26FE05910048B6F6 /* ImageExtension.swift in Sources */,
+				B0B84354270FEBE300C19B9B /* KAMainViewController.swift in Sources */,
 				B02032CF26FE05910048B6F6 /* ViewExtension.swift in Sources */,
 				B01AA9B726FF4C55000D3E4A /* JCLoginState.swift in Sources */,
 				B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */,
@@ -616,7 +561,6 @@
 				B07399C0270A99330020AEB8 /* ScoreData.swift in Sources */,
 				DD283610270981B200D3D988 /* BaiAccountManager.swift in Sources */,
 				B07399BC270A98330020AEB8 /* BaiAccount.swift in Sources */,
-				B08F6FAA27003EAD0015B354 /* KAUserInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

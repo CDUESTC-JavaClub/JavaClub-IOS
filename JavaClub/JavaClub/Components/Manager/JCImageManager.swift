@@ -57,7 +57,7 @@ extension JCImageManager {
                 
                 return fileURL
             } catch {
-                print("ERR: \(error.localizedDescription)")
+                print("DEBUG: \(error.localizedDescription)")
             }
         }
         

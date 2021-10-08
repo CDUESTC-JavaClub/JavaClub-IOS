@@ -44,18 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
     
     func loginIfAvailable() {
-        if let loginInfo = Defaults[.loginInfo] {
-            JCAccountManager.shared.login(info: loginInfo) { result in
-                if let success = try? result.get(), success {
-                    if Defaults[.sessionURL].isNil || Defaults[.sessionExpired] {
-                        JCAccountManager.shared.getUserMedia()
-                    }
-                    
-                    JCAccountManager.shared.refreshUserMedia()
-                } else {
-                    print("DEBUG: Auto Login JC Failed.")
-                }
-            }
+        if Defaults[.sessionExpired] {
+            JCAccountManager.shared.refreshUserMedia()
             
             if let jwInfo = Defaults[.jwInfo], let user = Defaults[.user] {
                 JCAccountManager.shared.loginJW(info: jwInfo, bind: user.studentID == nil) { result in

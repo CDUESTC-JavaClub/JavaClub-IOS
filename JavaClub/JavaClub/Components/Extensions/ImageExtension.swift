@@ -106,3 +106,26 @@ extension CIImage {
 }
 
 #endif
+
+
+#if canImport(UIKit)
+
+import UIKit
+
+extension UIImage {
+    
+    static func fromColor(_ color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+
+        let renderer = UIGraphicsImageRenderer(bounds: rect)
+
+        let img = renderer.image { ctx in
+            ctx.cgContext.setFillColor(color.cgColor)
+            ctx.cgContext.fill(rect)
+        }
+
+        return img
+    }
+}
+
+#endif

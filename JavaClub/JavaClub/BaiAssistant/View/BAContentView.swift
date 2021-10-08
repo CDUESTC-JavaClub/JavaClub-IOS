@@ -25,7 +25,6 @@ struct BAContentView: View {
                 }
                 .listStyle(PlainListStyle())
                 .environment(\.horizontalSizeClass, .regular)
-                .offset(y: -40)
                 
                 Spacer()
             }

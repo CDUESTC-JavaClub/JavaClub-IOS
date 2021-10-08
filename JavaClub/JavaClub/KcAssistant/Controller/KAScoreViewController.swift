@@ -122,7 +122,7 @@ extension KAScoreViewController {
         JCAccountManager.shared.getScore { result in
             let score = try? result.get()
             
-            print("成绩：\(score)")
+            print("DEBUG: 成绩：\(score)")
         }
         
         refreshControl.endRefreshing()
