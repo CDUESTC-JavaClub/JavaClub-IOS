@@ -32,6 +32,10 @@
 		B02EEF3E26FDD7BD0010515A /* JCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */; };
 		B02EEF4126FDDA140010515A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF4026FDDA140010515A /* SnapKit */; };
 		B02EEF4426FDDA870010515A /* JavaClub.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B02EEF4326FDDA870010515A /* JavaClub.storyboard */; };
+		B04FEE2E27113D750065FFB6 /* STTappableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE2D27113D750065FFB6 /* STTappableViewCell.swift */; };
+		B04FEE302711607A0065FFB6 /* STSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE2F2711607A0065FFB6 /* STSection.swift */; };
+		B04FEE32271168080065FFB6 /* STSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE31271168080065FFB6 /* STSwitchTableViewCell.swift */; };
+		B04FEE3427116CC80065FFB6 /* STStaticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE3327116CC80065FFB6 /* STStaticTableViewCell.swift */; };
 		B07399BC270A98330020AEB8 /* BaiAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BB270A98330020AEB8 /* BaiAccount.swift */; };
 		B07399BE270A99220020AEB8 /* ScoreAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BD270A99220020AEB8 /* ScoreAdd.swift */; };
 		B07399C0270A99330020AEB8 /* ScoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BF270A99330020AEB8 /* ScoreData.swift */; };
@@ -90,6 +94,10 @@
 		B02EEF2826FDC0A00010515A /* JCWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCWebViewController.swift; sourceTree = "<group>"; };
 		B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCLoginViewController.swift; sourceTree = "<group>"; };
 		B02EEF4326FDDA870010515A /* JavaClub.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JavaClub.storyboard; sourceTree = "<group>"; };
+		B04FEE2D27113D750065FFB6 /* STTappableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTappableViewCell.swift; sourceTree = "<group>"; };
+		B04FEE2F2711607A0065FFB6 /* STSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STSection.swift; sourceTree = "<group>"; };
+		B04FEE31271168080065FFB6 /* STSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STSwitchTableViewCell.swift; sourceTree = "<group>"; };
+		B04FEE3327116CC80065FFB6 /* STStaticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STStaticTableViewCell.swift; sourceTree = "<group>"; };
 		B07399BB270A98330020AEB8 /* BaiAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiAccount.swift; sourceTree = "<group>"; };
 		B07399BD270A99220020AEB8 /* ScoreAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreAdd.swift; sourceTree = "<group>"; };
 		B07399BF270A99330020AEB8 /* ScoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreData.swift; sourceTree = "<group>"; };
@@ -188,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				B02E4F1E2701BB7C00EA3DDB /* SettingsOption.swift */,
+				B04FEE2F2711607A0065FFB6 /* STSection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -277,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				B02E4F202701C35E00EA3DDB /* Controller */,
+				B04FEE2C27113D5E0065FFB6 /* View */,
 				B02E4F1D2701BB6000EA3DDB /* Model */,
 				B08F6FD1270048760015B354 /* Resource */,
 			);
@@ -298,6 +308,16 @@
 				B02EEF4326FDDA870010515A /* JavaClub.storyboard */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		B04FEE2C27113D5E0065FFB6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B04FEE2D27113D750065FFB6 /* STTappableViewCell.swift */,
+				B04FEE31271168080065FFB6 /* STSwitchTableViewCell.swift */,
+				B04FEE3327116CC80065FFB6 /* STStaticTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B07399BA270A98100020AEB8 /* Model */ = {
@@ -527,6 +547,7 @@
 				B02032CE26FE05910048B6F6 /* ColorExtension.swift in Sources */,
 				B08F6FC527003F8C0015B354 /* DBManager.swift in Sources */,
 				B02EEF2926FDC0A00010515A /* JCWebViewController.swift in Sources */,
+				B04FEE2E27113D750065FFB6 /* STTappableViewCell.swift in Sources */,
 				B07399C2270A99A70020AEB8 /* Activity.swift in Sources */,
 				B01AA9B126FF2ADD000D3E4A /* LoadingIndicatorView.swift in Sources */,
 				B02EEEFA26FDB2760010515A /* SceneDelegate.swift in Sources */,
@@ -544,6 +565,7 @@
 				B08F6FC627003F8C0015B354 /* JCAccountManager.swift in Sources */,
 				B02032D026FE05910048B6F6 /* AvailabilityCheck.swift in Sources */,
 				B0B84350270FE6F800C19B9B /* RefreshableScrollView.swift in Sources */,
+				B04FEE3427116CC80065FFB6 /* STStaticTableViewCell.swift in Sources */,
 				B08F6FC027003F4D0015B354 /* BAContentView.swift in Sources */,
 				B02EEF3E26FDD7BD0010515A /* JCLoginViewController.swift in Sources */,
 				B08F6FB027003EEC0015B354 /* KALoginInfo.swift in Sources */,
@@ -558,8 +580,10 @@
 				B0973FA32703FC0300E5C9C6 /* KAScoreViewController.swift in Sources */,
 				B08F6FD5270048B40015B354 /* STContentViewController.swift in Sources */,
 				B08F6FC927003FD60015B354 /* JCBindIDView.swift in Sources */,
+				B04FEE32271168080065FFB6 /* STSwitchTableViewCell.swift in Sources */,
 				B07399C0270A99330020AEB8 /* ScoreData.swift in Sources */,
 				DD283610270981B200D3D988 /* BaiAccountManager.swift in Sources */,
+				B04FEE302711607A0065FFB6 /* STSection.swift in Sources */,
 				B07399BC270A98330020AEB8 /* BaiAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
