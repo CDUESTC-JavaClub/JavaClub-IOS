@@ -192,16 +192,22 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCW-a3-a6J" customClass="TappableItemView" customModule="JavaClub" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="46"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7cA-qZ-fcT">
-                                                                        <rect key="frame" x="10" y="13.5" width="20" height="19"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="score_icon" translatesAutoresizingMaskIntoConstraints="NO" id="7cA-qZ-fcT">
+                                                                        <rect key="frame" x="10" y="10.5" width="25" height="25"/>
                                                                         <color key="tintColor" systemColor="labelColor"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" constant="20" id="1wk-VN-Gi0"/>
-                                                                            <constraint firstAttribute="height" constant="20" id="WPU-vg-0ND"/>
+                                                                            <constraint firstAttribute="width" constant="25" id="1wk-VN-Gi0"/>
+                                                                            <constraint firstAttribute="height" constant="25" id="WPU-vg-0ND"/>
                                                                         </constraints>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                <integer key="value" value="8"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                                        </userDefinedRuntimeAttributes>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="学期成绩查询" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DrE-5Q-rNq">
-                                                                        <rect key="frame" x="40" y="15" width="80" height="16"/>
+                                                                        <rect key="frame" x="45" y="15" width="80" height="16"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -236,16 +242,22 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gr7-gZ-C1B" customClass="TappableItemView" customModule="JavaClub" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="47" width="374" height="46"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6aH-MZ-QWm">
-                                                                        <rect key="frame" x="10" y="13.5" width="20" height="19"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="classtable_icon" translatesAutoresizingMaskIntoConstraints="NO" id="6aH-MZ-QWm">
+                                                                        <rect key="frame" x="10" y="10.5" width="25" height="25"/>
                                                                         <color key="tintColor" systemColor="labelColor"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="20" id="QgJ-Fz-tLq"/>
-                                                                            <constraint firstAttribute="width" constant="20" id="lNJ-hU-r7d"/>
+                                                                            <constraint firstAttribute="height" constant="25" id="QgJ-Fz-tLq"/>
+                                                                            <constraint firstAttribute="width" constant="25" id="lNJ-hU-r7d"/>
                                                                         </constraints>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                <integer key="value" value="8"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                                        </userDefinedRuntimeAttributes>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="课程表查询" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLW-1y-DaB">
-                                                                        <rect key="frame" x="40" y="15" width="66.5" height="16"/>
+                                                                        <rect key="frame" x="45" y="15" width="66.5" height="16"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -280,16 +292,22 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HMV-Tc-lCy" customClass="TappableItemView" customModule="JavaClub" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="94" width="374" height="46"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="08Y-ge-Ukx">
-                                                                        <rect key="frame" x="10" y="13.5" width="20" height="19"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enrollment_icon" translatesAutoresizingMaskIntoConstraints="NO" id="08Y-ge-Ukx">
+                                                                        <rect key="frame" x="10" y="10.5" width="25" height="25"/>
                                                                         <color key="tintColor" systemColor="labelColor"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="20" id="T0I-NM-BPN"/>
-                                                                            <constraint firstAttribute="width" constant="20" id="kQf-yx-dJq"/>
+                                                                            <constraint firstAttribute="height" constant="25" id="T0I-NM-BPN"/>
+                                                                            <constraint firstAttribute="width" constant="25" id="kQf-yx-dJq"/>
                                                                         </constraints>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                <integer key="value" value="8"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="学籍信息查询" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXN-D2-Z9k">
-                                                                        <rect key="frame" x="40" y="15" width="80" height="16"/>
+                                                                        <rect key="frame" x="45" y="15" width="80" height="16"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -395,12 +413,12 @@
     </scenes>
     <resources>
         <image name="chevron.forward" catalog="system" width="96" height="128"/>
-        <image name="clock" catalog="system" width="128" height="121"/>
+        <image name="classtable_icon" width="500" height="500"/>
+        <image name="enrollment_icon" width="500" height="500"/>
         <image name="kc" width="200" height="200"/>
         <image name="kc_annouce" width="24" height="24"/>
         <image name="kc_student" width="843.5" height="933.5"/>
-        <image name="pencil.circle" catalog="system" width="128" height="121"/>
-        <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="score_icon" width="500" height="500"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -58,9 +58,7 @@ class WebView {
         }
         
         let preferences = WKWebpagePreferences()
-        if #available(iOS 14.0, *) {
-            preferences.allowsContentJavaScript = true
-        }
+        preferences.allowsContentJavaScript = true
         let configuration = WKWebViewConfiguration()
         configuration.defaultWebpagePreferences = preferences
         
