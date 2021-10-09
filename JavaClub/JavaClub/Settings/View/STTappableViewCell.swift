@@ -67,6 +67,7 @@ extension STTappableViewCell {
         var configuration = defaultContentConfiguration()
         configuration.text = model.title
         configuration.image = model.icon
+        configuration.textProperties.color = .label
         
         contentConfiguration = configuration
     }

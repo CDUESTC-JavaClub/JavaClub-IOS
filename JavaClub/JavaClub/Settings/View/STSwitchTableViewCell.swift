@@ -90,6 +90,7 @@ extension STSwitchTableViewCell {
         
         var configuration = defaultContentConfiguration()
         configuration.text = model.title
+        configuration.textProperties.color = .label
         configuration.image = model.icon
         
         _switch.isOn = model.isOn

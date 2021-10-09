@@ -79,12 +79,14 @@ extension STContentViewController {
             if !Defaults[.useSystemAppearance], sender.isEnabled {
                 view.window?.overrideUserInterfaceStyle = sender.isOn ? .dark : .light
             }
+            print("DEBUG: Switch 1 Toggled.")
             
         case 1:
             Defaults[.useSystemAppearance] = sender.isOn
             if sender.isOn {
                 view.window?.overrideUserInterfaceStyle = .unspecified
             }
+            print("DEBUG: Switch 2 Toggled.")
             
         default:
             break
@@ -106,7 +108,6 @@ extension STContentViewController {
         tableView.register(STStaticTableViewCell.self, forCellReuseIdentifier: STStaticTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.contentInset = .init(top: 10, left: 0, bottom: 0, right: 0)
     }
     
     private func configureModels() {
@@ -140,7 +141,7 @@ extension STContentViewController {
                     
                 })),
                 .tappable(model: STTappableOption(title: "退出登录", icon: UIImage(named: "logout_icon"), handler: {
-                    
+                    JCAccountManager.shared.logout()
                 })),
             ]),
         ]
