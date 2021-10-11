@@ -18,7 +18,7 @@ class JCTabBarController: UITabBarController {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .systemBackground
-        tabBar.tintColor = .label
+        tabBar.tintColor = UIColor(hex: "60d1ae")
         tabBar.standardAppearance = appearance
         if #available(iOS 15.0, *) {
             tabBar.scrollEdgeAppearance = appearance
@@ -38,7 +38,7 @@ extension JCTabBarController {
         viewControllers = [
             createNavController(for: JCMainViewController(), title: "JavaClub", image: UIImage(systemName: "house")!),
             createNavController(for: KAMainViewController(), title: "教务", image: UIImage(systemName: "square.and.pencil")!),
-            createNavController(for: baVC, title: "百叶计划", image: UIImage(systemName: "chart.pie")!),
+            createNavController(for: UIViewController(), title: "百叶计划", image: UIImage(systemName: "chart.pie")!),
             createNavController(for: STMainViewController(), title: "设置", image: UIImage(systemName: "gear")!),
         ]
     }

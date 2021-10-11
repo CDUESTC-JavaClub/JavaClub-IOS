@@ -54,20 +54,16 @@ class STSwitchTableViewCell: UITableViewCell {
         let size: CGFloat = contentView.frame.size.height - 12
         iconImageView.frame = CGRect(x: 15, y: 6, width: size, height: size)
         
-        _switch.sizeToFit()
-        _switch.frame = CGRect(
-            x: contentView.frame.size.width - _switch.frame.size.width - 20,
-            y: (contentView.frame.size.height - _switch.frame.size.height) / 2,
-            width: _switch.frame.size.width,
-            height: _switch.frame.size.height
-        )
+        label.snp.makeConstraints { make in
+            make.leading.equalTo(contentView.snp.leading).inset(20)
+            make.centerY.equalTo(contentView.snp.centerY)
+        }
         
-        label.frame = CGRect(
-            x: 25 + iconImageView.frame.size.width,
-            y: 0,
-            width: contentView.frame.size.width - 20 - iconImageView.frame.size.width,
-            height: contentView.frame.size.height
-        )
+        _switch.snp.makeConstraints { make in
+            make.trailing.equalTo(contentView.snp.trailing).inset(20)
+            make.leading.equalTo(label.snp.trailing)
+            make.centerY.equalTo(label.snp.centerY)
+        }
     }
     
     override func prepareForReuse() {
@@ -82,21 +78,20 @@ class STSwitchTableViewCell: UITableViewCell {
 
 extension STSwitchTableViewCell {
     
-    func configure(with model: STSwitchOption) {
+    func configure(with model: STSwitchOption, completion: (UISwitch) -> Void) {
         selectionStyle = .none
-        isUserInteractionEnabled = false
         
         cellModel = model
         
-        var configuration = defaultContentConfiguration()
-        configuration.text = model.title
-        configuration.textProperties.color = .label
-        configuration.image = model.icon
+        label.text = model.title
+        label.textColor = .label
+        label.font = .systemFont(ofSize: 14)
         
+        _switch.onTintColor = UIColor(hex: "60D1AE")
         _switch.isOn = model.isOn
         _switch.addTarget(self, action: #selector(switchDidToggle(_:)), for: .valueChanged)
         
-        contentConfiguration = configuration
+        completion(_switch)
     }
     
     @IBAction func switchDidToggle(_ sender: UISwitch) {

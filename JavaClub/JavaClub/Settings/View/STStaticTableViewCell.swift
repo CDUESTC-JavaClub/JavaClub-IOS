@@ -44,13 +44,16 @@ class STStaticTableViewCell: UITableViewCell {
         contentView.clipsToBounds = true
         accessoryType = .none
         
+        label.snp.makeConstraints { make in
+            make.leading.equalTo(contentView.snp.leading).inset(20)
+            make.centerY.equalTo(contentView.snp.centerY)
+        }
+        
         value.snp.makeConstraints { make in
-            make.trailing.equalTo(contentView.snp.trailing)
+            make.trailing.equalTo(contentView.snp.trailing).inset(20)
             make.leading.equalTo(label.snp.trailing)
             make.centerY.equalTo(label.snp.centerY)
         }
-        
-        accessoryView = value
     }
     
     required init?(coder: NSCoder) {
@@ -59,18 +62,6 @@ class STStaticTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        let size: CGFloat = contentView.frame.size.height - 12
-        iconImageView.frame = CGRect(x: 15, y: 6, width: size, height: size)
-        
-        label.frame = CGRect(
-            x: 25 + iconImageView.frame.size.width,
-            y: 0,
-            width: contentView.frame.size.width - 20 - iconImageView.frame.size.width,
-            height: contentView.frame.size.height
-        )
-        
-        
     }
     
     override func prepareForReuse() {
@@ -89,13 +80,11 @@ extension STStaticTableViewCell {
         selectionStyle = .none
         isUserInteractionEnabled = false
         
-        var configuration = defaultContentConfiguration()
-        configuration.text = model.title
-        configuration.image = model.icon
-        configuration.textProperties.color = .label
+        label.text = model.title
+        label.textColor = .label
+        label.font = .systemFont(ofSize: 14)
         value.text = model.value
-        value.textColor = .label
-        
-        contentConfiguration = configuration
+        value.textColor = .secondaryLabel
+        value.font = .systemFont(ofSize: 14)
     }
 }

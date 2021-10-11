@@ -73,13 +73,6 @@ extension View {
             }
         }
     }
-}
-
-
-// MARK: iOS Methods -
-#if canImport(UIKit)
-
-extension View {
     
     /// Set if enable the scroll function in `List`s.
     func scrollEnabled(_ value: Bool) -> some View {
@@ -99,11 +92,30 @@ extension View {
     }
 }
 
+
+// MARK: iOS Methods -
+#if canImport(UIKit)
+
+extension UIView {
+    
+    /// Hide keyboard when tap outside the TextField
+    @objc func hideKeyboard() {
+        UIApplication.shared.sendAction(
+            #selector(UIResponder.resignFirstResponder),
+            to: nil,
+            from: nil,
+            for: nil
+        )
+    }
+}
+
 #endif
 
 
 // MARK: macOS Methods -
 #if canImport(Cocoa)
+
+import Cocoa
 
 extension NSView {
     

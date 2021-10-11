@@ -21,7 +21,8 @@ class JCLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        passwordField.isSecureTextEntry = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
     }
 }
 
@@ -89,5 +90,10 @@ extension JCLoginViewController {
         loginBtn.isEnabled = true
         createBtn.isEnabled = true
         ForgotBtn.isEnabled = true
+    }
+    
+    @objc private func dismissKeyboard() {
+        usernameField.hideKeyboard()
+        passwordField.hideKeyboard()
     }
 }

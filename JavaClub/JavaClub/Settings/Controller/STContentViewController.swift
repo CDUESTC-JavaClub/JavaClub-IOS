@@ -17,19 +17,8 @@ class STContentViewController: UIViewController {
     @IBOutlet var userMediaStack: UIStackView!
     @IBOutlet var tableView: UITableView!
     
-    private var useDarkModeSwitch: UISwitch = {
-        let mySwitch = UISwitch()
-        mySwitch.onTintColor = .systemBlue
-        
-        return mySwitch
-    }()
-    
-    private var useSystemAppearanceSwitch: UISwitch = {
-        let mySwitch = UISwitch()
-        mySwitch.onTintColor = .systemBlue
-        
-        return mySwitch
-    }()
+    private var useDarkModeSwitch: UISwitch!
+    private var useSystemAppearanceSwitch: UISwitch!
     
     var models: [STSection] = []
     
@@ -39,7 +28,6 @@ class STContentViewController: UIViewController {
         // Do any additional setup after loading the view.
         let _ = Defaults.observe(.user) { [weak self] obj in
             self?.didUpdateLoginState(obj.newValue)
-            self?.tableView.reloadData()
         }.tieToLifetime(of: self)
         
         let _ = Defaults.observe(.avatarLocal) { [weak self] obj in
@@ -72,21 +60,24 @@ class STContentViewController: UIViewController {
 // MARK: Actions -
 extension STContentViewController {
     
-    private func switchDidToggle(_ sender: UISwitch, tag: Int) {
-        switch tag {
-        case 0:
+    private func switchDidToggle(_ sender: UISwitch) {
+        switch sender {
+        case useDarkModeSwitch:
             Defaults[.useDarkMode] = sender.isOn
-            if !Defaults[.useSystemAppearance], sender.isEnabled {
+            if !useSystemAppearanceSwitch.isOn {
                 view.window?.overrideUserInterfaceStyle = sender.isOn ? .dark : .light
             }
-            print("DEBUG: Switch 1 Toggled.")
             
-        case 1:
-            Defaults[.useSystemAppearance] = sender.isOn
+        case useSystemAppearanceSwitch:
             if sender.isOn {
+                useDarkModeSwitch.isOn = true
+                useDarkModeSwitch.isEnabled = false
                 view.window?.overrideUserInterfaceStyle = .unspecified
+            } else {
+                useDarkModeSwitch.isEnabled = true
+                view.window?.overrideUserInterfaceStyle = useDarkModeSwitch.isOn ? .dark : .light
             }
-            print("DEBUG: Switch 2 Toggled.")
+            Defaults[.useSystemAppearance] = sender.isOn
             
         default:
             break
@@ -123,7 +114,7 @@ extension STContentViewController {
                     isOn: Defaults[.useDarkMode],
                     isEnabled: !Defaults[.useSystemAppearance],
                     handler: { [unowned self] _switch in
-                        switchDidToggle(_switch, tag: 0)
+                        switchDidToggle(_switch)
                     }
                 )),
                 .switchable(model: STSwitchOption(
@@ -132,7 +123,7 @@ extension STContentViewController {
                     isOn: Defaults[.useSystemAppearance],
                     isEnabled: true,
                     handler: { [unowned self] _switch in
-                        switchDidToggle(_switch, tag: 1)
+                        switchDidToggle(_switch)
                     }
                 )),
             ]),
@@ -175,6 +166,8 @@ extension STContentViewController {
             avatar.image = UIImage.fromColor(.clear)
             banner.image = UIImage.fromColor(.clear)
         }
+        
+        configureModels()
     }
     
     private func updateUserMedia(avatarURL: URL?, bannerURL: URL?) {
@@ -205,6 +198,7 @@ extension STContentViewController {
 }
 
 
+// MARK: TableView Delegate
 extension STContentViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -223,6 +217,7 @@ extension STContentViewController: UITableViewDelegate {
 }
 
 
+// MARK: TableView DataSource
 extension STContentViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -257,7 +252,18 @@ extension STContentViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            cell.configure(with: model)
+            cell.configure(with: model) { [unowned self] _switch in
+                if model.title == "使用深色模式" {
+                    useDarkModeSwitch = _switch
+                    
+                    if Defaults[.useSystemAppearance] {
+                        useDarkModeSwitch.isOn = true
+                        useDarkModeSwitch.isEnabled = false
+                    }
+                } else if model.title == "主题外观跟随系统" {
+                    useSystemAppearanceSwitch = _switch
+                }
+            }
             
             return cell
             
