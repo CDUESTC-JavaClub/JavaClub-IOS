@@ -20,6 +20,15 @@
         }
       },
       {
+        "package": "DeviceKit",
+        "repositoryURL": "https://github.com/devicekit/DeviceKit",
+        "state": {
+          "branch": null,
+          "revision": "6b58d9a61ea0a7fd23f2e6092821dea2342c2f5a",
+          "version": "4.5.0"
+        }
+      },
+      {
         "package": "Kingfisher",
         "repositoryURL": "https://github.com/onevcat/Kingfisher",
         "state": {

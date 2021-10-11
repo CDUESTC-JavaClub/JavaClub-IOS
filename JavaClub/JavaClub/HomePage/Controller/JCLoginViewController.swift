@@ -9,6 +9,7 @@ import UIKit
 import SwiftUI
 import Defaults
 import SnapKit
+import DeviceKit
 
 class JCLoginViewController: UIViewController {
     private let indicatorView = _UIHostingView(rootView: LoadingIndicatorView())
@@ -16,18 +17,51 @@ class JCLoginViewController: UIViewController {
     @IBOutlet var passwordField: UITextField!
     @IBOutlet var loginBtn: UIButton!
     @IBOutlet var createBtn: UIButton!
-    @IBOutlet var ForgotBtn: UIButton!
+    @IBOutlet var forgotBtn: UIButton!
+    @IBOutlet var agreeCheckBtn: JCCheckboxButton!
+    @IBOutlet var privacyBtn: UIButton!
+    @IBOutlet var mainStackView: UIStackView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
+        
+        setup()
     }
 }
 
 
 extension JCLoginViewController {
+    
+    private func setup() {
+        loginBtn.setTitle("", for: .normal)
+        loginBtn.layer.cornerRadius = loginBtn.frame.width / 2
+        
+        usernameField.layer.borderWidth = 1
+        usernameField.layer.borderColor = UIColor.label.cgColor
+        usernameField.layer.cornerRadius = usernameField.frame.height / 2
+        usernameField.clipsToBounds = true
+        usernameField.autocorrectionType = .no
+        
+        passwordField.layer.borderWidth = 1
+        passwordField.layer.borderColor = UIColor.label.cgColor
+        passwordField.layer.cornerRadius = passwordField.frame.height / 2
+        passwordField.clipsToBounds = true
+        passwordField.autocorrectionType = .no
+        
+        privacyBtn.setAttributedTitle(
+            NSAttributedString(string: "隐私条款", attributes: [
+                .underlineStyle: NSUnderlineStyle.single.rawValue,
+                .foregroundColor: UIColor.label
+            ]),
+            for: .normal
+        )
+        
+        let isSmallDevice = Device.current.isOneOf(Device.smallScreenModels)
+        mainStackView.spacing = isSmallDevice ? 30 : 100
+    }
     
     @IBAction func login() {
         if
@@ -36,35 +70,59 @@ extension JCLoginViewController {
             !username.isEmpty,
             !password.isEmpty
         {
-            showIndicator()
             
-            let info = JCLoginInfo(username: username, password: password)
-            JCAccountManager.shared.login(info: info) { [weak self] result in
-                if let success = try? result.get(), success {
-                    Defaults[.loginInfo] = info
-                    
-                    JCAccountManager.shared.getInfo { result in
-                        let userInfo = try? result.get()
-                        Defaults[.user] = userInfo
+            if agreeCheckBtn.flag {
+                showIndicator()
+                
+                let info = JCLoginInfo(username: username, password: password)
+                JCAccountManager.shared.login(info: info) { [weak self] result in
+                    if let success = try? result.get(), success {
+                        Defaults[.loginInfo] = info
+                        
+                        JCAccountManager.shared.getInfo { result in
+                            let userInfo = try? result.get()
+                            Defaults[.user] = userInfo
+                        }
+                        
+                        JCAccountManager.shared.getUserMedia()
+                        
+                        self?.dismiss(animated: true)
+                        self?.removeIndicator()
+                        UITabBar.appearance().isHidden = false
+                    } else {
+                        self?.removeIndicator()
+                        
+                        let alert = UIAlertController(title: "提示", message: "登录失败，请检查输入或网络连接是否通畅！", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+                        self?.present(alert, animated: true, completion: nil)
                     }
-                    
-                    JCAccountManager.shared.getUserMedia()
-                    
-                    self?.dismiss(animated: true)
-                    self?.removeIndicator()
-                    UITabBar.appearance().isHidden = false
-                } else {
-                    self?.removeIndicator()
-                    
-                    let alert = UIAlertController(title: "提示", message: "登录失败，请检查输入或网络连接是否通畅！", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
-                    self?.present(alert, animated: true, completion: nil)
                 }
+            } else {
+                let alert = UIAlertController(title: "提示", message: "在使用本软件之前，您需要同意我们的隐私条款！", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
             }
+            
         } else {
             let alert = UIAlertController(title: "提示", message: "用户名和密码都不能为空，请检查输入！", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func agreeCheckboxDidSwitch(_ sender: JCCheckboxButton) {
+        sender.flag.toggle()
+        
+        if sender.flag {
+            sender.setImage(UIImage(named: "checked"), for: .normal)
+        } else {
+            sender.setImage(UIImage(named: "unchecked"), for: .normal)
+        }
+    }
+    
+    @IBAction func privacyBtnDidClick(_ sender: UIButton) {
+        if let privacyURL = URL(string: "https://study.cduestc.club/index.php?help/privacy-policy/") {
+            UIApplication.shared.open(privacyURL)
         }
     }
     
@@ -79,7 +137,7 @@ extension JCLoginViewController {
         
         loginBtn.isEnabled = false
         createBtn.isEnabled = false
-        ForgotBtn.isEnabled = false
+        forgotBtn.isEnabled = false
     }
     
     private func removeIndicator() {
@@ -89,7 +147,7 @@ extension JCLoginViewController {
         
         loginBtn.isEnabled = true
         createBtn.isEnabled = true
-        ForgotBtn.isEnabled = true
+        forgotBtn.isEnabled = true
     }
     
     @objc private func dismissKeyboard() {

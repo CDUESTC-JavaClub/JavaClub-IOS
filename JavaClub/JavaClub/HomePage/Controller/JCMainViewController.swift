@@ -7,11 +7,11 @@
 
 import UIKit
 import Defaults
+import DeviceKit
 
 class JCMainViewController: UIViewController {
     private var loginVC: JCLoginViewController!
     private var webVC: JCWebViewController!
-    
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -21,13 +21,6 @@ class JCMainViewController: UIViewController {
             object: nil,
             queue: .main,
             using: didUpdateLoginState(_:)
-        )
-        
-        NotificationCenter.default.addObserver(
-            forName: .didUpdateJWLoginState,
-            object: nil,
-            queue: .main,
-            using: didUpdateJWLoginState(_:)
         )
     }
     
@@ -66,20 +59,42 @@ extension JCMainViewController {
         } else {
             loginVC = nil
             
+            let isSmallScreen = Device.current.isOneOf(Device.smallScreenModels)
+            
             if webVC == nil, let sessionURL = Defaults[.sessionURL] {
                 let url = Defaults[.sessionExpired] ? JCAccountManager.shared.javaClubURL : sessionURL
                 webVC = JCWebViewController(url: url)
                 view.addSubview(webVC.view)
                 webVC.view.snp.makeConstraints { make in
-                    make.edges.equalTo(view)
+                    make.top.equalTo(view).inset(isSmallScreen ? 20 : 40)
+                    make.leading.trailing.bottom.equalTo(view)
                 }
                 
                 Defaults[.sessionExpired] = true
             }
         }
     }
+}
+
+
+extension Device {
     
-    private func didUpdateJWLoginState(_ notification: Notification) {
-        
-    }
+    static let smallScreenModels: [Device] = [
+        .iPhone6s,
+        .iPhone6sPlus,
+        .iPhone7,
+        .iPhone7Plus,
+        .iPhone8,
+        .iPhone8Plus,
+        .iPhoneSE,
+        .iPhoneSE2,
+        .simulator(.iPhone6s),
+        .simulator(.iPhone6sPlus),
+        .simulator(.iPhone7),
+        .simulator(.iPhone7Plus),
+        .simulator(.iPhone8),
+        .simulator(.iPhone8Plus),
+        .simulator(.iPhoneSE),
+        .simulator(.iPhoneSE2),
+    ]
 }

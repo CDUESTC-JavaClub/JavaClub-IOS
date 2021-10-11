@@ -21,17 +21,17 @@
                             <userLayoutGuide location="16" affinity="maxX"/>
                         </userGuides>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="BKF-aJ-5Sq">
-                                <rect key="frame" x="0.0" y="114" width="414" height="738"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="BKF-aJ-5Sq">
+                                <rect key="frame" x="0.0" y="114" width="414" height="782"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="g2o-uA-6rn">
-                                        <rect key="frame" x="0.0" y="8" width="414" height="120"/>
+                                        <rect key="frame" x="113.5" y="8" width="187.5" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="mQD-K9-akR"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="49" translatesAutoresizingMaskIntoConstraints="NO" id="zGl-zs-fWP">
-                                        <rect key="frame" x="0.0" y="228" width="414" height="231"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="zGl-zs-fWP">
+                                        <rect key="frame" x="0.0" y="228" width="414" height="252"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="e9l-ac-agj">
                                                 <rect key="frame" x="16" y="8" width="382" height="116"/>
@@ -39,44 +39,28 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EpY-Rd-oKf" customClass="DesignableView" customModule="JavaClub" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="用户名/邮箱" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="axa-ga-oqA">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用户名/邮箱" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="axa-ga-oqA">
                                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="50" id="k3R-YL-ph3"/>
-                                                                </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="IQi-cn-4Q6"/>
                                                             <constraint firstItem="axa-ga-oqA" firstAttribute="leading" secondItem="EpY-Rd-oKf" secondAttribute="leading" id="Vyq-Qs-v8q"/>
                                                             <constraint firstAttribute="bottom" secondItem="axa-ga-oqA" secondAttribute="bottom" id="myH-5y-GJO"/>
                                                             <constraint firstItem="axa-ga-oqA" firstAttribute="top" secondItem="EpY-Rd-oKf" secondAttribute="top" id="pnc-hO-lLh"/>
                                                             <constraint firstAttribute="trailing" secondItem="axa-ga-oqA" secondAttribute="trailing" id="xKN-7m-Nlz"/>
                                                         </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                                <real key="value" value="10"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                                <real key="value" value="0.10000000000000001"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetY">
-                                                                <real key="value" value="-3"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hGi-WU-SDA" customClass="DesignableView" customModule="JavaClub" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="66" width="382" height="50"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="FW3-n3-SBr">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="FW3-n3-SBr">
                                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -85,72 +69,82 @@
                                                             <constraint firstAttribute="bottom" secondItem="FW3-n3-SBr" secondAttribute="bottom" id="8Zc-bz-XNK"/>
                                                             <constraint firstItem="FW3-n3-SBr" firstAttribute="top" secondItem="hGi-WU-SDA" secondAttribute="top" id="kiE-HK-NOf"/>
                                                             <constraint firstAttribute="trailing" secondItem="FW3-n3-SBr" secondAttribute="trailing" id="meD-o3-zgM"/>
+                                                            <constraint firstAttribute="height" constant="50" id="upq-JS-UnM"/>
                                                         </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                                <real key="value" value="10"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                                <real key="value" value="0.10000000000000001"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetY">
-                                                                <real key="value" value="-3"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hH-2x-huI">
-                                                <rect key="frame" x="16" y="173" width="382" height="50"/>
+                                                <rect key="frame" x="182" y="194" width="50" height="50"/>
                                                 <color key="backgroundColor" red="0.37647058823529411" green="0.81960784313725488" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="qAo-Tt-oaW"/>
                                                     <constraint firstAttribute="height" constant="50" id="r4d-Zd-bmR"/>
                                                 </constraints>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="登录"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <integer key="value" value="25"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
+                                                <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system"/>
                                                 <connections>
                                                     <action selector="login" destination="EM6-ZV-m79" eventType="touchUpInside" id="s9g-Qz-Jqi"/>
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="e9l-ac-agj" firstAttribute="leading" secondItem="zGl-zs-fWP" secondAttribute="leading" constant="16" id="6aM-5Y-bhp"/>
+                                            <constraint firstAttribute="trailing" secondItem="e9l-ac-agj" secondAttribute="trailing" constant="16" id="IB7-uO-m7t"/>
+                                        </constraints>
                                         <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
                                     </stackView>
-                                    <view contentMode="scaleToFill" verticalHuggingPriority="200" translatesAutoresizingMaskIntoConstraints="NO" id="Ulp-HL-Z7H">
-                                        <rect key="frame" x="0.0" y="559" width="414" height="40"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1AB-Ou-TJo">
-                                        <rect key="frame" x="0.0" y="699" width="414" height="31"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1AB-Ou-TJo">
+                                        <rect key="frame" x="16" y="580" width="382" height="30"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="Uw9-pA-sh5">
-                                                <rect key="frame" x="61.5" y="0.0" width="291" height="31"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KnU-vk-8zH">
-                                                        <rect key="frame" x="0.0" y="0.0" width="95.5" height="31"/>
-                                                        <color key="tintColor" red="0.37647058823529411" green="0.81960784313725488" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="创建账号"/>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHe-WN-xRB">
-                                                        <rect key="frame" x="195.5" y="0.0" width="95.5" height="31"/>
-                                                        <color key="tintColor" red="0.37647058823529411" green="0.81960784313725488" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="忘记密码？"/>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KnU-vk-8zH">
+                                                <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
+                                                <color key="tintColor" red="0.37647058823529411" green="0.81960784313725488" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="创建账号"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHe-WN-xRB">
+                                                <rect key="frame" x="191" y="0.0" width="191" height="30"/>
+                                                <color key="tintColor" red="0.37647058823529411" green="0.81960784313725488" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="忘记密码？"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="926-We-59d"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="IfZ-cG-ukx">
+                                        <rect key="frame" x="87.5" y="710" width="239.5" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tM9-yC-6q1" customClass="JCCheckboxButton" customModule="JavaClub" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="178" height="30"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="checked" title="已阅读并同意我们的" imagePadding="5"/>
+                                                <connections>
+                                                    <action selector="agreeCheckboxDidSwitch:" destination="EM6-ZV-m79" eventType="touchUpInside" id="X5V-dW-S3I"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jg6-Bj-l4f">
+                                                <rect key="frame" x="158" y="0.0" width="81.5" height="30"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="隐私条款"/>
+                                                <connections>
+                                                    <action selector="privacyBtnDidClick:" destination="EM6-ZV-m79" eventType="touchUpInside" id="fpp-ju-B8Z"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1AB-Ou-TJo" secondAttribute="trailing" constant="16" id="EMX-aK-TAe"/>
+                                    <constraint firstItem="1AB-Ou-TJo" firstAttribute="leading" secondItem="BKF-aJ-5Sq" secondAttribute="leading" constant="16" id="Oez-wC-8vL"/>
+                                    <constraint firstItem="zGl-zs-fWP" firstAttribute="leading" secondItem="BKF-aJ-5Sq" secondAttribute="leading" id="Rif-cp-cT0"/>
+                                    <constraint firstAttribute="trailing" secondItem="zGl-zs-fWP" secondAttribute="trailing" id="bgb-tx-jXY"/>
+                                </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="0.0"/>
                             </stackView>
                         </subviews>
@@ -159,15 +153,18 @@
                         <constraints>
                             <constraint firstItem="TGz-3j-88c" firstAttribute="trailing" secondItem="BKF-aJ-5Sq" secondAttribute="trailing" id="HMM-8k-Dr9"/>
                             <constraint firstItem="BKF-aJ-5Sq" firstAttribute="leading" secondItem="TGz-3j-88c" secondAttribute="leading" id="Nl0-cE-0Ez"/>
-                            <constraint firstItem="TGz-3j-88c" firstAttribute="bottom" secondItem="BKF-aJ-5Sq" secondAttribute="bottom" constant="10" id="UiG-pu-wFd"/>
                             <constraint firstItem="BKF-aJ-5Sq" firstAttribute="top" secondItem="TGz-3j-88c" secondAttribute="top" constant="70" id="pc5-hJ-wyl"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="BKF-aJ-5Sq" secondAttribute="bottom" id="vA8-tv-xiF"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="ForgotBtn" destination="IHe-WN-xRB" id="JFw-jy-Mdd"/>
+                        <outlet property="agreeCheckBtn" destination="tM9-yC-6q1" id="GpF-D9-wlM"/>
                         <outlet property="createBtn" destination="KnU-vk-8zH" id="pLD-vQ-emx"/>
+                        <outlet property="forgotBtn" destination="IHe-WN-xRB" id="eHw-dH-lql"/>
                         <outlet property="loginBtn" destination="2hH-2x-huI" id="Xc9-Qd-jAR"/>
+                        <outlet property="mainStackView" destination="BKF-aJ-5Sq" id="eWa-0s-gcN"/>
                         <outlet property="passwordField" destination="FW3-n3-SBr" id="p2F-SW-Yps"/>
+                        <outlet property="privacyBtn" destination="jg6-Bj-l4f" id="bEC-6p-Mj3"/>
                         <outlet property="usernameField" destination="axa-ga-oqA" id="MW8-pv-a5K"/>
                     </connections>
                 </viewController>
@@ -177,7 +174,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checked" width="20" height="20"/>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="logo" width="187.5" height="188.5"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

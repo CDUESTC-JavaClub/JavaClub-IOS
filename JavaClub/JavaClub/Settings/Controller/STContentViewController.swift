@@ -99,6 +99,8 @@ extension STContentViewController {
         tableView.register(STStaticTableViewCell.self, forCellReuseIdentifier: STStaticTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
+        // Set Inset For 20 Temporarily
+        tableView.contentInset = .init(top: 0, left: 0, bottom: 20, right: 0)
     }
     
     private func configureModels() {

@@ -68,6 +68,9 @@
 		B0B84354270FEBE300C19B9B /* KAMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B84353270FEBE300C19B9B /* KAMainViewController.swift */; };
 		B0B84357270FEC1B00C19B9B /* KcAssistant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B84356270FEC1B00C19B9B /* KcAssistant.storyboard */; };
 		B0B8435B271039F600C19B9B /* TappableItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B8435A271039F600C19B9B /* TappableItemView.swift */; };
+		B0CCEF0927140D6C001235E9 /* KABindingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CCEF0827140D6C001235E9 /* KABindingViewController.swift */; };
+		B0CCEF0C27141EAB001235E9 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = B0CCEF0B27141EAB001235E9 /* DeviceKit */; };
+		B0CCEF0E27144425001235E9 /* JCCheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CCEF0D27144425001235E9 /* JCCheckboxButton.swift */; };
 		B0D3A18F27000AC80095229C /* JCMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D3A18E27000AC80095229C /* JCMainViewController.swift */; };
 		B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F900C9270300420056A016 /* ViewControllerExtension.swift */; };
 		DD283610270981B200D3D988 /* BaiAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD28360F270981B200D3D988 /* BaiAccountManager.swift */; };
@@ -130,6 +133,8 @@
 		B0B84353270FEBE300C19B9B /* KAMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAMainViewController.swift; sourceTree = "<group>"; };
 		B0B84356270FEC1B00C19B9B /* KcAssistant.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KcAssistant.storyboard; sourceTree = "<group>"; };
 		B0B8435A271039F600C19B9B /* TappableItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableItemView.swift; sourceTree = "<group>"; };
+		B0CCEF0827140D6C001235E9 /* KABindingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KABindingViewController.swift; sourceTree = "<group>"; };
+		B0CCEF0D27144425001235E9 /* JCCheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCheckboxButton.swift; sourceTree = "<group>"; };
 		B0D3A18E27000AC80095229C /* JCMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCMainViewController.swift; sourceTree = "<group>"; };
 		B0F900C9270300420056A016 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		DD28360F270981B200D3D988 /* BaiAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiAccountManager.swift; sourceTree = "<group>"; };
@@ -141,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B02EEF1D26FDBA050010515A /* SQLite in Frameworks */,
+				B0CCEF0C27141EAB001235E9 /* DeviceKit in Frameworks */,
 				B02EEF1A26FDB91E0010515A /* Kingfisher in Frameworks */,
 				B02EEF1426FDB9030010515A /* Defaults in Frameworks */,
 				B02EEF4126FDDA140010515A /* SnapKit in Frameworks */,
@@ -344,6 +350,7 @@
 			children = (
 				B0B84353270FEBE300C19B9B /* KAMainViewController.swift */,
 				B0B84351270FEB1700C19B9B /* KAContentViewController.swift */,
+				B0CCEF0827140D6C001235E9 /* KABindingViewController.swift */,
 				B0973FA22703FC0300E5C9C6 /* KAScoreViewController.swift */,
 			);
 			path = Controller;
@@ -394,6 +401,7 @@
 			children = (
 				B08F6FC727003FD60015B354 /* JCBindIDView.swift */,
 				B08F6FC827003FD60015B354 /* JCNoticeView.swift */,
+				B0CCEF0D27144425001235E9 /* JCCheckboxButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -466,6 +474,7 @@
 				B02EEF1F26FDBA300010515A /* SwiftyJSON */,
 				B02EEF2226FDBA770010515A /* SwiftyRSA */,
 				B02EEF4026FDDA140010515A /* SnapKit */,
+				B0CCEF0B27141EAB001235E9 /* DeviceKit */,
 			);
 			productName = JavaClub;
 			productReference = B02EEEF426FDB2760010515A /* JavaClub.app */;
@@ -503,6 +512,7 @@
 				B02EEF1E26FDBA300010515A /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				B02EEF2126FDBA770010515A /* XCRemoteSwiftPackageReference "SwiftyRSA" */,
 				B02EEF3F26FDDA140010515A /* XCRemoteSwiftPackageReference "SnapKit" */,
+				B0CCEF0A27141EAB001235E9 /* XCRemoteSwiftPackageReference "DeviceKit" */,
 			);
 			productRefGroup = B02EEEF526FDB2760010515A /* Products */;
 			projectDirPath = "";
@@ -539,6 +549,7 @@
 				B0B84352270FEB1700C19B9B /* KAContentViewController.swift in Sources */,
 				B0B8435B271039F600C19B9B /* TappableItemView.swift in Sources */,
 				B0D3A18F27000AC80095229C /* JCMainViewController.swift in Sources */,
+				B0CCEF0927140D6C001235E9 /* KABindingViewController.swift in Sources */,
 				B08F6FCE270040010015B354 /* JCUser.swift in Sources */,
 				B08F6FD02700401E0015B354 /* STMainViewController.swift in Sources */,
 				B08F6FBD27003F410015B354 /* BaiActionView.swift in Sources */,
@@ -553,6 +564,7 @@
 				B02EEEFA26FDB2760010515A /* SceneDelegate.swift in Sources */,
 				B07399BE270A99220020AEB8 /* ScoreAdd.swift in Sources */,
 				B02032CB26FE05910048B6F6 /* StringExtension.swift in Sources */,
+				B0CCEF0E27144425001235E9 /* JCCheckboxButton.swift in Sources */,
 				B08F6FB727003F360015B354 /* BaiUserInfoView.swift in Sources */,
 				B08F6FB227003EEC0015B354 /* KAClass.swift in Sources */,
 				B02EEF1126FDB5760010515A /* JCTabBarController.swift in Sources */,
@@ -854,6 +866,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		B0CCEF0A27141EAB001235E9 /* XCRemoteSwiftPackageReference "DeviceKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devicekit/DeviceKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -891,6 +911,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B02EEF3F26FDDA140010515A /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		B0CCEF0B27141EAB001235E9 /* DeviceKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0CCEF0A27141EAB001235E9 /* XCRemoteSwiftPackageReference "DeviceKit" */;
+			productName = DeviceKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

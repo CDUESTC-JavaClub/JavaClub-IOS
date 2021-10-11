@@ -8,7 +8,8 @@
 import UIKit
 
 class KAMainViewController: UIViewController {
-    private let contentVC: KAContentViewController!
+    private var contentVC: KAContentViewController!
+    private var bindingVC: KABindingViewController!
     
     init() {
         contentVC = UIStoryboard(name: "KcAssistant", bundle: .main)
@@ -16,6 +17,13 @@ class KAMainViewController: UIViewController {
         as? KAContentViewController
         
         super.init(nibName: nil, bundle: nil)
+        
+        NotificationCenter.default.addObserver(
+            forName: .didUpdateJWLoginState,
+            object: nil,
+            queue: .main,
+            using: didUpdateLoginState(_:)
+        )
     }
     
     required init?(coder: NSCoder) {
@@ -28,6 +36,46 @@ class KAMainViewController: UIViewController {
         view.addSubview(contentVC.view)
         contentVC.view.snp.makeConstraints { make in
             make.edges.equalTo(view)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        didUpdateLoginState(Notification(name: .didUpdateJWLoginState, object: nil, userInfo: nil))
+    }
+}
+
+
+// MARK: Private Methods -
+extension KAMainViewController {
+    
+    private func didUpdateLoginState(_ notification: Notification) {
+        if !JCLoginState.shared.jw {
+            bindingVC = UIStoryboard(name: "KcAssistant", bundle: .main)
+                .instantiateViewController(withIdentifier: "KABindingViewController")
+            as? KABindingViewController
+            
+            UITabBar.appearance().isHidden = true
+            present(bindingVC, animated: true) { [self] in
+                if contentVC != nil {
+                    contentVC.view.removeFromSuperview()
+                    contentVC = nil
+                }
+            }
+        } else {
+            bindingVC = nil
+
+            if contentVC == nil {
+                contentVC = UIStoryboard(name: "KcAssistant", bundle: .main)
+                    .instantiateViewController(withIdentifier: "KAContentViewController")
+                as? KAContentViewController
+                
+                view.addSubview(contentVC.view)
+                contentVC.view.snp.makeConstraints { make in
+                    make.edges.equalTo(view)
+                }
+            }
         }
     }
 }
