@@ -51,14 +51,6 @@ extension JCLoginViewController {
         passwordField.clipsToBounds = true
         passwordField.autocorrectionType = .no
         
-        privacyBtn.setAttributedTitle(
-            NSAttributedString(string: "隐私条款", attributes: [
-                .underlineStyle: NSUnderlineStyle.single.rawValue,
-                .foregroundColor: UIColor.label
-            ]),
-            for: .normal
-        )
-        
         let isSmallDevice = Device.current.isOneOf(Device.smallScreenModels)
         mainStackView.spacing = isSmallDevice ? 30 : 100
     }
@@ -123,6 +115,18 @@ extension JCLoginViewController {
     @IBAction func privacyBtnDidClick(_ sender: UIButton) {
         if let privacyURL = URL(string: "https://study.cduestc.club/index.php?help/privacy-policy/") {
             UIApplication.shared.open(privacyURL)
+        }
+    }
+    
+    @IBAction func createBtnDidClick(_ sender: UIButton) {
+        if let createURL = URL(string: "https://study.cduestc.club/index.php?register/") {
+            UIApplication.shared.open(createURL)
+        }
+    }
+    
+    @IBAction func forgotBtnDidClick(_ sender: UIButton) {
+        if let forgotURL = URL(string: "https://study.cduestc.club/index.php?lost-password/") {
+            UIApplication.shared.open(forgotURL)
         }
     }
     

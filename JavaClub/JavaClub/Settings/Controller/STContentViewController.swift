@@ -20,7 +20,7 @@ class STContentViewController: UIViewController {
     private var useDarkModeSwitch: UISwitch!
     private var useSystemAppearanceSwitch: UISwitch!
     
-    var models: [STSection] = []
+    var models: [TVSection] = []
     
 
     override func viewDidLoad() {
@@ -94,9 +94,9 @@ extension STContentViewController {
         avatar.layer.cornerRadius = 63
         avatar.clipsToBounds = true
         
-        tableView.register(STTappableViewCell.self, forCellReuseIdentifier: STTappableViewCell.identifier)
-        tableView.register(STSwitchTableViewCell.self, forCellReuseIdentifier: STSwitchTableViewCell.identifier)
-        tableView.register(STStaticTableViewCell.self, forCellReuseIdentifier: STStaticTableViewCell.identifier)
+        tableView.register(TVTappableViewCell.self, forCellReuseIdentifier: TVTappableViewCell.identifier)
+        tableView.register(TVSwitchTableViewCell.self, forCellReuseIdentifier: TVSwitchTableViewCell.identifier)
+        tableView.register(TVStaticTableViewCell.self, forCellReuseIdentifier: TVStaticTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
         // Set Inset For 20 Temporarily
@@ -105,12 +105,12 @@ extension STContentViewController {
     
     private func configureModels() {
         models = [
-            STSection(title: "绑定信息", options: [
-                ._static(model: STStaticOption(title: "已绑定学号", icon: nil, value: Defaults[.user]?.studentID ?? "")),
-                ._static(model: STStaticOption(title: "已绑定邮箱", icon: nil, value: Defaults[.user]?.email ?? "")),
+            TVSection(title: "绑定信息", options: [
+                ._static(model: TVStaticOption(title: "已绑定学号", icon: nil, value: Defaults[.user]?.studentID ?? "")),
+                ._static(model: TVStaticOption(title: "已绑定邮箱", icon: nil, value: Defaults[.user]?.email ?? "")),
             ]),
-            STSection(title: "外观设置", options: [
-                .switchable(model: STSwitchOption(
+            TVSection(title: "外观设置", options: [
+                .switchable(model: TVSwitchOption(
                     title: "使用深色模式",
                     icon: nil,
                     isOn: Defaults[.useDarkMode],
@@ -119,7 +119,7 @@ extension STContentViewController {
                         switchDidToggle(_switch)
                     }
                 )),
-                .switchable(model: STSwitchOption(
+                .switchable(model: TVSwitchOption(
                     title: "主题外观跟随系统",
                     icon: nil,
                     isOn: Defaults[.useSystemAppearance],
@@ -129,11 +129,11 @@ extension STContentViewController {
                     }
                 )),
             ]),
-            STSection(title: "更多", options: [
-                .tappable(model: STTappableOption(title: "检查更新", icon: UIImage(named: "update_icon"), handler: {
+            TVSection(title: "更多", options: [
+                .tappable(model: TVTappableOption(title: "检查更新", icon: UIImage(named: "update_icon"), handler: {
                     
                 })),
-                .tappable(model: STTappableOption(title: "退出登录", icon: UIImage(named: "logout_icon"), handler: {
+                .tappable(model: TVTappableOption(title: "退出登录", icon: UIImage(named: "logout_icon"), handler: {
                     JCAccountManager.shared.logout()
                 })),
             ]),
@@ -236,21 +236,21 @@ extension STContentViewController: UITableViewDataSource {
         switch type {
         case .tappable(let model):
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: STTappableViewCell.identifier,
+                withIdentifier: TVTappableViewCell.identifier,
                 for: indexPath
-            ) as? STTappableViewCell else {
+            ) as? TVTappableViewCell else {
                 return UITableViewCell()
             }
             
-            cell.configure(with: model)
+            cell.configure(with: model, type: .none)
             
             return cell
             
         case .switchable(let model):
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: STSwitchTableViewCell.identifier,
+                withIdentifier: TVSwitchTableViewCell.identifier,
                 for: indexPath
-            ) as? STSwitchTableViewCell else {
+            ) as? TVSwitchTableViewCell else {
                 return UITableViewCell()
             }
             
@@ -271,9 +271,9 @@ extension STContentViewController: UITableViewDataSource {
             
         case ._static(let model):
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: STStaticTableViewCell.identifier,
+                withIdentifier: TVStaticTableViewCell.identifier,
                 for: indexPath
-            ) as? STStaticTableViewCell else {
+            ) as? TVStaticTableViewCell else {
                 return UITableViewCell()
             }
             

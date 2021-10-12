@@ -1,5 +1,5 @@
 //
-//  STTableViewCell.swift
+//  TVTappableViewCell.swift
 //  JavaClub
 //
 //  Created by Roy on 2021/10/9.
@@ -7,13 +7,11 @@
 
 import UIKit
 
-class STTappableViewCell: UITableViewCell {
+class TVTappableViewCell: UITableViewCell {
     static let identifier = "STTableViewCell"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        accessoryType = .none
     }
     
     required init?(coder: NSCoder) {
@@ -30,9 +28,10 @@ class STTappableViewCell: UITableViewCell {
 }
 
 
-extension STTappableViewCell {
+extension TVTappableViewCell {
     
-    func configure(with model: STTappableOption) {
+    func configure(with model: TVTappableOption, type: UITableViewCell.AccessoryType) {
+        accessoryType = type
         
         var configuration = defaultContentConfiguration()
         configuration.image = model.icon

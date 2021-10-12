@@ -1,5 +1,5 @@
 //
-//  STStaticTableViewCell.swift
+//  TVStaticTableViewCell.swift
 //  JavaClub
 //
 //  Created by Roy on 2021/10/9.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class STStaticTableViewCell: UITableViewCell {
+class TVStaticTableViewCell: UITableViewCell {
     static let identifier = "STStaticTableViewCell"
     
     private let iconImageView: UIImageView = {
@@ -74,9 +74,9 @@ class STStaticTableViewCell: UITableViewCell {
 }
 
 
-extension STStaticTableViewCell {
+extension TVStaticTableViewCell {
     
-    func configure(with model: STStaticOption) {
+    func configure(with model: TVStaticOption) {
         selectionStyle = .none
         isUserInteractionEnabled = false
         

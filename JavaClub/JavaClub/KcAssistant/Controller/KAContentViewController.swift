@@ -10,10 +10,15 @@ import Defaults
 
 class KAContentViewController: UIViewController {
     @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var infoView: DesignableView!
+    @IBOutlet var announcementView: DesignableView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var gradeLabel: UILabel!
     @IBOutlet var studentIDLabel: UILabel!
     @IBOutlet var deptLabel: UILabel!
+    
+    var models: [TVSection] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +28,15 @@ class KAContentViewController: UIViewController {
         }.tieToLifetime(of: self)
         
         setup()
+        configureAppearance()
+        configureModels()
         loadInfo()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        configureAppearance()
     }
 }
 
@@ -32,7 +45,43 @@ class KAContentViewController: UIViewController {
 extension KAContentViewController {
     
     private func setup() {
+        tableView.register(TVTappableViewCell.self, forCellReuseIdentifier: TVTappableViewCell.identifier)
+        tableView.delegate = self
+        tableView.dataSource = self
+        // Set Inset For 20 Temporarily
+        tableView.contentInset = .init(top: -30, left: 0, bottom: 20, right: 0)
+        
         scrollView.alwaysBounceVertical = true
+        tableView.alwaysBounceVertical = false
+    }
+    
+    private func configureAppearance() {
+        if isDarkMode {
+            scrollView.backgroundColor = UIColor(hex: "000000")
+        } else {
+            scrollView.backgroundColor = UIColor(hex: "F2F2F7")
+        }
+        
+        infoView.isDark = isDarkMode
+        announcementView.isDark = isDarkMode
+    }
+    
+    private func configureModels() {
+        models = [
+            TVSection(title: "", options: [
+                .tappable(model: TVTappableOption(title: "学期成绩查询", icon: UIImage(named: "score_icon"), handler: {
+                    
+                })),
+                .tappable(model: TVTappableOption(title: "课程表查询", icon: UIImage(named: "classtable_icon"), handler: {
+                    
+                })),
+                .tappable(model: TVTappableOption(title: "学籍信息查询", icon: UIImage(named: "enrollment_icon"), handler: {
+                    
+                })),
+            ]),
+        ]
+        
+        tableView.reloadData()
     }
     
     private func loadInfo() {
@@ -51,5 +100,64 @@ extension KAContentViewController {
             studentIDLabel.text = ""
             deptLabel.text = ""
         }
+    }
+}
+
+
+// MARK: TableView Delegate
+extension KAContentViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let type = models[indexPath.section].options[indexPath.row]
+        
+        switch type {
+        case .tappable(let model):
+            model.handler()
+            
+        default:
+            break
+        }
+    }
+}
+
+
+// MARK: TableView DataSource
+extension KAContentViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        models.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        models[section].options.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let type = models[indexPath.section].options[indexPath.row]
+        
+        switch type {
+        case .tappable(let model):
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: TVTappableViewCell.identifier,
+                for: indexPath
+            ) as? TVTappableViewCell else {
+                return UITableViewCell()
+            }
+            
+            cell.configure(with: model, type: .disclosureIndicator)
+            
+            return cell
+            
+        default:
+            return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let section = models[section]
+        
+        return section.title
     }
 }

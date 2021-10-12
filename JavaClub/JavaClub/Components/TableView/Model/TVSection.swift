@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct STSection {
+struct TVSection {
     let title: String
-    let options: [STOptionType]
+    let options: [TVOptionType]
 }

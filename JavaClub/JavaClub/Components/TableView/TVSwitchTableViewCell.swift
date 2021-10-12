@@ -1,5 +1,5 @@
 //
-//  STSwitchTableViewCell.swift
+//  TVSwitchTableViewCell.swift
 //  JavaClub
 //
 //  Created by Roy on 2021/10/9.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-class STSwitchTableViewCell: UITableViewCell {
+class TVSwitchTableViewCell: UITableViewCell {
     static let identifier = "STSwitchTableViewCell"
     
-    private var cellModel: STSwitchOption!
+    private var cellModel: TVSwitchOption!
     
     private let iconImageView: UIImageView = {
         let view = UIImageView()
@@ -76,9 +76,9 @@ class STSwitchTableViewCell: UITableViewCell {
 }
 
 
-extension STSwitchTableViewCell {
+extension TVSwitchTableViewCell {
     
-    func configure(with model: STSwitchOption, completion: (UISwitch) -> Void) {
+    func configure(with model: TVSwitchOption, completion: (UISwitch) -> Void) {
         selectionStyle = .none
         
         cellModel = model

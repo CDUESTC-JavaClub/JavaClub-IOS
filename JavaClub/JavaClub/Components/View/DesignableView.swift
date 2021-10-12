@@ -9,14 +9,14 @@ import UIKit
 
 @IBDesignable
 class DesignableView: UIView {
-    var lightColor: UIColor?
-    var darkColor: UIColor?
-    
     var isDark: Bool? {
         didSet {
             backgroundColor = isDark == true ? darkColor : lightColor
         }
     }
+    
+    @IBInspectable var lightColor: UIColor?
+    @IBInspectable var darkColor: UIColor?
     
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {

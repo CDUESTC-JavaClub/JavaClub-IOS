@@ -7,21 +7,21 @@
 
 import UIKit
 
-enum STOptionType {
-    case tappable(model: STTappableOption)
-    case switchable(model: STSwitchOption)
-    case _static(model: STStaticOption)
+enum TVOptionType {
+    case tappable(model: TVTappableOption)
+    case switchable(model: TVSwitchOption)
+    case _static(model: TVStaticOption)
 }
 
 
-struct STTappableOption {
+struct TVTappableOption {
     let title: String
     let icon: UIImage?
     let handler: () -> Void
 }
 
 
-struct STSwitchOption {
+struct TVSwitchOption {
     let title: String
     let icon: UIImage?
     var isOn: Bool
@@ -29,7 +29,7 @@ struct STSwitchOption {
     let handler: (UISwitch) -> Void
 }
 
-struct STStaticOption {
+struct TVStaticOption {
     let title: String
     let icon: UIImage?
     var value: String
