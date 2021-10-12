@@ -33,6 +33,7 @@ class KAMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        addChild(contentVC)
         view.addSubview(contentVC.view)
         contentVC.view.snp.makeConstraints { make in
             make.edges.equalTo(view)
@@ -58,24 +59,14 @@ extension KAMainViewController {
             
             UITabBar.appearance().isHidden = true
             present(bindingVC, animated: true) { [self] in
-                if contentVC != nil {
-                    contentVC.view.removeFromSuperview()
-                    contentVC = nil
-                }
+                contentVC.view.isHidden = true
             }
         } else {
-            bindingVC = nil
-
-            if contentVC == nil {
-                contentVC = UIStoryboard(name: "KcAssistant", bundle: .main)
-                    .instantiateViewController(withIdentifier: "KAContentViewController")
-                as? KAContentViewController
-                
-                view.addSubview(contentVC.view)
-                contentVC.view.snp.makeConstraints { make in
-                    make.edges.equalTo(view)
-                }
+            if bindingVC != nil {
+                bindingVC = nil
             }
+
+            contentVC.view.isHidden = false
         }
     }
 }

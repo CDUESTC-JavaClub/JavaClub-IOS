@@ -8,8 +8,8 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-import SwiftyRSA
 import Defaults
+import SwiftyRSA
 import WebKit
 
 enum JCError: Error {
@@ -18,8 +18,11 @@ enum JCError: Error {
     case noData
     case parseErr
     case encryptKeyErr
-    case notLogin
+    case notLoginJC
+    case notLoginJW
     case inputErr
+    case unknown
+    case castErr
 }
 
 
@@ -70,14 +73,14 @@ extension JCAccountManager {
                     }
                     
                     do {
-                        if
-                            let status = (try JSON(data: data))["status"].int,
-                            status == 200
-                        {
+                        let status = (try JSON(data: data))["status"].intValue
+                        
+                        if status == 200 {
                             let success = (try JSON(data: data))["data"].boolValue
                             completion(.success(success))
                         } else {
                             completion(.failure(.badRequest))
+                            print("DEBUG: Login JC Failed With Code: \(status)")
                         }
                     } catch {
                         print("DEBUG: (Load JSON) \(error.localizedDescription)")
@@ -135,10 +138,9 @@ extension JCAccountManager {
             }
             
             do {
-                if
-                    let status = (try JSON(data: data))["status"].int,
-                    status == 200
-                {
+                let status = (try JSON(data: data))["status"].intValue
+                
+                if status == 200 {
                     let json = (try JSON(data: data))["data"]
                     let user = JCUser(
                         username: json["username"].stringValue,
@@ -152,9 +154,12 @@ extension JCAccountManager {
                     )
                     
                     completion(.success(user))
-                } else {
+                } else if status == 403 {
                     logout()
+                    completion(.failure(.notLoginJC))
+                } else {
                     completion(.failure(.badRequest))
+                    print("DEBUG: Fetch User Info Failed With Code: \(status)")
                 }
             } catch {
                 completion(.failure(.parseErr))
@@ -258,15 +263,16 @@ extension JCAccountManager {
                     }
                     
                     do {
-                        print("DEBUG: \((try JSON(data: data))["status"].int)")
-                        if
-                            let status = (try JSON(data: data))["status"].int,
-                            status == 200
-                        {
+                        let status = (try JSON(data: data))["status"].intValue
+                        
+                        if status == 200 {
                             let success = (try JSON(data: data))["data"].boolValue
                             completion(.success(success))
+                        } else if status == 403 {
+                            completion(.failure(.notLoginJC))
                         } else {
                             completion(.failure(.badRequest))
+                            print("DEBUG: Login JW Failed With Code: \(status)")
                         }
                     } catch {
                         completion(.failure(.parseErr))
@@ -288,7 +294,7 @@ extension JCAccountManager {
      */
     func getEnrollmentInfo(_ completion: @escaping (Result<KAEnrollment, JCError>) -> Void) {
         guard Defaults[.jwInfo] != nil else {
-            completion(.failure(.notLogin))
+            completion(.failure(.notLoginJW))
             return
         }
         
@@ -302,10 +308,9 @@ extension JCAccountManager {
             }
             
             do {
-                if
-                    let status = (try JSON(data: data))["status"].int,
-                    status == 200
-                {
+                let status = (try JSON(data: data))["status"].intValue
+                
+                if status == 200 {
                     let json = (try JSON(data: data))["data"]
                     let enrollment = KAEnrollment(
                         campus: json["所属校区"].stringValue,
@@ -326,8 +331,13 @@ extension JCAccountManager {
                         studentID: json["学号"].stringValue
                     )
                     completion(.success(enrollment))
+                } else if status == 401 {
+                    completion(.failure(.notLoginJW))
+                } else if status == 403 {
+                    completion(.failure(.notLoginJC))
                 } else {
                     completion(.failure(.badRequest))
+                    print("DEBUG: Fetch Enrollment Info Failed With Code: \(status)")
                 }
             } catch {
                 completion(.failure(.parseErr))
@@ -342,9 +352,9 @@ extension JCAccountManager {
      *  - Parameters:
      *      - completion: A block of what you wanna do with the result of one's scores.
      */
-    func getScore(_ completion: @escaping (Result<String, JCError>) -> Void) {
+    func getScore(_ completion: @escaping (Result<[KAScore], JCError>) -> Void) {
         guard Defaults[.jwInfo] != nil else {
-            completion(.failure(.notLogin))
+            completion(.failure(.notLoginJW))
             return
         }
         
@@ -358,14 +368,37 @@ extension JCAccountManager {
             }
             
             do {
-                if
-                    let status = (try JSON(data: data))["status"].int,
-                    status == 200
-                {
-                    let json = (try JSON(data: data))["data"]
-                    completion(.success(String(data: data, encoding: .utf8)!))
+                let status = (try JSON(data: data))["status"].intValue
+                
+                if status == 200 {
+                    let jsonArray = (try JSON(data: data))["data"].arrayValue
+                    var result: [KAScore] = []
+                    
+                    jsonArray.forEach { json in
+                        let score = KAScore(
+                            year: json["year"].stringValue,
+                            term: json["term"].intValue,
+                            className: json["name"].stringValue,
+                            classCode: json["code"].stringValue,
+                            classIndex: json["index"].stringValue,
+                            classType: json["type"].stringValue,
+                            points: json["points"].doubleValue,
+                            credits: json["credits"].doubleValue,
+                            score: json["score_all"].intValue,
+                            redoScore: json["redo_score_all"].intValue
+                        )
+                        
+                        result.append(score)
+                    }
+                    
+                    completion(.success(result))
+                } else if status == 401 {
+                    completion(.failure(.notLoginJW))
+                } else if status == 403 {
+                    completion(.failure(.notLoginJC))
                 } else {
                     completion(.failure(.badRequest))
+                    print("DEBUG: Fetch Score Failed With Code: \(status)")
                 }
             } catch {
                 completion(.failure(.parseErr))
@@ -382,7 +415,7 @@ extension JCAccountManager {
      */
     func getClassTable(term: Int, _ completion: @escaping (Result<String, JCError>) -> Void) {
         guard Defaults[.jwInfo] != nil else {
-            completion(.failure(.notLogin))
+            completion(.failure(.notLoginJW))
             return
         }
         
@@ -401,14 +434,18 @@ extension JCAccountManager {
             }
             
             do {
-                if
-                    let status = (try JSON(data: data))["status"].int,
-                    status == 200
-                {
+                let status = (try JSON(data: data))["status"].intValue
+                
+                if status == 200 {
                     let json = (try JSON(data: data))["data"]
                     completion(.success(String(data: data, encoding: .utf8) ?? "N/A"))
+                } else if status == 401 {
+                    completion(.failure(.notLoginJW))
+                } else if status == 403 {
+                    completion(.failure(.notLoginJC))
                 } else {
                     completion(.failure(.badRequest))
+                    print("DEBUG: Fetch Class Table Failed With Code: \(status)")
                 }
             } catch {
                 completion(.failure(.parseErr))

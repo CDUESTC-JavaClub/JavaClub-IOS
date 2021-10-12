@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct LoadingIndicatorView: View {
-    @Environment(\.colorScheme) var colorScheme
     @State private var animates = false
     private let timer = Timer.publish(every: 0.4, on: .main, in: .common).autoconnect()
     
@@ -35,7 +34,7 @@ struct LoadingIndicatorView: View {
                 }
                 
                 Text("加载中")
-                    .foregroundColor(colorScheme == .dark ? Color(hex: "C4C4C4") : Color(hex: "595959"))
+                    .foregroundColor(Color.label)
             }
         }
         .frame(width: 50, height: 50)

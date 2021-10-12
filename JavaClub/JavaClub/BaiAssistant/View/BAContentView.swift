@@ -29,7 +29,7 @@ struct BAContentView: View {
                 Spacer()
             }
         } else {
-            JCBindIDView(verifyJC: $verify.jc, verifyJW: $verify.jw, verifyBinding: $verify.isBound, enrollment: $enrollment, jwInfo: $jwInfo)
+            Text("Please Bind")
         }
     }
 }

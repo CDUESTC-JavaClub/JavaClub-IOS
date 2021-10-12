@@ -33,6 +33,12 @@ class KAContentViewController: UIViewController {
         loadInfo()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
@@ -69,8 +75,9 @@ extension KAContentViewController {
     private func configureModels() {
         models = [
             TVSection(title: "", options: [
-                .tappable(model: TVTappableOption(title: "学期成绩查询", icon: UIImage(named: "score_icon"), handler: {
-                    
+                .tappable(model: TVTappableOption(title: "学期成绩查询", icon: UIImage(named: "score_icon"), handler: { [unowned self] in
+                    navigationController?.isNavigationBarHidden = false
+                    navigationController?.pushViewController(KAScoreViewController(), animated: true)
                 })),
                 .tappable(model: TVTappableOption(title: "课程表查询", icon: UIImage(named: "classtable_icon"), handler: {
                     

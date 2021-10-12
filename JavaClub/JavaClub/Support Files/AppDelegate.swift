@@ -49,15 +49,36 @@ extension AppDelegate {
             
             if let jwInfo = Defaults[.jwInfo], let user = Defaults[.user] {
                 JCAccountManager.shared.loginJW(info: jwInfo, bind: user.studentID == nil) { result in
-                    if let success = try? result.get(), success {
-                        JCAccountManager.shared.getEnrollmentInfo { result in
-                            let enr = try? result.get()
-                            Defaults[.enrollment] = enr
+                    
+                    switch result {
+                    case .success(let success):
+                        if success {
+                            JCAccountManager.shared.getEnrollmentInfo { result in
+                                
+                                switch result {
+                                case .success(let enr):
+                                    Defaults[.enrollment] = enr
+                                    print("DEBUG: Auto Login JW Succeeded.")
+                                    
+                                case .failure(let error):
+                                    if error == .notLoginJC {
+                                        print("DEBUG: Please Login JC First.")
+                                    } else {
+                                        print("DEBUG: Fetch Enrollment Info Failed With Error: \(String(describing: error))")
+                                    }
+                                }
+                                
+                            }
+                        } else {
+                            print("DEBUG: Auto Login JW Failed. (Maybe Wrong Username Or Password)")
                         }
-                    } else {
-                        print("DEBUG: Auto Login JW Failed.")
+                        
+                    case .failure(let error):
+                        print("DEBUG: Auto Login JW Failed With Error: \(String(describing: error)).")
                     }
                 }
+            } else {
+                print("DEBUG: Credential Lost.")
             }
         }
     }

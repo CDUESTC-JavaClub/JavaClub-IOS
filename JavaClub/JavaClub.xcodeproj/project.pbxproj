@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B00939FE27151D3200879AC5 /* UnderlineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00939FD27151D3200879AC5 /* UnderlineButton.swift */; };
+		B0093A012715539E00879AC5 /* TVScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0093A002715539E00879AC5 /* TVScoreTableViewCell.swift */; };
+		B0093A0A27159E0E00879AC5 /* SwiftyRSA in Frameworks */ = {isa = PBXBuildFile; productRef = B0093A0927159E0E00879AC5 /* SwiftyRSA */; };
 		B01AA9B126FF2ADD000D3E4A /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01AA9B026FF2ADD000D3E4A /* LoadingIndicatorView.swift */; };
 		B01AA9B726FF4C55000D3E4A /* JCLoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01AA9B626FF4C55000D3E4A /* JCLoginState.swift */; };
 		B02032CB26FE05910048B6F6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02032C526FE05910048B6F6 /* StringExtension.swift */; };
@@ -28,7 +30,6 @@
 		B02EEF1A26FDB91E0010515A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF1926FDB91E0010515A /* Kingfisher */; };
 		B02EEF1D26FDBA050010515A /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF1C26FDBA050010515A /* SQLite */; };
 		B02EEF2026FDBA300010515A /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF1F26FDBA300010515A /* SwiftyJSON */; };
-		B02EEF2326FDBA770010515A /* SwiftyRSA in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF2226FDBA770010515A /* SwiftyRSA */; };
 		B02EEF2926FDC0A00010515A /* JCWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF2826FDC0A00010515A /* JCWebViewController.swift */; };
 		B02EEF3E26FDD7BD0010515A /* JCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */; };
 		B02EEF4126FDDA140010515A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF4026FDDA140010515A /* SnapKit */; };
@@ -54,7 +55,6 @@
 		B08F6FC427003F8C0015B354 /* JCImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FC127003F8C0015B354 /* JCImageManager.swift */; };
 		B08F6FC527003F8C0015B354 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FC227003F8C0015B354 /* DBManager.swift */; };
 		B08F6FC627003F8C0015B354 /* JCAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FC327003F8C0015B354 /* JCAccountManager.swift */; };
-		B08F6FC927003FD60015B354 /* JCBindIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FC727003FD60015B354 /* JCBindIDView.swift */; };
 		B08F6FCA27003FD60015B354 /* JCNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FC827003FD60015B354 /* JCNoticeView.swift */; };
 		B08F6FCD270040010015B354 /* JCLoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FCB270040010015B354 /* JCLoginInfo.swift */; };
 		B08F6FCE270040010015B354 /* JCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FCC270040010015B354 /* JCUser.swift */; };
@@ -79,6 +79,7 @@
 
 /* Begin PBXFileReference section */
 		B00939FD27151D3200879AC5 /* UnderlineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineButton.swift; sourceTree = "<group>"; };
+		B0093A002715539E00879AC5 /* TVScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVScoreTableViewCell.swift; sourceTree = "<group>"; };
 		B01AA9B026FF2ADD000D3E4A /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		B01AA9B626FF4C55000D3E4A /* JCLoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCLoginState.swift; sourceTree = "<group>"; };
 		B02032C526FE05910048B6F6 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -120,7 +121,6 @@
 		B08F6FC127003F8C0015B354 /* JCImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCImageManager.swift; sourceTree = "<group>"; };
 		B08F6FC227003F8C0015B354 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		B08F6FC327003F8C0015B354 /* JCAccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCAccountManager.swift; sourceTree = "<group>"; };
-		B08F6FC727003FD60015B354 /* JCBindIDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCBindIDView.swift; sourceTree = "<group>"; };
 		B08F6FC827003FD60015B354 /* JCNoticeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCNoticeView.swift; sourceTree = "<group>"; };
 		B08F6FCB270040010015B354 /* JCLoginInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCLoginInfo.swift; sourceTree = "<group>"; };
 		B08F6FCC270040010015B354 /* JCUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCUser.swift; sourceTree = "<group>"; };
@@ -152,9 +152,9 @@
 				B02EEF1A26FDB91E0010515A /* Kingfisher in Frameworks */,
 				B02EEF1426FDB9030010515A /* Defaults in Frameworks */,
 				B02EEF4126FDDA140010515A /* SnapKit in Frameworks */,
+				B0093A0A27159E0E00879AC5 /* SwiftyRSA in Frameworks */,
 				B02EEF2026FDBA300010515A /* SwiftyJSON in Frameworks */,
 				B02EEF1726FDB9110010515A /* Alamofire in Frameworks */,
-				B02EEF2326FDBA770010515A /* SwiftyRSA in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +218,7 @@
 			children = (
 				B02E4F1E2701BB7C00EA3DDB /* TVOption.swift */,
 				B04FEE2F2711607A0065FFB6 /* TVSection.swift */,
+				B0093A002715539E00879AC5 /* TVScoreTableViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -410,7 +411,6 @@
 		B0D3A1AB270015E50095229C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B08F6FC727003FD60015B354 /* JCBindIDView.swift */,
 				B08F6FC827003FD60015B354 /* JCNoticeView.swift */,
 				B0CCEF0D27144425001235E9 /* JCCheckboxButton.swift */,
 			);
@@ -483,9 +483,9 @@
 				B02EEF1926FDB91E0010515A /* Kingfisher */,
 				B02EEF1C26FDBA050010515A /* SQLite */,
 				B02EEF1F26FDBA300010515A /* SwiftyJSON */,
-				B02EEF2226FDBA770010515A /* SwiftyRSA */,
 				B02EEF4026FDDA140010515A /* SnapKit */,
 				B0CCEF0B27141EAB001235E9 /* DeviceKit */,
+				B0093A0927159E0E00879AC5 /* SwiftyRSA */,
 			);
 			productName = JavaClub;
 			productReference = B02EEEF426FDB2760010515A /* JavaClub.app */;
@@ -521,9 +521,9 @@
 				B02EEF1826FDB91E0010515A /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				B02EEF1B26FDBA050010515A /* XCRemoteSwiftPackageReference "SQLite" */,
 				B02EEF1E26FDBA300010515A /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
-				B02EEF2126FDBA770010515A /* XCRemoteSwiftPackageReference "SwiftyRSA" */,
 				B02EEF3F26FDDA140010515A /* XCRemoteSwiftPackageReference "SnapKit" */,
 				B0CCEF0A27141EAB001235E9 /* XCRemoteSwiftPackageReference "DeviceKit" */,
+				B0093A0827159E0E00879AC5 /* XCRemoteSwiftPackageReference "SwiftyRSA" */,
 			);
 			productRefGroup = B02EEEF526FDB2760010515A /* Products */;
 			projectDirPath = "";
@@ -600,10 +600,10 @@
 				B02032CF26FE05910048B6F6 /* ViewExtension.swift in Sources */,
 				B01AA9B726FF4C55000D3E4A /* JCLoginState.swift in Sources */,
 				B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */,
+				B0093A012715539E00879AC5 /* TVScoreTableViewCell.swift in Sources */,
 				B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */,
 				B0973FA32703FC0300E5C9C6 /* KAScoreViewController.swift in Sources */,
 				B08F6FD5270048B40015B354 /* STContentViewController.swift in Sources */,
-				B08F6FC927003FD60015B354 /* JCBindIDView.swift in Sources */,
 				B04FEE32271168080065FFB6 /* TVSwitchTableViewCell.swift in Sources */,
 				B07399C0270A99330020AEB8 /* ScoreData.swift in Sources */,
 				DD283610270981B200D3D988 /* BaiAccountManager.swift in Sources */,
@@ -822,6 +822,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B0093A0827159E0E00879AC5 /* XCRemoteSwiftPackageReference "SwiftyRSA" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swift-package-manager/SwiftyRSA";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		B02EEF1226FDB9030010515A /* XCRemoteSwiftPackageReference "Defaults" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/Defaults";
@@ -862,14 +870,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		B02EEF2126FDBA770010515A /* XCRemoteSwiftPackageReference "SwiftyRSA" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/swift-package-manager/SwiftyRSA";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		B02EEF3F26FDDA140010515A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -889,6 +889,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B0093A0927159E0E00879AC5 /* SwiftyRSA */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0093A0827159E0E00879AC5 /* XCRemoteSwiftPackageReference "SwiftyRSA" */;
+			productName = SwiftyRSA;
+		};
 		B02EEF1326FDB9030010515A /* Defaults */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B02EEF1226FDB9030010515A /* XCRemoteSwiftPackageReference "Defaults" */;
@@ -913,11 +918,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B02EEF1E26FDBA300010515A /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
-		};
-		B02EEF2226FDBA770010515A /* SwiftyRSA */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B02EEF2126FDBA770010515A /* XCRemoteSwiftPackageReference "SwiftyRSA" */;
-			productName = SwiftyRSA;
 		};
 		B02EEF4026FDDA140010515A /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -47,7 +47,7 @@ extension JCTabBarController {
         for rootViewController: UIViewController,
         title: String,
         image: UIImage
-    ) -> UIViewController {
+    ) -> UINavigationController {
         let navController = UINavigationController(rootViewController: rootViewController)
         navController.tabBarItem.title = title
         navController.tabBarItem.image = image

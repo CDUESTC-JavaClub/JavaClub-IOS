@@ -61,26 +61,42 @@ extension KABindingViewController {
                 info: info,
                 bind: !JCLoginState.shared.isBound
             ) { [weak self] result in
-                if
-                    let response = try? result.get(),
-                    response
-                {
-                    Defaults[.jwInfo] = info
+                
+                switch result {
+                case .success(let success):
+                    if success {
+                        Defaults[.jwInfo] = info
 
-                    JCAccountManager.shared.getEnrollmentInfo { result in
-                        let enr = try? result.get()
-                        Defaults[.enrollment] = enr
+                        JCAccountManager.shared.getEnrollmentInfo { result in
+                            let enr = try? result.get()
+                            Defaults[.enrollment] = enr
+                        }
+                        
+                        self?.dismiss(animated: true)
+                        self?.removeIndicator()
+                        UITabBar.appearance().isHidden = false
+                    } else {
+                        self?.removeIndicator()
+                        
+                        let alert = UIAlertController(title: "提示", message: "登录失败，请检查用户名或密码是否输入正确。", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+                        self?.present(alert, animated: true, completion: nil)
                     }
                     
-                    self?.dismiss(animated: true)
-                    self?.removeIndicator()
-                    UITabBar.appearance().isHidden = false
-                } else {
-                    self?.removeIndicator()
-                    
-                    let alert = UIAlertController(title: "提示", message: "登录失败，请检查输入或网络连接是否通畅！", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
-                    self?.present(alert, animated: true, completion: nil)
+                case .failure(let error):
+                    if error == .notLoginJC {
+                        self?.removeIndicator()
+                        
+                        let alert = UIAlertController(title: "提示", message: "使用教务功能之前，请先登录论坛账号！", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+                        self?.present(alert, animated: true, completion: nil)
+                    } else {
+                        self?.removeIndicator()
+                        
+                        let alert = UIAlertController(title: "提示", message: "未知错误，请稍后再试。", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+                        self?.present(alert, animated: true, completion: nil)
+                    }
                 }
             }
         } else {

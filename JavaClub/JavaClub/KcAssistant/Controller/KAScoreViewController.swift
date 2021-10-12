@@ -11,7 +11,8 @@ import SnapKit
 class KAScoreViewController: UIViewController {
     private lazy var dataSource = makeDataSource()
     private let refreshControl = UIRefreshControl()
-    private var sections: [KASection] = []
+    private var models: [KASection] = []
+    private var headers: [String] = []
     
     typealias DataSource = UICollectionViewDiffableDataSource<KASection, DataItem>
     typealias Snapshot = NSDiffableDataSourceSnapshot<KASection, DataItem>
@@ -98,10 +99,10 @@ extension KAScoreViewController {
     
     private func applySnapshot(animates: Bool = true) {
         var snapshot = Snapshot()
-        snapshot.appendSections(sections)
+        snapshot.appendSections(models)
         dataSource.apply(snapshot, animatingDifferences: animates)
         
-        for section in sections {
+        for section in models {
             var sectionSnapshot = SectionSnapshot()
             
             let headerItem = DataItem.section(section)
@@ -110,19 +111,40 @@ extension KAScoreViewController {
             let listItems = section.scores.map {
                 DataItem.score($0)
             }
-            sectionSnapshot.append(listItems, to: headerItem)
             
+            sectionSnapshot.append(listItems, to: headerItem)
             sectionSnapshot.expand([headerItem])
             
             dataSource.apply(sectionSnapshot, to: section, animatingDifferences: animates)
         }
     }
     
+    private func configureModels(with scores: [KAScore]) {
+        scores.forEach { item in
+            if var section = models.filter({ $0.title == "\(item.year) 学年" }).first {
+                section.scores.append(item)
+            } else {
+                let section = KASection(title: "\(item.year) 学年", scores: [item])
+                models.append(section)
+            }
+        }
+        
+        applySnapshot()
+    }
+    
     @objc private func didRefresh() {
-        JCAccountManager.shared.getScore { result in
-            let score = try? result.get()
-            
-            print("DEBUG: 成绩：\(score)")
+        JCAccountManager.shared.getScore { [weak self] result in
+            switch result {
+            case .success(let scores):
+                self?.configureModels(with: scores)
+                
+            case .failure(let error):
+                if error == .notLoginJW {
+                    print("DEBUG: Used JW Before Login.")
+                } else {
+                    print("DEBUG: \(String(describing: error))")
+                }
+            }
         }
         
         refreshControl.endRefreshing()
@@ -132,6 +154,9 @@ extension KAScoreViewController {
 
 extension KAScoreViewController: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
 }
 
 
