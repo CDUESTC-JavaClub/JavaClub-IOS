@@ -78,7 +78,7 @@ extension KABindingViewController {
                     } else {
                         self?.removeIndicator()
                         
-                        let alert = UIAlertController(title: "提示", message: "登录失败，请检查用户名或密码是否输入正确。", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "提示", message: "登录失败，请检查用户名和密码是否正确，或网络连接是否通畅！", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
                         self?.present(alert, animated: true, completion: nil)
                     }
@@ -88,6 +88,12 @@ extension KABindingViewController {
                         self?.removeIndicator()
                         
                         let alert = UIAlertController(title: "提示", message: "使用教务功能之前，请先登录论坛账号！", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+                        self?.present(alert, animated: true, completion: nil)
+                    } else if error == .wrongPassword {
+                        self?.removeIndicator()
+                        
+                        let alert = UIAlertController(title: "提示", message: "用户名或密码错误，请检查输入。", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
                         self?.present(alert, animated: true, completion: nil)
                     } else {

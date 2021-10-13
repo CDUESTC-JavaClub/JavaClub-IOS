@@ -56,6 +56,8 @@ extension JCLoginViewController {
     }
     
     @IBAction func login() {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        
         if
             let username = usernameField.text,
             let password = passwordField.text,
@@ -67,27 +69,16 @@ extension JCLoginViewController {
                 showIndicator()
                 
                 let info = JCLoginInfo(username: username, password: password)
-                JCAccountManager.shared.login(info: info) { [weak self] result in
-                    if let success = try? result.get(), success {
-                        Defaults[.loginInfo] = info
-                        
-                        JCAccountManager.shared.getInfo { result in
-                            let userInfo = try? result.get()
-                            Defaults[.user] = userInfo
-                        }
-                        
-                        JCAccountManager.shared.getUserMedia()
-                        
-                        self?.dismiss(animated: true)
-                        self?.removeIndicator()
-                        UITabBar.appearance().isHidden = false
-                    } else {
-                        self?.removeIndicator()
-                        
-                        let alert = UIAlertController(title: "提示", message: "登录失败，请检查输入或网络连接是否通畅！", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
-                        self?.present(alert, animated: true, completion: nil)
-                    }
+                appDelegate?.loginJC(info) { [weak self] in
+                    self?.dismiss(animated: true)
+                    self?.removeIndicator()
+                    UITabBar.appearance().isHidden = false
+                } onFailure: { [weak self] in
+                    self?.removeIndicator()
+                    
+                    let alert = UIAlertController(title: "提示", message: "登录失败，请检查输入或网络连接是否通畅！", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+                    self?.present(alert, animated: true, completion: nil)
                 }
             } else {
                 let alert = UIAlertController(title: "提示", message: "在使用本软件之前，您需要同意我们的隐私条款！", preferredStyle: .alert)

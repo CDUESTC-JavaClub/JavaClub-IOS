@@ -62,7 +62,7 @@ extension JCMainViewController {
             let isSmallScreen = Device.current.isOneOf(Device.smallScreenModels)
             
             if webVC == nil, let sessionURL = Defaults[.sessionURL] {
-                let url = Defaults[.sessionExpired] ? JCAccountManager.shared.javaClubURL : sessionURL
+                let url = !Defaults[.firstLogin] ? JCAccountManager.shared.javaClubURL : sessionURL
                 webVC = JCWebViewController(url: url)
                 view.addSubview(webVC.view)
                 webVC.view.snp.makeConstraints { make in
@@ -70,7 +70,7 @@ extension JCMainViewController {
                     make.leading.trailing.bottom.equalTo(view)
                 }
                 
-                Defaults[.sessionExpired] = true
+                Defaults[.firstLogin] = false
             }
         }
     }

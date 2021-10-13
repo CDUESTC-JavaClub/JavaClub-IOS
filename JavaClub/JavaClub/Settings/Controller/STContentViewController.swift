@@ -30,13 +30,13 @@ class STContentViewController: UIViewController {
             self?.didUpdateLoginState(obj.newValue)
         }.tieToLifetime(of: self)
         
-        let _ = Defaults.observe(.avatarLocal) { [weak self] obj in
-            self?.updateUserMedia(avatarURL: obj.newValue, bannerURL: nil)
-        }.tieToLifetime(of: self)
-        
-        let _ = Defaults.observe(.bannerLocal) { [weak self] obj in
-            self?.updateUserMedia(avatarURL: nil, bannerURL: obj.newValue)
-        }.tieToLifetime(of: self)
+//        let _ = Defaults.observe(.avatarLocal) { [weak self] obj in
+//            self?.updateUserMedia(avatarURL: obj.newValue, bannerURL: nil)
+//        }.tieToLifetime(of: self)
+//
+//        let _ = Defaults.observe(.bannerLocal) { [weak self] obj in
+//            self?.updateUserMedia(avatarURL: nil, bannerURL: obj.newValue)
+//        }.tieToLifetime(of: self)
         
         setup()
         configureAppearance()
@@ -174,25 +174,73 @@ extension STContentViewController {
     
     private func updateUserMedia(avatarURL: URL?, bannerURL: URL?) {
         if let avatarURL = avatarURL {
-            avatar.kf.setImage(with: avatarURL, options: [.keepCurrentImageWhileLoading]) { result in
+//            avatar.kf.setImage(with: avatarURL, options: [.keepCurrentImageWhileLoading]) { result in
+//                switch result {
+//                case .success(_):
+//                    print("DEBUG: Avatar Retrieved Successfully.")
+//
+//                default:
+//                    print("DEBUG: Avatar Retrieved Failed.")
+//                }
+//            }
+            
+            ImageDownloader.default.downloadImage(with: avatarURL) { [weak self] result in
                 switch result {
-                case .success(_):
-                    print("DEBUG: Avatar Retrieved Successfully.")
+                case .success(let img):
+                    self?.avatar.image = img.image
+                    ImageCache.default.storeToDisk(img.originalData, forKey: "avatarKey")
+                    print("DEBUG: Fetch Avatar Failed Succeeded.")
                     
-                default:
-                    print("DEBUG: Avatar Retrieved Failed.")
+                case .failure(let error):
+                    print("DEBUG: Fetch Avatar Failed With Error: \(String(describing: error))")
+                    
+                    ImageCache.default.retrieveImage(forKey: "avatarKey") { result in
+                        switch result {
+                        case .success(let image):
+                            self?.avatar.image = image.image
+                            print("DEBUG: Using Local Cached Avatar.")
+                            
+                        case .failure(let error):
+                            print("DEBUG: Get Local Avatar Failed With Error: \(String(describing: error))")
+                            self?.avatar.image = UIImage.fromColor(.clear)
+                        }
+                    }
                 }
             }
         }
         
         if let bannerURL = bannerURL {
-            banner.kf.setImage(with: bannerURL, options: [.keepCurrentImageWhileLoading]) { result in
+//            banner.kf.setImage(with: bannerURL, options: [.keepCurrentImageWhileLoading]) { result in
+//                switch result {
+//                case .success(_):
+//                    print("DEBUG: Banner Retrieved Successfully.")
+//
+//                default:
+//                    print("DEBUG: Banner Retrieved Failed.")
+//                }
+//            }
+            
+            ImageDownloader.default.downloadImage(with: bannerURL) { [weak self] result in
                 switch result {
-                case .success(_):
-                    print("DEBUG: Banner Retrieved Successfully.")
+                case .success(let image):
+                    self?.banner.image = image.image
+                    ImageCache.default.storeToDisk(image.originalData, forKey: "bannerKey")
+                    print("DEBUG: Fetch Banner Failed Succeeded.")
                     
-                default:
-                    print("DEBUG: Banner Retrieved Failed.")
+                case .failure(let error):
+                    print("DEBUG: Fetch Banner Failed With Error: \(String(describing: error))")
+                    
+                    ImageCache.default.retrieveImage(forKey: "bannerKey") { result in
+                        switch result {
+                        case .success(let image):
+                            self?.banner.image = image.image
+                            print("DEBUG: Using Local Cached Banner.")
+                            
+                        case .failure(let error):
+                            print("DEBUG: Get Local Banner Failed With Error: \(String(describing: error))")
+                            self?.banner.image = UIImage.fromColor(.clear)
+                        }
+                    }
                 }
             }
         }

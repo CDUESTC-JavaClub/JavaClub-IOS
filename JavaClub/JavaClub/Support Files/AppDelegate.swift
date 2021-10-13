@@ -43,43 +43,74 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
     
-    func loginIfAvailable() {
-        if Defaults[.sessionExpired] {
-            JCAccountManager.shared.refreshUserMedia()
-            
-            if let jwInfo = Defaults[.jwInfo], let user = Defaults[.user] {
-                JCAccountManager.shared.loginJW(info: jwInfo, bind: user.studentID == nil) { result in
-                    
+    func loginJC(_ info: JCLoginInfo, onSuccess: (() -> Void)?, onFailure: (() -> Void)?) {
+        JCAccountManager.shared.login(info: info) { result in
+            if let success = try? result.get(), success {
+                Defaults[.loginInfo] = info
+                
+                JCAccountManager.shared.getInfo { result in
                     switch result {
-                    case .success(let success):
-                        if success {
-                            JCAccountManager.shared.getEnrollmentInfo { result in
-                                
-                                switch result {
-                                case .success(let enr):
-                                    Defaults[.enrollment] = enr
-                                    print("DEBUG: Auto Login JW Succeeded.")
-                                    
-                                case .failure(let error):
-                                    if error == .notLoginJC {
-                                        print("DEBUG: Please Login JC First.")
-                                    } else {
-                                        print("DEBUG: Fetch Enrollment Info Failed With Error: \(String(describing: error))")
-                                    }
-                                }
-                                
-                            }
-                        } else {
-                            print("DEBUG: Auto Login JW Failed. (Maybe Wrong Username Or Password)")
-                        }
+                    case .success(let userInfo):
+                        Defaults[.user] = userInfo
                         
                     case .failure(let error):
-                        print("DEBUG: Auto Login JW Failed With Error: \(String(describing: error)).")
+                        print("DEBUG: Fetch User Info Failed With Error: \(String(describing: error))")
+                        JCAccountManager.shared.logout()
                     }
                 }
+                
+                JCAccountManager.shared.getUserMedia()
+                
+                onSuccess?()
             } else {
-                print("DEBUG: Credential Lost.")
+                onFailure?()
             }
+        }
+    }
+    
+    private func loginIfAvailable() {
+        if !Defaults[.firstLogin], let info = Defaults[.loginInfo] {
+            loginJC(info) {
+                print("Auto Login JC Succeeded.")
+                
+                if let jwInfo = Defaults[.jwInfo], let user = Defaults[.user] {
+                    JCAccountManager.shared.loginJW(info: jwInfo, bind: user.studentID == nil) { result in
+                        
+                        switch result {
+                        case .success(let success):
+                            if success {
+                                JCAccountManager.shared.getEnrollmentInfo { result in
+                                    
+                                    switch result {
+                                    case .success(let enr):
+                                        Defaults[.enrollment] = enr
+                                        print("DEBUG: Auto Login JW Succeeded.")
+                                        
+                                    case .failure(let error):
+                                        if error == .notLoginJC {
+                                            print("DEBUG: Please Login JC First.")
+                                        } else {
+                                            print("DEBUG: Fetch Enrollment Info Failed With Error: \(String(describing: error))")
+                                        }
+                                    }
+                                    
+                                }
+                            } else {
+                                print("DEBUG: Auto Login JW Failed. (Maybe Wrong Username Or Password)")
+                            }
+                            
+                        case .failure(let error):
+                            print("DEBUG: Auto Login JW Failed With Error: \(String(describing: error)).")
+                        }
+                    }
+                } else {
+                    print("DEBUG: Credential Lost.")
+                }
+            } onFailure: {
+                print("Auto Login JC Failed.")
+            }
+        } else {
+            print("DEBUG: First Login Or Login Info Not Found.")
         }
     }
     
@@ -106,7 +137,7 @@ extension Defaults.Keys {
     static let jwInfo = Key<KALoginInfo?>("bindingInfoKey", default: nil)
     static let user = Key<JCUser?>("userKey", default: nil)
     static let sessionURL = Key<URL?>("sessionURLKey", default: nil)
-    static let sessionExpired = Key<Bool>("sessionExpiredKey", default: false)
+    static let firstLogin = Key<Bool>("firstLoginKey", default: false)
     static let avatarLocal = Key<URL?>("avatarLocalKey", default: nil)
     static let bannerLocal = Key<URL?>("bannerLocalKey", default: nil)
     static let avatarURL = Key<URL?>("avatarURLKey", default: nil)

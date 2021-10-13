@@ -20,7 +20,7 @@ enum JCError: Error {
     case encryptKeyErr
     case notLoginJC
     case notLoginJW
-    case inputErr
+    case wrongPassword
     case unknown
     case castErr
 }
@@ -46,8 +46,18 @@ extension JCAccountManager {
      *      - completion: A block to check if it's logged in.
      */
     func login(info: JCLoginInfo, _ completion: @escaping (Result<Bool, JCError>) -> Void) {
-        requestPubKey { [weak self] result in
-            guard let key = try? result.get() else {
+        requestPubKey(retry: 3) { [weak self] result in
+            var key: String?
+            
+            switch result {
+            case .success(let _key):
+                key = _key
+                
+            case .failure(let error):
+                print("DEBUG: Request Public Key Failed With Error: \(String(describing: error))")
+            }
+            
+            guard let key = key else {
                 completion(.failure(.pubKeyReqFailure))
                 return
             }
@@ -110,7 +120,7 @@ extension JCAccountManager {
         Defaults[.sessionURL] = nil
         Defaults[.user] = nil
         Defaults[.jwInfo] = nil
-        Defaults[.sessionExpired] = false
+        Defaults[.firstLogin] = true
         Defaults[.enrollment] = nil
         
         HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
@@ -131,7 +141,7 @@ extension JCAccountManager {
      *      - completion: A block of what you wanna do with the user's info.
      */
     func getInfo(_ completion: @escaping (Result<JCUser, JCError>) -> Void) {
-        AF.request("https://api.cduestc.club/api/auth/info").response { [unowned self] response in
+        AF.request("https://api.cduestc.club/api/auth/info").response { response in
             guard let data = response.data else {
                 completion(.failure(.noData))
                 return
@@ -155,7 +165,6 @@ extension JCAccountManager {
                     
                     completion(.success(user))
                 } else if status == 403 {
-                    logout()
                     completion(.failure(.notLoginJC))
                 } else {
                     completion(.failure(.badRequest))
@@ -175,25 +184,15 @@ extension JCAccountManager {
      *      - completion: A block that tells the process is complete.
      */
     func refreshUserMedia() {
-        if let avatarURL = Defaults[.avatarURL] {
-            JCImageManager.shared.loadImage(url: avatarURL) { img in
-                if let img = img {
-                    Defaults[.avatarLocal] = JCImageManager.shared.saveToDisk("avatar", img: img)
-                }
-            }
-        }
-        
-        if let bannerURL = Defaults[.bannerURL] {
-            JCImageManager.shared.loadImage(url: bannerURL) { img in
-                if let img = img {
-                    Defaults[.bannerLocal] = JCImageManager.shared.saveToDisk("banner", img: img)
-                }
-            }
-        }
-        
         getInfo { result in
-            let user = try? result.get()
-            Defaults[.user] = user
+            switch result {
+            case .success(let userInfo):
+                Defaults[.user] = userInfo
+
+            case .failure(let error):
+                print("DEBUG: Fetch User Info Failed With Error: \(String(describing: error))")
+                JCAccountManager.shared.logout()
+            }
         }
     }
     
@@ -232,7 +231,7 @@ extension JCAccountManager {
      *      - completion: A block of what you wanna do with the result of the binding process.
      */
     func loginJW(info: KALoginInfo, bind: Bool = false, _ completion: @escaping (Result<Bool, JCError>) -> Void) {
-        requestPubKey { [weak self] result in
+        requestPubKey(retry: 3) { [weak self] result in
             guard let key = try? result.get() else {
                 completion(.failure(.pubKeyReqFailure))
                 return
@@ -270,6 +269,8 @@ extension JCAccountManager {
                             completion(.success(success))
                         } else if status == 403 {
                             completion(.failure(.notLoginJC))
+                        } else if status == 401 {
+                            completion(.failure(.wrongPassword))
                         } else {
                             completion(.failure(.badRequest))
                             print("DEBUG: Login JW Failed With Code: \(status)")
@@ -460,27 +461,41 @@ extension JCAccountManager {
 extension JCAccountManager {
     
     private func encrypt(_ content: String, with key: String) throws -> String? {
-        do {
-            let pubKey = try PublicKey(pemEncoded: key)
-            let clear = try ClearMessage(string: content, using: .utf8)
-            let encrypted = try clear.encrypted(with: pubKey, padding: .PKCS1)
+        let pubKey = try? PublicKey(pemEncoded: key)
+        let clear = try? ClearMessage(string: content, using: .utf8)
+        
+        if let pubKey = pubKey, let clear = clear {
+            let encrypted = try? clear.encrypted(with: pubKey, padding: .PKCS1)
             
-            return encrypted.base64String
-        } catch {
-            throw JCError.encryptKeyErr
+            return encrypted?.base64String
         }
+        
+        return nil
     }
     
-    private func requestPubKey(_ completion: @escaping (Result<String, JCError>) -> Void) {
-        AF.request("https://api.cduestc.club/api/auth/public-key").response { response in
+    private func requestPubKey(retry count: Int, _ completion: @escaping (Result<String, JCError>) -> Void) {
+        AF.request("https://api.cduestc.club/api/auth/public-key").response { [weak self] response in
             guard let data = response.data else {
                 completion(.failure(.noData))
                 return
             }
             
             do {
+                let status = (try JSON(data: data))["status"].intValue
                 let jsonStr = (try JSON(data: data))["data"].stringValue
-                completion(.success(jsonStr))
+                
+                if status == 200, jsonStr != "failed" {
+                    print("Request Public Key Succeeded.")
+                    completion(.success(jsonStr))
+                } else {
+                    print("Request Public Key Failed.")
+                    
+                    if count != 0 {
+                        self?.requestPubKey(retry: count - 1, completion)
+                    } else {
+                        completion(.failure(.pubKeyReqFailure))
+                    }
+                }
             } catch {
                 completion(.failure(.parseErr))
                 print("DEBUG: \(error.localizedDescription)")

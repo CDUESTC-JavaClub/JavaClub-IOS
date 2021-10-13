@@ -142,7 +142,7 @@ extension KAScoreViewController {
                 if error == .notLoginJW {
                     print("DEBUG: Used JW Before Login.")
                 } else {
-                    print("DEBUG: \(String(describing: error))")
+                    print("DEBUG: Refresh With Error: \(String(describing: error))")
                 }
             }
         }
