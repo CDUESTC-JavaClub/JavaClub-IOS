@@ -37,7 +37,7 @@ extension JCTabBarController {
         
         viewControllers = [
             createNavController(for: JCMainViewController(), title: "JavaClub", image: UIImage(systemName: "house")!),
-            createNavController(for: KAMainViewController(), title: "教务", image: UIImage(systemName: "square.and.pencil")!),
+            createNavController(for: KAMainViewController(), title: "教务", image: UIImage(systemName: "square.and.pencil")!, swipEnabled: false),
             createNavController(for: UIViewController(), title: "百叶计划", image: UIImage(systemName: "chart.pie")!),
             createNavController(for: STMainViewController(), title: "设置", image: UIImage(systemName: "gear")!),
         ]
@@ -46,12 +46,14 @@ extension JCTabBarController {
     private func createNavController(
         for rootViewController: UIViewController,
         title: String,
-        image: UIImage
+        image: UIImage,
+        swipEnabled: Bool = true
     ) -> UINavigationController {
         let navController = UINavigationController(rootViewController: rootViewController)
         navController.tabBarItem.title = title
         navController.tabBarItem.image = image
         navController.isNavigationBarHidden = true
+        navController.interactivePopGestureRecognizer?.isEnabled = swipEnabled
         
         return navController
     }
