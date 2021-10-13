@@ -44,6 +44,7 @@ extension JCLoginViewController {
         usernameField.layer.cornerRadius = usernameField.frame.height / 2
         usernameField.clipsToBounds = true
         usernameField.autocorrectionType = .no
+        usernameField.keyboardType = .alphabet
         
         passwordField.layer.borderWidth = 1
         passwordField.layer.borderColor = UIColor.label.cgColor

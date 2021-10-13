@@ -113,9 +113,7 @@ extension JCAccountManager {
         AF.request("https://api.cduestc.club/api/auth/logout").response { _ in }
         
         Defaults[.avatarURL] = nil
-        Defaults[.avatarLocal] = nil
         Defaults[.bannerURL] = nil
-        Defaults[.bannerLocal] = nil
         Defaults[.loginInfo] = nil
         Defaults[.sessionURL] = nil
         Defaults[.user] = nil

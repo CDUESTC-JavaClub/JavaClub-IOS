@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Defaults
 
 class STMainViewController: UIViewController {
     private let contentVC: STContentViewController!
@@ -29,6 +30,14 @@ class STMainViewController: UIViewController {
         view.addSubview(contentVC.view)
         contentVC.view.snp.makeConstraints { make in
             make.edges.equalTo(view)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let avatarURL = Defaults[.avatarURL], let bannerURL = Defaults[.bannerURL] {
+            contentVC.updateUserMedia(avatarURL: avatarURL, bannerURL: bannerURL)
         }
     }
 }

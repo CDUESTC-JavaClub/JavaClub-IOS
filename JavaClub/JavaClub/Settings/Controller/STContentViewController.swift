@@ -20,7 +20,8 @@ class STContentViewController: UIViewController {
     private var useDarkModeSwitch: UISwitch!
     private var useSystemAppearanceSwitch: UISwitch!
     
-    var models: [TVSection] = []
+    private var models: [TVSection] = []
+    private var lastRefreshTime = Date()
     
 
     override func viewDidLoad() {
@@ -46,7 +47,6 @@ class STContentViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -159,8 +159,8 @@ extension STContentViewController {
             usernameLabel.text = userInfo.username
             signatureLabel.text = userInfo.signature
             
-            if let avatarLocal = Defaults[.avatarLocal], let bannerLocal = Defaults[.bannerLocal] {
-                updateUserMedia(avatarURL: avatarLocal, bannerURL: bannerLocal)
+            if let avatarURL = Defaults[.avatarURL], let bannerURL = Defaults[.bannerURL] {
+                updateUserMedia(startUp: true, avatarURL: avatarURL, bannerURL: bannerURL)
             }
         } else {
             usernameLabel.text = "请先登录"
@@ -172,24 +172,22 @@ extension STContentViewController {
         configureModels()
     }
     
-    private func updateUserMedia(avatarURL: URL?, bannerURL: URL?) {
+    func updateUserMedia(startUp: Bool = false, avatarURL: URL?, bannerURL: URL?) {
+        // Check Refresh Rate
+        if !startUp, Date().timeIntervalSince(lastRefreshTime) < 180 {
+            print("DEBUG: Not Enough Time For Next Refresh.")
+            return
+        } else {
+            lastRefreshTime = Date()
+        }
+        
         if let avatarURL = avatarURL {
-//            avatar.kf.setImage(with: avatarURL, options: [.keepCurrentImageWhileLoading]) { result in
-//                switch result {
-//                case .success(_):
-//                    print("DEBUG: Avatar Retrieved Successfully.")
-//
-//                default:
-//                    print("DEBUG: Avatar Retrieved Failed.")
-//                }
-//            }
-            
             ImageDownloader.default.downloadImage(with: avatarURL) { [weak self] result in
                 switch result {
                 case .success(let img):
                     self?.avatar.image = img.image
                     ImageCache.default.storeToDisk(img.originalData, forKey: "avatarKey")
-                    print("DEBUG: Fetch Avatar Failed Succeeded.")
+                    print("DEBUG: Fetch Avatar Succeeded.")
                     
                 case .failure(let error):
                     print("DEBUG: Fetch Avatar Failed With Error: \(String(describing: error))")
@@ -210,22 +208,12 @@ extension STContentViewController {
         }
         
         if let bannerURL = bannerURL {
-//            banner.kf.setImage(with: bannerURL, options: [.keepCurrentImageWhileLoading]) { result in
-//                switch result {
-//                case .success(_):
-//                    print("DEBUG: Banner Retrieved Successfully.")
-//
-//                default:
-//                    print("DEBUG: Banner Retrieved Failed.")
-//                }
-//            }
-            
             ImageDownloader.default.downloadImage(with: bannerURL) { [weak self] result in
                 switch result {
                 case .success(let image):
                     self?.banner.image = image.image
                     ImageCache.default.storeToDisk(image.originalData, forKey: "bannerKey")
-                    print("DEBUG: Fetch Banner Failed Succeeded.")
+                    print("DEBUG: Fetch Banner Succeeded.")
                     
                 case .failure(let error):
                     print("DEBUG: Fetch Banner Failed With Error: \(String(describing: error))")

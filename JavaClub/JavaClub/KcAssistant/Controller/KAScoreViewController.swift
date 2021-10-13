@@ -40,9 +40,8 @@ class KAScoreViewController: UIViewController {
         collectionView.alwaysBounceVertical = true
         collectionView.refreshControl = refreshControl
         
-//        didRefresh()
         configureCollectionView()
-        applySnapshot()
+        didRefresh()
     }
 }
 

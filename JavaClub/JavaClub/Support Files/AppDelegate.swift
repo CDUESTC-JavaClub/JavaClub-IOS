@@ -138,8 +138,6 @@ extension Defaults.Keys {
     static let user = Key<JCUser?>("userKey", default: nil)
     static let sessionURL = Key<URL?>("sessionURLKey", default: nil)
     static let firstLogin = Key<Bool>("firstLoginKey", default: false)
-    static let avatarLocal = Key<URL?>("avatarLocalKey", default: nil)
-    static let bannerLocal = Key<URL?>("bannerLocalKey", default: nil)
     static let avatarURL = Key<URL?>("avatarURLKey", default: nil)
     static let bannerURL = Key<URL?>("bannerURLKey", default: nil)
     static let enrollment = Key<KAEnrollment?>("bannerURLKey", default: nil)
