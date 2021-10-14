@@ -18,6 +18,6 @@ struct KAScore: Hashable, Identifiable {
     var classType: String
     var points: Double
     var credits: Double
-    var score: Int
-    var redoScore: Int
+    var score: Double
+    var redoScore: Double
 }

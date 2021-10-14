@@ -68,7 +68,7 @@ extension JCAccountManager {
                 let parameters = [
                     "id": info.username,
                     "password": encryptedStr,
-                    "remember-me": "true"
+                    "remember-me": "false"
                 ]
                 
                 // Request Login
@@ -176,25 +176,6 @@ extension JCAccountManager {
     }
     
     /**
-     *  Refresh an user's avatar and banner.
-     *
-     *  - Parameters:
-     *      - completion: A block that tells the process is complete.
-     */
-    func refreshUserMedia() {
-        getInfo { result in
-            switch result {
-            case .success(let userInfo):
-                Defaults[.user] = userInfo
-
-            case .failure(let error):
-                print("DEBUG: Fetch User Info Failed With Error: \(String(describing: error))")
-                JCAccountManager.shared.logout()
-            }
-        }
-    }
-    
-    /**
      *  Refresh an user's all session data.
      *
      *  - Parameters:
@@ -203,18 +184,18 @@ extension JCAccountManager {
     func getUserMedia() {
         // Refresh User Media
         if Defaults[.sessionURL] == nil {
-            JCAccountManager.shared.getSession { [unowned self] urlStr, avatar, banner in
-                Defaults[.sessionURL] = urlStr
+            JCAccountManager.shared.getSession { urlStr, avatar, banner in
+                if Defaults[.sessionURL] == nil, let urlStr = urlStr {
+                    Defaults[.sessionURL] = urlStr
+                }
                 
-                if let avatar = avatar {
+                if Defaults[.avatarURL] == nil, let avatar = avatar {
                     Defaults[.avatarURL] = avatar
                 }
                 
-                if let banner = banner {
+                if Defaults[.bannerURL] == nil, let banner = banner {
                     Defaults[.bannerURL] = banner
                 }
-                
-                refreshUserMedia()
             }
         }
     }
@@ -383,8 +364,8 @@ extension JCAccountManager {
                             classType: json["type"].stringValue,
                             points: json["points"].doubleValue,
                             credits: json["credits"].doubleValue,
-                            score: json["score_all"].intValue,
-                            redoScore: json["redo_score_all"].intValue
+                            score: json["score_all"].doubleValue,
+                            redoScore: json["redo_score_all"].doubleValue
                         )
                         
                         result.append(score)
@@ -483,10 +464,10 @@ extension JCAccountManager {
                 let jsonStr = (try JSON(data: data))["data"].stringValue
                 
                 if status == 200, jsonStr != "failed" {
-                    print("Request Public Key Succeeded.")
+                    print("DEBUG: Request Public Key Succeeded.")
                     completion(.success(jsonStr))
                 } else {
-                    print("Request Public Key Failed.")
+                    print("DEBUG: Request Public Key Failed.")
                     
                     if count != 0 {
                         self?.requestPubKey(retry: count - 1, completion)

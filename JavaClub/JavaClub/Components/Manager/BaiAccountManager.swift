@@ -79,7 +79,7 @@
 //                "student_id": account.id,
 //                "password": account.password]
 //
-//            netTask(parameters: parameters, url: "/Api/Token/login", task: { [unowned self] data in
+//            netTask(parameters: parameters, url: "/Api/Token/login", task: { [weak self] data in
 //                let status = data["status"].stringValue
 //                if status == "10000" {
 //                    let json = data["data"]
@@ -138,7 +138,7 @@
 //    }
 //
 //    func activitiesRequest(parameters : [String:String?], url : String, limit : Int, consumer : @escaping (Activity) -> Void){
-//        netTask(parameters: parameters, url: url, task: { [unowned self] data in
+//        netTask(parameters: parameters, url: url, task: { [weak self] data in
 //            let array : [JSON] = data["data"].arrayValue
 //            let size = min(array.count, limit)
 //

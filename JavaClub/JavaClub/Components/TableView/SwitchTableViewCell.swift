@@ -1,15 +1,16 @@
 //
-//  TVScoreTableViewCell.swift
+//  SwitchTableViewCell.swift
 //  JavaClub
 //
-//  Created by Roy on 2021/10/12.
+//  Created by Roy on 2021/10/9.
 //
 
 import UIKit
-import SnapKit
 
-class TVScoreTableViewCell: UITableViewCell {
-    static let identifier = "TVScoreTableViewCell"
+class SwitchTableViewCell: UITableViewCell {
+    static let identifier = "SwitchTableViewCell"
+    
+    private var cellModel: TVSwitchOption!
     
     private let iconImageView: UIImageView = {
         let view = UIImageView()
@@ -26,13 +27,11 @@ class TVScoreTableViewCell: UITableViewCell {
         return label
     }()
     
-    private let value: UILabel = {
-       let label = UILabel()
-        label.numberOfLines = 1
-        label.textColor = .secondaryLabel
-        label.baselineAdjustment = .alignCenters
+    private let _switch: UISwitch = {
+        let mySwitch = UISwitch()
+        mySwitch.onTintColor = .systemBlue
         
-        return label
+        return mySwitch
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -40,20 +39,9 @@ class TVScoreTableViewCell: UITableViewCell {
         
         contentView.addSubview(label)
         contentView.addSubview(iconImageView)
-        contentView.addSubview(value)
+        contentView.addSubview(_switch)
         contentView.clipsToBounds = true
         accessoryType = .none
-        
-        label.snp.makeConstraints { make in
-            make.leading.equalTo(contentView.snp.leading).inset(20)
-            make.centerY.equalTo(contentView.snp.centerY)
-        }
-        
-        value.snp.makeConstraints { make in
-            make.trailing.equalTo(contentView.snp.trailing).inset(20)
-            make.leading.equalTo(label.snp.trailing)
-            make.centerY.equalTo(label.snp.centerY)
-        }
     }
     
     required init?(coder: NSCoder) {
@@ -62,6 +50,20 @@ class TVScoreTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        let size: CGFloat = contentView.frame.size.height - 12
+        iconImageView.frame = CGRect(x: 15, y: 6, width: size, height: size)
+        
+        label.snp.makeConstraints { make in
+            make.leading.equalTo(contentView.snp.leading).inset(20)
+            make.centerY.equalTo(contentView.snp.centerY)
+        }
+        
+        _switch.snp.makeConstraints { make in
+            make.trailing.equalTo(contentView.snp.trailing).inset(20)
+            make.leading.equalTo(label.snp.trailing)
+            make.centerY.equalTo(label.snp.centerY)
+        }
     }
     
     override func prepareForReuse() {
@@ -69,22 +71,30 @@ class TVScoreTableViewCell: UITableViewCell {
         
         label.text = nil
         iconImageView.image = nil
-        value.text = nil
+        _switch.isOn = false
     }
 }
 
 
-extension TVScoreTableViewCell {
+extension SwitchTableViewCell {
     
-    func configure(with model: TVStaticOption) {
+    func configure(with model: TVSwitchOption, completion: (UISwitch) -> Void) {
         selectionStyle = .none
-        isUserInteractionEnabled = false
+        
+        cellModel = model
         
         label.text = model.title
         label.textColor = .label
         label.font = .systemFont(ofSize: 14)
-        value.text = model.value
-        value.textColor = .secondaryLabel
-        value.font = .systemFont(ofSize: 14)
+        
+        _switch.onTintColor = UIColor(hex: "60D1AE")
+        _switch.isOn = model.isOn
+        _switch.addTarget(self, action: #selector(switchDidToggle(_:)), for: .valueChanged)
+        
+        completion(_switch)
+    }
+    
+    @IBAction func switchDidToggle(_ sender: UISwitch) {
+        cellModel.handler(sender)
     }
 }

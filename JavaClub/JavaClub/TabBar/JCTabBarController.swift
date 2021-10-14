@@ -36,10 +36,10 @@ extension JCTabBarController {
         let baVC = UIHostingController(rootView: BAContentView())
         
         viewControllers = [
-            createNavController(for: JCMainViewController(), title: "JavaClub", image: UIImage(systemName: "house")!),
-            createNavController(for: KAMainViewController(), title: "教务", image: UIImage(systemName: "square.and.pencil")!, swipEnabled: false),
-            createNavController(for: UIViewController(), title: "百叶计划", image: UIImage(systemName: "chart.pie")!),
-            createNavController(for: STMainViewController(), title: "设置", image: UIImage(systemName: "gear")!),
+            createNavController(for: JCMainViewController(), title: "JavaClub", image: UIImage(named: "nav_home")!),
+            createNavController(for: KAMainViewController(), title: "教务", image: UIImage(named: "nav_kc")!, swipEnabled: false),
+//            createNavController(for: baVC, title: "百叶计划", image: UIImage(named: "nav_bai")!),
+            createNavController(for: STMainViewController(), title: "设置", image: UIImage(named: "nav_settings")!),
         ]
     }
     

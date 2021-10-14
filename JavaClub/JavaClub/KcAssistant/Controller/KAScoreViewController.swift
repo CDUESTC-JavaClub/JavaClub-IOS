@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import SwiftUI
 import SnapKit
 
 class KAScoreViewController: UIViewController {
+    private let indicatorView = _UIHostingView(rootView: LoadingIndicatorView())
     private lazy var dataSource = makeDataSource()
     private let refreshControl = UIRefreshControl()
     private var models: [KASection] = []
@@ -66,11 +68,8 @@ extension KAScoreViewController {
             cell.accessories = [.outlineDisclosure(options: headerDisclosureOption)]
         }
         
-        let itemCellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, KAScore> { cell, indexPath, item in
-            var content = cell.defaultContentConfiguration()
-            content.image = UIImage(systemName: "graduationcap.fill")
-            content.text = item.className
-            cell.contentConfiguration = content
+        let itemCellRegistration = UICollectionView.CellRegistration<ScoreCollectionViewCell, KAScore> { cell, indexPath, item in
+            cell.item = item
         }
         
         let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, listItem in
@@ -112,41 +111,73 @@ extension KAScoreViewController {
             }
             
             sectionSnapshot.append(listItems, to: headerItem)
-            sectionSnapshot.expand([headerItem])
+//            sectionSnapshot.expand([headerItem])
             
             dataSource.apply(sectionSnapshot, to: section, animatingDifferences: animates)
         }
     }
     
     private func configureModels(with scores: [KAScore]) {
+        var _models: [KASection] = []
+        var modelDict = [String: [KAScore]]()
+        
         scores.forEach { item in
-            if var section = models.filter({ $0.title == "\(item.year) 学年" }).first {
-                section.scores.append(item)
+            let term = item.term == 1 ? "上" : "下"
+            let title = "\(item.year) 学年 - \(term)"
+            
+            if modelDict[title] != nil {
+                modelDict[title]!.append(item)
             } else {
-                let section = KASection(title: "\(item.year) 学年", scores: [item])
-                models.append(section)
+                modelDict[title] = [item]
             }
         }
+        
+        for (_key, _value) in modelDict.sorted(by: { $0.0 < $1.0 }) {
+            let section = KASection(title: _key, scores: _value)
+            _models.append(section)
+        }
+        
+        models = _models
         
         applySnapshot()
     }
     
     @objc private func didRefresh() {
+        showIndicator()
+        
         JCAccountManager.shared.getScore { [weak self] result in
             switch result {
             case .success(let scores):
                 self?.configureModels(with: scores)
+                self?.removeIndicator()
                 
             case .failure(let error):
                 if error == .notLoginJW {
                     print("DEBUG: Used JW Before Login.")
                 } else {
-                    print("DEBUG: Refresh With Error: \(String(describing: error))")
+                    print("DEBUG: Refresh Score With Error: \(String(describing: error))")
                 }
+                self?.removeIndicator()
             }
         }
         
         refreshControl.endRefreshing()
+    }
+    
+    private func showIndicator() {
+        view.addSubview(indicatorView)
+        
+        indicatorView.snp.makeConstraints { make in
+            make.center.equalTo(self.view)
+            make.width.equalTo(200)
+            make.height.equalTo(100)
+        }
+    }
+    
+    private func removeIndicator() {
+        indicatorView.snp.removeConstraints()
+        
+        indicatorView.removeFromSuperview()
     }
 }
 

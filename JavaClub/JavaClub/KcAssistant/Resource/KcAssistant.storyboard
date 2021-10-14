@@ -332,13 +332,163 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="107.8125"/>
         </scene>
+        <!--Enrollment View Controller-->
+        <scene sceneID="lfC-ug-7WS">
+            <objects>
+                <viewController storyboardIdentifier="KAEnrollmentViewController" id="KZh-Gm-e2U" customClass="KAEnrollmentViewController" customModule="JavaClub" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="07E-Ui-8pp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <userGuides>
+                            <userLayoutGuide location="20" affinity="minX"/>
+                            <userLayoutGuide location="394" affinity="minX"/>
+                        </userGuides>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIg-mi-TOC" customClass="DesignableView" customModule="JavaClub" customModuleProvider="target">
+                                <rect key="frame" x="20" y="44" width="374" height="130"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="graduationcap.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6Oz-Km-1ZG">
+                                        <rect key="frame" x="20" y="25.5" width="80" height="82.5"/>
+                                        <color key="tintColor" red="0.37647058823529411" green="0.81960784313725488" blue="0.68235294117647061" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="QPZ-7F-cgd"/>
+                                            <constraint firstAttribute="height" constant="80" id="eEw-7p-vhG"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBP-OI-Ze0">
+                                        <rect key="frame" x="120" y="8" width="41" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="gbS-BL-myK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="...级 ...学院" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AU-H6-5pI">
+                                        <rect key="frame" x="148" y="39" width="71" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="fy7-Ob-aNC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="...校区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daV-xp-mMf">
+                                        <rect key="frame" x="148" y="68" width="41" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="1zp-BZ-XdR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8GA-u2-4Hg">
+                                        <rect key="frame" x="120" y="66.5" width="23" height="22.5"/>
+                                        <color key="tintColor" red="0.37647058820000001" green="0.81960784310000001" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="23" id="87F-Pk-D6l"/>
+                                            <constraint firstAttribute="height" constant="24" id="FUJ-tF-AOS"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="briefcase.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aw0-Zq-Gbc">
+                                        <rect key="frame" x="120" y="95" width="23" height="22.5"/>
+                                        <color key="tintColor" red="0.37647058820000001" green="0.81960784310000001" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="ljA-mf-FnA"/>
+                                            <constraint firstAttribute="width" constant="23" id="z9Q-TP-gax"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Qje-Rx-ywF">
+                                        <rect key="frame" x="120" y="38" width="23" height="21.5"/>
+                                        <color key="tintColor" red="0.37647058820000001" green="0.81960784310000001" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="4YK-vR-Wcx"/>
+                                            <constraint firstAttribute="width" constant="23" id="egp-MU-1jN"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="学制（在读）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnO-gN-vMq">
+                                        <rect key="frame" x="148" y="99" width="86" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="bNz-AQ-ZOU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="aw0-Zq-Gbc" firstAttribute="top" secondItem="8GA-u2-4Hg" secondAttribute="bottom" constant="5" id="99Q-GQ-qIJ"/>
+                                    <constraint firstItem="aw0-Zq-Gbc" firstAttribute="leading" secondItem="6Oz-Km-1ZG" secondAttribute="trailing" constant="20" id="Cde-QO-Y5o"/>
+                                    <constraint firstAttribute="height" constant="130" id="DJG-PW-VEe"/>
+                                    <constraint firstItem="VBP-OI-Ze0" firstAttribute="leading" secondItem="6Oz-Km-1ZG" secondAttribute="trailing" constant="20" id="HnS-Kh-vD1"/>
+                                    <constraint firstItem="Qje-Rx-ywF" firstAttribute="top" secondItem="VBP-OI-Ze0" secondAttribute="bottom" constant="5" id="Jai-1u-j0p"/>
+                                    <constraint firstItem="1AU-H6-5pI" firstAttribute="top" secondItem="VBP-OI-Ze0" secondAttribute="bottom" constant="7" id="PUW-IX-xcs"/>
+                                    <constraint firstItem="Qje-Rx-ywF" firstAttribute="leading" secondItem="6Oz-Km-1ZG" secondAttribute="trailing" constant="20" id="ScL-dJ-g0v"/>
+                                    <constraint firstItem="6Oz-Km-1ZG" firstAttribute="centerY" secondItem="tIg-mi-TOC" secondAttribute="centerY" id="Sem-vu-bzp"/>
+                                    <constraint firstItem="1AU-H6-5pI" firstAttribute="leading" secondItem="Qje-Rx-ywF" secondAttribute="trailing" constant="5" id="XeZ-WB-jwu"/>
+                                    <constraint firstItem="8GA-u2-4Hg" firstAttribute="leading" secondItem="6Oz-Km-1ZG" secondAttribute="trailing" constant="20" id="YQ0-5l-Xvj"/>
+                                    <constraint firstItem="6Oz-Km-1ZG" firstAttribute="leading" secondItem="tIg-mi-TOC" secondAttribute="leading" constant="20" id="c5p-d1-EIt"/>
+                                    <constraint firstItem="BnO-gN-vMq" firstAttribute="leading" secondItem="aw0-Zq-Gbc" secondAttribute="trailing" constant="5" id="cgV-QJ-lT3"/>
+                                    <constraint firstItem="8GA-u2-4Hg" firstAttribute="top" secondItem="Qje-Rx-ywF" secondAttribute="bottom" constant="5" id="kEi-AJ-o4E"/>
+                                    <constraint firstItem="BnO-gN-vMq" firstAttribute="top" secondItem="daV-xp-mMf" secondAttribute="bottom" constant="14" id="u24-hY-0VK"/>
+                                    <constraint firstItem="daV-xp-mMf" firstAttribute="top" secondItem="1AU-H6-5pI" secondAttribute="bottom" constant="12" id="v92-PD-9VQ"/>
+                                    <constraint firstItem="daV-xp-mMf" firstAttribute="leading" secondItem="8GA-u2-4Hg" secondAttribute="trailing" constant="5" id="xyQ-zR-Lu4"/>
+                                    <constraint firstItem="VBP-OI-Ze0" firstAttribute="top" secondItem="tIg-mi-TOC" secondAttribute="top" constant="8" id="y5C-rZ-pvP"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lightColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="darkColor">
+                                        <color key="value" red="0.10980392156862745" green="0.10980392156862745" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mk7-iA-Jm2">
+                                <rect key="frame" x="0.0" y="194" width="414" height="668"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7oI-ki-G7B"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="mk7-iA-Jm2" firstAttribute="leading" secondItem="7oI-ki-G7B" secondAttribute="leading" id="1hI-Aa-Y5R"/>
+                            <constraint firstItem="mk7-iA-Jm2" firstAttribute="top" secondItem="tIg-mi-TOC" secondAttribute="bottom" constant="20" id="9OB-IM-tVi"/>
+                            <constraint firstItem="7oI-ki-G7B" firstAttribute="trailing" secondItem="tIg-mi-TOC" secondAttribute="trailing" constant="20" id="L6k-O3-QIv"/>
+                            <constraint firstItem="7oI-ki-G7B" firstAttribute="trailing" secondItem="mk7-iA-Jm2" secondAttribute="trailing" id="QoL-7B-kYN"/>
+                            <constraint firstItem="tIg-mi-TOC" firstAttribute="top" secondItem="7oI-ki-G7B" secondAttribute="top" id="gna-HA-Nre"/>
+                            <constraint firstItem="tIg-mi-TOC" firstAttribute="leading" secondItem="7oI-ki-G7B" secondAttribute="leading" constant="20" id="h2f-bB-CYd"/>
+                            <constraint firstItem="7oI-ki-G7B" firstAttribute="bottom" secondItem="mk7-iA-Jm2" secondAttribute="bottom" id="lo2-Ym-5wn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="avatarImageView" destination="6Oz-Km-1ZG" id="adT-3z-kzm"/>
+                        <outlet property="campusLabel" destination="daV-xp-mMf" id="5JW-zM-OOT"/>
+                        <outlet property="gradeLabel" destination="1AU-H6-5pI" id="Iif-QX-bda"/>
+                        <outlet property="nameLabel" destination="VBP-OI-Ze0" id="1md-pt-KWs"/>
+                        <outlet property="systemLabel" destination="BnO-gN-vMq" id="M19-YY-g8T"/>
+                        <outlet property="tableView" destination="mk7-iA-Jm2" id="6oG-L7-9vS"/>
+                        <outlet property="titleView" destination="tIg-mi-TOC" id="NC4-RA-TxJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NwK-FP-hBX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1218.840579710145" y="107.8125"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="book.fill" catalog="system" width="128" height="95"/>
+        <image name="briefcase.fill" catalog="system" width="128" height="105"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="graduationcap.fill" catalog="system" width="128" height="108"/>
         <image name="hi_icon" width="350" height="350"/>
         <image name="kc" width="200" height="200"/>
         <image name="kc_annouce" width="24" height="24"/>
         <image name="kc_student" width="843.5" height="933.5"/>
+        <image name="map.fill" catalog="system" width="128" height="110"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

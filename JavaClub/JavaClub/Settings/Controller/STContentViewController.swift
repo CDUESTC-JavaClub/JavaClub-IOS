@@ -94,9 +94,9 @@ extension STContentViewController {
         avatar.layer.cornerRadius = 63
         avatar.clipsToBounds = true
         
-        tableView.register(TVTappableViewCell.self, forCellReuseIdentifier: TVTappableViewCell.identifier)
-        tableView.register(TVSwitchTableViewCell.self, forCellReuseIdentifier: TVSwitchTableViewCell.identifier)
-        tableView.register(TVStaticTableViewCell.self, forCellReuseIdentifier: TVStaticTableViewCell.identifier)
+        tableView.register(TappableViewCell.self, forCellReuseIdentifier: TappableViewCell.identifier)
+        tableView.register(SwitchTableViewCell.self, forCellReuseIdentifier: SwitchTableViewCell.identifier)
+        tableView.register(StaticTableViewCell.self, forCellReuseIdentifier: StaticTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
         // Set Inset For 20 Temporarily
@@ -115,8 +115,8 @@ extension STContentViewController {
                     icon: nil,
                     isOn: Defaults[.useDarkMode],
                     isEnabled: !Defaults[.useSystemAppearance],
-                    handler: { [unowned self] _switch in
-                        switchDidToggle(_switch)
+                    handler: { [weak self] _switch in
+                        self?.switchDidToggle(_switch)
                     }
                 )),
                 .switchable(model: TVSwitchOption(
@@ -124,8 +124,8 @@ extension STContentViewController {
                     icon: nil,
                     isOn: Defaults[.useSystemAppearance],
                     isEnabled: true,
-                    handler: { [unowned self] _switch in
-                        switchDidToggle(_switch)
+                    handler: { [weak self] _switch in
+                        self?.switchDidToggle(_switch)
                     }
                 )),
             ]),
@@ -159,9 +159,7 @@ extension STContentViewController {
             usernameLabel.text = userInfo.username
             signatureLabel.text = userInfo.signature
             
-            if let avatarURL = Defaults[.avatarURL], let bannerURL = Defaults[.bannerURL] {
-                updateUserMedia(startUp: true, avatarURL: avatarURL, bannerURL: bannerURL)
-            }
+            updateUserMedia(startUp: true, avatarURL: Defaults[.avatarURL], bannerURL: Defaults[.bannerURL])
         } else {
             usernameLabel.text = "请先登录"
             signatureLabel.text = ""
@@ -172,6 +170,7 @@ extension STContentViewController {
         configureModels()
     }
     
+    #warning("Fetch Banner Might Fail.")
     func updateUserMedia(startUp: Bool = false, avatarURL: URL?, bannerURL: URL?) {
         // Check Refresh Rate
         if !startUp, Date().timeIntervalSince(lastRefreshTime) < 180 {
@@ -272,9 +271,9 @@ extension STContentViewController: UITableViewDataSource {
         switch type {
         case .tappable(let model):
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: TVTappableViewCell.identifier,
+                withIdentifier: TappableViewCell.identifier,
                 for: indexPath
-            ) as? TVTappableViewCell else {
+            ) as? TappableViewCell else {
                 return UITableViewCell()
             }
             
@@ -284,20 +283,19 @@ extension STContentViewController: UITableViewDataSource {
             
         case .switchable(let model):
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: TVSwitchTableViewCell.identifier,
+                withIdentifier: SwitchTableViewCell.identifier,
                 for: indexPath
-            ) as? TVSwitchTableViewCell else {
+            ) as? SwitchTableViewCell else {
                 return UITableViewCell()
             }
             
-            cell.configure(with: model) { [unowned self] _switch in
+            cell.configure(with: model) { _switch in
                 if model.title == "使用深色模式" {
-                    useDarkModeSwitch = _switch
-                    
                     if Defaults[.useSystemAppearance] {
-                        useDarkModeSwitch.isOn = true
-                        useDarkModeSwitch.isEnabled = false
+                        _switch.isOn = true
+                        _switch.isEnabled = false
                     }
+                    useDarkModeSwitch = _switch
                 } else if model.title == "主题外观跟随系统" {
                     useSystemAppearanceSwitch = _switch
                 }
@@ -307,9 +305,9 @@ extension STContentViewController: UITableViewDataSource {
             
         case ._static(let model):
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: TVStaticTableViewCell.identifier,
+                withIdentifier: StaticTableViewCell.identifier,
                 for: indexPath
-            ) as? TVStaticTableViewCell else {
+            ) as? StaticTableViewCell else {
                 return UITableViewCell()
             }
             

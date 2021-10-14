@@ -36,8 +36,6 @@ class STMainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let avatarURL = Defaults[.avatarURL], let bannerURL = Defaults[.bannerURL] {
-            contentVC.updateUserMedia(avatarURL: avatarURL, bannerURL: bannerURL)
-        }
+        contentVC.updateUserMedia(avatarURL: Defaults[.avatarURL], bannerURL: Defaults[.bannerURL])
     }
 }

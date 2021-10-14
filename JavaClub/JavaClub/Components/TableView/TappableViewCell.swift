@@ -7,8 +7,8 @@
 
 import UIKit
 
-class TVTappableViewCell: UITableViewCell {
-    static let identifier = "STTableViewCell"
+class TappableViewCell: UITableViewCell {
+    static let identifier = "TappableViewCell"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -28,7 +28,7 @@ class TVTappableViewCell: UITableViewCell {
 }
 
 
-extension TVTappableViewCell {
+extension TappableViewCell {
     
     func configure(with model: TVTappableOption, type: UITableViewCell.AccessoryType) {
         accessoryType = type

@@ -18,8 +18,9 @@ class KAContentViewController: UIViewController {
     @IBOutlet var studentIDLabel: UILabel!
     @IBOutlet var deptLabel: UILabel!
     
-    var models: [TVSection] = []
+    private var models: [TVSection] = []
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -51,7 +52,7 @@ class KAContentViewController: UIViewController {
 extension KAContentViewController {
     
     private func setup() {
-        tableView.register(TVTappableViewCell.self, forCellReuseIdentifier: TVTappableViewCell.identifier)
+        tableView.register(TappableViewCell.self, forCellReuseIdentifier: TappableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
         // Set Inset For 20 Temporarily
@@ -75,15 +76,21 @@ extension KAContentViewController {
     private func configureModels() {
         models = [
             TVSection(title: "", options: [
-                .tappable(model: TVTappableOption(title: "学期成绩查询", icon: UIImage(named: "score_icon"), handler: { [unowned self] in
-                    navigationController?.isNavigationBarHidden = false
-                    navigationController?.pushViewController(KAScoreViewController(), animated: true)
+                .tappable(model: TVTappableOption(title: "学期成绩查询", icon: UIImage(named: "score_icon"), handler: { [weak self] in
+                    self?.navigationController?.isNavigationBarHidden = false
+                    self?.navigationController?.pushViewController(KAScoreViewController(), animated: true)
                 })),
-                .tappable(model: TVTappableOption(title: "课程表查询", icon: UIImage(named: "classtable_icon"), handler: {
+//                .tappable(model: TVTappableOption(title: "课程表查询", icon: UIImage(named: "classtable_icon"), handler: { [weak self] in
+//                    self?.navigationController?.isNavigationBarHidden = false
+//                    self?.navigationController?.pushViewController(KAClassTableViewController(), animated: true)
+//                })),
+                .tappable(model: TVTappableOption(title: "学籍信息查询", icon: UIImage(named: "enrollment_icon"), handler: { [weak self] in
+                    self?.navigationController?.isNavigationBarHidden = false
                     
-                })),
-                .tappable(model: TVTappableOption(title: "学籍信息查询", icon: UIImage(named: "enrollment_icon"), handler: {
-                    
+                    let enrollmentVC = UIStoryboard(name: "KcAssistant", bundle: .main)
+                        .instantiateViewController(withIdentifier: "KAEnrollmentViewController")
+                    as! KAEnrollmentViewController
+                    self?.navigationController?.pushViewController(enrollmentVC, animated: true)
                 })),
             ]),
         ]
@@ -147,9 +154,9 @@ extension KAContentViewController: UITableViewDataSource {
         switch type {
         case .tappable(let model):
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: TVTappableViewCell.identifier,
+                withIdentifier: TappableViewCell.identifier,
                 for: indexPath
-            ) as? TVTappableViewCell else {
+            ) as? TappableViewCell else {
                 return UITableViewCell()
             }
             

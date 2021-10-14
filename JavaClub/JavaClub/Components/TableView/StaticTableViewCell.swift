@@ -8,8 +8,8 @@
 import UIKit
 import SnapKit
 
-class TVStaticTableViewCell: UITableViewCell {
-    static let identifier = "STStaticTableViewCell"
+class StaticTableViewCell: UITableViewCell {
+    static let identifier = "StaticTableViewCell"
     
     private let iconImageView: UIImageView = {
         let view = UIImageView()
@@ -74,7 +74,7 @@ class TVStaticTableViewCell: UITableViewCell {
 }
 
 
-extension TVStaticTableViewCell {
+extension StaticTableViewCell {
     
     func configure(with model: TVStaticOption) {
         selectionStyle = .none

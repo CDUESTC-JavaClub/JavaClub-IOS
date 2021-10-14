@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "nav_bai@1x.png",
+      "filename" : "nav_bai.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -19,5 +19,8 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }

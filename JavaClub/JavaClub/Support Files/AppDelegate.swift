@@ -71,7 +71,7 @@ extension AppDelegate {
     private func loginIfAvailable() {
         if !Defaults[.firstLogin], let info = Defaults[.loginInfo] {
             loginJC(info) {
-                print("Auto Login JC Succeeded.")
+                print("DEBUG: Auto Login JC Succeeded.")
                 
                 if let jwInfo = Defaults[.jwInfo], let user = Defaults[.user] {
                     JCAccountManager.shared.loginJW(info: jwInfo, bind: user.studentID == nil) { result in
@@ -107,7 +107,7 @@ extension AppDelegate {
                     print("DEBUG: Credential Lost.")
                 }
             } onFailure: {
-                print("Auto Login JC Failed.")
+                print("DEBUG: Auto Login JC Failed.")
             }
         } else {
             print("DEBUG: First Login Or Login Info Not Found.")
