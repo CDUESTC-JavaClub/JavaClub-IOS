@@ -317,7 +317,6 @@
 			isa = PBXGroup;
 			children = (
 				B02E4F202701C35E00EA3DDB /* Controller */,
-				B04FEE2C27113D5E0065FFB6 /* View */,
 				B08F6FD1270048760015B354 /* Resource */,
 			);
 			path = Settings;
@@ -368,13 +367,6 @@
 				B04C4961271841E500FBD9E7 /* BaiScoreMiniView.swift */,
 				B04C495F271841E500FBD9E7 /* BaiScoreOverallView.swift */,
 				B04C495C271841E400FBD9E7 /* BaiUserInfoView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		B04FEE2C27113D5E0065FFB6 /* View */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = View;
 			sourceTree = "<group>";
