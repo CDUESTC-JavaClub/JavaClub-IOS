@@ -33,7 +33,7 @@ class JCTabBarController: UITabBarController {
 extension JCTabBarController {
     
     private func setupVCs() {
-        let baVC = UIHostingController(rootView: BAContentView())
+//        let baVC = UIHostingController(rootView: BAContentView())
         
         viewControllers = [
             createNavController(for: JCMainViewController(), title: "JavaClub", image: UIImage(named: "nav_home")!),
