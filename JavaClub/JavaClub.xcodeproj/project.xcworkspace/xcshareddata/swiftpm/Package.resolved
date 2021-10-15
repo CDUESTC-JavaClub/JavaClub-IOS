@@ -29,6 +29,15 @@
         }
       },
       {
+        "package": "ExyteGrid",
+        "repositoryURL": "https://github.com/exyte/Grid",
+        "state": {
+          "branch": null,
+          "revision": "585dc249126fda6ae675d78175b0c52a311f10c9",
+          "version": "1.4.0"
+        }
+      },
+      {
         "package": "Kingfisher",
         "repositoryURL": "https://github.com/onevcat/Kingfisher",
         "state": {
@@ -38,21 +47,30 @@
         }
       },
       {
+        "package": "Realm",
+        "repositoryURL": "https://github.com/realm/realm-cocoa",
+        "state": {
+          "branch": null,
+          "revision": "7ca0ce1dd58553d5be1ec9cc7283b068c256979d",
+          "version": "10.17.0"
+        }
+      },
+      {
+        "package": "RealmDatabase",
+        "repositoryURL": "https://github.com/realm/realm-core",
+        "state": {
+          "branch": null,
+          "revision": "23f60515a00f076a9e3f2dc672fe1ae07601ee90",
+          "version": "11.4.1"
+        }
+      },
+      {
         "package": "SnapKit",
         "repositoryURL": "https://github.com/SnapKit/SnapKit",
         "state": {
           "branch": null,
           "revision": "d458564516e5676af9c70b4f4b2a9178294f1bc6",
           "version": "5.0.1"
-        }
-      },
-      {
-        "package": "SQLite.swift",
-        "repositoryURL": "https://github.com/stephencelis/SQLite.swift",
-        "state": {
-          "branch": null,
-          "revision": "9af51e2edf491c0ea632e369a6566e09b65aa333",
-          "version": "0.13.0"
         }
       },
       {

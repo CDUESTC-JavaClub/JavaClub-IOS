@@ -7,6 +7,7 @@
 
 import UIKit
 import Defaults
+import SwiftUI
 
 class KAContentViewController: UIViewController {
     @IBOutlet var scrollView: UIScrollView!
@@ -80,10 +81,11 @@ extension KAContentViewController {
                     self?.navigationController?.isNavigationBarHidden = false
                     self?.navigationController?.pushViewController(KAScoreViewController(), animated: true)
                 })),
-//                .tappable(model: TVTappableOption(title: "课程表查询", icon: UIImage(named: "classtable_icon"), handler: { [weak self] in
-//                    self?.navigationController?.isNavigationBarHidden = false
-//                    self?.navigationController?.pushViewController(KAClassTableViewController(), animated: true)
-//                })),
+                .tappable(model: TVTappableOption(title: "课程表查询", icon: UIImage(named: "classtable_icon"), handler: { [weak self] in
+                    let classTableVC = UIHostingController(rootView: KAClassTableContentview())
+                    self?.navigationController?.isNavigationBarHidden = false
+                    self?.navigationController?.pushViewController(classTableVC, animated: true)
+                })),
                 .tappable(model: TVTappableOption(title: "学籍信息查询", icon: UIImage(named: "enrollment_icon"), handler: { [weak self] in
                     self?.navigationController?.isNavigationBarHidden = false
                     

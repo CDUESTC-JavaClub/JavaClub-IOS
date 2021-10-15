@@ -137,7 +137,6 @@ extension Defaults.Keys {
     static let jwInfo = Key<KALoginInfo?>("bindingInfoKey", default: nil)
     static let user = Key<JCUser?>("userKey", default: nil)
     static let sessionURL = Key<URL?>("sessionURLKey", default: nil)
-    static let firstLogin = Key<Bool>("firstLoginKey", default: false)
     static let avatarURL = Key<URL?>("avatarURLKey", default: nil)
     static let bannerURL = Key<URL?>("bannerURLKey", default: nil)
     static let enrollment = Key<KAEnrollment?>("bannerURLKey", default: nil)
@@ -145,4 +144,9 @@ extension Defaults.Keys {
     // Settings
     static let useDarkMode = Key<Bool>("useDarkModeKey", default: true)
     static let useSystemAppearance = Key<Bool>("useSystemAppearanceKey", default: true)
+    
+    // Environment
+    static let firstLogin = Key<Bool>("firstLoginKey", default: false)
+    static let classTableTerm = Key<Int>("classTableTermKey", default: 1)
+    static let classTableJsonData = Key<Data?>("classTableJsonDataKey", default: nil)
 }

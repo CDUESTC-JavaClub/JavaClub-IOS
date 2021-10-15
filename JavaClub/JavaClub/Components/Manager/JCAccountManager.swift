@@ -23,6 +23,7 @@ enum JCError: Error {
     case wrongPassword
     case unknown
     case castErr
+    case illegalParameter
 }
 
 
@@ -120,6 +121,8 @@ extension JCAccountManager {
         Defaults[.jwInfo] = nil
         Defaults[.firstLogin] = true
         Defaults[.enrollment] = nil
+        Defaults[.classTableTerm] = 1
+        Defaults[.classTableJsonData] = nil
         
         HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
         
@@ -393,20 +396,24 @@ extension JCAccountManager {
      *  - Parameters:
      *      - completion: A block of what you wanna do with the result of one's class table.
      */
-    func getClassTable(term: Int, _ completion: @escaping (Result<String, JCError>) -> Void) {
-        guard Defaults[.jwInfo] != nil else {
+    func getClassTable(term: Int, _ completion: @escaping (Result<[KAClass], JCError>) -> Void) {
+        guard JCLoginState.shared.jw, let enrollment = Defaults[.enrollment] else {
             completion(.failure(.notLoginJW))
             return
         }
         
-        guard (1 ... 8).contains(term) else {
-            completion(.failure(.badRequest))
+        let degreeCheck = enrollment.degree == "本科"
+        
+        guard (1 ... (degreeCheck ? 8 : 6)).contains(term) else {
+            completion(.failure(.illegalParameter))
             return
         }
         
+        #warning("Set Term To 4 For Test.")
         AF.request(
-            "httpss://api.cduestc.club/api/kc/table",
-            method: .post
+            "https://api.cduestc.club/api/kc/table",
+            method: .post,
+            parameters: ["term": "4"]
         ).response { response in
             guard let data = response.data else {
                 completion(.failure(.noData))
@@ -417,8 +424,11 @@ extension JCAccountManager {
                 let status = (try JSON(data: data))["status"].intValue
                 
                 if status == 200 {
-                    let json = (try JSON(data: data))["data"]
-                    completion(.success(String(data: data, encoding: .utf8) ?? "N/A"))
+                    if let result = ClassTableManager.shared.decode(from: data) {
+                        completion(.success(result))
+                    } else {
+                        completion(.failure(.parseErr))
+                    }
                 } else if status == 401 {
                     completion(.failure(.notLoginJW))
                 } else if status == 403 {
@@ -513,9 +523,5 @@ extension JCAccountManager {
                 print("DEBUG: \(error.localizedDescription)")
             }
         }
-    }
-    
-    private func processClassTable() {
-        
     }
 }

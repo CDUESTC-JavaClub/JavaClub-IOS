@@ -18,9 +18,9 @@ struct CVScoreContentConfiguration: UIContentConfiguration, Hashable {
     }
     
     func updated(for state: UIConfigurationState) -> Self {
-        guard let state = state as? UICellConfigurationState else {
-            return self
-        }
+//        guard let state = state as? UICellConfigurationState else {
+//            return self
+//        }
         
         // Pending Configurations
         

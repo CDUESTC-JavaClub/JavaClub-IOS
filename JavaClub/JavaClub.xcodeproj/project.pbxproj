@@ -28,13 +28,17 @@
 		B02EEF1426FDB9030010515A /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF1326FDB9030010515A /* Defaults */; };
 		B02EEF1726FDB9110010515A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF1626FDB9110010515A /* Alamofire */; };
 		B02EEF1A26FDB91E0010515A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF1926FDB91E0010515A /* Kingfisher */; };
-		B02EEF1D26FDBA050010515A /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF1C26FDBA050010515A /* SQLite */; };
 		B02EEF2026FDBA300010515A /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF1F26FDBA300010515A /* SwiftyJSON */; };
 		B02EEF2926FDC0A00010515A /* JCWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF2826FDC0A00010515A /* JCWebViewController.swift */; };
 		B02EEF3E26FDD7BD0010515A /* JCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */; };
 		B02EEF4126FDDA140010515A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF4026FDDA140010515A /* SnapKit */; };
 		B02EEF4426FDDA870010515A /* JavaClub.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B02EEF4326FDDA870010515A /* JavaClub.storyboard */; };
-		B04C494D2717C04100FBD9E7 /* KAClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C494C2717C04100FBD9E7 /* KAClassTableViewController.swift */; };
+		B044E43827191A190097D04B /* ExyteGrid in Frameworks */ = {isa = PBXBuildFile; productRef = B044E43727191A190097D04B /* ExyteGrid */; };
+		B044E43C27191AFE0097D04B /* KAClassTableContentview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044E43B27191AFE0097D04B /* KAClassTableContentview.swift */; };
+		B044E43E27191B2B0097D04B /* KAClassTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044E43D27191B2B0097D04B /* KAClassTableCell.swift */; };
+		B044E44127194D4E0097D04B /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = B044E44027194D4E0097D04B /* Realm */; };
+		B044E44327194D4E0097D04B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B044E44227194D4E0097D04B /* RealmSwift */; };
+		B044E446271958490097D04B /* KAClassRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044E445271958490097D04B /* KAClassRealm.swift */; };
 		B04C494F2717C05C00FBD9E7 /* KAEnrollmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C494E2717C05C00FBD9E7 /* KAEnrollmentViewController.swift */; };
 		B04C49562717F42200FBD9E7 /* CVScoreContentConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C49552717F42200FBD9E7 /* CVScoreContentConfiguration.swift */; };
 		B04C49582717F4AD00FBD9E7 /* CVScoreContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C49572717F4AD00FBD9E7 /* CVScoreContentView.swift */; };
@@ -57,7 +61,7 @@
 		B08F6FB027003EEC0015B354 /* KALoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAD27003EEB0015B354 /* KALoginInfo.swift */; };
 		B08F6FB127003EEC0015B354 /* KAEnrollment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAE27003EEB0015B354 /* KAEnrollment.swift */; };
 		B08F6FB227003EEC0015B354 /* KAClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAF27003EEB0015B354 /* KAClass.swift */; };
-		B08F6FC527003F8C0015B354 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FC227003F8C0015B354 /* DBManager.swift */; };
+		B08F6FC527003F8C0015B354 /* ClassTableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FC227003F8C0015B354 /* ClassTableManager.swift */; };
 		B08F6FC627003F8C0015B354 /* JCAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FC327003F8C0015B354 /* JCAccountManager.swift */; };
 		B08F6FCA27003FD60015B354 /* JCNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FC827003FD60015B354 /* JCNoticeView.swift */; };
 		B08F6FCD270040010015B354 /* JCLoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FCB270040010015B354 /* JCLoginInfo.swift */; };
@@ -104,7 +108,9 @@
 		B02EEF2826FDC0A00010515A /* JCWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCWebViewController.swift; sourceTree = "<group>"; };
 		B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCLoginViewController.swift; sourceTree = "<group>"; };
 		B02EEF4326FDDA870010515A /* JavaClub.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JavaClub.storyboard; sourceTree = "<group>"; };
-		B04C494C2717C04100FBD9E7 /* KAClassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAClassTableViewController.swift; sourceTree = "<group>"; };
+		B044E43B27191AFE0097D04B /* KAClassTableContentview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAClassTableContentview.swift; sourceTree = "<group>"; };
+		B044E43D27191B2B0097D04B /* KAClassTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAClassTableCell.swift; sourceTree = "<group>"; };
+		B044E445271958490097D04B /* KAClassRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAClassRealm.swift; sourceTree = "<group>"; };
 		B04C494E2717C05C00FBD9E7 /* KAEnrollmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAEnrollmentViewController.swift; sourceTree = "<group>"; };
 		B04C49552717F42200FBD9E7 /* CVScoreContentConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVScoreContentConfiguration.swift; sourceTree = "<group>"; };
 		B04C49572717F4AD00FBD9E7 /* CVScoreContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVScoreContentView.swift; sourceTree = "<group>"; };
@@ -127,7 +133,7 @@
 		B08F6FAD27003EEB0015B354 /* KALoginInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KALoginInfo.swift; sourceTree = "<group>"; };
 		B08F6FAE27003EEB0015B354 /* KAEnrollment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAEnrollment.swift; sourceTree = "<group>"; };
 		B08F6FAF27003EEB0015B354 /* KAClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAClass.swift; sourceTree = "<group>"; };
-		B08F6FC227003F8C0015B354 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		B08F6FC227003F8C0015B354 /* ClassTableManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTableManager.swift; sourceTree = "<group>"; };
 		B08F6FC327003F8C0015B354 /* JCAccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCAccountManager.swift; sourceTree = "<group>"; };
 		B08F6FC827003FD60015B354 /* JCNoticeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCNoticeView.swift; sourceTree = "<group>"; };
 		B08F6FCB270040010015B354 /* JCLoginInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCLoginInfo.swift; sourceTree = "<group>"; };
@@ -155,13 +161,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B02EEF1D26FDBA050010515A /* SQLite in Frameworks */,
 				B0CCEF0C27141EAB001235E9 /* DeviceKit in Frameworks */,
 				B02EEF1A26FDB91E0010515A /* Kingfisher in Frameworks */,
 				B02EEF1426FDB9030010515A /* Defaults in Frameworks */,
 				B02EEF4126FDDA140010515A /* SnapKit in Frameworks */,
+				B044E43827191A190097D04B /* ExyteGrid in Frameworks */,
 				B0093A0A27159E0E00879AC5 /* SwiftyRSA in Frameworks */,
+				B044E44127194D4E0097D04B /* Realm in Frameworks */,
 				B02EEF2026FDBA300010515A /* SwiftyJSON in Frameworks */,
+				B044E44327194D4E0097D04B /* RealmSwift in Frameworks */,
 				B02EEF1726FDB9110010515A /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				B0973FA42703FC3B00E5C9C6 /* Controller */,
+				B044E43A27191AE90097D04B /* View */,
 				B0D3A17A2700004D0095229C /* Model */,
 				B0B84355270FEBFF00C19B9B /* Resource */,
 			);
@@ -337,6 +346,31 @@
 				B02EEF4326FDDA870010515A /* JavaClub.storyboard */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		B044E43927191ADC0097D04B /* ClassTable */ = {
+			isa = PBXGroup;
+			children = (
+				B044E43B27191AFE0097D04B /* KAClassTableContentview.swift */,
+				B044E43D27191B2B0097D04B /* KAClassTableCell.swift */,
+			);
+			path = ClassTable;
+			sourceTree = "<group>";
+		};
+		B044E43A27191AE90097D04B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B044E43927191ADC0097D04B /* ClassTable */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B044E444271957C20097D04B /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				B044E445271958490097D04B /* KAClassRealm.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		B04C49502717DCE700FBD9E7 /* CollectionView */ = {
@@ -397,7 +431,6 @@
 				B0B84351270FEB1700C19B9B /* KAContentViewController.swift */,
 				B0CCEF0827140D6C001235E9 /* KABindingViewController.swift */,
 				B0973FA22703FC0300E5C9C6 /* KAScoreViewController.swift */,
-				B04C494C2717C04100FBD9E7 /* KAClassTableViewController.swift */,
 				B04C494E2717C05C00FBD9E7 /* KAEnrollmentViewController.swift */,
 			);
 			path = Controller;
@@ -414,6 +447,7 @@
 		B0D3A17A2700004D0095229C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B044E444271957C20097D04B /* Realm */,
 				B08F6FAD27003EEB0015B354 /* KALoginInfo.swift */,
 				B08F6FAF27003EEB0015B354 /* KAClass.swift */,
 				B0973FA927044BE500E5C9C6 /* KASection.swift */,
@@ -428,7 +462,7 @@
 			children = (
 				B08F6FC327003F8C0015B354 /* JCAccountManager.swift */,
 				DD28360F270981B200D3D988 /* BaiAccountManager.swift */,
-				B08F6FC227003F8C0015B354 /* DBManager.swift */,
+				B08F6FC227003F8C0015B354 /* ClassTableManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -485,11 +519,13 @@
 				B02EEF1326FDB9030010515A /* Defaults */,
 				B02EEF1626FDB9110010515A /* Alamofire */,
 				B02EEF1926FDB91E0010515A /* Kingfisher */,
-				B02EEF1C26FDBA050010515A /* SQLite */,
 				B02EEF1F26FDBA300010515A /* SwiftyJSON */,
 				B02EEF4026FDDA140010515A /* SnapKit */,
 				B0CCEF0B27141EAB001235E9 /* DeviceKit */,
 				B0093A0927159E0E00879AC5 /* SwiftyRSA */,
+				B044E43727191A190097D04B /* ExyteGrid */,
+				B044E44027194D4E0097D04B /* Realm */,
+				B044E44227194D4E0097D04B /* RealmSwift */,
 			);
 			productName = JavaClub;
 			productReference = B02EEEF426FDB2760010515A /* JavaClub.app */;
@@ -523,11 +559,12 @@
 				B02EEF1226FDB9030010515A /* XCRemoteSwiftPackageReference "Defaults" */,
 				B02EEF1526FDB9110010515A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				B02EEF1826FDB91E0010515A /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				B02EEF1B26FDBA050010515A /* XCRemoteSwiftPackageReference "SQLite" */,
 				B02EEF1E26FDBA300010515A /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				B02EEF3F26FDDA140010515A /* XCRemoteSwiftPackageReference "SnapKit" */,
 				B0CCEF0A27141EAB001235E9 /* XCRemoteSwiftPackageReference "DeviceKit" */,
 				B0093A0827159E0E00879AC5 /* XCRemoteSwiftPackageReference "SwiftyRSA" */,
+				B044E43627191A190097D04B /* XCRemoteSwiftPackageReference "Grid" */,
+				B044E43F27194D4E0097D04B /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = B02EEEF526FDB2760010515A /* Products */;
 			projectDirPath = "";
@@ -569,7 +606,7 @@
 				B08F6FCA27003FD60015B354 /* JCNoticeView.swift in Sources */,
 				B04C49582717F4AD00FBD9E7 /* CVScoreContentView.swift in Sources */,
 				B02032CE26FE05910048B6F6 /* ColorExtension.swift in Sources */,
-				B08F6FC527003F8C0015B354 /* DBManager.swift in Sources */,
+				B08F6FC527003F8C0015B354 /* ClassTableManager.swift in Sources */,
 				B02EEF2926FDC0A00010515A /* JCWebViewController.swift in Sources */,
 				B04FEE2E27113D750065FFB6 /* TappableViewCell.swift in Sources */,
 				B07399C2270A99A70020AEB8 /* Activity.swift in Sources */,
@@ -577,7 +614,6 @@
 				B01AA9B126FF2ADD000D3E4A /* LoadingIndicatorView.swift in Sources */,
 				B04C495A2718138F00FBD9E7 /* ScoreImageView.swift in Sources */,
 				B02EEEFA26FDB2760010515A /* SceneDelegate.swift in Sources */,
-				B04C494D2717C04100FBD9E7 /* KAClassTableViewController.swift in Sources */,
 				B07399BE270A99220020AEB8 /* ScoreAdd.swift in Sources */,
 				B02032CB26FE05910048B6F6 /* StringExtension.swift in Sources */,
 				B0CCEF0E27144425001235E9 /* JCCheckboxButton.swift in Sources */,
@@ -598,6 +634,8 @@
 				B02EEF3E26FDD7BD0010515A /* JCLoginViewController.swift in Sources */,
 				B08F6FB027003EEC0015B354 /* KALoginInfo.swift in Sources */,
 				B08F6FB127003EEC0015B354 /* KAEnrollment.swift in Sources */,
+				B044E43E27191B2B0097D04B /* KAClassTableCell.swift in Sources */,
+				B044E43C27191AFE0097D04B /* KAClassTableContentview.swift in Sources */,
 				B02032CD26FE05910048B6F6 /* ImageExtension.swift in Sources */,
 				B0B84354270FEBE300C19B9B /* KAMainViewController.swift in Sources */,
 				B00939FE27151D3200879AC5 /* UnderlineButton.swift in Sources */,
@@ -617,6 +655,7 @@
 				DD283610270981B200D3D988 /* BaiAccountManager.swift in Sources */,
 				B04FEE302711607A0065FFB6 /* TVSection.swift in Sources */,
 				B07399BC270A98330020AEB8 /* BaiAccount.swift in Sources */,
+				B044E446271958490097D04B /* KAClassRealm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -862,14 +901,6 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		B02EEF1B26FDBA050010515A /* XCRemoteSwiftPackageReference "SQLite" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.2;
-			};
-		};
 		B02EEF1E26FDBA300010515A /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
@@ -884,6 +915,22 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.0.0;
+			};
+		};
+		B044E43627191A190097D04B /* XCRemoteSwiftPackageReference "Grid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/Grid";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		B044E43F27194D4E0097D04B /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
 			};
 		};
 		B0CCEF0A27141EAB001235E9 /* XCRemoteSwiftPackageReference "DeviceKit" */ = {
@@ -917,11 +964,6 @@
 			package = B02EEF1826FDB91E0010515A /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
-		B02EEF1C26FDBA050010515A /* SQLite */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B02EEF1B26FDBA050010515A /* XCRemoteSwiftPackageReference "SQLite" */;
-			productName = SQLite;
-		};
 		B02EEF1F26FDBA300010515A /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B02EEF1E26FDBA300010515A /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
@@ -931,6 +973,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B02EEF3F26FDDA140010515A /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		B044E43727191A190097D04B /* ExyteGrid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B044E43627191A190097D04B /* XCRemoteSwiftPackageReference "Grid" */;
+			productName = ExyteGrid;
+		};
+		B044E44027194D4E0097D04B /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B044E43F27194D4E0097D04B /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		B044E44227194D4E0097D04B /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B044E43F27194D4E0097D04B /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
 		};
 		B0CCEF0B27141EAB001235E9 /* DeviceKit */ = {
 			isa = XCSwiftPackageProductDependency;
