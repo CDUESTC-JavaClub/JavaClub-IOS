@@ -36,8 +36,6 @@
 		B044E43827191A190097D04B /* ExyteGrid in Frameworks */ = {isa = PBXBuildFile; productRef = B044E43727191A190097D04B /* ExyteGrid */; };
 		B044E43C27191AFE0097D04B /* KAClassTableContentview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044E43B27191AFE0097D04B /* KAClassTableContentview.swift */; };
 		B044E43E27191B2B0097D04B /* KAClassTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044E43D27191B2B0097D04B /* KAClassTableCell.swift */; };
-		B044E44127194D4E0097D04B /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = B044E44027194D4E0097D04B /* Realm */; };
-		B044E44327194D4E0097D04B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B044E44227194D4E0097D04B /* RealmSwift */; };
 		B044E446271958490097D04B /* KAClassRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044E445271958490097D04B /* KAClassRealm.swift */; };
 		B04C494F2717C05C00FBD9E7 /* KAEnrollmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C494E2717C05C00FBD9E7 /* KAEnrollmentViewController.swift */; };
 		B04C49562717F42200FBD9E7 /* CVScoreContentConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C49552717F42200FBD9E7 /* CVScoreContentConfiguration.swift */; };
@@ -54,6 +52,7 @@
 		B04FEE302711607A0065FFB6 /* TVSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE2F2711607A0065FFB6 /* TVSection.swift */; };
 		B04FEE32271168080065FFB6 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE31271168080065FFB6 /* SwitchTableViewCell.swift */; };
 		B04FEE3427116CC80065FFB6 /* StaticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE3327116CC80065FFB6 /* StaticTableViewCell.swift */; };
+		B05B0D76271D05E300F48D52 /* NoRotateNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05B0D75271D05E300F48D52 /* NoRotateNavigationController.swift */; };
 		B07399BC270A98330020AEB8 /* BaiAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BB270A98330020AEB8 /* BaiAccount.swift */; };
 		B07399BE270A99220020AEB8 /* ScoreAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BD270A99220020AEB8 /* ScoreAdd.swift */; };
 		B07399C0270A99330020AEB8 /* ScoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BF270A99330020AEB8 /* ScoreData.swift */; };
@@ -126,6 +125,7 @@
 		B04FEE2F2711607A0065FFB6 /* TVSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSection.swift; sourceTree = "<group>"; };
 		B04FEE31271168080065FFB6 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		B04FEE3327116CC80065FFB6 /* StaticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTableViewCell.swift; sourceTree = "<group>"; };
+		B05B0D75271D05E300F48D52 /* NoRotateNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRotateNavigationController.swift; sourceTree = "<group>"; };
 		B07399BB270A98330020AEB8 /* BaiAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiAccount.swift; sourceTree = "<group>"; };
 		B07399BD270A99220020AEB8 /* ScoreAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreAdd.swift; sourceTree = "<group>"; };
 		B07399BF270A99330020AEB8 /* ScoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreData.swift; sourceTree = "<group>"; };
@@ -167,9 +167,7 @@
 				B02EEF4126FDDA140010515A /* SnapKit in Frameworks */,
 				B044E43827191A190097D04B /* ExyteGrid in Frameworks */,
 				B0093A0A27159E0E00879AC5 /* SwiftyRSA in Frameworks */,
-				B044E44127194D4E0097D04B /* Realm in Frameworks */,
 				B02EEF2026FDBA300010515A /* SwiftyJSON in Frameworks */,
-				B044E44327194D4E0097D04B /* RealmSwift in Frameworks */,
 				B02EEF1726FDB9110010515A /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,6 +225,7 @@
 				B0B8435A271039F600C19B9B /* TappableItemView.swift */,
 				B00939FD27151D3200879AC5 /* UnderlineButton.swift */,
 				B04C49592718138F00FBD9E7 /* ScoreImageView.swift */,
+				B05B0D75271D05E300F48D52 /* NoRotateNavigationController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -524,8 +523,6 @@
 				B0CCEF0B27141EAB001235E9 /* DeviceKit */,
 				B0093A0927159E0E00879AC5 /* SwiftyRSA */,
 				B044E43727191A190097D04B /* ExyteGrid */,
-				B044E44027194D4E0097D04B /* Realm */,
-				B044E44227194D4E0097D04B /* RealmSwift */,
 			);
 			productName = JavaClub;
 			productReference = B02EEEF426FDB2760010515A /* JavaClub.app */;
@@ -564,7 +561,6 @@
 				B0CCEF0A27141EAB001235E9 /* XCRemoteSwiftPackageReference "DeviceKit" */,
 				B0093A0827159E0E00879AC5 /* XCRemoteSwiftPackageReference "SwiftyRSA" */,
 				B044E43627191A190097D04B /* XCRemoteSwiftPackageReference "Grid" */,
-				B044E43F27194D4E0097D04B /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = B02EEEF526FDB2760010515A /* Products */;
 			projectDirPath = "";
@@ -636,6 +632,7 @@
 				B08F6FB127003EEC0015B354 /* KAEnrollment.swift in Sources */,
 				B044E43E27191B2B0097D04B /* KAClassTableCell.swift in Sources */,
 				B044E43C27191AFE0097D04B /* KAClassTableContentview.swift in Sources */,
+				B05B0D76271D05E300F48D52 /* NoRotateNavigationController.swift in Sources */,
 				B02032CD26FE05910048B6F6 /* ImageExtension.swift in Sources */,
 				B0B84354270FEBE300C19B9B /* KAMainViewController.swift in Sources */,
 				B00939FE27151D3200879AC5 /* UnderlineButton.swift in Sources */,
@@ -801,6 +798,7 @@
 				INFOPLIST_FILE = "JavaClub/Support Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -829,6 +827,7 @@
 				INFOPLIST_FILE = "JavaClub/Support Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -925,14 +924,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		B044E43F27194D4E0097D04B /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-cocoa";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.0.0;
-			};
-		};
 		B0CCEF0A27141EAB001235E9 /* XCRemoteSwiftPackageReference "DeviceKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devicekit/DeviceKit";
@@ -978,16 +969,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B044E43627191A190097D04B /* XCRemoteSwiftPackageReference "Grid" */;
 			productName = ExyteGrid;
-		};
-		B044E44027194D4E0097D04B /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B044E43F27194D4E0097D04B /* XCRemoteSwiftPackageReference "realm-cocoa" */;
-			productName = Realm;
-		};
-		B044E44227194D4E0097D04B /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B044E43F27194D4E0097D04B /* XCRemoteSwiftPackageReference "realm-cocoa" */;
-			productName = RealmSwift;
 		};
 		B0CCEF0B27141EAB001235E9 /* DeviceKit */ = {
 			isa = XCSwiftPackageProductDependency;
