@@ -5,6 +5,7 @@
 //  Created by Roy on 2021/10/15.
 //
 
+import UIKit
 import SwiftUI
 import ExyteGrid
 import Defaults
@@ -13,6 +14,8 @@ struct KAClassTableContentview: View {
     @Default(.classTableTerm) var term
     @State var _class: [KAClass] = []
     @State var presentAlert = false
+    @ObservedObject private var colorSelector: KAClassTableColorSelector = .shared
+    
     
     var body: some View {
         GeometryReader { geo in
@@ -24,8 +27,9 @@ struct KAClassTableContentview: View {
                 }
                 .frame(height: 50)
                 
-                Grid(_class, id: \.id, tracks: 5, flow: .columns) {
-                    KAClassTableCell(className: $0.name, location: $0.locale, teacher: $0.teacher, isBlank: $0.name.isEmpty)
+                Grid(_class, tracks: 5, flow: .columns) {
+                    #warning("Infinite Loop")
+                    KAClassTableCell(className: $0.name, location: $0.locale, teacher: $0.teacher, color: Color(selectColor(with: $0.name) ?? .systemBlue))
                 }
             }
         }
@@ -51,5 +55,20 @@ struct KAClassTableContentview: View {
                 }
             }
         }
+    }
+    
+    
+    func selectColor(with className: String) -> UIColor? {
+        guard !className.isEmpty else { return nil }
+        
+        var unicode = abs(Int(className.first!.unicodeScalars.map({ $0.value }).reduce(0, +)) % 20)
+        
+        while colorSelector.colorHash[unicode] != nil && colorSelector.colorHash[unicode] != className {
+            unicode = (unicode + 1) % 20
+        }
+        
+        colorSelector.colorHash[unicode] = className
+        
+        return UIColor(hex: colorSelector.colorSet[unicode])
     }
 }

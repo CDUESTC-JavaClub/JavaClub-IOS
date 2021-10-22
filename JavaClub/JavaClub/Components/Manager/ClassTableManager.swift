@@ -20,7 +20,10 @@ class ClassTableManager {
 extension ClassTableManager {
     
     func decode(from data: Data) -> [KAClass]? {
-        var result: [KAClass] = []
+        var result: [KAClass] = Array(
+            repeating: KAClass(name: "", classID: "", teacher: "", locale: "", day: 0, index: 0, weekFrom: 0, weekTo: 0, form: .regular),
+            count: 35
+        )
         
         do {
             let jsonArr = (try JSON(data: data))["data"].arrayValue
@@ -43,7 +46,8 @@ extension ClassTableManager {
                     form: classForm
                 )
                 
-                result.append(_class)
+                let subs = (_class.day - 1 >= 0 ? _class.day - 1 : 0) * 5 + _class.index
+                result[subs] = _class
             }
         } catch {
             print("DEBUG: Parse Error: \(error.localizedDescription)")

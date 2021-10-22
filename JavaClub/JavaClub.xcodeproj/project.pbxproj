@@ -53,6 +53,7 @@
 		B04FEE32271168080065FFB6 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE31271168080065FFB6 /* SwitchTableViewCell.swift */; };
 		B04FEE3427116CC80065FFB6 /* StaticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE3327116CC80065FFB6 /* StaticTableViewCell.swift */; };
 		B05B0D76271D05E300F48D52 /* NoRotateNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05B0D75271D05E300F48D52 /* NoRotateNavigationController.swift */; };
+		B06F83FF2722BC4800069A23 /* KAClassTableColorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F83FE2722BC4800069A23 /* KAClassTableColorSelector.swift */; };
 		B07399BC270A98330020AEB8 /* BaiAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BB270A98330020AEB8 /* BaiAccount.swift */; };
 		B07399BE270A99220020AEB8 /* ScoreAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BD270A99220020AEB8 /* ScoreAdd.swift */; };
 		B07399C0270A99330020AEB8 /* ScoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BF270A99330020AEB8 /* ScoreData.swift */; };
@@ -126,6 +127,7 @@
 		B04FEE31271168080065FFB6 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		B04FEE3327116CC80065FFB6 /* StaticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTableViewCell.swift; sourceTree = "<group>"; };
 		B05B0D75271D05E300F48D52 /* NoRotateNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRotateNavigationController.swift; sourceTree = "<group>"; };
+		B06F83FE2722BC4800069A23 /* KAClassTableColorSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAClassTableColorSelector.swift; sourceTree = "<group>"; };
 		B07399BB270A98330020AEB8 /* BaiAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiAccount.swift; sourceTree = "<group>"; };
 		B07399BD270A99220020AEB8 /* ScoreAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreAdd.swift; sourceTree = "<group>"; };
 		B07399BF270A99330020AEB8 /* ScoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreData.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				B0973FA42703FC3B00E5C9C6 /* Controller */,
+				B06F83FD2722BC2900069A23 /* ViewModel */,
 				B044E43A27191AE90097D04B /* View */,
 				B0D3A17A2700004D0095229C /* Model */,
 				B0B84355270FEBFF00C19B9B /* Resource */,
@@ -402,6 +405,14 @@
 				B04C495C271841E400FBD9E7 /* BaiUserInfoView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B06F83FD2722BC2900069A23 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B06F83FE2722BC4800069A23 /* KAClassTableColorSelector.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B07399BA270A98100020AEB8 /* Model */ = {
@@ -639,6 +650,7 @@
 				B04C4963271841E500FBD9E7 /* BaiUserInfoView.swift in Sources */,
 				B02032CF26FE05910048B6F6 /* ViewExtension.swift in Sources */,
 				B01AA9B726FF4C55000D3E4A /* JCLoginState.swift in Sources */,
+				B06F83FF2722BC4800069A23 /* KAClassTableColorSelector.swift in Sources */,
 				B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */,
 				B0093A012715539E00879AC5 /* ScoreCollectionViewCell.swift in Sources */,
 				B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */,
