@@ -33,7 +33,6 @@
 		B02EEF3E26FDD7BD0010515A /* JCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */; };
 		B02EEF4126FDDA140010515A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF4026FDDA140010515A /* SnapKit */; };
 		B02EEF4426FDDA870010515A /* JavaClub.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B02EEF4326FDDA870010515A /* JavaClub.storyboard */; };
-		B044E43827191A190097D04B /* ExyteGrid in Frameworks */ = {isa = PBXBuildFile; productRef = B044E43727191A190097D04B /* ExyteGrid */; };
 		B044E43C27191AFE0097D04B /* KAClassTableContentview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044E43B27191AFE0097D04B /* KAClassTableContentview.swift */; };
 		B044E43E27191B2B0097D04B /* KAClassTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044E43D27191B2B0097D04B /* KAClassTableCell.swift */; };
 		B044E446271958490097D04B /* KAClassRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044E445271958490097D04B /* KAClassRealm.swift */; };
@@ -53,7 +52,7 @@
 		B04FEE32271168080065FFB6 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE31271168080065FFB6 /* SwitchTableViewCell.swift */; };
 		B04FEE3427116CC80065FFB6 /* StaticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE3327116CC80065FFB6 /* StaticTableViewCell.swift */; };
 		B05B0D76271D05E300F48D52 /* NoRotateNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05B0D75271D05E300F48D52 /* NoRotateNavigationController.swift */; };
-		B06F83FF2722BC4800069A23 /* KAClassTableColorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F83FE2722BC4800069A23 /* KAClassTableColorSelector.swift */; };
+		B06F83FF2722BC4800069A23 /* KAClassTableObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F83FE2722BC4800069A23 /* KAClassTableObservable.swift */; };
 		B07399BC270A98330020AEB8 /* BaiAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BB270A98330020AEB8 /* BaiAccount.swift */; };
 		B07399BE270A99220020AEB8 /* ScoreAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BD270A99220020AEB8 /* ScoreAdd.swift */; };
 		B07399C0270A99330020AEB8 /* ScoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BF270A99330020AEB8 /* ScoreData.swift */; };
@@ -127,7 +126,7 @@
 		B04FEE31271168080065FFB6 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		B04FEE3327116CC80065FFB6 /* StaticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTableViewCell.swift; sourceTree = "<group>"; };
 		B05B0D75271D05E300F48D52 /* NoRotateNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRotateNavigationController.swift; sourceTree = "<group>"; };
-		B06F83FE2722BC4800069A23 /* KAClassTableColorSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAClassTableColorSelector.swift; sourceTree = "<group>"; };
+		B06F83FE2722BC4800069A23 /* KAClassTableObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAClassTableObservable.swift; sourceTree = "<group>"; };
 		B07399BB270A98330020AEB8 /* BaiAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiAccount.swift; sourceTree = "<group>"; };
 		B07399BD270A99220020AEB8 /* ScoreAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreAdd.swift; sourceTree = "<group>"; };
 		B07399BF270A99330020AEB8 /* ScoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreData.swift; sourceTree = "<group>"; };
@@ -167,7 +166,6 @@
 				B02EEF1A26FDB91E0010515A /* Kingfisher in Frameworks */,
 				B02EEF1426FDB9030010515A /* Defaults in Frameworks */,
 				B02EEF4126FDDA140010515A /* SnapKit in Frameworks */,
-				B044E43827191A190097D04B /* ExyteGrid in Frameworks */,
 				B0093A0A27159E0E00879AC5 /* SwiftyRSA in Frameworks */,
 				B02EEF2026FDBA300010515A /* SwiftyJSON in Frameworks */,
 				B02EEF1726FDB9110010515A /* Alamofire in Frameworks */,
@@ -410,7 +408,7 @@
 		B06F83FD2722BC2900069A23 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				B06F83FE2722BC4800069A23 /* KAClassTableColorSelector.swift */,
+				B06F83FE2722BC4800069A23 /* KAClassTableObservable.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -533,7 +531,6 @@
 				B02EEF4026FDDA140010515A /* SnapKit */,
 				B0CCEF0B27141EAB001235E9 /* DeviceKit */,
 				B0093A0927159E0E00879AC5 /* SwiftyRSA */,
-				B044E43727191A190097D04B /* ExyteGrid */,
 			);
 			productName = JavaClub;
 			productReference = B02EEEF426FDB2760010515A /* JavaClub.app */;
@@ -571,7 +568,6 @@
 				B02EEF3F26FDDA140010515A /* XCRemoteSwiftPackageReference "SnapKit" */,
 				B0CCEF0A27141EAB001235E9 /* XCRemoteSwiftPackageReference "DeviceKit" */,
 				B0093A0827159E0E00879AC5 /* XCRemoteSwiftPackageReference "SwiftyRSA" */,
-				B044E43627191A190097D04B /* XCRemoteSwiftPackageReference "Grid" */,
 			);
 			productRefGroup = B02EEEF526FDB2760010515A /* Products */;
 			projectDirPath = "";
@@ -650,7 +646,7 @@
 				B04C4963271841E500FBD9E7 /* BaiUserInfoView.swift in Sources */,
 				B02032CF26FE05910048B6F6 /* ViewExtension.swift in Sources */,
 				B01AA9B726FF4C55000D3E4A /* JCLoginState.swift in Sources */,
-				B06F83FF2722BC4800069A23 /* KAClassTableColorSelector.swift in Sources */,
+				B06F83FF2722BC4800069A23 /* KAClassTableObservable.swift in Sources */,
 				B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */,
 				B0093A012715539E00879AC5 /* ScoreCollectionViewCell.swift in Sources */,
 				B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */,
@@ -928,14 +924,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		B044E43627191A190097D04B /* XCRemoteSwiftPackageReference "Grid" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/exyte/Grid";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		B0CCEF0A27141EAB001235E9 /* XCRemoteSwiftPackageReference "DeviceKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devicekit/DeviceKit";
@@ -976,11 +964,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B02EEF3F26FDDA140010515A /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		B044E43727191A190097D04B /* ExyteGrid */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B044E43627191A190097D04B /* XCRemoteSwiftPackageReference "Grid" */;
-			productName = ExyteGrid;
 		};
 		B0CCEF0B27141EAB001235E9 /* DeviceKit */ = {
 			isa = XCSwiftPackageProductDependency;

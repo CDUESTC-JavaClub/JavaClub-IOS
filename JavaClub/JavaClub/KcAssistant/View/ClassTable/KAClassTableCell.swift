@@ -29,7 +29,7 @@ struct KAClassTableCell: View {
                     .foregroundColor(.white)
             }
             .frame(width: geo.size.width, height: geo.size.height)
-            .background(className.isEmpty ? nil : color)
+            .background(className.isEmpty ? .clear : color)
             .clipShape(RoundedRectangle(cornerRadius: 8))
         }
     }

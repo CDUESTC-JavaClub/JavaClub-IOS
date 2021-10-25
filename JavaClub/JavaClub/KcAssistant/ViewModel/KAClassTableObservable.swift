@@ -7,10 +7,11 @@
 
 import Foundation
 
-class KAClassTableColorSelector: ObservableObject {
-    static let shared = KAClassTableColorSelector()
+class KAClassTableObservable: ObservableObject {
+    static let shared = KAClassTableObservable()
     
     @Published var colorHash: [String?] = Array(repeating: nil, count: 20)
+    @Published var classes: [KAClass] = []
     
     let colorSet: [String] = [
         "#CCCD5C5C", "#CCFFA500", "#CCEEDD82", "#CC00FF7F", "#CC63B8FF",

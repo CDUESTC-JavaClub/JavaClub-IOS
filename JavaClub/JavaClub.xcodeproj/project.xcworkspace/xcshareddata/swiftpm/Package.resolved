@@ -29,15 +29,6 @@
         }
       },
       {
-        "package": "ExyteGrid",
-        "repositoryURL": "https://github.com/exyte/Grid",
-        "state": {
-          "branch": null,
-          "revision": "585dc249126fda6ae675d78175b0c52a311f10c9",
-          "version": "1.4.0"
-        }
-      },
-      {
         "package": "Kingfisher",
         "repositoryURL": "https://github.com/onevcat/Kingfisher",
         "state": {

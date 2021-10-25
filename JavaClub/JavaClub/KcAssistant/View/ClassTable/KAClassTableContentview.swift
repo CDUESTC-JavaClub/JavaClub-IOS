@@ -12,25 +12,81 @@ import Defaults
 
 struct KAClassTableContentview: View {
     @Default(.classTableTerm) var term
-    @State var _class: [KAClass] = []
     @State var presentAlert = false
-    @ObservedObject private var colorSelector: KAClassTableColorSelector = .shared
+    @ObservedObject private var observable: KAClassTableObservable = .shared
+    
+    private let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+    ]
     
     
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
-                Grid(1 ..< 8, tracks: 7, flow: .rows) {
-                    Text("周\($0)")
-                        .frame(width: geo.size.width / 7, height: 50)
-                        .background(Color.orange)
+                HStack(spacing: 0) {
+                    ForEach(1 ..< 8) { index in
+                        switch index {
+                        case 1:
+                            Text("周一")
+                                .frame(width: geo.size.width / 7, height: 30)
+                                .background(Color(hex: "60D1AE"))
+
+                        case 2:
+                            Text("周二")
+                                .frame(width: geo.size.width / 7, height: 30)
+                                .background(Color(hex: "60D1AE"))
+
+                        case 3:
+                            Text("周三")
+                                .frame(width: geo.size.width / 7, height: 30)
+                                .background(Color(hex: "60D1AE"))
+
+                        case 4:
+                            Text("周四")
+                                .frame(width: geo.size.width / 7, height: 30)
+                                .background(Color(hex: "60D1AE"))
+
+                        case 5:
+                            Text("周五")
+                                .frame(width: geo.size.width / 7, height: 30)
+                                .background(Color(hex: "60D1AE"))
+
+                        case 6:
+                            Text("周六")
+                                .frame(width: geo.size.width / 7, height: 30)
+                                .background(Color(hex: "60D1AE"))
+
+                        case 7:
+                            Text("周日")
+                                .frame(width: geo.size.width / 7, height: 30)
+                                .background(Color(hex: "60D1AE"))
+
+                        default:
+                            Text("")
+                                .frame(width: geo.size.width / 7, height: 30)
+                                .background(Color(hex: "60D1AE"))
+                        }
+                    }
                 }
-                .frame(height: 50)
                 
-                Grid(_class, tracks: 5, flow: .columns) {
-                    #warning("Infinite Loop")
-                    KAClassTableCell(className: $0.name, location: $0.locale, teacher: $0.teacher, color: Color(selectColor(with: $0.name) ?? .systemBlue))
+                ScrollView(.vertical, showsIndicators: true) {
+                    LazyVGrid(columns: columns, spacing: 0) {
+                        ForEach(observable.classes, id: \.id) {
+                            KAClassTableCell(className: $0.name, location: $0.locale, teacher: $0.teacher, color: Color(selectColor(with: $0.name) ?? .gray))
+                                .frame(height: 150)
+                        }
+//                        ForEach(0 ..< 35) {_ in
+//                            Color.blue.frame(height: 150).padding(.bottom, 10)
+//                        }
+                    }
                 }
+                .padding(.top, 10)
             }
         }
         .alert(isPresented: $presentAlert) {
@@ -40,14 +96,14 @@ struct KAClassTableContentview: View {
             JCAccountManager.shared.getClassTable(term: term) { result in
                 switch result {
                 case .success(let classes):
-                    _class = classes
+                    observable.classes = classes
                     print("DEBUG: Fetched Class Table Successfully.")
                     
                 case .failure(let error):
                     print("DEBUG: Fetching Class Table Failed With Error: \(String(describing: error)), using local data.")
                     
                     if let local = ClassTableManager.shared.fromLocal() {
-                        _class = local
+                        observable.classes = local
                         print("DEBUG: Used Local Data.")
                     } else {
                         presentAlert = true
@@ -63,12 +119,12 @@ struct KAClassTableContentview: View {
         
         var unicode = abs(Int(className.first!.unicodeScalars.map({ $0.value }).reduce(0, +)) % 20)
         
-        while colorSelector.colorHash[unicode] != nil && colorSelector.colorHash[unicode] != className {
+        while observable.colorHash[unicode] != nil && observable.colorHash[unicode] != className {
             unicode = (unicode + 1) % 20
         }
         
-        colorSelector.colorHash[unicode] = className
+        observable.colorHash[unicode] = className
         
-        return UIColor(hex: colorSelector.colorSet[unicode])
+        return UIColor(hex: observable.colorSet[unicode])
     }
 }

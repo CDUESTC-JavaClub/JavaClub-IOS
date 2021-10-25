@@ -20,10 +20,12 @@ class ClassTableManager {
 extension ClassTableManager {
     
     func decode(from data: Data) -> [KAClass]? {
-        var result: [KAClass] = Array(
-            repeating: KAClass(name: "", classID: "", teacher: "", locale: "", day: 0, index: 0, weekFrom: 0, weekTo: 0, form: .regular),
-            count: 35
-        )
+        var result: [KAClass] = []
+        
+        for _ in 0 ..< 35 {
+            let tmp = KAClass(name: "", classID: "", teacher: "", locale: "", day: 0, index: 0, weekFrom: 0, weekTo: 0, form: .regular)
+            result.append(tmp)
+        }
         
         do {
             let jsonArr = (try JSON(data: data))["data"].arrayValue
