@@ -69,8 +69,9 @@ extension KABindingViewController {
                         Defaults[.jwInfo] = info
 
                         JCAccountManager.shared.getEnrollmentInfo { result in
-                            let enr = try? result.get()
-                            Defaults[.enrollment] = enr
+                            if let enr = try? result.get() {
+                                Defaults[.enrollment] = enr
+                            }
                         }
                         
                         self?.dismiss(animated: true)

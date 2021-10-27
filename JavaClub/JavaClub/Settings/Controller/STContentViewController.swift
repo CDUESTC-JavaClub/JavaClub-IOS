@@ -21,7 +21,6 @@ class STContentViewController: UIViewController {
     private var useSystemAppearanceSwitch: UISwitch!
     
     private var models: [TVSection] = []
-    private var lastRefreshTime = Date()
     
 
     override func viewDidLoad() {
@@ -31,18 +30,17 @@ class STContentViewController: UIViewController {
             self?.didUpdateLoginState(obj.newValue)
         }.tieToLifetime(of: self)
         
-//        let _ = Defaults.observe(.avatarLocal) { [weak self] obj in
-//            self?.updateUserMedia(avatarURL: obj.newValue, bannerURL: nil)
-//        }.tieToLifetime(of: self)
-//
-//        let _ = Defaults.observe(.bannerLocal) { [weak self] obj in
-//            self?.updateUserMedia(avatarURL: nil, bannerURL: obj.newValue)
-//        }.tieToLifetime(of: self)
+        let _ = Defaults.observe(.avatarURL) { [weak self] obj in
+            self?.updateAvatar(obj.newValue)
+        }.tieToLifetime(of: self)
+        
+        let _ = Defaults.observe(.bannerURL) { [weak self] obj in
+            self?.updateBanner(obj.newValue)
+        }.tieToLifetime(of: self)
         
         setup()
         configureAppearance()
         configureModels()
-        loadInfo()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -150,16 +148,10 @@ extension STContentViewController {
         }
     }
     
-    private func loadInfo() {
-        didUpdateLoginState(Defaults[.user])
-    }
-    
     private func didUpdateLoginState(_ userInfo: JCUser?) {
         if let userInfo = userInfo {
             usernameLabel.text = userInfo.username
             signatureLabel.text = userInfo.signature
-            
-            updateUserMedia(startUp: true, avatarURL: Defaults[.avatarURL], bannerURL: Defaults[.bannerURL])
         } else {
             usernameLabel.text = "请先登录"
             signatureLabel.text = ""
@@ -170,63 +162,60 @@ extension STContentViewController {
         configureModels()
     }
     
-    #warning("Fetch Banner Might Fail.")
-    func updateUserMedia(startUp: Bool = false, avatarURL: URL?, bannerURL: URL?) {
-        // Check Refresh Rate
-        if !startUp, Date().timeIntervalSince(lastRefreshTime) < 180 {
-            print("DEBUG: Not Enough Time For Next Refresh.")
-            return
-        } else {
-            lastRefreshTime = Date()
-        }
-        
+    func updateAvatar(_ avatarURL: URL?) {
         if let avatarURL = avatarURL {
-            ImageDownloader.default.downloadImage(with: avatarURL) { [weak self] result in
+            retrieveImage(avatarURL, for: "avatarKey") { [weak self] result in
                 switch result {
-                case .success(let img):
-                    self?.avatar.image = img.image
-                    ImageCache.default.storeToDisk(img.originalData, forKey: "avatarKey")
+                case .success(let image):
+                    self?.avatar.image = image
                     print("DEBUG: Fetch Avatar Succeeded.")
                     
                 case .failure(let error):
                     print("DEBUG: Fetch Avatar Failed With Error: \(String(describing: error))")
-                    
-                    ImageCache.default.retrieveImage(forKey: "avatarKey") { result in
-                        switch result {
-                        case .success(let image):
-                            self?.avatar.image = image.image
-                            print("DEBUG: Using Local Cached Avatar.")
-                            
-                        case .failure(let error):
-                            print("DEBUG: Get Local Avatar Failed With Error: \(String(describing: error))")
-                            self?.avatar.image = UIImage.fromColor(.clear)
-                        }
-                    }
                 }
             }
+        } else {
+            JCAccountManager.shared.getUserMedia()
         }
-        
+    }
+    
+    func updateBanner(_ bannerURL: URL?) {
         if let bannerURL = bannerURL {
-            ImageDownloader.default.downloadImage(with: bannerURL) { [weak self] result in
+            retrieveImage(bannerURL, for: "bannerKey") { [weak self] result in
                 switch result {
                 case .success(let image):
-                    self?.banner.image = image.image
-                    ImageCache.default.storeToDisk(image.originalData, forKey: "bannerKey")
+                    self?.banner.image = image
                     print("DEBUG: Fetch Banner Succeeded.")
                     
                 case .failure(let error):
                     print("DEBUG: Fetch Banner Failed With Error: \(String(describing: error))")
-                    
-                    ImageCache.default.retrieveImage(forKey: "bannerKey") { result in
-                        switch result {
-                        case .success(let image):
-                            self?.banner.image = image.image
-                            print("DEBUG: Using Local Cached Banner.")
-                            
-                        case .failure(let error):
-                            print("DEBUG: Get Local Banner Failed With Error: \(String(describing: error))")
-                            self?.banner.image = UIImage.fromColor(.clear)
-                        }
+                }
+            }
+        } else {
+            JCAccountManager.shared.getUserMedia()
+        }
+    }
+    
+    private func retrieveImage(_ imgURL: URL, for key: String, completion: @escaping (Result<UIImage, JCError>) -> Void) {
+        ImageDownloader.default.downloadImage(with: imgURL) { result in
+            switch result {
+            case .success(let data):
+                ImageCache.default.storeToDisk(data.originalData, forKey: key)
+                print("DEBUG: Fetch Image Succeeded.")
+                completion(.success(data.image))
+                
+            case .failure(let error):
+                print("DEBUG: Fetch Image Failed With Error: \(String(describing: error))")
+                
+                ImageCache.default.retrieveImage(forKey: key) { result in
+                    switch result {
+                    case .success(let data):
+                        print("DEBUG: Using Local Cached Image.")
+                        completion(.success(data.image!))
+                        
+                    case .failure(let error):
+                        print("DEBUG: Get Local Image Failed With Error: \(String(describing: error))")
+                        completion(.failure(.imgRetrieveFailed))
                     }
                 }
             }

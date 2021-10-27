@@ -8,36 +8,39 @@
 import SwiftUI
 
 struct LoadingIndicatorView: View {
+    @Environment(\.colorScheme) var colorScheme
     @State private var animates = false
     private let timer = Timer.publish(every: 0.4, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        GeometryReader { geo in
-            VStack(alignment: .center, spacing: 10) {
-                Section {
-                    HStack(alignment: .center, spacing: 5) {
-                        RoundedRectangle(cornerRadius: 4)
-                            .fill(Color(hex: "60D1AE"))
-                            .frame(width: 15, height: animates ? geo.size.height : geo.size.height * 0.5)
-                        RoundedRectangle(cornerRadius: 4)
-                            .fill(Color(hex: "60D1AE"))
-                            .frame(width: 15, height: animates ? geo.size.height * 0.5 : geo.size.height)
-                        RoundedRectangle(cornerRadius: 4)
-                            .fill(Color(hex: "60D1AE"))
-                            .frame(width: 15, height: animates ? geo.size.height : geo.size.height * 0.5)
-                    }
-                    .animation(
-                        Animation
-                            .easeInOut(duration: 0.4)
-                            .repeatForever(autoreverses: true)
-                    )
+        VStack(alignment: .center, spacing: 10) {
+            Section {
+                HStack(alignment: .center, spacing: 5) {
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(Color(hex: "60D1AE"))
+                        .frame(width: 15, height: animates ? 50 : 25)
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(Color(hex: "60D1AE"))
+                        .frame(width: 15, height: animates ? 25 : 50)
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(Color(hex: "60D1AE"))
+                        .frame(width: 15, height: animates ? 50 : 25)
                 }
-                
-                Text("加载中")
-                    .foregroundColor(Color.label)
+                .animation(
+                    Animation
+                        .easeInOut(duration: 0.4)
+                        .repeatForever(autoreverses: true)
+                )
             }
+            .frame(width: 50, height: 50)
+            
+            Text("加载中")
+                .foregroundColor(Color.label)
         }
-        .frame(width: 50, height: 50)
+        .padding(.vertical, 10)
+        .padding(.horizontal, 20)
+        .background(colorScheme == .light ? Color.white : .gray)
+        .cornerRadius(15)
         .onAppear {
             animates = true
         }
