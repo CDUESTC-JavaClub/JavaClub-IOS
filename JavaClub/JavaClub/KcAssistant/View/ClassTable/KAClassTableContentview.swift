@@ -23,6 +23,8 @@ struct KAClassTableContentview: View {
     @Default(.classTableTerm) var term
     @State var presentAlert = false
     @State var showIndicator = false
+    @State var showTermSelector = false
+    @State var showClassDetail = false
     
     private let columns = [
         GridItem(.flexible()),

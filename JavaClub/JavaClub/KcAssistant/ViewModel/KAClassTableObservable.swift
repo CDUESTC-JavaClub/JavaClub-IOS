@@ -6,10 +6,21 @@
 //
 
 import Foundation
+import Defaults
 
 class KAClassTableObservable: ObservableObject {
     static let shared = KAClassTableObservable()
     
-    
     @Published var classes: [KAClass] = []
+}
+
+
+// MARK: Shared Methods -
+extension KAClassTableObservable {
+    
+    func getCurrentTerm() -> Int? {
+        guard let enrollment = Defaults[.enrollment] else { return nil }
+        
+        let 
+    }
 }

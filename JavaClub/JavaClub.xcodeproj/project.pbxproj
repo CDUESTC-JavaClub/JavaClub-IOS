@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24B72C6C2729897400DC1DB1 /* KATermSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B72C6B2729897400DC1DB1 /* KATermSelectorView.swift */; };
+		24B72C6E2729898C00DC1DB1 /* KAClassDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B72C6D2729898C00DC1DB1 /* KAClassDetailView.swift */; };
 		B00939FE27151D3200879AC5 /* UnderlineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00939FD27151D3200879AC5 /* UnderlineButton.swift */; };
 		B0093A012715539E00879AC5 /* ScoreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0093A002715539E00879AC5 /* ScoreCollectionViewCell.swift */; };
 		B0093A0A27159E0E00879AC5 /* SwiftyRSA in Frameworks */ = {isa = PBXBuildFile; productRef = B0093A0927159E0E00879AC5 /* SwiftyRSA */; };
@@ -85,6 +87,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24B72C6B2729897400DC1DB1 /* KATermSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KATermSelectorView.swift; sourceTree = "<group>"; };
+		24B72C6D2729898C00DC1DB1 /* KAClassDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAClassDetailView.swift; sourceTree = "<group>"; };
 		B00939FD27151D3200879AC5 /* UnderlineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineButton.swift; sourceTree = "<group>"; };
 		B0093A002715539E00879AC5 /* ScoreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCollectionViewCell.swift; sourceTree = "<group>"; };
 		B01AA9B026FF2ADD000D3E4A /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
@@ -353,6 +357,8 @@
 			children = (
 				B044E43B27191AFE0097D04B /* KAClassTableContentview.swift */,
 				B044E43D27191B2B0097D04B /* KAClassTableCell.swift */,
+				24B72C6B2729897400DC1DB1 /* KATermSelectorView.swift */,
+				24B72C6D2729898C00DC1DB1 /* KAClassDetailView.swift */,
 			);
 			path = ClassTable;
 			sourceTree = "<group>";
@@ -613,6 +619,7 @@
 				B02EEF2926FDC0A00010515A /* JCWebViewController.swift in Sources */,
 				B04FEE2E27113D750065FFB6 /* TappableViewCell.swift in Sources */,
 				B07399C2270A99A70020AEB8 /* Activity.swift in Sources */,
+				24B72C6E2729898C00DC1DB1 /* KAClassDetailView.swift in Sources */,
 				B04C49562717F42200FBD9E7 /* CVScoreContentConfiguration.swift in Sources */,
 				B01AA9B126FF2ADD000D3E4A /* LoadingIndicatorView.swift in Sources */,
 				B04C495A2718138F00FBD9E7 /* ScoreImageView.swift in Sources */,
@@ -649,6 +656,7 @@
 				B06F83FF2722BC4800069A23 /* KAClassTableObservable.swift in Sources */,
 				B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */,
 				B0093A012715539E00879AC5 /* ScoreCollectionViewCell.swift in Sources */,
+				24B72C6C2729897400DC1DB1 /* KATermSelectorView.swift in Sources */,
 				B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */,
 				B04C4964271841E500FBD9E7 /* BAContentView.swift in Sources */,
 				B0973FA32703FC0300E5C9C6 /* KAScoreViewController.swift in Sources */,
