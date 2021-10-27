@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RealmSwift
 
 struct KAClass: Identifiable, Hashable {
     let id = UUID().uuidString
@@ -36,7 +35,7 @@ struct ClassIndex {
 }
 
 
-enum ClassForm: String, PersistableEnum {
+enum ClassForm: String {
     case regular
     case singular
     case even

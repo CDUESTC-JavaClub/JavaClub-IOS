@@ -11,6 +11,7 @@ import Defaults
 
 class STMainViewController: UIViewController {
     private let contentVC: STContentViewController!
+    private var lastRefreshTime = Date()
     
     init() {
         contentVC = UIStoryboard(name: "Settings", bundle: .main)
@@ -36,6 +37,20 @@ class STMainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        contentVC.updateUserMedia(avatarURL: Defaults[.avatarURL], bannerURL: Defaults[.bannerURL])
+        refresh()
+    }
+    
+    
+    private func refresh() {
+        // Check Refresh Rate (3 min)
+        if Date().timeIntervalSince(lastRefreshTime) < 180 {
+            print("DEBUG: Not Enough Time For Next Refresh.")
+            return
+        } else {
+            lastRefreshTime = Date()
+        }
+        
+        contentVC.updateAvatar(Defaults[.avatarURL])
+        contentVC.updateBanner(Defaults[.bannerURL])
     }
 }

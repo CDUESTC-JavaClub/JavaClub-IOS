@@ -11,7 +11,8 @@ import Defaults
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var orientationLock = UIInterfaceOrientationMask.all
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -23,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
         
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        orientationLock
     }
 
     // MARK: UISceneSession Lifecycle
@@ -58,8 +63,6 @@ extension AppDelegate {
                         JCAccountManager.shared.logout()
                     }
                 }
-                
-                JCAccountManager.shared.getUserMedia()
                 
                 onSuccess?()
             } else {
@@ -134,19 +137,19 @@ extension AppDelegate {
 extension Defaults.Keys {
     // User Info
     static let loginInfo = Key<JCLoginInfo?>("loginInfoKey", default: nil)
-    static let jwInfo = Key<KALoginInfo?>("bindingInfoKey", default: nil)
-    static let user = Key<JCUser?>("userKey", default: nil)
+    static let jwInfo = Key<KALoginInfo?>("jwInfoInfoKey", default: nil)
+    static let user = Key<JCUser?>("userInfoKey", default: nil)
     static let sessionURL = Key<URL?>("sessionURLKey", default: nil)
     static let avatarURL = Key<URL?>("avatarURLKey", default: nil)
     static let bannerURL = Key<URL?>("bannerURLKey", default: nil)
-    static let enrollment = Key<KAEnrollment?>("bannerURLKey", default: nil)
+    static let enrollment = Key<KAEnrollment?>("enrollmentInfoKey", default: nil)
     
     // Settings
     static let useDarkMode = Key<Bool>("useDarkModeKey", default: true)
     static let useSystemAppearance = Key<Bool>("useSystemAppearanceKey", default: true)
     
     // Environment
-    static let firstLogin = Key<Bool>("firstLoginKey", default: false)
+    static let firstLogin = Key<Bool>("firstLoginKey", default: true)
     static let classTableTerm = Key<Int>("classTableTermKey", default: 1)
     static let classTableJsonData = Key<Data?>("classTableJsonDataKey", default: nil)
 }

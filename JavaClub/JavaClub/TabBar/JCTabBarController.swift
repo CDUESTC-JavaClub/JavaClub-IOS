@@ -10,6 +10,12 @@ import SwiftUI
 
 class JCTabBarController: UITabBarController {
     
+    override var shouldAutorotate: Bool { false }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { .portrait }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation { .portrait }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,7 +55,7 @@ extension JCTabBarController {
         image: UIImage,
         swipEnabled: Bool = true
     ) -> UINavigationController {
-        let navController = UINavigationController(rootViewController: rootViewController)
+        let navController = NoRotateNavigationController(rootViewController: rootViewController)
         navController.tabBarItem.title = title
         navController.tabBarItem.image = image
         navController.isNavigationBarHidden = true

@@ -24,6 +24,7 @@ enum JCError: Error {
     case unknown
     case castErr
     case illegalParameter
+    case imgRetrieveFailed
 }
 
 
@@ -186,19 +187,17 @@ extension JCAccountManager {
      */
     func getUserMedia() {
         // Refresh User Media
-        if Defaults[.sessionURL] == nil {
-            JCAccountManager.shared.getSession { urlStr, avatar, banner in
-                if Defaults[.sessionURL] == nil, let urlStr = urlStr {
-                    Defaults[.sessionURL] = urlStr
-                }
-                
-                if Defaults[.avatarURL] == nil, let avatar = avatar {
-                    Defaults[.avatarURL] = avatar
-                }
-                
-                if Defaults[.bannerURL] == nil, let banner = banner {
-                    Defaults[.bannerURL] = banner
-                }
+        JCAccountManager.shared.getSession { urlStr, avatar, banner in
+            if Defaults[.sessionURL] == nil, let urlStr = urlStr {
+                Defaults[.sessionURL] = urlStr
+            }
+            
+            if Defaults[.avatarURL] == nil, let avatar = avatar {
+                Defaults[.avatarURL] = avatar
+            }
+            
+            if Defaults[.bannerURL] == nil, let banner = banner {
+                Defaults[.bannerURL] = banner
             }
         }
     }
@@ -495,6 +494,7 @@ extension JCAccountManager {
     private func getSession(_ completion: @escaping (URL?, URL?, URL?) -> Void) {
         AF.request("https://api.cduestc.club/api/auth/forum").response { response in
             guard let data = response.data else {
+                print("DEBUG: Fetch User Media Failed (No Data Response).")
                 completion(nil, nil, nil)
                 return
             }
@@ -514,13 +514,15 @@ extension JCAccountManager {
                     let avatarURL = URL(string: avatar)
                     let bannerURL = URL(string: banner)
                     
+                    print("DEBUG: Fetch User Media Succeeded.")
                     completion(url, avatarURL, bannerURL)
                 } else {
+                    print("DEBUG: Fetch User Media Failed.")
                     completion(nil, nil, nil)
                 }
             } catch {
+                print("DEBUG: Fetch User Media Failed With Error: \(error.localizedDescription)")
                 completion(nil, nil, nil)
-                print("DEBUG: \(error.localizedDescription)")
             }
         }
     }
