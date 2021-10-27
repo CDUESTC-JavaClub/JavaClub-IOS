@@ -43,13 +43,11 @@ struct KAClassTableContentview: View {
                         Button {
                             
                         } label: {
-                            HStack {
+                            HStack(spacing: 5) {
                                 Text("第 \(term) 学期")
-                                    .foregroundColor(.label)
                                 
                                 Image(systemName: "chevron.down")
                                     .renderingMode(.template)
-                                    .foregroundColor(.label)
                             }
                         }
                     }
