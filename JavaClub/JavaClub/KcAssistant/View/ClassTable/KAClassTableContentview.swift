@@ -11,15 +11,11 @@ import Defaults
 
 fileprivate var colorHash: [String?] = Array(repeating: nil, count: 20)
 
-// 绿、深粉、暗红、橄榄绿、浅棕
-// 浅粉、浅蓝、浅紫、亮粉、亮红
-// 天蓝、暗蓝、暗绿、黄、卡其
-// 肉粉、深棕、深绿、深蓝、紫罗兰
 fileprivate let colorSet: [String] = [
-    "#C3E56A", "#CC72C6", "#D0D377", "#BE5877", "#CAA389",
-    "#FCBFFF", "#B2BCFF", "#896FFF", "#CB2B68", "#FF4646",
-    "#3DB8CC", "#4D838B", "#477946", "#CA9D3D", "#BCA472",
-    "#BC7A72", "#623832", "#0E522D", "#0E2B52", "#413258",
+    "#30AB43", "#FF483D", "#D8873D", "#EAC822", "#5BB974",
+    "#5B81CA", "#6B4E8B", "#854348", "#5B744C", "#AB5D61",
+    "#DBA217", "#A6B35B", "#397E67", "#4A5F8F", "#814C6E",
+    "#A22A22", "#4EA9A0", "#3B4A89", "#7C788D", "#245456",
 ]
 
 struct KAClassTableContentview: View {
@@ -43,47 +39,71 @@ struct KAClassTableContentview: View {
         ZStack {
             GeometryReader { geo in
                 VStack(spacing: 0) {
+                    VStack {
+                        Button {
+                            
+                        } label: {
+                            HStack {
+                                Text("第 \(term) 学期")
+                                    .foregroundColor(.label)
+                                
+                                Image(systemName: "chevron.down")
+                                    .renderingMode(.template)
+                                    .foregroundColor(.label)
+                            }
+                        }
+                    }
+                    .padding(.bottom, 10)
+                    
                     HStack(spacing: 0) {
                         ForEach(1 ..< 8) { index in
                             switch index {
                             case 1:
                                 Text("周一")
                                     .frame(width: geo.size.width / 7, height: 30)
+                                    .foregroundColor(.white)
                                     .background(Color(hex: "60D1AE"))
 
                             case 2:
                                 Text("周二")
                                     .frame(width: geo.size.width / 7, height: 30)
+                                    .foregroundColor(.white)
                                     .background(Color(hex: "60D1AE"))
 
                             case 3:
                                 Text("周三")
                                     .frame(width: geo.size.width / 7, height: 30)
+                                    .foregroundColor(.white)
                                     .background(Color(hex: "60D1AE"))
 
                             case 4:
                                 Text("周四")
                                     .frame(width: geo.size.width / 7, height: 30)
+                                    .foregroundColor(.white)
                                     .background(Color(hex: "60D1AE"))
 
                             case 5:
                                 Text("周五")
                                     .frame(width: geo.size.width / 7, height: 30)
+                                    .foregroundColor(.white)
                                     .background(Color(hex: "60D1AE"))
 
                             case 6:
                                 Text("周六")
                                     .frame(width: geo.size.width / 7, height: 30)
+                                    .foregroundColor(.white)
                                     .background(Color(hex: "60D1AE"))
 
                             case 7:
                                 Text("周日")
                                     .frame(width: geo.size.width / 7, height: 30)
+                                    .foregroundColor(.white)
                                     .background(Color(hex: "60D1AE"))
 
                             default:
                                 Text("")
                                     .frame(width: geo.size.width / 7, height: 30)
+                                    .foregroundColor(.white)
                                     .background(Color(hex: "60D1AE"))
                             }
                         }

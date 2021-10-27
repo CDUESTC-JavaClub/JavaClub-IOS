@@ -408,11 +408,10 @@ extension JCAccountManager {
             return
         }
         
-        #warning("Set Term To 4 For Test.")
         AF.request(
             "https://api.cduestc.club/api/kc/table",
             method: .post,
-            parameters: ["term": "4"]
+            parameters: ["term": "\(term)"]
         ).response { response in
             guard let data = response.data else {
                 completion(.failure(.noData))
