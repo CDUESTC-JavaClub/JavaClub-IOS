@@ -107,7 +107,7 @@ extension AppDelegate {
                         }
                     }
                 } else {
-                    print("DEBUG: Credential Lost.")
+                    print("DEBUG: JW Credential Lost.")
                 }
             } onFailure: {
                 print("DEBUG: Auto Login JC Failed.")
