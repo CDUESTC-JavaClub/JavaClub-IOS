@@ -8,7 +8,7 @@
 import Foundation
 
 struct KAClass: Identifiable, Hashable {
-    let id = UUID().uuidString
+    var id = UUID().uuidString
     
     var name: String
     var classID: String

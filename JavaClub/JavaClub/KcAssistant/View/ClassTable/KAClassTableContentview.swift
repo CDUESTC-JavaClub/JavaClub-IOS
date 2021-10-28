@@ -112,9 +112,15 @@ struct KAClassTableContentview: View {
                     ScrollView(.vertical, showsIndicators: true) {
                         LazyVGrid(columns: columns, spacing: 0) {
                             ForEach(observable.classes, id: \.id) {
-                                KAClassTableCell(className: $0.name, location: $0.locale, teacher: $0.teacher, color: Color(selectColor(with: $0.name) ?? .gray))
-                                    .frame(height: 150)
-                                    .padding(.top, 5)
+                                KAClassTableCell(
+                                    className: $0.name,
+                                    location: $0.locale,
+                                    teacher: $0.teacher,
+                                    form: $0.form,
+                                    color: Color(selectColor(with: $0.name) ?? .gray)
+                                )
+                                .frame(height: 150)
+                                .padding(.top, 5)
                             }
                         }
                     }

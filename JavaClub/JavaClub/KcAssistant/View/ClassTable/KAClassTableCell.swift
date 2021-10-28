@@ -11,11 +11,22 @@ struct KAClassTableCell: View {
     var className: String
     var location: String
     var teacher: String
+    var form: ClassForm
     var color: Color
     
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: 5) {
+                if form == .singular {
+                    Text("单周")
+                        .font(.system(size: 12))
+                        .foregroundColor(.white)
+                } else if form == .even {
+                    Text("双周")
+                        .font(.system(size: 12))
+                        .foregroundColor(.white)
+                }
+                
                 Text(className)
                     .font(.system(size: 12))
                     .foregroundColor(.white)

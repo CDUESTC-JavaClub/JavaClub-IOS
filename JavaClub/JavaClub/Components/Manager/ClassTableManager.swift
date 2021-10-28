@@ -23,7 +23,17 @@ extension ClassTableManager {
         var result: [KAClass] = []
         
         for _ in 0 ..< 35 {
-            let tmp = KAClass(name: "", classID: "", teacher: "", locale: "", day: 0, indexSet: [], weekFrom: 0, weekTo: 0, form: .regular)
+            let tmp = KAClass(
+                name: "",
+                classID: "",
+                teacher: "",
+                locale: "",
+                day: 0,
+                indexSet: [],
+                weekFrom: 0,
+                weekTo: 0,
+                form: .regular
+            )
             result.append(tmp)
         }
         
@@ -36,7 +46,7 @@ extension ClassTableManager {
                 let weekSet = json["weekSet"].arrayObject as? [Int] ?? []
                 let classForm = ClassTableManager.shared.processWeekSet(from: weekSet.first!)
                 
-                let _class = KAClass(
+                var _class = KAClass(
                     name: json["name"].stringValue,
                     classID: json["id"].stringValue,
                     teacher: json["teacher"].stringValue,
@@ -48,14 +58,13 @@ extension ClassTableManager {
                     form: classForm
                 )
                 
-                if _class.indexSet.count > 1 {
+                if !_class.indexSet.isEmpty {
                     _class.indexSet.forEach {
-                        let index = (_class.day - 1 >= 0 ? _class.day - 1 : 0) * 5 + $0
-                        result[index] = _class
+                        _class.id = UUID().uuidString
+                        
+                        let index = ($0 - 1 >= 0 ? $0 - 1 : 0) * 7 + _class.day
+                        result[index - 1] = _class
                     }
-                } else {
-                    let index = (_class.day - 1 >= 0 ? _class.day - 1 : 0) * 5 + _class.indexSet.first!
-                    result[index] = _class
                 }
             }
         } catch {
