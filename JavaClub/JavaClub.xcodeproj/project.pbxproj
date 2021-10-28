@@ -74,6 +74,7 @@
 		B0973FA62703FE4200E5C9C6 /* KAScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA52703FE4200E5C9C6 /* KAScore.swift */; };
 		B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA927044BE500E5C9C6 /* KASection.swift */; };
 		B0A5D9A1272A49D300A8E3EE /* JCDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A5D9A0272A49D300A8E3EE /* JCDateManager.swift */; };
+		B0A5D9A4272A9CFE00A8E3EE /* NumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A5D9A3272A9CFE00A8E3EE /* NumberExtension.swift */; };
 		B0B84350270FE6F800C19B9B /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B8434F270FE6F800C19B9B /* RefreshableScrollView.swift */; };
 		B0B84352270FEB1700C19B9B /* KAContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B84351270FEB1700C19B9B /* KAContentViewController.swift */; };
 		B0B84354270FEBE300C19B9B /* KAMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B84353270FEBE300C19B9B /* KAMainViewController.swift */; };
@@ -151,6 +152,7 @@
 		B0973FA52703FE4200E5C9C6 /* KAScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAScore.swift; sourceTree = "<group>"; };
 		B0973FA927044BE500E5C9C6 /* KASection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KASection.swift; sourceTree = "<group>"; };
 		B0A5D9A0272A49D300A8E3EE /* JCDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCDateManager.swift; sourceTree = "<group>"; };
+		B0A5D9A3272A9CFE00A8E3EE /* NumberExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberExtension.swift; sourceTree = "<group>"; };
 		B0B8434F270FE6F800C19B9B /* RefreshableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableScrollView.swift; sourceTree = "<group>"; };
 		B0B84351270FEB1700C19B9B /* KAContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAContentViewController.swift; sourceTree = "<group>"; };
 		B0B84353270FEBE300C19B9B /* KAMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAMainViewController.swift; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 				B02032C526FE05910048B6F6 /* StringExtension.swift */,
 				B02032C926FE05910048B6F6 /* ViewExtension.swift */,
 				B0F900C9270300420056A016 /* ViewControllerExtension.swift */,
+				B0A5D9A3272A9CFE00A8E3EE /* NumberExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -653,6 +656,7 @@
 				B05B0D76271D05E300F48D52 /* NoRotateNavigationController.swift in Sources */,
 				B02032CD26FE05910048B6F6 /* ImageExtension.swift in Sources */,
 				B0B84354270FEBE300C19B9B /* KAMainViewController.swift in Sources */,
+				B0A5D9A4272A9CFE00A8E3EE /* NumberExtension.swift in Sources */,
 				B00939FE27151D3200879AC5 /* UnderlineButton.swift in Sources */,
 				B04C4963271841E500FBD9E7 /* BaiUserInfoView.swift in Sources */,
 				B02032CF26FE05910048B6F6 /* ViewExtension.swift in Sources */,

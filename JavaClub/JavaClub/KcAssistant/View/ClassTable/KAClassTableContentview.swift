@@ -57,55 +57,10 @@ struct KAClassTableContentview: View {
                     
                     HStack(spacing: 0) {
                         ForEach(1 ..< 8) { index in
-                            switch index {
-                            case 1:
-                                Text("周一")
-                                    .frame(width: geo.size.width / 7, height: 30)
-                                    .foregroundColor(.white)
-                                    .background(Color(hex: "413258"))
-
-                            case 2:
-                                Text("周二")
-                                    .frame(width: geo.size.width / 7, height: 30)
-                                    .foregroundColor(.white)
-                                    .background(Color(hex: "413258"))
-
-                            case 3:
-                                Text("周三")
-                                    .frame(width: geo.size.width / 7, height: 30)
-                                    .foregroundColor(.white)
-                                    .background(Color(hex: "413258"))
-
-                            case 4:
-                                Text("周四")
-                                    .frame(width: geo.size.width / 7, height: 30)
-                                    .foregroundColor(.white)
-                                    .background(Color(hex: "413258"))
-
-                            case 5:
-                                Text("周五")
-                                    .frame(width: geo.size.width / 7, height: 30)
-                                    .foregroundColor(.white)
-                                    .background(Color(hex: "413258"))
-
-                            case 6:
-                                Text("周六")
-                                    .frame(width: geo.size.width / 7, height: 30)
-                                    .foregroundColor(.white)
-                                    .background(Color(hex: "413258"))
-
-                            case 7:
-                                Text("周日")
-                                    .frame(width: geo.size.width / 7, height: 30)
-                                    .foregroundColor(.white)
-                                    .background(Color(hex: "413258"))
-
-                            default:
-                                Text("")
-                                    .frame(width: geo.size.width / 7, height: 30)
-                                    .foregroundColor(.white)
-                                    .background(Color(hex: "413258"))
-                            }
+                            Text("周\(index.chinese ?? "\(index)")")
+                                .frame(width: geo.size.width / 7, height: 30)
+                                .foregroundColor(.white)
+                                .background(Color(hex: "413258"))
                         }
                     }
                     
