@@ -17,13 +17,13 @@ struct LoadingIndicatorView: View {
             Section {
                 HStack(alignment: .center, spacing: 5) {
                     RoundedRectangle(cornerRadius: 4)
-                        .fill(Color(hex: "60D1AE"))
+                        .fill(Color.accentColor)
                         .frame(width: 15, height: animates ? 50 : 25)
                     RoundedRectangle(cornerRadius: 4)
-                        .fill(Color(hex: "60D1AE"))
+                        .fill(Color.accentColor)
                         .frame(width: 15, height: animates ? 25 : 50)
                     RoundedRectangle(cornerRadius: 4)
-                        .fill(Color(hex: "60D1AE"))
+                        .fill(Color.accentColor)
                         .frame(width: 15, height: animates ? 50 : 25)
                 }
                 .animation(

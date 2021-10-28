@@ -73,6 +73,7 @@
 		B0973FA32703FC0300E5C9C6 /* KAScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA22703FC0300E5C9C6 /* KAScoreViewController.swift */; };
 		B0973FA62703FE4200E5C9C6 /* KAScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA52703FE4200E5C9C6 /* KAScore.swift */; };
 		B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA927044BE500E5C9C6 /* KASection.swift */; };
+		B0A5D9A1272A49D300A8E3EE /* JCDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A5D9A0272A49D300A8E3EE /* JCDateManager.swift */; };
 		B0B84350270FE6F800C19B9B /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B8434F270FE6F800C19B9B /* RefreshableScrollView.swift */; };
 		B0B84352270FEB1700C19B9B /* KAContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B84351270FEB1700C19B9B /* KAContentViewController.swift */; };
 		B0B84354270FEBE300C19B9B /* KAMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B84353270FEBE300C19B9B /* KAMainViewController.swift */; };
@@ -149,6 +150,7 @@
 		B0973FA22703FC0300E5C9C6 /* KAScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAScoreViewController.swift; sourceTree = "<group>"; };
 		B0973FA52703FE4200E5C9C6 /* KAScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAScore.swift; sourceTree = "<group>"; };
 		B0973FA927044BE500E5C9C6 /* KASection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KASection.swift; sourceTree = "<group>"; };
+		B0A5D9A0272A49D300A8E3EE /* JCDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCDateManager.swift; sourceTree = "<group>"; };
 		B0B8434F270FE6F800C19B9B /* RefreshableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableScrollView.swift; sourceTree = "<group>"; };
 		B0B84351270FEB1700C19B9B /* KAContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAContentViewController.swift; sourceTree = "<group>"; };
 		B0B84353270FEBE300C19B9B /* KAMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAMainViewController.swift; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 				B08F6FC327003F8C0015B354 /* JCAccountManager.swift */,
 				DD28360F270981B200D3D988 /* BaiAccountManager.swift */,
 				B08F6FC227003F8C0015B354 /* ClassTableManager.swift */,
+				B0A5D9A0272A49D300A8E3EE /* JCDateManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 				B04C4968271841E500FBD9E7 /* BaiScoreMiniView.swift in Sources */,
 				B02032D326FE37C20048B6F6 /* DesignableView.swift in Sources */,
 				B04C4967271841E500FBD9E7 /* BaiHeaderView.swift in Sources */,
+				B0A5D9A1272A49D300A8E3EE /* JCDateManager.swift in Sources */,
 				B04C4969271841E500FBD9E7 /* BaiScoreDetailView.swift in Sources */,
 				B02E4F1F2701BB7C00EA3DDB /* TVOption.swift in Sources */,
 				B02032CC26FE05910048B6F6 /* ViewPlaceholder.swift in Sources */,

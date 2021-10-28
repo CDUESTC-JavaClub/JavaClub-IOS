@@ -15,7 +15,7 @@ struct KAClass: Identifiable, Hashable {
     var teacher: String
     var locale: String
     var day: Int
-    var index: Int
+    var indexSet: [Int]
     var weekFrom: Int
     var weekTo: Int
     var form: ClassForm

@@ -43,10 +43,10 @@ struct KAClassTableContentview: View {
                 VStack(spacing: 0) {
                     VStack {
                         Button {
-                            
+                            showTermSelector = true
                         } label: {
-                            HStack(spacing: 5) {
-                                Text("第 \(term) 学期")
+                            HStack(spacing: 0) {
+                                Text(JCDateManager.shared.formatted(for: term) ?? "获取失败...")
                                 
                                 Image(systemName: "chevron.down")
                                     .renderingMode(.template)
@@ -62,49 +62,49 @@ struct KAClassTableContentview: View {
                                 Text("周一")
                                     .frame(width: geo.size.width / 7, height: 30)
                                     .foregroundColor(.white)
-                                    .background(Color(hex: "60D1AE"))
+                                    .background(Color(hex: "413258"))
 
                             case 2:
                                 Text("周二")
                                     .frame(width: geo.size.width / 7, height: 30)
                                     .foregroundColor(.white)
-                                    .background(Color(hex: "60D1AE"))
+                                    .background(Color(hex: "413258"))
 
                             case 3:
                                 Text("周三")
                                     .frame(width: geo.size.width / 7, height: 30)
                                     .foregroundColor(.white)
-                                    .background(Color(hex: "60D1AE"))
+                                    .background(Color(hex: "413258"))
 
                             case 4:
                                 Text("周四")
                                     .frame(width: geo.size.width / 7, height: 30)
                                     .foregroundColor(.white)
-                                    .background(Color(hex: "60D1AE"))
+                                    .background(Color(hex: "413258"))
 
                             case 5:
                                 Text("周五")
                                     .frame(width: geo.size.width / 7, height: 30)
                                     .foregroundColor(.white)
-                                    .background(Color(hex: "60D1AE"))
+                                    .background(Color(hex: "413258"))
 
                             case 6:
                                 Text("周六")
                                     .frame(width: geo.size.width / 7, height: 30)
                                     .foregroundColor(.white)
-                                    .background(Color(hex: "60D1AE"))
+                                    .background(Color(hex: "413258"))
 
                             case 7:
                                 Text("周日")
                                     .frame(width: geo.size.width / 7, height: 30)
                                     .foregroundColor(.white)
-                                    .background(Color(hex: "60D1AE"))
+                                    .background(Color(hex: "413258"))
 
                             default:
                                 Text("")
                                     .frame(width: geo.size.width / 7, height: 30)
                                     .foregroundColor(.white)
-                                    .background(Color(hex: "60D1AE"))
+                                    .background(Color(hex: "413258"))
                             }
                         }
                     }
@@ -119,6 +119,18 @@ struct KAClassTableContentview: View {
                         }
                     }
                 }
+            }
+            
+            if showTermSelector {
+                GeometryReader { geo in
+                    KATermSelectorView(isShown: $showTermSelector, selected: $term)
+                        .position(x: geo.size.width / 2, y: geo.size.height / 2)
+                }
+                .background(
+                    Color.black
+                        .opacity(0.45)
+                        .edgesIgnoringSafeArea(.all)
+                )
             }
             
             if showIndicator {
@@ -137,30 +149,37 @@ struct KAClassTableContentview: View {
             Alert(title: Text("错误"), message: Text("暂无法获取该学期课表，请稍后再试。"), dismissButton: .default(Text("Got it!")))
         }
         .onAppear {
-            showIndicator = true
-            
-            JCAccountManager.shared.getClassTable(term: term) { result in
-                switch result {
-                case .success(let classes):
-                    observable.classes = classes
-                    showIndicator = false
-                    print("DEBUG: Fetched Class Table Successfully.")
-                    
-                case .failure(let error):
-                    showIndicator = false
-                    print("DEBUG: Fetching Class Table Failed With Error: \(String(describing: error)), using local data.")
-                    
-                    if let local = ClassTableManager.shared.fromLocal() {
-                        observable.classes = local
-                        print("DEBUG: Used Local Data.")
-                    } else {
-                        presentAlert = true
-                    }
-                }
-            }
+            refresh(for: term)
         }
         .onDisappear {
             colorHash = Array(repeating: nil, count: 20)
+        }
+        .onChange(of: term) { newValue in
+            refresh(for: newValue)
+        }
+    }
+    
+    func refresh(for term: Int) {
+        showIndicator = true
+        
+        JCAccountManager.shared.getClassTable(term: term) { result in
+            switch result {
+            case .success(let classes):
+                observable.classes = classes
+                showIndicator = false
+                print("DEBUG: Fetched Class Table Successfully.")
+                
+            case .failure(let error):
+                showIndicator = false
+                print("DEBUG: Fetching Class Table Failed With Error: \(String(describing: error)), using local data.")
+                
+                if let local = ClassTableManager.shared.fromLocal() {
+                    observable.classes = local
+                    print("DEBUG: Used Local Data.")
+                } else {
+                    presentAlert = true
+                }
+            }
         }
     }
     

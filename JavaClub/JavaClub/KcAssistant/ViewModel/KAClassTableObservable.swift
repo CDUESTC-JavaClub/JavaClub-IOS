@@ -13,14 +13,3 @@ class KAClassTableObservable: ObservableObject {
     
     @Published var classes: [KAClass] = []
 }
-
-
-// MARK: Shared Methods -
-extension KAClassTableObservable {
-    
-    func getCurrentTerm() -> Int? {
-        guard let enrollment = Defaults[.enrollment] else { return nil }
-        
-        let 
-    }
-}

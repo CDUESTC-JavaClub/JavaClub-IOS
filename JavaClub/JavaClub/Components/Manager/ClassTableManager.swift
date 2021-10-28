@@ -23,7 +23,7 @@ extension ClassTableManager {
         var result: [KAClass] = []
         
         for _ in 0 ..< 35 {
-            let tmp = KAClass(name: "", classID: "", teacher: "", locale: "", day: 0, index: 0, weekFrom: 0, weekTo: 0, form: .regular)
+            let tmp = KAClass(name: "", classID: "", teacher: "", locale: "", day: 0, indexSet: [], weekFrom: 0, weekTo: 0, form: .regular)
             result.append(tmp)
         }
         
@@ -42,14 +42,21 @@ extension ClassTableManager {
                     teacher: json["teacher"].stringValue,
                     locale: json["local"].stringValue,
                     day: json["day"].intValue,
-                    index: index,
+                    indexSet: index,
                     weekFrom: weekSet.first!,
                     weekTo: weekSet.last!,
                     form: classForm
                 )
                 
-                let subs = (_class.day - 1 >= 0 ? _class.day - 1 : 0) * 5 + _class.index
-                result[subs] = _class
+                if _class.indexSet.count > 1 {
+                    _class.indexSet.forEach {
+                        let index = (_class.day - 1 >= 0 ? _class.day - 1 : 0) * 5 + $0
+                        result[index] = _class
+                    }
+                } else {
+                    let index = (_class.day - 1 >= 0 ? _class.day - 1 : 0) * 5 + _class.indexSet.first!
+                    result[index] = _class
+                }
             }
         } catch {
             print("DEBUG: Parse Error: \(error.localizedDescription)")
@@ -64,37 +71,37 @@ extension ClassTableManager {
         return decode(from: jsonData)
     }
     
-    func processIndexSet(raw: [Int]) -> Int {
+    func processIndexSet(raw: [Int]) -> [Int] {
         switch raw {
         case ClassIndex.first:
-            return 1
+            return [1]
             
         case ClassIndex.second:
-            return 2
+            return [2]
             
         case ClassIndex.third:
-            return 3
+            return [3]
             
         case ClassIndex.forth:
-            return 4
+            return [4]
             
         case ClassIndex.fifth:
-            return 5
+            return [5]
             
         case ClassIndex.morning:
-            return 6
+            return [1, 2]
             
         case ClassIndex.afternoon:
-            return 7
+            return [3, 4]
             
         case ClassIndex.evening:
-            return 8
+            return [5]
             
         case ClassIndex.error:
-            return 0
+            return []
             
         default:
-            return 0
+            return []
         }
     }
     
