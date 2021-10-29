@@ -43,9 +43,9 @@ extension JCTabBarController {
         
         viewControllers = [
             createNavController(for: JCMainViewController(), title: "JavaClub", image: UIImage(named: "nav_home")!),
-            createNavController(for: KAMainViewController(), title: "教务", image: UIImage(named: "nav_kc")!, swipEnabled: false),
+            createNavController(for: KAMainViewController(), title: "教务".localized(), image: UIImage(named: "nav_kc")!, swipEnabled: false),
 //            createNavController(for: baVC, title: "百叶计划", image: UIImage(named: "nav_bai")!),
-            createNavController(for: STMainViewController(), title: "设置", image: UIImage(named: "nav_settings")!),
+            createNavController(for: STMainViewController(), title: "设置".localized(), image: UIImage(named: "nav_settings")!),
         ]
     }
     

@@ -37,7 +37,7 @@ extension TappableViewCell {
         configuration.image = model.icon
         configuration.imageProperties.maximumSize = CGSize(width: 25, height: 25)
         configuration.imageProperties.cornerRadius = 8
-        configuration.text = model.title
+        configuration.text = model.title.localized()
         configuration.textProperties.color = .label
         configuration.textProperties.font = .systemFont(ofSize: 14)
         

@@ -36,7 +36,7 @@ struct KAClassDetailView: View {
                     .foregroundColor(.label)
                     .padding(.leading, 10)
                 
-                Text("课程名：\(_class!.name)")
+                Text("课程名：\(_class!.name)".localized())
                 
                 Spacer()
             }
@@ -49,7 +49,7 @@ struct KAClassDetailView: View {
                     .foregroundColor(.label)
                     .padding(.leading, 10)
                 
-                Text("课程号：\(_class!.classID)")
+                Text("课程号：\(_class!.classID)".localized())
                 
                 Spacer()
             }
@@ -62,7 +62,7 @@ struct KAClassDetailView: View {
                     .foregroundColor(.label)
                     .padding(.leading, 10)
                 
-                Text("时间：\(formatTime(for: _class!.indexSet.first!)) 星期\(_class!.day.chinese ?? "\(_class!.day)")（\(_class!.weekFrom)-\(_class!.weekTo) 周上）")
+                Text("时间：\(formatTime(for: _class!.indexSet.first!)) 星期\(_class!.day.chinese ?? "\(_class!.day)")（\(_class!.weekFrom)-\(_class!.weekTo) 周上）".localized())
                 
                 Spacer()
             }
@@ -75,7 +75,7 @@ struct KAClassDetailView: View {
                     .foregroundColor(.label)
                     .padding(.leading, 10)
                 
-                Text("地点：\(_class!.locale)")
+                Text("地点：\(_class!.locale)".localized())
                 
                 Spacer()
             }
@@ -88,7 +88,7 @@ struct KAClassDetailView: View {
                     .foregroundColor(.label)
                     .padding(.leading, 10)
                 
-                Text("教师：\(_class!.teacher)")
+                Text("教师：\(_class!.teacher)".localized())
                 
                 Spacer()
             }
@@ -118,7 +118,7 @@ struct KAClassDetailView: View {
             return "18:30~20:05"
             
         default:
-            return "第 \(index) 节"
+            return "第 \(index) 节".localized()
         }
     }
 }

@@ -1,0 +1,51 @@
+/* No comment provided by engineer. */
+"加载中" = "Loading";
+
+/* No comment provided by engineer. */
+"暂无法获取该学期课表，请稍后再试。" = "Can't get the semester class table, please try again later.";
+
+/* No comment provided by engineer. */
+"获取失败..." = "Fetch failed...";
+
+/* No comment provided by engineer. */
+"课程号：%@" = "Class ID：%@";
+
+/* No comment provided by engineer. */
+"课程名：%@" = "Class Name：%@";
+
+/* No comment provided by engineer. */
+"错误" = "Error";
+
+"使用深色模式" = "Use Dark mode";
+
+"主题外观跟随系统" = "Use System Appearance";
+
+"外观设置" = "Appearance";
+
+"更多" = "";
+
+"绑定信息" = "Binding";
+
+"检查更新" = "Check For Updates";
+
+"退出登录" = "Logout";
+
+"教务" = "KcAssistant";
+
+"设置" = "Settings";
+
+"已绑定学号" = "Student ID";
+
+"已绑定邮箱" = "Email";
+
+"学期成绩查询" = "Semester Score";
+
+"课程表查询" = "Class Table";
+
+"学籍信息查询" = "Enrollment Info";
+
+"暂无公告内容，敬请期待~" = "There's nothing much to see, please come back later~";
+
+"教务系统" = "KcAssistant";
+
+"包含成绩查询、课表查询、学籍查询等功能" = "Contains semester score quiries, class table queries, enrollment info queries, etc.";

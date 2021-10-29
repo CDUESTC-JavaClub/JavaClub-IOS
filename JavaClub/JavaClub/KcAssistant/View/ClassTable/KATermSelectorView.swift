@@ -35,7 +35,7 @@ struct KATermSelectorView: View {
                     selected = index
                     isShown = false
                 } label: {
-                    Text(JCDateManager.shared.formatted(for: index) ?? "获取失败...")
+                    Text(JCDateManager.shared.formatted(for: index) ?? "获取失败...".localized())
                         .foregroundColor(selected == index ? Color(hex: "413258") : .accentColor)
                 }
                 .frame(width: 250, height: 20)

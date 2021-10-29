@@ -42,13 +42,6 @@
 		B04C49562717F42200FBD9E7 /* CVScoreContentConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C49552717F42200FBD9E7 /* CVScoreContentConfiguration.swift */; };
 		B04C49582717F4AD00FBD9E7 /* CVScoreContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C49572717F4AD00FBD9E7 /* CVScoreContentView.swift */; };
 		B04C495A2718138F00FBD9E7 /* ScoreImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C49592718138F00FBD9E7 /* ScoreImageView.swift */; };
-		B04C4963271841E500FBD9E7 /* BaiUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C495C271841E400FBD9E7 /* BaiUserInfoView.swift */; };
-		B04C4964271841E500FBD9E7 /* BAContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C495D271841E400FBD9E7 /* BAContentView.swift */; };
-		B04C4965271841E500FBD9E7 /* BaiActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C495E271841E400FBD9E7 /* BaiActionView.swift */; };
-		B04C4966271841E500FBD9E7 /* BaiScoreOverallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C495F271841E500FBD9E7 /* BaiScoreOverallView.swift */; };
-		B04C4967271841E500FBD9E7 /* BaiHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C4960271841E500FBD9E7 /* BaiHeaderView.swift */; };
-		B04C4968271841E500FBD9E7 /* BaiScoreMiniView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C4961271841E500FBD9E7 /* BaiScoreMiniView.swift */; };
-		B04C4969271841E500FBD9E7 /* BaiScoreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C4962271841E500FBD9E7 /* BaiScoreDetailView.swift */; };
 		B04FEE2E27113D750065FFB6 /* TappableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE2D27113D750065FFB6 /* TappableViewCell.swift */; };
 		B04FEE302711607A0065FFB6 /* TVSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE2F2711607A0065FFB6 /* TVSection.swift */; };
 		B04FEE32271168080065FFB6 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE31271168080065FFB6 /* SwitchTableViewCell.swift */; };
@@ -75,6 +68,8 @@
 		B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA927044BE500E5C9C6 /* KASection.swift */; };
 		B0A5D9A1272A49D300A8E3EE /* JCDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A5D9A0272A49D300A8E3EE /* JCDateManager.swift */; };
 		B0A5D9A4272A9CFE00A8E3EE /* NumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A5D9A3272A9CFE00A8E3EE /* NumberExtension.swift */; };
+		B0AF94FE272BE05A00671BF7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B0AF94FC272BE05A00671BF7 /* Localizable.strings */; };
+		B0AF9504272BE88100671BF7 /* LocalizableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AF9503272BE88100671BF7 /* LocalizableLabel.swift */; };
 		B0B84350270FE6F800C19B9B /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B8434F270FE6F800C19B9B /* RefreshableScrollView.swift */; };
 		B0B84352270FEB1700C19B9B /* KAContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B84351270FEB1700C19B9B /* KAContentViewController.swift */; };
 		B0B84354270FEBE300C19B9B /* KAMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B84353270FEBE300C19B9B /* KAMainViewController.swift */; };
@@ -120,13 +115,6 @@
 		B04C49552717F42200FBD9E7 /* CVScoreContentConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVScoreContentConfiguration.swift; sourceTree = "<group>"; };
 		B04C49572717F4AD00FBD9E7 /* CVScoreContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVScoreContentView.swift; sourceTree = "<group>"; };
 		B04C49592718138F00FBD9E7 /* ScoreImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreImageView.swift; sourceTree = "<group>"; };
-		B04C495C271841E400FBD9E7 /* BaiUserInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaiUserInfoView.swift; sourceTree = "<group>"; };
-		B04C495D271841E400FBD9E7 /* BAContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BAContentView.swift; sourceTree = "<group>"; };
-		B04C495E271841E400FBD9E7 /* BaiActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaiActionView.swift; sourceTree = "<group>"; };
-		B04C495F271841E500FBD9E7 /* BaiScoreOverallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaiScoreOverallView.swift; sourceTree = "<group>"; };
-		B04C4960271841E500FBD9E7 /* BaiHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaiHeaderView.swift; sourceTree = "<group>"; };
-		B04C4961271841E500FBD9E7 /* BaiScoreMiniView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaiScoreMiniView.swift; sourceTree = "<group>"; };
-		B04C4962271841E500FBD9E7 /* BaiScoreDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaiScoreDetailView.swift; sourceTree = "<group>"; };
 		B04FEE2D27113D750065FFB6 /* TappableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableViewCell.swift; sourceTree = "<group>"; };
 		B04FEE2F2711607A0065FFB6 /* TVSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSection.swift; sourceTree = "<group>"; };
 		B04FEE31271168080065FFB6 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
@@ -153,6 +141,8 @@
 		B0973FA927044BE500E5C9C6 /* KASection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KASection.swift; sourceTree = "<group>"; };
 		B0A5D9A0272A49D300A8E3EE /* JCDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCDateManager.swift; sourceTree = "<group>"; };
 		B0A5D9A3272A9CFE00A8E3EE /* NumberExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberExtension.swift; sourceTree = "<group>"; };
+		B0AF94FD272BE05A00671BF7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B0AF9503272BE88100671BF7 /* LocalizableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableLabel.swift; sourceTree = "<group>"; };
 		B0B8434F270FE6F800C19B9B /* RefreshableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableScrollView.swift; sourceTree = "<group>"; };
 		B0B84351270FEB1700C19B9B /* KAContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAContentViewController.swift; sourceTree = "<group>"; };
 		B0B84353270FEBE300C19B9B /* KAMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAMainViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +224,7 @@
 				B00939FD27151D3200879AC5 /* UnderlineButton.swift */,
 				B04C49592718138F00FBD9E7 /* ScoreImageView.swift */,
 				B05B0D75271D05E300F48D52 /* NoRotateNavigationController.swift */,
+				B0AF9503272BE88100671BF7 /* LocalizableLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -294,6 +285,7 @@
 				B02EEF0026FDB2780010515A /* Assets.xcassets */,
 				B02EEF0226FDB2780010515A /* LaunchScreen.storyboard */,
 				B02EEF0526FDB2780010515A /* Info.plist */,
+				B0AF94FC272BE05A00671BF7 /* Localizable.strings */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -342,7 +334,6 @@
 		B02EEF2726FDC0810010515A /* BaiAssistant */ = {
 			isa = PBXGroup;
 			children = (
-				B04C495B271841D000FBD9E7 /* View */,
 				B07399BA270A98100020AEB8 /* Model */,
 			);
 			path = BaiAssistant;
@@ -399,20 +390,6 @@
 				B04C49552717F42200FBD9E7 /* CVScoreContentConfiguration.swift */,
 			);
 			path = Configuration;
-			sourceTree = "<group>";
-		};
-		B04C495B271841D000FBD9E7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B04C495D271841E400FBD9E7 /* BAContentView.swift */,
-				B04C495E271841E400FBD9E7 /* BaiActionView.swift */,
-				B04C4960271841E500FBD9E7 /* BaiHeaderView.swift */,
-				B04C4962271841E500FBD9E7 /* BaiScoreDetailView.swift */,
-				B04C4961271841E500FBD9E7 /* BaiScoreMiniView.swift */,
-				B04C495F271841E500FBD9E7 /* BaiScoreOverallView.swift */,
-				B04C495C271841E400FBD9E7 /* BaiUserInfoView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		B06F83FD2722BC2900069A23 /* ViewModel */ = {
@@ -596,6 +573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0B84357270FEC1B00C19B9B /* KcAssistant.storyboard in Resources */,
+				B0AF94FE272BE05A00671BF7 /* Localizable.strings in Resources */,
 				B02EEF4426FDDA870010515A /* JavaClub.storyboard in Resources */,
 				B02EEF0426FDB2780010515A /* LaunchScreen.storyboard in Resources */,
 				B02EEF0126FDB2780010515A /* Assets.xcassets in Resources */,
@@ -635,15 +613,11 @@
 				B0CCEF0E27144425001235E9 /* JCCheckboxButton.swift in Sources */,
 				B08F6FB227003EEC0015B354 /* KAClass.swift in Sources */,
 				B02EEF1126FDB5760010515A /* JCTabBarController.swift in Sources */,
-				B04C4968271841E500FBD9E7 /* BaiScoreMiniView.swift in Sources */,
 				B02032D326FE37C20048B6F6 /* DesignableView.swift in Sources */,
-				B04C4967271841E500FBD9E7 /* BaiHeaderView.swift in Sources */,
 				B0A5D9A1272A49D300A8E3EE /* JCDateManager.swift in Sources */,
-				B04C4969271841E500FBD9E7 /* BaiScoreDetailView.swift in Sources */,
 				B02E4F1F2701BB7C00EA3DDB /* TVOption.swift in Sources */,
 				B02032CC26FE05910048B6F6 /* ViewPlaceholder.swift in Sources */,
 				B0973FA62703FE4200E5C9C6 /* KAScore.swift in Sources */,
-				B04C4965271841E500FBD9E7 /* BaiActionView.swift in Sources */,
 				B08F6FC627003F8C0015B354 /* JCAccountManager.swift in Sources */,
 				B02032D026FE05910048B6F6 /* AvailabilityCheck.swift in Sources */,
 				B0B84350270FE6F800C19B9B /* RefreshableScrollView.swift in Sources */,
@@ -658,21 +632,19 @@
 				B0B84354270FEBE300C19B9B /* KAMainViewController.swift in Sources */,
 				B0A5D9A4272A9CFE00A8E3EE /* NumberExtension.swift in Sources */,
 				B00939FE27151D3200879AC5 /* UnderlineButton.swift in Sources */,
-				B04C4963271841E500FBD9E7 /* BaiUserInfoView.swift in Sources */,
 				B02032CF26FE05910048B6F6 /* ViewExtension.swift in Sources */,
 				B01AA9B726FF4C55000D3E4A /* JCLoginState.swift in Sources */,
 				B06F83FF2722BC4800069A23 /* KAClassTableObservable.swift in Sources */,
 				B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */,
 				B0093A012715539E00879AC5 /* ScoreCollectionViewCell.swift in Sources */,
 				24B72C6C2729897400DC1DB1 /* KATermSelectorView.swift in Sources */,
+				B0AF9504272BE88100671BF7 /* LocalizableLabel.swift in Sources */,
 				B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */,
-				B04C4964271841E500FBD9E7 /* BAContentView.swift in Sources */,
 				B0973FA32703FC0300E5C9C6 /* KAScoreViewController.swift in Sources */,
 				B08F6FD5270048B40015B354 /* STContentViewController.swift in Sources */,
 				B04FEE32271168080065FFB6 /* SwitchTableViewCell.swift in Sources */,
 				B07399C0270A99330020AEB8 /* ScoreData.swift in Sources */,
 				B04C494F2717C05C00FBD9E7 /* KAEnrollmentViewController.swift in Sources */,
-				B04C4966271841E500FBD9E7 /* BaiScoreOverallView.swift in Sources */,
 				DD283610270981B200D3D988 /* BaiAccountManager.swift in Sources */,
 				B04FEE302711607A0065FFB6 /* TVSection.swift in Sources */,
 				B07399BC270A98330020AEB8 /* BaiAccount.swift in Sources */,
@@ -691,6 +663,14 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		B0AF94FC272BE05A00671BF7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B0AF94FD272BE05A00671BF7 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -698,6 +678,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -759,6 +740,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

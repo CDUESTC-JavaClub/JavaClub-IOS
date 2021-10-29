@@ -77,16 +77,16 @@ extension KAContentViewController {
     private func configureModels() {
         models = [
             TVSection(title: "", options: [
-                .tappable(model: TVTappableOption(title: "学期成绩查询", icon: UIImage(named: "score_icon"), handler: { [weak self] in
+                .tappable(model: TVTappableOption(title: "学期成绩查询".localized(), icon: UIImage(named: "score_icon"), handler: { [weak self] in
                     self?.navigationController?.isNavigationBarHidden = false
                     self?.navigationController?.pushViewController(KAScoreViewController(), animated: true)
                 })),
-                .tappable(model: TVTappableOption(title: "课程表查询", icon: UIImage(named: "classtable_icon"), handler: { [weak self] in
+                .tappable(model: TVTappableOption(title: "课程表查询".localized(), icon: UIImage(named: "classtable_icon"), handler: { [weak self] in
                     let classTableVC = UIHostingController(rootView: KAClassTableContentview())
                     self?.navigationController?.isNavigationBarHidden = false
                     self?.navigationController?.pushViewController(classTableVC, animated: true)
                 })),
-                .tappable(model: TVTappableOption(title: "学籍信息查询", icon: UIImage(named: "enrollment_icon"), handler: { [weak self] in
+                .tappable(model: TVTappableOption(title: "学籍信息查询".localized(), icon: UIImage(named: "enrollment_icon"), handler: { [weak self] in
                     self?.navigationController?.isNavigationBarHidden = false
                     
                     let enrollmentVC = UIStoryboard(name: "KcAssistant", bundle: .main)
@@ -107,9 +107,9 @@ extension KAContentViewController {
     private func didUpdateEnrollmentState(_ enrollment: KAEnrollment?) {
         if let enrollment = enrollment {
             nameLabel.text = enrollment.name
-            gradeLabel.text = "\(enrollment.grade)级 \(enrollment.direction)"
-            studentIDLabel.text = "学号：\(enrollment.studentID)"
-            deptLabel.text = "院系：\(enrollment.department)（\(enrollment.degree)）"
+            gradeLabel.text = "\(enrollment.grade)级 \(enrollment.direction)".localized()
+            studentIDLabel.text = "学号：\(enrollment.studentID)".localized()
+            deptLabel.text = "院系：\(enrollment.department)（\(enrollment.degree)）".localized()
         } else {
             nameLabel.text = "N/A"
             gradeLabel.text = ""

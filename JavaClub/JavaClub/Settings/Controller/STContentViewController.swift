@@ -103,13 +103,13 @@ extension STContentViewController {
     
     private func configureModels() {
         models = [
-            TVSection(title: "绑定信息", options: [
-                ._static(model: TVStaticOption(title: "已绑定学号", icon: nil, value: Defaults[.user]?.studentID ?? "")),
-                ._static(model: TVStaticOption(title: "已绑定邮箱", icon: nil, value: Defaults[.user]?.email ?? "")),
+            TVSection(title: "绑定信息".localized(), options: [
+                ._static(model: TVStaticOption(title: "已绑定学号".localized(), icon: nil, value: Defaults[.user]?.studentID ?? "")),
+                ._static(model: TVStaticOption(title: "已绑定邮箱".localized(), icon: nil, value: Defaults[.user]?.email ?? "")),
             ]),
-            TVSection(title: "外观设置", options: [
+            TVSection(title: "外观设置".localized(), options: [
                 .switchable(model: TVSwitchOption(
-                    title: "使用深色模式",
+                    title: "使用深色模式".localized(),
                     icon: nil,
                     isOn: Defaults[.useDarkMode],
                     isEnabled: !Defaults[.useSystemAppearance],
@@ -118,7 +118,7 @@ extension STContentViewController {
                     }
                 )),
                 .switchable(model: TVSwitchOption(
-                    title: "主题外观跟随系统",
+                    title: "主题外观跟随系统".localized(),
                     icon: nil,
                     isOn: Defaults[.useSystemAppearance],
                     isEnabled: true,
@@ -127,11 +127,11 @@ extension STContentViewController {
                     }
                 )),
             ]),
-            TVSection(title: "更多", options: [
-                .tappable(model: TVTappableOption(title: "检查更新", icon: UIImage(named: "update_icon"), handler: {
+            TVSection(title: "更多".localized(), options: [
+                .tappable(model: TVTappableOption(title: "检查更新".localized(), icon: UIImage(named: "update_icon"), handler: {
                     
                 })),
-                .tappable(model: TVTappableOption(title: "退出登录", icon: UIImage(named: "logout_icon"), handler: {
+                .tappable(model: TVTappableOption(title: "退出登录".localized(), icon: UIImage(named: "logout_icon"), handler: {
                     JCAccountManager.shared.logout()
                 })),
             ]),
@@ -153,7 +153,7 @@ extension STContentViewController {
             usernameLabel.text = userInfo.username
             signatureLabel.text = "「\(userInfo.signature ?? "这个人很懒，什么都没有留下。")」"
         } else {
-            usernameLabel.text = "请先登录"
+            usernameLabel.text = "请先登录".localized()
             signatureLabel.text = ""
             avatar.image = UIImage.fromColor(.clear)
             banner.image = UIImage.fromColor(.clear)
@@ -279,13 +279,13 @@ extension STContentViewController: UITableViewDataSource {
             }
             
             cell.configure(with: model) { _switch in
-                if model.title == "使用深色模式" {
+                if model.title == "使用深色模式" || model.title == "Use Dark mode" {
                     if Defaults[.useSystemAppearance] {
                         _switch.isOn = true
                         _switch.isEnabled = false
                     }
                     useDarkModeSwitch = _switch
-                } else if model.title == "主题外观跟随系统" {
+                } else if model.title == "主题外观跟随系统" || model.title == "Use System Appearance" {
                     useSystemAppearanceSwitch = _switch
                 }
             }
