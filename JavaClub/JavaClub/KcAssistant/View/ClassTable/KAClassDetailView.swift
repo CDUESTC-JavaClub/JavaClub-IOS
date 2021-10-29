@@ -36,7 +36,7 @@ struct KAClassDetailView: View {
                     .foregroundColor(.label)
                     .padding(.leading, 10)
                 
-                Text("课程名：\(_class!.name)".localized())
+                Text("课程名：\(_class!.name)")
                 
                 Spacer()
             }
@@ -49,7 +49,7 @@ struct KAClassDetailView: View {
                     .foregroundColor(.label)
                     .padding(.leading, 10)
                 
-                Text("课程号：\(_class!.classID)".localized())
+                Text("课程号：\(_class!.classID)")
                 
                 Spacer()
             }
@@ -62,7 +62,7 @@ struct KAClassDetailView: View {
                     .foregroundColor(.label)
                     .padding(.leading, 10)
                 
-                Text("时间：\(formatTime(for: _class!.indexSet.first!)) 星期\(_class!.day.chinese ?? "\(_class!.day)")（\(_class!.weekFrom)-\(_class!.weekTo) 周上）".localized())
+                Text("时间：\(formatTime(for: _class!.indexSet.first!)) 星期\(_class!.day.chinese ?? "\(_class!.day)")（\(_class!.weekFrom)-\(_class!.weekTo) 周上）")
                 
                 Spacer()
             }
@@ -75,7 +75,7 @@ struct KAClassDetailView: View {
                     .foregroundColor(.label)
                     .padding(.leading, 10)
                 
-                Text("地点：\(_class!.locale)".localized())
+                Text("地点：\(_class!.locale)")
                 
                 Spacer()
             }
@@ -88,7 +88,7 @@ struct KAClassDetailView: View {
                     .foregroundColor(.label)
                     .padding(.leading, 10)
                 
-                Text("教师：\(_class!.teacher)".localized())
+                Text("教师：\(_class!.teacher)")
                 
                 Spacer()
             }

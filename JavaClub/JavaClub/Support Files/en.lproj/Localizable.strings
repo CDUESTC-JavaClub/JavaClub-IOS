@@ -1,19 +1,17 @@
-/* No comment provided by engineer. */
 "加载中" = "Loading";
 
-/* No comment provided by engineer. */
 "暂无法获取该学期课表，请稍后再试。" = "Can't get the semester class table, please try again later.";
 
-/* No comment provided by engineer. */
 "获取失败..." = "Fetch failed...";
 
-/* No comment provided by engineer. */
 "课程号：%@" = "Class ID：%@";
 
-/* No comment provided by engineer. */
 "课程名：%@" = "Class Name：%@";
 
-/* No comment provided by engineer. */
+"地点：%@" = "Locale: %@";
+
+"教师：%@" = "Teacher: %@";
+
 "错误" = "Error";
 
 "使用深色模式" = "Use Dark mode";

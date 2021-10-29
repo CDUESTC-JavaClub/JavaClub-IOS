@@ -11,6 +11,7 @@ import SwiftyJSON
 import Defaults
 import SwiftyRSA
 import WebKit
+import Kingfisher
 
 enum JCError: Error {
     case pubKeyReqFailure
@@ -124,6 +125,8 @@ extension JCAccountManager {
         Defaults[.enrollment] = nil
         Defaults[.classTableTerm] = 1
         Defaults[.classTableJsonData] = nil
+        
+        ImageCache.default.clearDiskCache(completion: nil)
         
         HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
         
