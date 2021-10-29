@@ -10,17 +10,33 @@ import SwiftUI
 struct KAClassDetailView: View {
     @Environment(\.colorScheme) var colorScheme
     @Binding var isShown: Bool
-    var _class: KAClass
+    var _class: KAClass?
     
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
+            HStack(alignment: .top) {
+                Spacer()
+                
+                Button {
+                    isShown = false
+                } label: {
+                    Image(systemName: "xmark.circle")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(.label)
+                }
+                .padding(.trailing, 10)
+            }
+            .padding(.top, 10)
+            
             HStack {
                 Image(systemName: "graduationcap.circle")
                     .resizable()
                     .frame(width: 20, height: 20)
                     .foregroundColor(.label)
+                    .padding(.leading, 10)
                 
-                Text("课程名：\(_class.name)")
+                Text("课程名：\(_class!.name)")
                 
                 Spacer()
             }
@@ -31,8 +47,9 @@ struct KAClassDetailView: View {
                     .resizable()
                     .frame(width: 20, height: 20)
                     .foregroundColor(.label)
+                    .padding(.leading, 10)
                 
-                Text("课程号：\(_class.classID)")
+                Text("课程号：\(_class!.classID)")
                 
                 Spacer()
             }
@@ -43,8 +60,9 @@ struct KAClassDetailView: View {
                     .resizable()
                     .frame(width: 20, height: 20)
                     .foregroundColor(.label)
+                    .padding(.leading, 10)
                 
-                Text("时间：\(formatTime(for: _class.indexSet.first!)) 星期\(_class.day.chinese ?? "\(_class.day)")（\(_class.weekFrom)-\(_class.weekTo) 周上）")
+                Text("时间：\(formatTime(for: _class!.indexSet.first!)) 星期\(_class!.day.chinese ?? "\(_class!.day)")（\(_class!.weekFrom)-\(_class!.weekTo) 周上）")
                 
                 Spacer()
             }
@@ -55,8 +73,9 @@ struct KAClassDetailView: View {
                     .resizable()
                     .frame(width: 20, height: 20)
                     .foregroundColor(.label)
+                    .padding(.leading, 10)
                 
-                Text("地点：\(_class.locale)")
+                Text("地点：\(_class!.locale)")
                 
                 Spacer()
             }
@@ -67,8 +86,9 @@ struct KAClassDetailView: View {
                     .resizable()
                     .frame(width: 20, height: 20)
                     .foregroundColor(.label)
+                    .padding(.leading, 10)
                 
-                Text("教师：\(_class.teacher)")
+                Text("教师：\(_class!.teacher)")
                 
                 Spacer()
             }
@@ -83,19 +103,19 @@ struct KAClassDetailView: View {
     func formatTime(for index: Int) -> String {
         switch index {
         case 1:
-            return "8:15 ~ 9:50"
+            return "8:15~9:50"
             
         case 2:
-            return "10:05 ~ 11:30"
+            return "10:05~11:30"
             
         case 3:
-            return "14:00 ~ 15:35"
+            return "14:00~15:35"
             
         case 4:
-            return "15:50 ~ 17:25"
+            return "15:50~17:25"
             
         case 5:
-            return "18:30 ~ 20:05"
+            return "18:30~20:05"
             
         default:
             return "第 \(index) 节"

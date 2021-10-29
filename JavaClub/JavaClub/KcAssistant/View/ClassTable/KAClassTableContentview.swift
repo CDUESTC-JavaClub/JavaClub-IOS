@@ -25,6 +25,7 @@ struct KAClassTableContentview: View {
     @State var showIndicator = false
     @State var showTermSelector = false
     @State var showClassDetail = false
+    @State var showingClass: KAClass?
     
     private let columns = [
         GridItem(.flexible()),
@@ -68,11 +69,12 @@ struct KAClassTableContentview: View {
                         LazyVGrid(columns: columns, spacing: 0) {
                             ForEach(observable.classes, id: \.id) {
                                 KAClassTableCell(
-                                    className: $0.name,
-                                    location: $0.locale,
-                                    teacher: $0.teacher,
-                                    form: $0.form,
-                                    color: Color(selectColor(with: $0.name) ?? .gray)
+                                    _class: $0,
+                                    color: Color(selectColor(with: $0.name) ?? .gray),
+                                    onTapGesture: { _class in
+                                        showingClass = _class
+                                        showClassDetail = true
+                                    }
                                 )
                                 .frame(height: 150)
                                 .padding(.top, 5)
@@ -85,6 +87,18 @@ struct KAClassTableContentview: View {
             if showTermSelector {
                 GeometryReader { geo in
                     KATermSelectorView(isShown: $showTermSelector, selected: $term)
+                        .position(x: geo.size.width / 2, y: geo.size.height / 2)
+                }
+                .background(
+                    Color.black
+                        .opacity(0.45)
+                        .edgesIgnoringSafeArea(.all)
+                )
+            }
+            
+            if showClassDetail {
+                GeometryReader { geo in
+                    KAClassDetailView(isShown: $showClassDetail, _class: showingClass)
                         .position(x: geo.size.width / 2, y: geo.size.height / 2)
                 }
                 .background(
