@@ -8,14 +8,14 @@
 import Foundation
 
 struct KAClass: Identifiable, Hashable {
-    let id = UUID().uuidString
+    var id = UUID().uuidString
     
     var name: String
     var classID: String
     var teacher: String
     var locale: String
     var day: Int
-    var index: Int
+    var indexSet: [Int]
     var weekFrom: Int
     var weekTo: Int
     var form: ClassForm

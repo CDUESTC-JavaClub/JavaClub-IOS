@@ -24,7 +24,7 @@ class JCTabBarController: UITabBarController {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .systemBackground
-        tabBar.tintColor = UIColor(hex: "60d1ae")
+        tabBar.tintColor = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first?.tintColor
         tabBar.standardAppearance = appearance
         if #available(iOS 15.0, *) {
             tabBar.scrollEdgeAppearance = appearance

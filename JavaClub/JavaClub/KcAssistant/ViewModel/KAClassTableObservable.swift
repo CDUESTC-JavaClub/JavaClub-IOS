@@ -6,10 +6,10 @@
 //
 
 import Foundation
+import Defaults
 
 class KAClassTableObservable: ObservableObject {
     static let shared = KAClassTableObservable()
-    
     
     @Published var classes: [KAClass] = []
 }

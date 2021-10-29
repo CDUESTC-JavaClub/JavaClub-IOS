@@ -107,7 +107,7 @@ extension AppDelegate {
                         }
                     }
                 } else {
-                    print("DEBUG: Credential Lost.")
+                    print("DEBUG: JW Credential Lost.")
                 }
             } onFailure: {
                 print("DEBUG: Auto Login JC Failed.")
@@ -150,6 +150,6 @@ extension Defaults.Keys {
     
     // Environment
     static let firstLogin = Key<Bool>("firstLoginKey", default: true)
-    static let classTableTerm = Key<Int>("classTableTermKey", default: 1)
+    static let classTableTerm = Key<Int>("classTableTermKey", default: 4)
     static let classTableJsonData = Key<Data?>("classTableJsonDataKey", default: nil)
 }

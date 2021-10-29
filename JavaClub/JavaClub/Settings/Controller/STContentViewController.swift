@@ -151,7 +151,7 @@ extension STContentViewController {
     private func didUpdateLoginState(_ userInfo: JCUser?) {
         if let userInfo = userInfo {
             usernameLabel.text = userInfo.username
-            signatureLabel.text = userInfo.signature
+            signatureLabel.text = "「\(userInfo.signature ?? "这个人很懒，什么都没有留下。")」"
         } else {
             usernameLabel.text = "请先登录"
             signatureLabel.text = ""

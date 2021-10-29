@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24B72C6C2729897400DC1DB1 /* KATermSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B72C6B2729897400DC1DB1 /* KATermSelectorView.swift */; };
+		24B72C6E2729898C00DC1DB1 /* KAClassDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B72C6D2729898C00DC1DB1 /* KAClassDetailView.swift */; };
 		B00939FE27151D3200879AC5 /* UnderlineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00939FD27151D3200879AC5 /* UnderlineButton.swift */; };
 		B0093A012715539E00879AC5 /* ScoreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0093A002715539E00879AC5 /* ScoreCollectionViewCell.swift */; };
 		B0093A0A27159E0E00879AC5 /* SwiftyRSA in Frameworks */ = {isa = PBXBuildFile; productRef = B0093A0927159E0E00879AC5 /* SwiftyRSA */; };
@@ -71,6 +73,8 @@
 		B0973FA32703FC0300E5C9C6 /* KAScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA22703FC0300E5C9C6 /* KAScoreViewController.swift */; };
 		B0973FA62703FE4200E5C9C6 /* KAScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA52703FE4200E5C9C6 /* KAScore.swift */; };
 		B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA927044BE500E5C9C6 /* KASection.swift */; };
+		B0A5D9A1272A49D300A8E3EE /* JCDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A5D9A0272A49D300A8E3EE /* JCDateManager.swift */; };
+		B0A5D9A4272A9CFE00A8E3EE /* NumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A5D9A3272A9CFE00A8E3EE /* NumberExtension.swift */; };
 		B0B84350270FE6F800C19B9B /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B8434F270FE6F800C19B9B /* RefreshableScrollView.swift */; };
 		B0B84352270FEB1700C19B9B /* KAContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B84351270FEB1700C19B9B /* KAContentViewController.swift */; };
 		B0B84354270FEBE300C19B9B /* KAMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B84353270FEBE300C19B9B /* KAMainViewController.swift */; };
@@ -85,6 +89,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24B72C6B2729897400DC1DB1 /* KATermSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KATermSelectorView.swift; sourceTree = "<group>"; };
+		24B72C6D2729898C00DC1DB1 /* KAClassDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAClassDetailView.swift; sourceTree = "<group>"; };
 		B00939FD27151D3200879AC5 /* UnderlineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineButton.swift; sourceTree = "<group>"; };
 		B0093A002715539E00879AC5 /* ScoreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCollectionViewCell.swift; sourceTree = "<group>"; };
 		B01AA9B026FF2ADD000D3E4A /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
@@ -145,6 +151,8 @@
 		B0973FA22703FC0300E5C9C6 /* KAScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAScoreViewController.swift; sourceTree = "<group>"; };
 		B0973FA52703FE4200E5C9C6 /* KAScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAScore.swift; sourceTree = "<group>"; };
 		B0973FA927044BE500E5C9C6 /* KASection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KASection.swift; sourceTree = "<group>"; };
+		B0A5D9A0272A49D300A8E3EE /* JCDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCDateManager.swift; sourceTree = "<group>"; };
+		B0A5D9A3272A9CFE00A8E3EE /* NumberExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberExtension.swift; sourceTree = "<group>"; };
 		B0B8434F270FE6F800C19B9B /* RefreshableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableScrollView.swift; sourceTree = "<group>"; };
 		B0B84351270FEB1700C19B9B /* KAContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAContentViewController.swift; sourceTree = "<group>"; };
 		B0B84353270FEBE300C19B9B /* KAMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAMainViewController.swift; sourceTree = "<group>"; };
@@ -353,6 +361,8 @@
 			children = (
 				B044E43B27191AFE0097D04B /* KAClassTableContentview.swift */,
 				B044E43D27191B2B0097D04B /* KAClassTableCell.swift */,
+				24B72C6B2729897400DC1DB1 /* KATermSelectorView.swift */,
+				24B72C6D2729898C00DC1DB1 /* KAClassDetailView.swift */,
 			);
 			path = ClassTable;
 			sourceTree = "<group>";
@@ -471,6 +481,7 @@
 				B08F6FC327003F8C0015B354 /* JCAccountManager.swift */,
 				DD28360F270981B200D3D988 /* BaiAccountManager.swift */,
 				B08F6FC227003F8C0015B354 /* ClassTableManager.swift */,
+				B0A5D9A0272A49D300A8E3EE /* JCDateManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -503,6 +514,7 @@
 				B02032C526FE05910048B6F6 /* StringExtension.swift */,
 				B02032C926FE05910048B6F6 /* ViewExtension.swift */,
 				B0F900C9270300420056A016 /* ViewControllerExtension.swift */,
+				B0A5D9A3272A9CFE00A8E3EE /* NumberExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -613,6 +625,7 @@
 				B02EEF2926FDC0A00010515A /* JCWebViewController.swift in Sources */,
 				B04FEE2E27113D750065FFB6 /* TappableViewCell.swift in Sources */,
 				B07399C2270A99A70020AEB8 /* Activity.swift in Sources */,
+				24B72C6E2729898C00DC1DB1 /* KAClassDetailView.swift in Sources */,
 				B04C49562717F42200FBD9E7 /* CVScoreContentConfiguration.swift in Sources */,
 				B01AA9B126FF2ADD000D3E4A /* LoadingIndicatorView.swift in Sources */,
 				B04C495A2718138F00FBD9E7 /* ScoreImageView.swift in Sources */,
@@ -625,6 +638,7 @@
 				B04C4968271841E500FBD9E7 /* BaiScoreMiniView.swift in Sources */,
 				B02032D326FE37C20048B6F6 /* DesignableView.swift in Sources */,
 				B04C4967271841E500FBD9E7 /* BaiHeaderView.swift in Sources */,
+				B0A5D9A1272A49D300A8E3EE /* JCDateManager.swift in Sources */,
 				B04C4969271841E500FBD9E7 /* BaiScoreDetailView.swift in Sources */,
 				B02E4F1F2701BB7C00EA3DDB /* TVOption.swift in Sources */,
 				B02032CC26FE05910048B6F6 /* ViewPlaceholder.swift in Sources */,
@@ -642,6 +656,7 @@
 				B05B0D76271D05E300F48D52 /* NoRotateNavigationController.swift in Sources */,
 				B02032CD26FE05910048B6F6 /* ImageExtension.swift in Sources */,
 				B0B84354270FEBE300C19B9B /* KAMainViewController.swift in Sources */,
+				B0A5D9A4272A9CFE00A8E3EE /* NumberExtension.swift in Sources */,
 				B00939FE27151D3200879AC5 /* UnderlineButton.swift in Sources */,
 				B04C4963271841E500FBD9E7 /* BaiUserInfoView.swift in Sources */,
 				B02032CF26FE05910048B6F6 /* ViewExtension.swift in Sources */,
@@ -649,6 +664,7 @@
 				B06F83FF2722BC4800069A23 /* KAClassTableObservable.swift in Sources */,
 				B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */,
 				B0093A012715539E00879AC5 /* ScoreCollectionViewCell.swift in Sources */,
+				24B72C6C2729897400DC1DB1 /* KATermSelectorView.swift in Sources */,
 				B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */,
 				B04C4964271841E500FBD9E7 /* BAContentView.swift in Sources */,
 				B0973FA32703FC0300E5C9C6 /* KAScoreViewController.swift in Sources */,
@@ -814,7 +830,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.RoyRao.JavaClub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -843,7 +859,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.RoyRao.JavaClub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
