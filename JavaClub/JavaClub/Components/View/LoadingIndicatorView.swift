@@ -14,28 +14,27 @@ struct LoadingIndicatorView: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
-            Section {
+            GeometryReader { geo in
                 HStack(alignment: .center, spacing: 5) {
                     RoundedRectangle(cornerRadius: 4)
                         .fill(Color.accentColor)
-                        .frame(width: 15, height: animates ? 50 : 25)
+                        .frame(width: 15, height: animates ? geo.size.height / 2 : geo.size.height)
                     RoundedRectangle(cornerRadius: 4)
                         .fill(Color.accentColor)
-                        .frame(width: 15, height: animates ? 25 : 50)
+                        .frame(width: 15, height: animates ? geo.size.height : geo.size.height / 2)
                     RoundedRectangle(cornerRadius: 4)
                         .fill(Color.accentColor)
-                        .frame(width: 15, height: animates ? 50 : 25)
+                        .frame(width: 15, height: animates ? geo.size.height / 2 : geo.size.height)
                 }
                 .animation(
                     Animation
                         .easeInOut(duration: 0.4)
                         .repeatForever(autoreverses: true)
                 )
+                
+                Text("加载中")
+                    .foregroundColor(Color.label)
             }
-            .frame(width: 50, height: 50)
-            
-            Text("加载中")
-                .foregroundColor(Color.label)
         }
         .padding(.vertical, 10)
         .padding(.horizontal, 20)

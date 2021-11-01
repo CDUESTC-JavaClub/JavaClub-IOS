@@ -11,6 +11,7 @@ import Defaults
 extension Notification.Name {
     static let didUpdateJCLoginState = Notification.Name("didUpdateJCLoginStateName")
     static let didUpdateJWLoginState = Notification.Name("didUpdateJWLoginStateName")
+    static let didUpdateBYLoginState = Notification.Name("didUpdateBYLoginStateName")
     static let didUpdateBindingState = Notification.Name("didUpdateBindingStateName")
 }
 
@@ -29,6 +30,12 @@ class JCLoginState: ObservableObject {
         }
     }
     
+    @Published var by: Bool {
+        didSet {
+            NotificationCenter.default.post(name: .didUpdateJWLoginState, object: nil)
+        }
+    }
+    
     @Published var isBound: Bool {
         didSet {
             NotificationCenter.default.post(name: .didUpdateBindingState, object: nil)
@@ -38,6 +45,7 @@ class JCLoginState: ObservableObject {
     private init() {
         jc = Defaults[.loginInfo] != nil
         jw = Defaults[.jwInfo] != nil
+        by = Defaults[.byInfo] != nil
         isBound = Defaults[.user]?.studentID != nil
     }
 }

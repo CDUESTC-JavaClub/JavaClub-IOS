@@ -137,7 +137,8 @@ extension AppDelegate {
 extension Defaults.Keys {
     // User Info
     static let loginInfo = Key<JCLoginInfo?>("loginInfoKey", default: nil)
-    static let jwInfo = Key<KALoginInfo?>("jwInfoInfoKey", default: nil)
+    static let jwInfo = Key<KALoginInfo?>("jwInfoKey", default: nil)
+    static let byInfo = Key<BALoginInfo?>("byInfoKey", default: nil)
     static let user = Key<JCUser?>("userInfoKey", default: nil)
     static let sessionURL = Key<URL?>("sessionURLKey", default: nil)
     static let avatarURL = Key<URL?>("avatarURLKey", default: nil)

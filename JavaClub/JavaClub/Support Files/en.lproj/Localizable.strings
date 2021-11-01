@@ -55,3 +55,13 @@
 "已达标" = "Accomplished";
 
 "未达标" = "Failed";
+
+"登录失败，请检查输入或网络连接是否通畅！" = "Login failed, please check your input and make sure your network connection is available!";
+
+"在使用本软件之前，您需要同意我们的隐私条款！" = "Before using our software, you need to agree to our privacy policy! ";
+
+"用户名和密码都不能为空，请检查输入！" = "The username and password cannot be empty, please check the input!";
+
+"已阅读并同意我们的" = "By continuing, you're agreed to our";
+
+"隐私条款" = "privacy policy";

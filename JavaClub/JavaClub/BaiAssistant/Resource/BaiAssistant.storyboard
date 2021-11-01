@@ -374,14 +374,21 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DRT-wK-hzB">
+                                                <rect key="frame" x="0.0" y="397" width="414" height="499"/>
+                                            </tableView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="di3-nt-fcB" firstAttribute="top" secondItem="bZb-0L-2Zs" secondAttribute="topMargin" id="D2y-6T-nYn"/>
                                             <constraint firstAttribute="trailing" secondItem="nJm-F8-bwG" secondAttribute="trailing" constant="20" id="D7h-75-Uws"/>
                                             <constraint firstItem="nJm-F8-bwG" firstAttribute="top" secondItem="di3-nt-fcB" secondAttribute="bottom" constant="15" id="FlI-7V-zuC"/>
                                             <constraint firstAttribute="trailing" secondItem="di3-nt-fcB" secondAttribute="trailing" constant="20" id="L4J-Zq-xOw"/>
+                                            <constraint firstItem="DRT-wK-hzB" firstAttribute="top" secondItem="nJm-F8-bwG" secondAttribute="bottom" constant="10" id="Qes-Hd-vU1"/>
+                                            <constraint firstItem="DRT-wK-hzB" firstAttribute="leading" secondItem="bZb-0L-2Zs" secondAttribute="leading" id="Vck-ey-A37"/>
                                             <constraint firstItem="nJm-F8-bwG" firstAttribute="leading" secondItem="bZb-0L-2Zs" secondAttribute="leading" constant="20" id="b0S-gV-Sdj"/>
+                                            <constraint firstAttribute="bottom" secondItem="DRT-wK-hzB" secondAttribute="bottom" id="eAd-uE-8YG"/>
                                             <constraint firstItem="di3-nt-fcB" firstAttribute="leading" secondItem="bZb-0L-2Zs" secondAttribute="leading" constant="20" id="jCu-Tc-fAX"/>
+                                            <constraint firstAttribute="trailing" secondItem="DRT-wK-hzB" secondAttribute="trailing" id="voJ-ep-1j2"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -405,6 +412,19 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="top" secondItem="luu-Jo-MlF" secondAttribute="top" constant="44" id="yur-XB-WUk"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bxScoreLabel" destination="gmK-De-FnY" id="rjB-L9-s1X"/>
+                        <outlet property="classLabel" destination="j6a-4Y-eVp" id="t8c-a1-5wg"/>
+                        <outlet property="dxScoreLabel" destination="o2G-Cc-eSx" id="r81-0a-jnk"/>
+                        <outlet property="jmScoreLabel" destination="nty-4a-9eH" id="PXq-Rj-bb2"/>
+                        <outlet property="mdScoreLabel" destination="g4J-YM-1B0" id="cNr-S9-zmo"/>
+                        <outlet property="scrollView" destination="luu-Jo-MlF" id="5Nc-gY-2VQ"/>
+                        <outlet property="secondaryIdentityLabel" destination="Hyy-mk-oKc" id="W3T-Ni-Qv4"/>
+                        <outlet property="statusHintLabel" destination="HPW-2I-mJB" id="68y-5J-NEF"/>
+                        <outlet property="tableView" destination="DRT-wK-hzB" id="0RC-4P-aT2"/>
+                        <outlet property="totalScoreLabel" destination="dOf-WE-pBs" id="Vki-zw-QoC"/>
+                        <outlet property="usernameLabel" destination="pyX-eX-nCk" id="nIQ-re-SaK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -414,6 +434,9 @@
     <designables>
         <designable name="2hT-o2-wff">
             <size key="intrinsicContentSize" width="101.5" height="30"/>
+        </designable>
+        <designable name="HPW-2I-mJB">
+            <size key="intrinsicContentSize" width="43" height="17"/>
         </designable>
         <designable name="QGr-tz-H2o">
             <size key="intrinsicContentSize" width="214" height="13.5"/>

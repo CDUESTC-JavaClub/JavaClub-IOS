@@ -10,8 +10,6 @@ import Foundation
 struct BAAccount {
     var token: String
     
-    var id: String
-    var password: String
     var userName: String
     var sex: String
     var headImgUrl: String

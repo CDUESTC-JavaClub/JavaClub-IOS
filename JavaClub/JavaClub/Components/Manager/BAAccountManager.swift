@@ -6,9 +6,27 @@
 //
 
 import Foundation
+import Alamofire
+import SwiftyJSON
+
+enum EventStatus: Int {
+    case all = 0
+    case signing = 4
+    case stopped = 5
+    case active = 7
+    case end = 8
+}
+
+enum EventType : Int {
+    case bx = 1
+    case dx = 2
+    case jm = 3
+    case md = 4
+}
 
 class BAAccountManager {
     static let shared = BAAccountManager()
+    let apiLink = "http://byjh.cduestc.cn"   // http://byjh.cduestc.cn:1356 是外网端口，但是目前失效，可能学校以后会重新启用
     
     private init() {}
 }
@@ -17,5 +35,188 @@ class BAAccountManager {
 // MARK: Shared Methods -
 extension BAAccountManager {
     
+    /**
+     *  务必在使用前进行登陆，才能使用其他功能
+     *
+     *  - Parameters:
+     *      - info: 登录的账号密码信息
+     *      - completion: 结果回调 `BAAccount`
+     */
+    func login(info: BALoginInfo, _ completion: @escaping (Result<BAAccount, JCError>) -> Void) {
+        let parameters = [
+            "student_id": info.id,
+            "password": info.password
+        ]
+        
+        AFTask("/Api/Token/login", parameters: parameters) { [weak self] result in
+            if let result = try? result.get() {
+                if result["status"].intValue == 10000 {
+                    do {
+                        let json = result["data"]
+                        let client = JSON(try json["client"].rawData())
+                        let parameters2 = [
+                            "token": json["access_token"].stringValue,
+                            "is_cj": "10001",
+                        ]
+                        
+                        self?.AFTask("/Api/During/information", parameters: parameters2) { result2 in
+                            if let result2 = try? result2.get() {
+                                do {
+                                    let json2 = try JSON(result2["data"].rawData())
+                                    let account = BAAccount(
+                                        token: json["access_token"].stringValue,
+                                        userName: client["username"].stringValue,
+                                        sex: json2["sex"].stringValue,
+                                        headImgUrl: client["head_img"].stringValue,
+                                        identity: client["identity"].stringValue,
+                                        phone: client["phone"].stringValue,
+                                        userId: client["student_id"].stringValue,
+                                        major: json2["major"].stringValue,
+                                        _class: json2["class"].stringValue
+                                    )
+                                    
+                                    completion(.success(account))
+                                } catch {
+                                    completion(.failure(.parseErr))
+                                }
+                            } else {
+                                print("DEBUG: Get BY Information Failed.")
+                            }
+                        }
+                    } catch {
+                        completion(.failure(.parseErr))
+                    }
+                }
+            } else {
+                print("DEBUG: Login BY Failed.")
+            }
+        }
+    }
     
+    /**
+     *  获取所有的公开活动
+     *
+     *  - Parameters:
+     *      - status: 活动状态
+     *      - offset: 前n个活动
+     *      - completion: 结果回调 `[BAEvent]`
+     */
+    func publicEvents(status: EventStatus, by offset: Int, _ completion: @escaping (Result<[BAEvent], JCError>) -> Void) {
+        
+    }
+    
+    /**
+     *  获取所有的公开活动，按照活动类型筛选
+     *
+     *  - Parameters:
+     *      - type: 活动类型
+     *      - status: 活动状态
+     *      - offset: 前n个活动
+     *      - completion: 结果回调 `[BAEvent]`
+     */
+    func publicEvents(for type: EventType, status: EventStatus, by offset: Int, _ completion: @escaping (Result<[BAEvent], JCError>) -> Void) {
+        
+    }
+    
+    /**
+     *  通过url，获取特定活动
+     *
+     *  - Parameters:
+     *      - url: 活动链接
+     *      - offset: 前n个活动
+     *      - completion: 结果回调 `BAEvent`
+     */
+    func event(_ url: String, parameters: [String: String]?, by offset: Int, _ completion: @escaping (Result<BAEvent, JCError>) -> Void) {
+        
+    }
+    
+    /**
+     *  获取个人已报名和已参加的活动
+     *
+     *  - Parameters:
+     *      - offset: 前n个活动
+     *      - completion: 结果回调 `[BAEvent]`
+     */
+    func myEvents(by offset: Int, _ completion: @escaping (Result<[BAEvent], JCError>) -> Void) {
+        
+    }
+    
+    /**
+     *  报名参加活动
+     *
+     *  - Parameters:
+     *      - eventID: 活动id
+     *      - completion: 报名结果回调 `String`
+    */
+    func signUp(for eventID: Int, _ completion: @escaping (String) -> Void) {
+        
+    }
+    
+    /**
+     *  取消参加活动
+     *
+     *  - Parameters:
+     *      - eventID: 活动id
+     *      - completion: 取消结果回调 `String`
+    */
+    func cancel(for eventID: Int, _ completion: @escaping (String) -> Void) {
+        
+    }
+    
+    /**
+     *  获取用户的百叶积分
+     *
+     *  - Parameters:
+     *      - completion: 取消结果回调 `BAScore`
+    */
+    func getScore(_ completion: @escaping (BAScore) -> Void) {
+        
+    }
+    
+    /**
+     *  获取用户的加分记录
+     *
+     *  - Parameters:
+     *      - completion: 结果回调 `BAScoreAdding`
+    */
+    func getScoreAddingRecords(_ completion: @escaping (BAScoreAdding) -> Void) {
+        
+    }
+}
+
+
+// MARK: Private Methods -
+extension BAAccountManager {
+    
+    private func AFTask(_ path: String, parameters: [String: String]?, completion: @escaping (Result<JSON, JCError>) -> Void) {
+        AF.request(
+            apiLink + path,
+            method: .post,
+            parameters: parameters
+        ).response { response in
+            guard
+                let statusCode = response.response?.statusCode,
+                statusCode == 200,
+                let data = response.data
+            else {
+                completion(.failure(.noData))
+                return
+            }
+            
+            do {
+                let json = try JSON(data: data)
+                completion(.success(json))
+            } catch {
+                completion(.failure(.parseErr))
+            }
+        }
+    }
+    
+    private func string2Date(_ string: String, dateFormat: String = "yyyy-MM-dd") -> Date? {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.init(identifier: "zh_CN")
+        formatter.dateFormat = dateFormat
+        
+        return formatter.date(from: string)
+    }
 }

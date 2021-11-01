@@ -26,8 +26,15 @@ class STContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(
+            forName: .didUpdateJWLoginState,
+            object: nil,
+            queue: .main,
+            using: didUpdateLoginState(_:)
+        )
+        
         let _ = Defaults.observe(.user) { [weak self] obj in
-            self?.didUpdateLoginState(obj.newValue)
+            self?.didUpdateLoginState(userInfo: obj.newValue)
         }.tieToLifetime(of: self)
         
         let _ = Defaults.observe(.avatarURL) { [weak self] obj in
@@ -148,18 +155,21 @@ extension STContentViewController {
         }
     }
     
-    private func didUpdateLoginState(_ userInfo: JCUser?) {
+    private func didUpdateLoginState(userInfo: JCUser?) {
         if let userInfo = userInfo {
             usernameLabel.text = userInfo.username
             signatureLabel.text = "「\(userInfo.signature ?? "这个人很懒，什么都没有留下。")」"
         } else {
             usernameLabel.text = "请先登录".localized()
             signatureLabel.text = ""
-            avatar.image = UIImage.fromColor(.clear)
-            banner.image = UIImage.fromColor(.clear)
         }
         
         configureModels()
+    }
+    
+    private func didUpdateLoginState(_ notification: Notification) {
+        updateAvatar(Defaults[.avatarURL])
+        updateBanner(Defaults[.bannerURL])
     }
     
     func updateAvatar(_ avatarURL: URL?) {
@@ -174,8 +184,10 @@ extension STContentViewController {
                     print("DEBUG: Fetch Avatar Failed With Error: \(String(describing: error))")
                 }
             }
-        } else {
+        } else if JCLoginState.shared.jc {
             JCAccountManager.shared.getUserMedia()
+        } else {
+            avatar.image = UIImage.fromColor(.clear)
         }
     }
     
@@ -191,8 +203,10 @@ extension STContentViewController {
                     print("DEBUG: Fetch Banner Failed With Error: \(String(describing: error))")
                 }
             }
-        } else {
+        } else if JCLoginState.shared.jc {
             JCAccountManager.shared.getUserMedia()
+        } else {
+            banner.image = UIImage.fromColor(.clear)
         }
     }
     

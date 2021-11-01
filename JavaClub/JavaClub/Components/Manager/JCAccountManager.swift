@@ -115,6 +115,8 @@ extension JCAccountManager {
     func logout() {
         AF.request("https://api.cduestc.club/api/auth/logout").response { _ in }
         
+        ImageCache.default.clearDiskCache(completion: nil)
+        
         Defaults[.avatarURL] = nil
         Defaults[.bannerURL] = nil
         Defaults[.loginInfo] = nil
@@ -125,8 +127,6 @@ extension JCAccountManager {
         Defaults[.enrollment] = nil
         Defaults[.classTableTerm] = 1
         Defaults[.classTableJsonData] = nil
-        
-        ImageCache.default.clearDiskCache(completion: nil)
         
         HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
         

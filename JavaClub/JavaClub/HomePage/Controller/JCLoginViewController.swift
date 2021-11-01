@@ -20,7 +20,6 @@ class JCLoginViewController: UIViewController {
     @IBOutlet var forgotBtn: UIButton!
     @IBOutlet var agreeCheckBtn: JCCheckboxButton!
     @IBOutlet var privacyBtn: UIButton!
-    @IBOutlet var mainStackView: UIStackView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,9 +50,6 @@ extension JCLoginViewController {
         passwordField.layer.cornerRadius = passwordField.frame.height / 2
         passwordField.clipsToBounds = true
         passwordField.autocorrectionType = .no
-        
-        let isSmallDevice = Device.current.isOneOf(Device.smallScreenModels)
-        mainStackView.spacing = isSmallDevice ? 30 : 100
     }
     
     @IBAction func login() {
@@ -77,18 +73,18 @@ extension JCLoginViewController {
                 } onFailure: { [weak self] in
                     self?.removeIndicator()
                     
-                    let alert = UIAlertController(title: "提示", message: "登录失败，请检查输入或网络连接是否通畅！", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "提示", message: "登录失败，请检查输入或网络连接是否通畅！".localized(), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
                     self?.present(alert, animated: true, completion: nil)
                 }
             } else {
-                let alert = UIAlertController(title: "提示", message: "在使用本软件之前，您需要同意我们的隐私条款！", preferredStyle: .alert)
+                let alert = UIAlertController(title: "提示", message: "在使用本软件之前，您需要同意我们的隐私条款！".localized(), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
                 present(alert, animated: true, completion: nil)
             }
             
         } else {
-            let alert = UIAlertController(title: "提示", message: "用户名和密码都不能为空，请检查输入！", preferredStyle: .alert)
+            let alert = UIAlertController(title: "提示", message: "用户名和密码都不能为空，请检查输入！".localized(), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         }
