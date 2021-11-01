@@ -47,3 +47,11 @@
 "教务系统" = "KcAssistant";
 
 "包含成绩查询、课表查询、学籍查询等功能" = "Contains semester score quiries, class table queries, enrollment info queries, etc.";
+
+"百叶计划" = "BaiAssistant";
+
+"包含活动报名、活动取消、积分查询等功能" = "Contains event registration, event cancellation, integral query, etc.";
+
+"已达标" = "Accomplished";
+
+"未达标" = "Failed";

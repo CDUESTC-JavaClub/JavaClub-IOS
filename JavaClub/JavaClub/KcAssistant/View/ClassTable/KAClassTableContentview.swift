@@ -134,6 +134,7 @@ struct KAClassTableContentview: View {
         }
     }
     
+    #warning("Might Crash")
     func refresh(for term: Int) {
         showIndicator = true
         

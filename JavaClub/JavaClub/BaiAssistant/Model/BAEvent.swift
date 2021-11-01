@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Activity {
+struct BAEvent {
     /* 活动编号 */
-    let id : Int;
+    let eventID : Int;
     /* 活动名称 */
-    let name : String
+    let eventName : String
     /* 活动图标 */
     let coverUrl : String
     /* 还不清楚到底是个什么，暂时保留 */

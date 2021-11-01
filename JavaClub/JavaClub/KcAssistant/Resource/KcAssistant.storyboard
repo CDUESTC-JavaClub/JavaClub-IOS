@@ -277,7 +277,7 @@
                                                     <constraint firstItem="lUA-jx-9os" firstAttribute="leading" secondItem="LCH-yb-wFb" secondAttribute="trailing" constant="10" id="6z8-5o-ZYr"/>
                                                     <constraint firstItem="LCH-yb-wFb" firstAttribute="leading" secondItem="CeS-Pe-tNy" secondAttribute="leading" constant="10" id="EHn-fc-ylt"/>
                                                     <constraint firstItem="LCH-yb-wFb" firstAttribute="centerY" secondItem="CeS-Pe-tNy" secondAttribute="centerY" id="YXy-Bz-fTz"/>
-                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lUA-jx-9os" secondAttribute="trailing" id="oBa-nn-WLV"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lUA-jx-9os" secondAttribute="trailing" constant="10" id="oBa-nn-WLV"/>
                                                     <constraint firstAttribute="height" constant="60" id="xqt-0p-0Xp"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
