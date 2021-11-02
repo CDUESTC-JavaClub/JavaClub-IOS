@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Defaults
 
 class BAMainViewController: UIViewController {
     private var contentVC: BAContentViewController!
@@ -17,12 +18,9 @@ class BAMainViewController: UIViewController {
         
         super.init(nibName: nil, bundle: nil)
         
-        NotificationCenter.default.addObserver(
-            forName: .didUpdateJWLoginState,
-            object: nil,
-            queue: .main,
-            using: didUpdateLoginState(_:)
-        )
+        let _ = Defaults.observe(.byAccount) { [weak self] obj in
+            self?.didUpdateLoginState(account: obj.newValue)
+        }.tieToLifetime(of: self)
     }
     
     required init?(coder: NSCoder) {
@@ -42,7 +40,7 @@ class BAMainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        didUpdateLoginState(Notification(name: .didUpdateJWLoginState, object: nil, userInfo: nil))
+        didUpdateLoginState(account: Defaults[.byAccount])
     }
 }
 
@@ -50,7 +48,7 @@ class BAMainViewController: UIViewController {
 // MARK: Private Methods -
 extension BAMainViewController {
     
-    private func didUpdateLoginState(_ notification: Notification) {
+    private func didUpdateLoginState(account: BAAccount?) {
         
     }
 }

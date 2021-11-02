@@ -118,16 +118,20 @@ extension AppDelegate {
     }
     
     private func addObservers() {
-        let _ = Defaults.observe(.jcUser) { key in
-            JCLoginState.shared.isBound = key.newValue?.studentID != nil
+        let _ = Defaults.observe(.jcUser) { obj in
+            JCLoginState.shared.isBound = obj.newValue?.studentID != nil
         }.tieToLifetime(of: self)
         
-        let _ = Defaults.observe(.jwLoginInfo) { key in
-            JCLoginState.shared.jw = !key.newValue.isNil
+        let _ = Defaults.observe(.jwLoginInfo) { obj in
+            JCLoginState.shared.jw = !obj.newValue.isNil
         }.tieToLifetime(of: self)
         
-        let _ = Defaults.observe(.jcLoginInfo) { key in
-            JCLoginState.shared.jc = !key.newValue.isNil
+        let _ = Defaults.observe(.byLoginInfo) { obj in
+            JCLoginState.shared.by = !obj.newValue.isNil
+        }.tieToLifetime(of: self)
+        
+        let _ = Defaults.observe(.jcLoginInfo) { obj in
+            JCLoginState.shared.jc = !obj.newValue.isNil
         }.tieToLifetime(of: self)
     }
 }
@@ -145,7 +149,7 @@ extension Defaults.Keys {
     static let enrollment = Key<KAEnrollment?>("enrollmentInfoKey", default: nil)
     
     // BY Info
-    static let byInfo = Key<BALoginInfo?>("byInfoKey", default: nil)
+    static let byLoginInfo = Key<BALoginInfo?>("byLoginInfoKey", default: nil)
     static let byAccount = Key<BAAccount?>("byUserKey", default: nil)
     
     // Settings

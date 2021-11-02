@@ -15,13 +15,6 @@ class JCMainViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        
-        NotificationCenter.default.addObserver(
-            forName: .didUpdateJCLoginState,
-            object: nil,
-            queue: .main,
-            using: didUpdateLoginState(_:)
-        )
     }
     
     required init?(coder: NSCoder) {
@@ -36,14 +29,16 @@ class JCMainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        didUpdateLoginState(Notification(name: .didUpdateJCLoginState, object: nil, userInfo: nil))
+        let _ = Defaults.observe(.sessionURL) { [weak self] obj in
+            self?.didUpdateLoginState()
+        }.tieToLifetime(of: self)
     }
 }
 
 
 extension JCMainViewController {
     
-    private func didUpdateLoginState(_ notification: Notification) {
+    private func didUpdateLoginState() {
         if !JCLoginState.shared.jc {
             loginVC = UIStoryboard(name: "JavaClub", bundle: .main)
                 .instantiateViewController(withIdentifier: "JCLoginViewController")
@@ -58,6 +53,7 @@ extension JCMainViewController {
             }
         } else {
             loginVC = nil
+            UITabBar.appearance().isHidden = false
             
             let isSmallScreen = Device.current.isOneOf(Device.smallScreenModels)
             

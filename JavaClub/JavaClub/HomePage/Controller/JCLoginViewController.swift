@@ -12,7 +12,6 @@ import SnapKit
 import DeviceKit
 
 class JCLoginViewController: UIViewController {
-    private let indicatorView = _UIHostingView(rootView: LoadingIndicatorView())
     @IBOutlet var usernameField: UITextField!
     @IBOutlet var passwordField: UITextField!
     @IBOutlet var loginBtn: UIButton!
@@ -35,6 +34,8 @@ class JCLoginViewController: UIViewController {
 extension JCLoginViewController {
     
     private func setup() {
+        initIndicator()
+        
         loginBtn.setTitle("", for: .normal)
         loginBtn.layer.cornerRadius = loginBtn.frame.width / 2
         
@@ -69,7 +70,7 @@ extension JCLoginViewController {
                 appDelegate?.loginJC(info) { [weak self] in
                     self?.dismiss(animated: true)
                     self?.removeIndicator()
-                    UITabBar.appearance().isHidden = false
+                    JCAccountManager.shared.getUserMedia()
                 } onFailure: { [weak self] in
                     self?.removeIndicator()
                     
@@ -119,13 +120,7 @@ extension JCLoginViewController {
     }
     
     private func showIndicator() {
-        view.addSubview(indicatorView)
-        
-        indicatorView.snp.makeConstraints { make in
-            make.center.equalTo(self.view)
-            make.width.equalTo(200)
-            make.height.equalTo(100)
-        }
+        startLoading()
         
         loginBtn.isEnabled = false
         createBtn.isEnabled = false
@@ -133,9 +128,7 @@ extension JCLoginViewController {
     }
     
     private func removeIndicator() {
-        indicatorView.snp.removeConstraints()
-        
-        indicatorView.removeFromSuperview()
+        stopLoading()
         
         loginBtn.isEnabled = true
         createBtn.isEnabled = true

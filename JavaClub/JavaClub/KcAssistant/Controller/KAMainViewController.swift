@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Defaults
 
 class KAMainViewController: UIViewController {
     private var contentVC: KAContentViewController!
@@ -17,13 +18,6 @@ class KAMainViewController: UIViewController {
         as? KAContentViewController
         
         super.init(nibName: nil, bundle: nil)
-        
-        NotificationCenter.default.addObserver(
-            forName: .didUpdateJWLoginState,
-            object: nil,
-            queue: .main,
-            using: didUpdateLoginState(_:)
-        )
     }
     
     required init?(coder: NSCoder) {
@@ -43,7 +37,9 @@ class KAMainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        didUpdateLoginState(Notification(name: .didUpdateJWLoginState, object: nil, userInfo: nil))
+        let _ = Defaults.observe(.jwLoginInfo) { [weak self] obj in
+            self?.didUpdateLoginState()
+        }.tieToLifetime(of: self)
     }
 }
 
@@ -51,7 +47,7 @@ class KAMainViewController: UIViewController {
 // MARK: Private Methods -
 extension KAMainViewController {
     
-    private func didUpdateLoginState(_ notification: Notification) {
+    private func didUpdateLoginState() {
         if !JCLoginState.shared.jw {
             bindingVC = UIStoryboard(name: "KcAssistant", bundle: .main)
                 .instantiateViewController(withIdentifier: "KABindingViewController")
@@ -66,6 +62,7 @@ extension KAMainViewController {
                 bindingVC = nil
             }
 
+            UITabBar.appearance().isHidden = false
             contentVC.view.isHidden = false
         }
     }

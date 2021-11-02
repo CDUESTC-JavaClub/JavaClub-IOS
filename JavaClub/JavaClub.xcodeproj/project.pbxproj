@@ -35,6 +35,12 @@
 		B02EEF3E26FDD7BD0010515A /* JCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */; };
 		B02EEF4126FDDA140010515A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF4026FDDA140010515A /* SnapKit */; };
 		B02EEF4426FDDA870010515A /* JavaClub.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B02EEF4326FDDA870010515A /* JavaClub.storyboard */; };
+		B035CACA273105950097AE68 /* StrokeColorAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035CAC5273105940097AE68 /* StrokeColorAnimation.swift */; };
+		B035CACB273105950097AE68 /* ProgressShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035CAC6273105940097AE68 /* ProgressShapeLayer.swift */; };
+		B035CACC273105950097AE68 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035CAC7273105940097AE68 /* ProgressView.swift */; };
+		B035CACD273105950097AE68 /* RotationAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035CAC8273105950097AE68 /* RotationAnimation.swift */; };
+		B035CACE273105950097AE68 /* StrokeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035CAC9273105950097AE68 /* StrokeAnimation.swift */; };
+		B035CAD02731234F0097AE68 /* LocalizableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035CACF2731234F0097AE68 /* LocalizableTextField.swift */; };
 		B041668B272F75EB00117876 /* BAMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B041668A272F75EB00117876 /* BAMainViewController.swift */; };
 		B041668E272F762200117876 /* BaiAssistant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B041668D272F762200117876 /* BaiAssistant.storyboard */; };
 		B0416690272F7DAB00117876 /* BAAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B041668F272F7DAB00117876 /* BAAccountManager.swift */; };
@@ -112,6 +118,12 @@
 		B02EEF2826FDC0A00010515A /* JCWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCWebViewController.swift; sourceTree = "<group>"; };
 		B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCLoginViewController.swift; sourceTree = "<group>"; };
 		B02EEF4326FDDA870010515A /* JavaClub.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JavaClub.storyboard; sourceTree = "<group>"; };
+		B035CAC5273105940097AE68 /* StrokeColorAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrokeColorAnimation.swift; sourceTree = "<group>"; };
+		B035CAC6273105940097AE68 /* ProgressShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressShapeLayer.swift; sourceTree = "<group>"; };
+		B035CAC7273105940097AE68 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		B035CAC8273105950097AE68 /* RotationAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotationAnimation.swift; sourceTree = "<group>"; };
+		B035CAC9273105950097AE68 /* StrokeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrokeAnimation.swift; sourceTree = "<group>"; };
+		B035CACF2731234F0097AE68 /* LocalizableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableTextField.swift; sourceTree = "<group>"; };
 		B041668A272F75EB00117876 /* BAMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAMainViewController.swift; sourceTree = "<group>"; };
 		B041668D272F762200117876 /* BaiAssistant.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BaiAssistant.storyboard; sourceTree = "<group>"; };
 		B041668F272F7DAB00117876 /* BAAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAAccountManager.swift; sourceTree = "<group>"; };
@@ -226,6 +238,7 @@
 		B02032D126FE37B40048B6F6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B035CAC4273105800097AE68 /* ProgressView */,
 				B02032D226FE37C20048B6F6 /* DesignableView.swift */,
 				B01AA9B026FF2ADD000D3E4A /* LoadingIndicatorView.swift */,
 				B0B8434F270FE6F800C19B9B /* RefreshableScrollView.swift */,
@@ -234,6 +247,7 @@
 				B04C49592718138F00FBD9E7 /* ScoreImageView.swift */,
 				B05B0D75271D05E300F48D52 /* NoRotateNavigationController.swift */,
 				B0AF9503272BE88100671BF7 /* LocalizableLabel.swift */,
+				B035CACF2731234F0097AE68 /* LocalizableTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -356,6 +370,18 @@
 				B02EEF4326FDDA870010515A /* JavaClub.storyboard */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		B035CAC4273105800097AE68 /* ProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				B035CAC7273105940097AE68 /* ProgressView.swift */,
+				B035CAC6273105940097AE68 /* ProgressShapeLayer.swift */,
+				B035CAC8273105950097AE68 /* RotationAnimation.swift */,
+				B035CAC9273105950097AE68 /* StrokeAnimation.swift */,
+				B035CAC5273105940097AE68 /* StrokeColorAnimation.swift */,
+			);
+			path = ProgressView;
 			sourceTree = "<group>";
 		};
 		B0416689272F75CC00117876 /* Controller */ = {
@@ -619,6 +645,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B035CACB273105950097AE68 /* ProgressShapeLayer.swift in Sources */,
+				B035CACA273105950097AE68 /* StrokeColorAnimation.swift in Sources */,
 				B08F6FCD270040010015B354 /* JCLoginInfo.swift in Sources */,
 				B02EEEF826FDB2760010515A /* AppDelegate.swift in Sources */,
 				B0B84352270FEB1700C19B9B /* KAContentViewController.swift in Sources */,
@@ -633,13 +661,16 @@
 				B08F6FC527003F8C0015B354 /* ClassTableManager.swift in Sources */,
 				B02EEF2926FDC0A00010515A /* JCWebViewController.swift in Sources */,
 				B04FEE2E27113D750065FFB6 /* TappableViewCell.swift in Sources */,
+				B035CAD02731234F0097AE68 /* LocalizableTextField.swift in Sources */,
 				B041668B272F75EB00117876 /* BAMainViewController.swift in Sources */,
 				B0EFEB7A272FD2D600CAA2AE /* BALoginInfo.swift in Sources */,
+				B035CACD273105950097AE68 /* RotationAnimation.swift in Sources */,
 				B07399C2270A99A70020AEB8 /* BAEvent.swift in Sources */,
 				24B72C6E2729898C00DC1DB1 /* KAClassDetailView.swift in Sources */,
 				B04C49562717F42200FBD9E7 /* CVScoreContentConfiguration.swift in Sources */,
 				B01AA9B126FF2ADD000D3E4A /* LoadingIndicatorView.swift in Sources */,
 				B04C495A2718138F00FBD9E7 /* ScoreImageView.swift in Sources */,
+				B035CACE273105950097AE68 /* StrokeAnimation.swift in Sources */,
 				B02EEEFA26FDB2760010515A /* SceneDelegate.swift in Sources */,
 				B0416692272F8BAA00117876 /* BAContentViewController.swift in Sources */,
 				B07399BE270A99220020AEB8 /* BAScoreAdding.swift in Sources */,
@@ -651,6 +682,7 @@
 				B0A5D9A1272A49D300A8E3EE /* JCDateManager.swift in Sources */,
 				B02E4F1F2701BB7C00EA3DDB /* TVOption.swift in Sources */,
 				B02032CC26FE05910048B6F6 /* ViewPlaceholder.swift in Sources */,
+				B035CACC273105950097AE68 /* ProgressView.swift in Sources */,
 				B0973FA62703FE4200E5C9C6 /* KAScore.swift in Sources */,
 				B08F6FC627003F8C0015B354 /* JCAccountManager.swift in Sources */,
 				B02032D026FE05910048B6F6 /* AvailabilityCheck.swift in Sources */,

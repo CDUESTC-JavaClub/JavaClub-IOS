@@ -11,7 +11,6 @@ import Defaults
 import SnapKit
 
 class KABindingViewController: UIViewController {
-    private let indicatorView = _UIHostingView(rootView: LoadingIndicatorView())
     @IBOutlet var usernameField: UITextField!
     @IBOutlet var passwordField: UITextField!
     @IBOutlet var loginBtn: UIButton!
@@ -30,6 +29,8 @@ class KABindingViewController: UIViewController {
 extension KABindingViewController {
     
     private func setup() {
+        initIndicator()
+        
         loginBtn.setTitle("", for: .normal)
         loginBtn.layer.cornerRadius = loginBtn.frame.width / 2
         
@@ -76,7 +77,6 @@ extension KABindingViewController {
                         
                         self?.dismiss(animated: true)
                         self?.removeIndicator()
-                        UITabBar.appearance().isHidden = false
                     } else {
                         self?.removeIndicator()
                         
@@ -115,21 +115,13 @@ extension KABindingViewController {
     }
     
     private func showIndicator() {
-        view.addSubview(indicatorView)
-        
-        indicatorView.snp.makeConstraints { make in
-            make.center.equalTo(self.view)
-            make.width.equalTo(200)
-            make.height.equalTo(100)
-        }
+        startLoading()
         
         loginBtn.isEnabled = false
     }
     
     private func removeIndicator() {
-        indicatorView.snp.removeConstraints()
-        
-        indicatorView.removeFromSuperview()
+        stopLoading()
         
         loginBtn.isEnabled = true
     }

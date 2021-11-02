@@ -26,13 +26,6 @@ class STContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        NotificationCenter.default.addObserver(
-            forName: .didUpdateJWLoginState,
-            object: nil,
-            queue: .main,
-            using: didUpdateLoginState(_:)
-        )
-        
         let _ = Defaults.observe(.jcUser) { [weak self] obj in
             self?.didUpdateLoginState(userInfo: obj.newValue)
         }.tieToLifetime(of: self)
@@ -165,11 +158,6 @@ extension STContentViewController {
         }
         
         configureModels()
-    }
-    
-    private func didUpdateLoginState(_ notification: Notification) {
-        updateAvatar(Defaults[.avatarURL])
-        updateBanner(Defaults[.bannerURL])
     }
     
     func updateAvatar(_ avatarURL: URL?) {

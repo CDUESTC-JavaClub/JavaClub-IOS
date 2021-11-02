@@ -8,6 +8,16 @@
 #if canImport(UIKit)
 
 import UIKit
+import SnapKit
+
+fileprivate let indicatorView: ProgressView = {
+    let progress = ProgressView(
+        colors: [UIColor(hex: "BB85E9") ?? .purple, UIColor(hex: "60D1AE") ?? .systemGreen],
+        lineWidth: 5
+    )
+    progress.translatesAutoresizingMaskIntoConstraints = false
+    return progress
+}()
 
 extension UIViewController {
     
@@ -18,6 +28,23 @@ extension UIViewController {
         else {
             return false
         }
+    }
+    
+    func initIndicator() {
+        view.addSubview(indicatorView)
+        
+        indicatorView.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+            make.width.height.equalTo(50)
+        }
+    }
+    
+    func startLoading() {
+        indicatorView.isAnimating = true
+    }
+    
+    func stopLoading() {
+        indicatorView.isAnimating = false
     }
 }
 

@@ -119,13 +119,13 @@ extension JCAccountManager {
         
         ImageCache.default.clearDiskCache(completion: nil)
         
+        Defaults[.jcUser] = nil
+        Defaults[.jcLoginInfo] = nil
+        Defaults[.jwLoginInfo] = nil
+        Defaults[.sessionURL] = nil
+        Defaults[.firstLogin] = true
         Defaults[.avatarURL] = nil
         Defaults[.bannerURL] = nil
-        Defaults[.jcLoginInfo] = nil
-        Defaults[.sessionURL] = nil
-        Defaults[.jcUser] = nil
-        Defaults[.jwLoginInfo] = nil
-        Defaults[.firstLogin] = true
         Defaults[.enrollment] = nil
         Defaults[.classTableTerm] = 1
         Defaults[.classTableJsonData] = nil
