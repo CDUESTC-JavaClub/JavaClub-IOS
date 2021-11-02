@@ -43,9 +43,9 @@ class JCLoginState: ObservableObject {
     }
     
     private init() {
-        jc = Defaults[.loginInfo] != nil
-        jw = Defaults[.jwInfo] != nil
+        jc = Defaults[.jcLoginInfo] != nil
+        jw = Defaults[.jwLoginInfo] != nil
         by = Defaults[.byInfo] != nil
-        isBound = Defaults[.user]?.studentID != nil
+        isBound = Defaults[.jcUser]?.studentID != nil
     }
 }

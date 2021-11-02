@@ -21,11 +21,13 @@ enum JCError: Error {
     case encryptKeyErr
     case notLoginJC
     case notLoginJW
+    case notLoginBY
     case wrongPassword
     case unknown
     case castErr
     case illegalParameter
     case imgRetrieveFailed
+    case selfGotReleased
 }
 
 
@@ -119,10 +121,10 @@ extension JCAccountManager {
         
         Defaults[.avatarURL] = nil
         Defaults[.bannerURL] = nil
-        Defaults[.loginInfo] = nil
+        Defaults[.jcLoginInfo] = nil
         Defaults[.sessionURL] = nil
-        Defaults[.user] = nil
-        Defaults[.jwInfo] = nil
+        Defaults[.jcUser] = nil
+        Defaults[.jwLoginInfo] = nil
         Defaults[.firstLogin] = true
         Defaults[.enrollment] = nil
         Defaults[.classTableTerm] = 1
@@ -278,7 +280,7 @@ extension JCAccountManager {
      *      - completion: A block of what you wanna do with the result of one's enrollment info.
      */
     func getEnrollmentInfo(_ completion: @escaping (Result<KAEnrollment, JCError>) -> Void) {
-        guard Defaults[.jwInfo] != nil else {
+        guard Defaults[.jwLoginInfo] != nil else {
             completion(.failure(.notLoginJW))
             return
         }
@@ -338,7 +340,7 @@ extension JCAccountManager {
      *      - completion: A block of what you wanna do with the result of one's scores.
      */
     func getScore(_ completion: @escaping (Result<[KAScore], JCError>) -> Void) {
-        guard Defaults[.jwInfo] != nil else {
+        guard Defaults[.jwLoginInfo] != nil else {
             completion(.failure(.notLoginJW))
             return
         }

@@ -9,23 +9,23 @@ import Foundation
 
 struct BAEvent {
     /* 活动编号 */
-    let eventID : Int;
+    let eventID: Int;
     /* 活动名称 */
-    let eventName : String
+    let eventName: String
     /* 活动图标 */
-    let coverUrl : String
+    let coverUrl: String
     /* 还不清楚到底是个什么，暂时保留 */
-    let hospital : String
+    let hospital: String
     /* 开始时间 */
-    let start : Date
+    let startDate: Date
     /* 类型 */
-    let type : String
+    let type: String
     /* 地点 */
-    let place : String
+    let place: String
     /* 最大参加人数 */
-    let max : Int
+    let maxCount: Int
     /* 当前参加人数 */
-    let reg : Int
+    let regCount: Int
     /* 活动状态 */
-    let status : String
+    let status: String
 }

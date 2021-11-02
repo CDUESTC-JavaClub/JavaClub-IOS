@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import Defaults
 
 enum EventStatus: Int {
     case all = 0
@@ -102,7 +103,9 @@ extension BAAccountManager {
      *      - completion: 结果回调 `[BAEvent]`
      */
     func publicEvents(status: EventStatus, by offset: Int, _ completion: @escaping (Result<[BAEvent], JCError>) -> Void) {
+        let parameters = ["status": String(status.rawValue)]
         
+        events(for: "/Api/List/index", parameters: parameters, by: offset, completion)
     }
     
     /**
@@ -115,19 +118,12 @@ extension BAAccountManager {
      *      - completion: 结果回调 `[BAEvent]`
      */
     func publicEvents(for type: EventType, status: EventStatus, by offset: Int, _ completion: @escaping (Result<[BAEvent], JCError>) -> Void) {
+        let parameters = [
+            "status": String(status.rawValue),
+            "project": String(type.rawValue)
+        ]
         
-    }
-    
-    /**
-     *  通过url，获取特定活动
-     *
-     *  - Parameters:
-     *      - url: 活动链接
-     *      - offset: 前n个活动
-     *      - completion: 结果回调 `BAEvent`
-     */
-    func event(_ url: String, parameters: [String: String]?, by offset: Int, _ completion: @escaping (Result<BAEvent, JCError>) -> Void) {
-        
+        events(for: "/Api/List/project", parameters: parameters, by: offset, completion)
     }
     
     /**
@@ -138,7 +134,47 @@ extension BAAccountManager {
      *      - completion: 结果回调 `[BAEvent]`
      */
     func myEvents(by offset: Int, _ completion: @escaping (Result<[BAEvent], JCError>) -> Void) {
+        guard let account = Defaults[.byAccount] else {
+            completion(.failure(.notLoginBY))
+            return
+        }
         
+        let parameters = ["token": account.token]
+        AFTask("/Api/During/myDuring", parameters: parameters) { [weak self] result in
+            guard let weakSelf = self else {
+                completion(.failure(.selfGotReleased))
+                return
+            }
+            
+            if let result = try? result.get() {
+                let jsonArr = result["data"].arrayValue
+                let size = min(jsonArr.count, offset)
+                var eventsArr: [BAEvent] = []
+                
+                (0 ..< size).forEach {
+                    let json = jsonArr[$0]
+                    let event = BAEvent(
+                        eventID: json["id"].intValue,
+                        eventName: json["titleing"].stringValue,
+                        coverUrl: json["cover"].stringValue,
+                        hospital: json["hospital"].stringValue,
+                        startDate: weakSelf.string2Date(json["during_start"].stringValue),
+                        type: json["project"].stringValue,
+                        place: json["place"].stringValue,
+                        maxCount: json["minimum"].intValue,
+                        regCount: json["reg_num"].intValue,
+                        status: json["status"].stringValue
+                    )
+                    
+                    eventsArr.append(event)
+                }
+                
+                completion(.success(eventsArr))
+            } else {
+                print("DEBUG: Fetch My Events Failed.")
+                completion(.failure(.noData))
+            }
+        }
     }
     
     /**
@@ -148,8 +184,25 @@ extension BAAccountManager {
      *      - eventID: 活动id
      *      - completion: 报名结果回调 `String`
     */
-    func signUp(for eventID: Int, _ completion: @escaping (String) -> Void) {
+    func signUp(for eventID: Int, _ completion: @escaping (Result<String, JCError>) -> Void) {
+        guard let account = Defaults[.byAccount] else {
+            completion(.failure(.notLoginBY))
+            return
+        }
         
+        let parameters = [
+            "token": account.token,
+            "url": String(eventID)
+        ]
+        
+        AFTask("/Api/During/sign", parameters: parameters) { result in
+            if let result = try? result.get() {
+                completion(.success(result["type"].stringValue))
+            } else {
+                print("DEBUG: Failed To Sign Up Event.")
+                completion(.failure(.noData))
+            }
+        }
     }
     
     /**
@@ -159,8 +212,25 @@ extension BAAccountManager {
      *      - eventID: 活动id
      *      - completion: 取消结果回调 `String`
     */
-    func cancel(for eventID: Int, _ completion: @escaping (String) -> Void) {
+    func cancel(for eventID: Int, _ completion: @escaping (Result<String, JCError>) -> Void) {
+        guard let account = Defaults[.byAccount] else {
+            completion(.failure(.notLoginBY))
+            return
+        }
         
+        let parameters = [
+            "token": account.token,
+            "url": String(eventID)
+        ]
+        
+        AFTask("/Api/During/cancel", parameters: parameters) { result in
+            if let result = try? result.get() {
+                completion(.success(result["type"].stringValue))
+            } else {
+                print("DEBUG: Failed To Cancel Event.")
+                completion(.failure(.noData))
+            }
+        }
     }
     
     /**
@@ -169,8 +239,31 @@ extension BAAccountManager {
      *  - Parameters:
      *      - completion: 取消结果回调 `BAScore`
     */
-    func getScore(_ completion: @escaping (BAScore) -> Void) {
+    func getScore(_ completion: @escaping (Result<BAScore, JCError>) -> Void) {
+        guard let account = Defaults[.byAccount] else {
+            completion(.failure(.notLoginBY))
+            return
+        }
         
+        let parameters = ["token": account.token]
+        
+        AFTask("/Api/During/integral", parameters: parameters) { result in
+            if let result = try? result.get() {
+                let json = result["data"]
+                let score = BAScore(
+                    all: json["all"].intValue,
+                    bx: json["bx"].intValue,
+                    dx: json["dx"].intValue,
+                    md: json["md"].intValue,
+                    jm: json["jm"].intValue
+                )
+                
+                completion(.success(score))
+            } else {
+                print("DEBUG: Failed To Get BY Score.")
+                completion(.failure(.noData))
+            }
+        }
     }
     
     /**
@@ -179,8 +272,66 @@ extension BAAccountManager {
      *  - Parameters:
      *      - completion: 结果回调 `BAScoreAdding`
     */
-    func getScoreAddingRecords(_ completion: @escaping (BAScoreAdding) -> Void) {
+    func getScoreAddingRecords(_ completion: @escaping (Result<[BAScoreAdding], JCError>) -> Void) {
+        guard let account = Defaults[.byAccount] else {
+            completion(.failure(.notLoginBY))
+            return
+        }
         
+        var parameters = ["token": account.token]
+        
+        // 正常参加活动加分
+        AFTask("/Api/Index/integral", parameters: parameters) { result in
+            if let result = try? result.get() {
+                let jsonArr = result["data"].arrayValue
+                var recordsArr: [BAScoreAdding] = []
+                
+                jsonArr.forEach { json in
+                    let during = json["during"]
+                    let record = BAScoreAdding(
+                        eventName: during["titleing"].stringValue,
+                        eventID: json["did"].intValue,
+                        score: json["num"].intValue,
+                        type: json["project"].stringValue,
+                        reason: "正常扫码签到加分"
+                    )
+                    
+                    recordsArr.append(record)
+                }
+                
+                completion(.success(recordsArr))
+            } else {
+                print("DEBUG: Failed To Cancel Event.")
+                completion(.failure(.noData))
+            }
+        }
+        
+        parameters["status"] = "2"
+        
+        // 后台加分
+        AFTask("/Api/Apply/record", parameters: parameters) { result in
+            if let result = try? result.get() {
+                let jsonArr = result["data"].arrayValue
+                var recordsArr: [BAScoreAdding] = []
+                
+                jsonArr.forEach { json in
+                    let record = BAScoreAdding(
+                        eventName: json["remarks"].stringValue.replacingOccurrences(of: "\n", with: ""),
+                        eventID: json["did"].intValue,
+                        score: json["num"].intValue,
+                        type: json["project"].stringValue,
+                        reason: json["during"].stringValue
+                    )
+                    
+                    recordsArr.append(record)
+                }
+                
+                completion(.success(recordsArr))
+            } else {
+                print("DEBUG: Failed To Cancel Event.")
+                completion(.failure(.noData))
+            }
+        }
     }
 }
 
@@ -188,6 +339,14 @@ extension BAAccountManager {
 // MARK: Private Methods -
 extension BAAccountManager {
     
+    /**
+     * A wrapped method for Alamofire request task.
+     *
+     * - Parameters:
+     *      - path: url路径
+     *      - parameters: request请求参数
+     *      - completion: 结果回调 `JSON`
+     */
     private func AFTask(_ path: String, parameters: [String: String]?, completion: @escaping (Result<JSON, JCError>) -> Void) {
         AF.request(
             apiLink + path,
@@ -212,11 +371,57 @@ extension BAAccountManager {
         }
     }
     
-    private func string2Date(_ string: String, dateFormat: String = "yyyy-MM-dd") -> Date? {
+    /**
+     *  通过url，获取特定活动
+     *
+     *  - Parameters:
+     *      - url: 活动链接
+     *      - offset: 前n个活动
+     *      - completion: 结果回调 `BAEvent`
+     */
+    private func events(for path: String, parameters: [String: String]?, by offset: Int, _ completion: @escaping (Result<[BAEvent], JCError>) -> Void) {
+        AFTask(path, parameters: parameters) { [weak self] result in
+            guard let weakSelf = self else {
+                completion(.failure(.selfGotReleased))
+                return
+            }
+            
+            if let result = try? result.get() {
+                let jsonArr = result["data"].arrayValue
+                let size = min(jsonArr.count, offset)
+                var eventArr: [BAEvent] = []
+                
+                (0 ..< size).forEach {
+                    let json = jsonArr[$0]
+                    let event = BAEvent(
+                        eventID: json["id"].intValue,
+                        eventName: json["titleing"].stringValue,
+                        coverUrl: json["cover"].stringValue,
+                        hospital: json["hospital"].stringValue,
+                        startDate: weakSelf.string2Date(json["during_start"].stringValue),
+                        type: json["project"].stringValue,
+                        place: json["place"].stringValue,
+                        maxCount: json["minimum"].intValue,
+                        regCount: json["reg_num"].intValue,
+                        status: json["status"].stringValue
+                    )
+                    
+                    eventArr.append(event)
+                }
+                
+                completion(.success(eventArr))
+            } else {
+                print("DEBUG: Fetch Events Failed.")
+                completion(.failure(.noData))
+            }
+        }
+    }
+    
+    private func string2Date(_ string: String, dateFormat: String = "yyyy-MM-dd") -> Date {
         let formatter = DateFormatter()
         formatter.locale = Locale.init(identifier: "zh_CN")
         formatter.dateFormat = dateFormat
         
-        return formatter.date(from: string)
+        return formatter.date(from: string) ?? Date(timeIntervalSince1970: 0)
     }
 }

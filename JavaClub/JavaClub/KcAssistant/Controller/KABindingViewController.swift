@@ -66,7 +66,7 @@ extension KABindingViewController {
                 switch result {
                 case .success(let success):
                     if success {
-                        Defaults[.jwInfo] = info
+                        Defaults[.jwLoginInfo] = info
 
                         JCAccountManager.shared.getEnrollmentInfo { result in
                             if let enr = try? result.get() {

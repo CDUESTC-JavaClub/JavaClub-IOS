@@ -33,7 +33,7 @@ class STContentViewController: UIViewController {
             using: didUpdateLoginState(_:)
         )
         
-        let _ = Defaults.observe(.user) { [weak self] obj in
+        let _ = Defaults.observe(.jcUser) { [weak self] obj in
             self?.didUpdateLoginState(userInfo: obj.newValue)
         }.tieToLifetime(of: self)
         
@@ -111,8 +111,8 @@ extension STContentViewController {
     private func configureModels() {
         models = [
             TVSection(title: "绑定信息".localized(), options: [
-                ._static(model: TVStaticOption(title: "已绑定学号".localized(), icon: nil, value: Defaults[.user]?.studentID ?? "")),
-                ._static(model: TVStaticOption(title: "已绑定邮箱".localized(), icon: nil, value: Defaults[.user]?.email ?? "")),
+                ._static(model: TVStaticOption(title: "已绑定学号".localized(), icon: nil, value: Defaults[.jcUser]?.studentID ?? "")),
+                ._static(model: TVStaticOption(title: "已绑定邮箱".localized(), icon: nil, value: Defaults[.jcUser]?.email ?? "")),
             ]),
             TVSection(title: "外观设置".localized(), options: [
                 .switchable(model: TVSwitchOption(

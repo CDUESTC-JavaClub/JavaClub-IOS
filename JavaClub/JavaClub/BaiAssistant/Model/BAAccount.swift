@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Defaults
 
-struct BAAccount {
+struct BAAccount: Codable, DefaultsSerializable {
     var token: String
     
     var userName: String
