@@ -70,6 +70,7 @@ extension JCLoginViewController {
                 appDelegate?.loginJC(info) { [weak self] in
                     self?.dismiss(animated: true)
                     self?.removeIndicator()
+                    self?.dismissKeyboard()
                     JCAccountManager.shared.getUserMedia()
                 } onFailure: { [weak self] in
                     self?.removeIndicator()

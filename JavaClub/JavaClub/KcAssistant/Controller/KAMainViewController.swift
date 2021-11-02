@@ -32,12 +32,14 @@ class KAMainViewController: UIViewController {
         contentVC.view.snp.makeConstraints { make in
             make.edges.equalTo(view)
         }
+        
+        contentVC.view.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let _ = Defaults.observe(.jwLoginInfo) { [weak self] obj in
+        let _ = Defaults.observe(.jwLoginInfo) { [weak self] _ in
             self?.didUpdateLoginState()
         }.tieToLifetime(of: self)
     }

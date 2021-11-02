@@ -131,7 +131,10 @@ extension STContentViewController {
                 .tappable(model: TVTappableOption(title: "检查更新".localized(), icon: UIImage(named: "update_icon"), handler: {
                     
                 })),
-                .tappable(model: TVTappableOption(title: "退出登录".localized(), icon: UIImage(named: "logout_icon"), handler: {
+                .tappable(model: TVTappableOption(title: "退出登录".localized(), icon: UIImage(named: "logout_icon"), handler: { [weak self] in
+                    if let tabBarController = self?.view.window?.rootViewController as? UITabBarController {
+                        tabBarController.selectedIndex = 0
+                    }
                     JCAccountManager.shared.logout()
                 })),
             ]),

@@ -7,7 +7,7 @@
 
 import UIKit
 import Defaults
-import DeviceKit
+import SnapKit
 
 class JCMainViewController: UIViewController {
     private var loginVC: JCLoginViewController!
@@ -40,57 +40,39 @@ extension JCMainViewController {
     
     private func didUpdateLoginState() {
         if !JCLoginState.shared.jc {
+            if webVC != nil {
+                webVC = nil
+            }
+            
             loginVC = UIStoryboard(name: "JavaClub", bundle: .main)
                 .instantiateViewController(withIdentifier: "JCLoginViewController")
             as? JCLoginViewController
             
-            UITabBar.appearance().isHidden = true
-            present(loginVC, animated: true) { [self] in
-                if webVC != nil {
-                    webVC.view.removeFromSuperview()
-                    webVC = nil
-                }
+            view.addSubview(loginVC.view)
+            loginVC.view.snp.makeConstraints { make in
+                make.edges.equalTo(view)
             }
-        } else {
-            loginVC = nil
-            UITabBar.appearance().isHidden = false
             
-            let isSmallScreen = Device.current.isOneOf(Device.smallScreenModels)
+            tabBarController?.tabBar.isHidden = true
+        } else {
+            if loginVC != nil {
+                loginVC = nil
+            }
             
             if webVC == nil, let sessionURL = Defaults[.sessionURL] {
                 let url = !Defaults[.firstLogin] ? JCAccountManager.shared.javaClubURL : sessionURL
                 webVC = JCWebViewController(url: url)
                 view.addSubview(webVC.view)
                 webVC.view.snp.makeConstraints { make in
-                    make.top.equalTo(view).inset(isSmallScreen ? 20 : 40)
-                    make.leading.trailing.bottom.equalTo(view)
+                    make.top.equalTo(view.snp.topMargin)
+                    make.leading.trailing.equalTo(view)
+                    make.bottom.equalTo(view.snp.bottomMargin)
                 }
                 
                 Defaults[.firstLogin] = false
             }
+            
+            tabBarController?.tabBar.isHidden = false
         }
     }
-}
-
-
-extension Device {
-    
-    static let smallScreenModels: [Device] = [
-        .iPhone6s,
-        .iPhone6sPlus,
-        .iPhone7,
-        .iPhone7Plus,
-        .iPhone8,
-        .iPhone8Plus,
-        .iPhoneSE,
-        .iPhoneSE2,
-        .simulator(.iPhone6s),
-        .simulator(.iPhone6sPlus),
-        .simulator(.iPhone7),
-        .simulator(.iPhone7Plus),
-        .simulator(.iPhone8),
-        .simulator(.iPhone8Plus),
-        .simulator(.iPhoneSE),
-        .simulator(.iPhoneSE2),
-    ]
 }
