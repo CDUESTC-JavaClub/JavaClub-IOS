@@ -7,16 +7,13 @@
 
 import UIKit
 import Defaults
+import SnapKit
 
 class KAMainViewController: UIViewController {
     private var contentVC: KAContentViewController!
     private var bindingVC: KABindingViewController!
     
     init() {
-        contentVC = UIStoryboard(name: "KcAssistant", bundle: .main)
-            .instantiateViewController(withIdentifier: "KAContentViewController")
-        as? KAContentViewController
-        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -27,19 +24,12 @@ class KAMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        addChild(contentVC)
-        view.addSubview(contentVC.view)
-        contentVC.view.snp.makeConstraints { make in
-            make.edges.equalTo(view)
-        }
-        
-        contentVC.view.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let _ = Defaults.observe(.jwLoginInfo) { [weak self] _ in
+        let _ = Defaults.observe(.enrollment) { [weak self] _ in
             self?.didUpdateLoginState()
         }.tieToLifetime(of: self)
     }
@@ -51,21 +41,35 @@ extension KAMainViewController {
     
     private func didUpdateLoginState() {
         if !JCLoginState.shared.jw {
+            if !contentVC.isNil {
+                contentVC.view.removeFromSuperview()
+                contentVC = nil
+            }
+            
             bindingVC = UIStoryboard(name: "KcAssistant", bundle: .main)
                 .instantiateViewController(withIdentifier: "KABindingViewController")
             as? KABindingViewController
             
-            UITabBar.appearance().isHidden = true
-            present(bindingVC, animated: true) { [self] in
-                contentVC.view.isHidden = true
+            view.addSubview(bindingVC.view)
+            bindingVC.view.snp.makeConstraints { make in
+                make.top.leading.trailing.equalTo(view)
+                make.bottom.equalTo(view.snp.bottomMargin)
             }
         } else {
-            if bindingVC != nil {
+            if !bindingVC.isNil {
+                bindingVC.view.removeFromSuperview()
                 bindingVC = nil
             }
-
-            UITabBar.appearance().isHidden = false
-            contentVC.view.isHidden = false
+            
+            contentVC = UIStoryboard(name: "KcAssistant", bundle: .main)
+                .instantiateViewController(withIdentifier: "KAContentViewController")
+            as? KAContentViewController
+            
+            view.addSubview(contentVC.view)
+            contentVC.view.snp.makeConstraints { make in
+                make.top.leading.trailing.equalTo(view)
+                make.bottom.equalTo(view.snp.bottomMargin)
+            }
         }
     }
 }

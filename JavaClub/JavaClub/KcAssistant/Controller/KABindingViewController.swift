@@ -75,10 +75,11 @@ extension KABindingViewController {
                             }
                         }
                         
-                        self?.dismiss(animated: true)
                         self?.removeIndicator()
+                        self?.dismissKeyboard()
                     } else {
                         self?.removeIndicator()
+                        self?.dismissKeyboard()
                         
                         let alert = UIAlertController(title: "提示", message: "登录失败，请检查用户名和密码是否正确，或网络连接是否通畅！", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))

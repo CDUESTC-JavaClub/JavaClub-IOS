@@ -40,7 +40,8 @@ extension JCMainViewController {
     
     private func didUpdateLoginState() {
         if !JCLoginState.shared.jc {
-            if webVC != nil {
+            if !webVC.isNil {
+                webVC.view.removeFromSuperview()
                 webVC = nil
             }
             
@@ -55,7 +56,8 @@ extension JCMainViewController {
             
             tabBarController?.tabBar.isHidden = true
         } else {
-            if loginVC != nil {
+            if !loginVC.isNil {
+                loginVC.view.removeFromSuperview()
                 loginVC = nil
             }
             

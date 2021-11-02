@@ -68,12 +68,12 @@ extension JCLoginViewController {
                 
                 let info = JCLoginInfo(username: username, password: password)
                 appDelegate?.loginJC(info) { [weak self] in
-                    self?.dismiss(animated: true)
                     self?.removeIndicator()
                     self?.dismissKeyboard()
                     JCAccountManager.shared.getUserMedia()
                 } onFailure: { [weak self] in
                     self?.removeIndicator()
+                    self?.dismissKeyboard()
                     
                     let alert = UIAlertController(title: "提示", message: "登录失败，请检查输入或网络连接是否通畅！".localized(), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
