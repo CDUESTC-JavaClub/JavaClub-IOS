@@ -134,9 +134,10 @@ struct KAClassTableContentview: View {
         }
     }
     
-    #warning("Might Crash")
     func refresh(for term: Int) {
         showIndicator = true
+        colorHash = Array(repeating: nil, count: 20)
+        observable.classes = []
         
         JCAccountManager.shared.getClassTable(term: term) { result in
             switch result {
