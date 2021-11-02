@@ -65,6 +65,7 @@ extension KAMainViewController {
                 .instantiateViewController(withIdentifier: "KAContentViewController")
             as? KAContentViewController
             
+            addChild(contentVC)
             view.addSubview(contentVC.view)
             contentVC.view.snp.makeConstraints { make in
                 make.top.leading.trailing.equalTo(view)

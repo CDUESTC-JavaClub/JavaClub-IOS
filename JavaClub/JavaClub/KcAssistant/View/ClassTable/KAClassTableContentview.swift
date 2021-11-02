@@ -9,7 +9,7 @@ import UIKit
 import SwiftUI
 import Defaults
 
-fileprivate var colorHash: [String?] = Array(repeating: nil, count: 20)
+fileprivate var colorHash: [String?]!
 
 fileprivate let colorSet: [String] = [
     "#30AB43", "#FF483D", "#D8873D", "#EAC822", "#5BB974",
@@ -125,9 +125,6 @@ struct KAClassTableContentview: View {
         }
         .onAppear {
             refresh(for: term)
-        }
-        .onDisappear {
-            colorHash = Array(repeating: nil, count: 20)
         }
         .onChange(of: term) { newValue in
             refresh(for: newValue)
