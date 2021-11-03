@@ -18,15 +18,14 @@ struct LoadingIndicatorView: View {
                 .frame(width: 30, height: 30)
                 .padding(.top, 25)
             
-            Spacer()
-            
             Text("加载中")
                 .foregroundColor(Color.label)
                 .padding(.bottom, 10)
         }
+        .padding(.vertical, 10)
+        .padding(.horizontal, 30)
         .background(colorScheme == .light ? Color.white : .gray)
         .cornerRadius(15)
-        .frame(width: 100, height: 100)
         .onAppear {
             animates = true
         }
