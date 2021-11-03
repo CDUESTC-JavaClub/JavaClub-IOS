@@ -90,4 +90,8 @@ extension ProgressIndicator {
     func stop() {
         spinner.isAnimating = false
     }
+    
+    var isAnimating: Bool {
+        spinner.isAnimating
+    }
 }

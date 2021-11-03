@@ -26,19 +26,19 @@ class KAContentViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         let _ = Defaults.observe(.enrollment) { [weak self] obj in
-            self?.didUpdateEnrollmentState(obj.newValue)
+            self?.didRefreshEnrollmentInfo(obj.newValue)
         }.tieToLifetime(of: self)
+        
+        view.isHidden = true
+        startLoading()
         
         setup()
         configureAppearance()
         configureModels()
-        loadInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        navigationController?.isNavigationBarHidden = true
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -100,11 +100,7 @@ extension KAContentViewController {
         tableView.reloadData()
     }
     
-    private func loadInfo() {
-        didUpdateEnrollmentState(Defaults[.enrollment])
-    }
-    
-    private func didUpdateEnrollmentState(_ enrollment: KAEnrollment?) {
+    private func didRefreshEnrollmentInfo(_ enrollment: KAEnrollment?) {
         if let enrollment = enrollment {
             nameLabel.text = enrollment.name
             gradeLabel.text = "\(enrollment.grade)级 \(enrollment.direction)".localized()

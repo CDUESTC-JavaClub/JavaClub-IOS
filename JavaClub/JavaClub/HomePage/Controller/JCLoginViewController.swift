@@ -68,7 +68,9 @@ extension JCLoginViewController {
                 let info = JCLoginInfo(username: username, password: password)
                 appDelegate?.loginJC(info) { [weak self] in
                     self?.removeIndicator()
-                    JCAccountManager.shared.getUserMedia()
+                    JCAccountManager.shared.getUserMedia { success in
+                        JCLoginState.shared.jc = success
+                    }
                 } onFailure: { [weak self] in
                     self?.removeIndicator()
                     

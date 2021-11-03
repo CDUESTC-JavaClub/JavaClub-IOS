@@ -24,20 +24,23 @@ extension UIViewController {
     }
     
     func startLoading() {
-        progressView.foregroundColor = isDarkMode ? .gray : .white
-        
-        view.addSubview(progressView)
-        progressView.snp.makeConstraints { make in
-            make.edges.equalTo(view)
+        if !progressView.isAnimating {
+            progressView.foregroundColor = isDarkMode ? .gray : .white
+            view.addSubview(progressView)
+            progressView.snp.makeConstraints { make in
+                make.edges.equalTo(view)
+            }
+            
+            progressView.resume()
         }
-        
-        progressView.resume()
     }
     
     func stopLoading() {
-        progressView.removeFromSuperview()
-        
-        progressView.stop()
+        if progressView.isAnimating {
+            progressView.removeFromSuperview()
+            
+            progressView.stop()
+        }
     }
 }
 

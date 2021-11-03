@@ -114,31 +114,35 @@ extension JCAccountManager {
      *
      *  By default, JavaClub app will logout one's account by the time they terminate the app.
      */
-    func logout() {
+    func logout(clean: Bool = false) {
         AF.request("https://api.cduestc.club/api/auth/logout").response { _ in }
         
-        ImageCache.default.clearDiskCache(completion: nil)
+        JCLoginState.shared.logout()
         
-        Defaults[.jcUser] = nil
-        Defaults[.jcLoginInfo] = nil
-        Defaults[.jwLoginInfo] = nil
-        Defaults[.sessionURL] = nil
-        Defaults[.firstLogin] = true
-        Defaults[.avatarURL] = nil
-        Defaults[.bannerURL] = nil
-        Defaults[.enrollment] = nil
-        Defaults[.classTableTerm] = 1
-        Defaults[.classTableJsonData] = nil
-        
-        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
-        
-        WKWebsiteDataStore
-            .default()
-            .removeData(
-                ofTypes: [WKWebsiteDataTypeCookies],
-                modifiedSince: Date.distantPast,
-                completionHandler: {}
-            )
+        if clean {
+            ImageCache.default.clearDiskCache(completion: nil)
+            
+            Defaults[.jcUser] = nil
+            Defaults[.jcLoginInfo] = nil
+            Defaults[.jwLoginInfo] = nil
+            Defaults[.sessionURL] = nil
+            Defaults[.firstLogin] = true
+            Defaults[.avatarURL] = nil
+            Defaults[.bannerURL] = nil
+            Defaults[.enrollment] = nil
+            Defaults[.classTableTerm] = 1
+            Defaults[.classTableJsonData] = nil
+            
+            HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+            
+            WKWebsiteDataStore
+                .default()
+                .removeData(
+                    ofTypes: [WKWebsiteDataTypeCookies],
+                    modifiedSince: Date.distantPast,
+                    completionHandler: {}
+                )
+        }
     }
     
     /**
@@ -190,11 +194,14 @@ extension JCAccountManager {
      *  - Parameters:
      *      - completion: A block that tells the process is complete.
      */
-    func getUserMedia() {
+    func getUserMedia(_ completion: ((Bool) -> Void)? = nil) {
         // Refresh User Media
         JCAccountManager.shared.getSession { urlStr, avatar, banner in
             if Defaults[.sessionURL] == nil, let urlStr = urlStr {
                 Defaults[.sessionURL] = urlStr
+                completion?(true)
+            } else {
+                completion?(false)
             }
             
             if Defaults[.avatarURL] == nil, let avatar = avatar {

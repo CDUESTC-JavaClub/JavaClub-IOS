@@ -15,6 +15,17 @@ class JCMainViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        
+        NotificationCenter.default.addObserver(
+            forName: .didUpdateJCLoginState,
+            object: nil,
+            queue: .main,
+            using: didUpdateJCLoginState(_:)
+        )
+        
+        let _ = Defaults.observe(.sessionURL) { [weak self] obj in
+            self?.didResetJCState(obj.newValue.isNil)
+        }.tieToLifetime(of: self)
     }
     
     required init?(coder: NSCoder) {
@@ -29,17 +40,27 @@ class JCMainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let _ = Defaults.observe(.sessionURL) { [weak self] obj in
-            self?.didUpdateLoginState()
-        }.tieToLifetime(of: self)
+        didResetJCState(Defaults[.sessionURL].isNil)
     }
 }
 
 
 extension JCMainViewController {
     
-    private func didUpdateLoginState() {
-        if !JCLoginState.shared.jc {
+    private func didUpdateJCLoginState(_ notification: Notification) {
+        guard
+            let userInfo = notification.userInfo as? [Int: Bool],
+            let isLoggedIn = userInfo[0]
+        else { return }
+        
+        if isLoggedIn {
+            webVC.view.isHidden = false
+            stopLoading()
+        }
+    }
+    
+    private func didResetJCState(_ reset: Bool) {
+        if reset {
             if !webVC.isNil {
                 webVC.view.removeFromSuperview()
                 webVC = nil
@@ -75,6 +96,11 @@ extension JCMainViewController {
             }
             
             tabBarController?.tabBar.isHidden = false
+            
+            if !JCLoginState.shared.jc {
+                webVC.view.isHidden = true
+                startLoading()
+            }
         }
     }
 }

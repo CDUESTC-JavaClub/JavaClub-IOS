@@ -74,6 +74,7 @@ extension KABindingViewController {
                         JCAccountManager.shared.getEnrollmentInfo { result in
                             if let enr = try? result.get() {
                                 Defaults[.enrollment] = enr
+                                JCLoginState.shared.jw = true
                             }
                         }
                     } else {

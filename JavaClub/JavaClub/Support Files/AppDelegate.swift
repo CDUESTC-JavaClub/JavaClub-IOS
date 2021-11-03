@@ -17,13 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         addObservers()
-        loginIfAvailable()
+        loginJCIfAvailable()
         
         return true
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        
+        JCAccountManager.shared.logout()
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
@@ -57,58 +57,24 @@ extension AppDelegate {
                     switch result {
                     case .success(let userInfo):
                         Defaults[.jcUser] = userInfo
+                        onSuccess?()
                         
                     case .failure(let error):
                         print("DEBUG: Fetch User Info Failed With Error: \(String(describing: error))")
-                        JCAccountManager.shared.logout()
+                        JCAccountManager.shared.logout(clean: true)
                     }
                 }
-                
-                onSuccess?()
             } else {
                 onFailure?()
             }
         }
     }
     
-    private func loginIfAvailable() {
+    private func loginJCIfAvailable() {
         if !Defaults[.firstLogin], let info = Defaults[.jcLoginInfo] {
             loginJC(info) {
                 print("DEBUG: Auto Login JC Succeeded.")
-                
-                if let jwInfo = Defaults[.jwLoginInfo], let user = Defaults[.jcUser] {
-                    JCAccountManager.shared.loginJW(info: jwInfo, bind: user.studentID == nil) { result in
-                        
-                        switch result {
-                        case .success(let success):
-                            if success {
-                                JCAccountManager.shared.getEnrollmentInfo { result in
-                                    
-                                    switch result {
-                                    case .success(let enr):
-                                        Defaults[.enrollment] = enr
-                                        print("DEBUG: Auto Login JW Succeeded.")
-                                        
-                                    case .failure(let error):
-                                        if error == .notLoginJC {
-                                            print("DEBUG: Please Login JC First.")
-                                        } else {
-                                            print("DEBUG: Fetch Enrollment Info Failed With Error: \(String(describing: error))")
-                                        }
-                                    }
-                                    
-                                }
-                            } else {
-                                print("DEBUG: Auto Login JW Failed. (Maybe Wrong Username Or Password)")
-                            }
-                            
-                        case .failure(let error):
-                            print("DEBUG: Auto Login JW Failed With Error: \(String(describing: error)).")
-                        }
-                    }
-                } else {
-                    print("DEBUG: JW Credential Lost.")
-                }
+                JCLoginState.shared.jc = true
             } onFailure: {
                 print("DEBUG: Auto Login JC Failed.")
             }
@@ -117,21 +83,46 @@ extension AppDelegate {
         }
     }
     
+    func loginJWIfAvailable() {
+        if let jwInfo = Defaults[.jwLoginInfo], let user = Defaults[.jcUser] {
+            JCAccountManager.shared.loginJW(info: jwInfo, bind: user.studentID == nil) { result in
+                
+                switch result {
+                case .success(let success):
+                    if success {
+                        JCAccountManager.shared.getEnrollmentInfo { result in
+                            
+                            switch result {
+                            case .success(let enr):
+                                Defaults[.enrollment] = enr
+                                JCLoginState.shared.jw = true
+                                print("DEBUG: Auto Login JW Succeeded.")
+                                
+                            case .failure(let error):
+                                if error == .notLoginJC {
+                                    print("DEBUG: Please Login JC First.")
+                                } else {
+                                    print("DEBUG: Fetch Enrollment Info Failed With Error: \(String(describing: error))")
+                                }
+                            }
+                            
+                        }
+                    } else {
+                        print("DEBUG: Auto Login JW Failed. (Maybe Wrong Username Or Password)")
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG: Auto Login JW Failed With Error: \(String(describing: error)).")
+                }
+            }
+        } else {
+            print("DEBUG: JW Credential Lost.")
+        }
+    }
+    
     private func addObservers() {
         let _ = Defaults.observe(.jcUser) { obj in
             JCLoginState.shared.isBound = obj.newValue?.studentID != nil
-        }.tieToLifetime(of: self)
-        
-        let _ = Defaults.observe(.jwLoginInfo) { obj in
-            JCLoginState.shared.jw = !obj.newValue.isNil
-        }.tieToLifetime(of: self)
-        
-        let _ = Defaults.observe(.byLoginInfo) { obj in
-            JCLoginState.shared.by = !obj.newValue.isNil
-        }.tieToLifetime(of: self)
-        
-        let _ = Defaults.observe(.jcLoginInfo) { obj in
-            JCLoginState.shared.jc = !obj.newValue.isNil
         }.tieToLifetime(of: self)
     }
 }

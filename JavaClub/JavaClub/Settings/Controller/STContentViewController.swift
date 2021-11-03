@@ -135,7 +135,7 @@ extension STContentViewController {
                     if let tabBarController = self?.view.window?.rootViewController as? UITabBarController {
                         tabBarController.selectedIndex = 0
                     }
-                    JCAccountManager.shared.logout()
+                    JCAccountManager.shared.logout(clean: true)
                 })),
             ]),
         ]

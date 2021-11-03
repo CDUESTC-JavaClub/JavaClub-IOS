@@ -15,6 +15,17 @@ class KAMainViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        
+        NotificationCenter.default.addObserver(
+            forName: .didUpdateJWLoginState,
+            object: nil,
+            queue: .main,
+            using: didUpdateJWLoginState(_:)
+        )
+        
+        let _ = Defaults.observe(.enrollment, options: []) { [weak self] obj in
+            self?.didResetJWState(obj.newValue.isNil)
+        }.tieToLifetime(of: self)
     }
     
     required init?(coder: NSCoder) {
@@ -29,9 +40,12 @@ class KAMainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let _ = Defaults.observe(.enrollment) { [weak self] _ in
-            self?.didUpdateLoginState()
-        }.tieToLifetime(of: self)
+        if !Defaults[.jwLoginInfo].isNil {
+            let delegate = UIApplication.shared.delegate as? AppDelegate
+            delegate?.loginJWIfAvailable()
+        } else {
+            didResetJWState(Defaults[.enrollment].isNil)
+        }
     }
 }
 
@@ -39,8 +53,22 @@ class KAMainViewController: UIViewController {
 // MARK: Private Methods -
 extension KAMainViewController {
     
-    private func didUpdateLoginState() {
-        if !JCLoginState.shared.jw {
+    private func didUpdateJWLoginState(_ notification: Notification) {
+        guard
+            let userInfo = notification.userInfo as? [Int: Bool],
+            let isLoggedIn = userInfo[0]
+        else { return }
+        
+        #warning("需要先跑一遍，否则contentVC为空")
+        #warning("Defaults.observe可能未被调用")
+        if isLoggedIn {
+            contentVC.view.isHidden = false
+            stopLoading()
+        }
+    }
+    
+    private func didResetJWState(_ reset: Bool) {
+        if reset {
             if !contentVC.isNil {
                 contentVC.view.removeFromSuperview()
                 contentVC = nil
@@ -71,6 +99,11 @@ extension KAMainViewController {
             contentVC.view.snp.makeConstraints { make in
                 make.top.leading.trailing.equalTo(view)
                 make.bottom.equalTo(view.snp.bottomMargin)
+            }
+            
+            if !JCLoginState.shared.jw {
+                contentVC.view.isHidden = true
+                startLoading()
             }
         }
     }
