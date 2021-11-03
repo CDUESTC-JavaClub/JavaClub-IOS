@@ -85,10 +85,12 @@
 		B0B84354270FEBE300C19B9B /* KAMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B84353270FEBE300C19B9B /* KAMainViewController.swift */; };
 		B0B84357270FEC1B00C19B9B /* KcAssistant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B84356270FEC1B00C19B9B /* KcAssistant.storyboard */; };
 		B0B8435B271039F600C19B9B /* TappableItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B8435A271039F600C19B9B /* TappableItemView.swift */; };
+		B0BCD18427326D360075395B /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BCD18327326D360075395B /* ProgressIndicator.swift */; };
 		B0CCEF0927140D6C001235E9 /* KABindingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CCEF0827140D6C001235E9 /* KABindingViewController.swift */; };
 		B0CCEF0C27141EAB001235E9 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = B0CCEF0B27141EAB001235E9 /* DeviceKit */; };
 		B0CCEF0E27144425001235E9 /* JCCheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CCEF0D27144425001235E9 /* JCCheckboxButton.swift */; };
 		B0D3A18F27000AC80095229C /* JCMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D3A18E27000AC80095229C /* JCMainViewController.swift */; };
+		B0D62071273223DD0014F165 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D62070273223DD0014F165 /* Spinner.swift */; };
 		B0EFEB7A272FD2D600CAA2AE /* BALoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EFEB79272FD2D600CAA2AE /* BALoginInfo.swift */; };
 		B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F900C9270300420056A016 /* ViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
@@ -169,9 +171,11 @@
 		B0B84353270FEBE300C19B9B /* KAMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAMainViewController.swift; sourceTree = "<group>"; };
 		B0B84356270FEC1B00C19B9B /* KcAssistant.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KcAssistant.storyboard; sourceTree = "<group>"; };
 		B0B8435A271039F600C19B9B /* TappableItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableItemView.swift; sourceTree = "<group>"; };
+		B0BCD18327326D360075395B /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		B0CCEF0827140D6C001235E9 /* KABindingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KABindingViewController.swift; sourceTree = "<group>"; };
 		B0CCEF0D27144425001235E9 /* JCCheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCheckboxButton.swift; sourceTree = "<group>"; };
 		B0D3A18E27000AC80095229C /* JCMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCMainViewController.swift; sourceTree = "<group>"; };
+		B0D62070273223DD0014F165 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		B0EFEB79272FD2D600CAA2AE /* BALoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BALoginInfo.swift; sourceTree = "<group>"; };
 		B0F900C9270300420056A016 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -380,6 +384,8 @@
 				B035CAC8273105950097AE68 /* RotationAnimation.swift */,
 				B035CAC9273105950097AE68 /* StrokeAnimation.swift */,
 				B035CAC5273105940097AE68 /* StrokeColorAnimation.swift */,
+				B0BCD18327326D360075395B /* ProgressIndicator.swift */,
+				B0D62070273223DD0014F165 /* Spinner.swift */,
 			);
 			path = ProgressView;
 			sourceTree = "<group>";
@@ -655,6 +661,7 @@
 				B0CCEF0927140D6C001235E9 /* KABindingViewController.swift in Sources */,
 				B08F6FCE270040010015B354 /* JCUser.swift in Sources */,
 				B08F6FD02700401E0015B354 /* STMainViewController.swift in Sources */,
+				B0D62071273223DD0014F165 /* Spinner.swift in Sources */,
 				B08F6FCA27003FD60015B354 /* JCNoticeView.swift in Sources */,
 				B04C49582717F4AD00FBD9E7 /* CVScoreContentView.swift in Sources */,
 				B02032CE26FE05910048B6F6 /* ColorExtension.swift in Sources */,
@@ -672,6 +679,7 @@
 				B04C495A2718138F00FBD9E7 /* ScoreImageView.swift in Sources */,
 				B035CACE273105950097AE68 /* StrokeAnimation.swift in Sources */,
 				B02EEEFA26FDB2760010515A /* SceneDelegate.swift in Sources */,
+				B0BCD18427326D360075395B /* ProgressIndicator.swift in Sources */,
 				B0416692272F8BAA00117876 /* BAContentViewController.swift in Sources */,
 				B07399BE270A99220020AEB8 /* BAScoreAdding.swift in Sources */,
 				B02032CB26FE05910048B6F6 /* StringExtension.swift in Sources */,

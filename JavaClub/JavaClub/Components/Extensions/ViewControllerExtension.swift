@@ -10,14 +10,7 @@
 import UIKit
 import SnapKit
 
-fileprivate let indicatorView: ProgressView = {
-    let progress = ProgressView(
-        colors: [UIColor(hex: "BB85E9") ?? .purple, UIColor(hex: "60D1AE") ?? .systemGreen],
-        lineWidth: 5
-    )
-    progress.translatesAutoresizingMaskIntoConstraints = false
-    return progress
-}()
+fileprivate let progressView = ProgressIndicator(frame: .zero)
 
 extension UIViewController {
     
@@ -30,21 +23,21 @@ extension UIViewController {
         }
     }
     
-    func initIndicator() {
-        view.addSubview(indicatorView)
-        
-        indicatorView.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-            make.width.height.equalTo(50)
-        }
-    }
-    
     func startLoading() {
-        indicatorView.isAnimating = true
+        progressView.foregroundColor = isDarkMode ? .gray : .white
+        
+        view.addSubview(progressView)
+        progressView.snp.makeConstraints { make in
+            make.edges.equalTo(view)
+        }
+        
+        progressView.resume()
     }
     
     func stopLoading() {
-        indicatorView.isAnimating = false
+        progressView.removeFromSuperview()
+        
+        progressView.stop()
     }
 }
 

@@ -29,8 +29,6 @@ class KABindingViewController: UIViewController {
 extension KABindingViewController {
     
     private func setup() {
-        initIndicator()
-        
         loginBtn.setTitle("", for: .normal)
         loginBtn.layer.cornerRadius = loginBtn.frame.width / 2
         
@@ -56,6 +54,8 @@ extension KABindingViewController {
             !password.isEmpty
         {
             showIndicator()
+            dismissKeyboard()
+            tabBarEnabled(false)
             
             let info = KALoginInfo(id: username, password: password)
             
@@ -63,6 +63,8 @@ extension KABindingViewController {
                 info: info,
                 bind: !JCLoginState.shared.isBound
             ) { [weak self] result in
+                self?.removeIndicator()
+                self?.tabBarEnabled(true)
                 
                 switch result {
                 case .success(let success):
@@ -74,13 +76,7 @@ extension KABindingViewController {
                                 Defaults[.enrollment] = enr
                             }
                         }
-                        
-                        self?.removeIndicator()
-                        self?.dismissKeyboard()
                     } else {
-                        self?.removeIndicator()
-                        self?.dismissKeyboard()
-                        
                         let alert = UIAlertController(title: "提示", message: "登录失败，请检查用户名和密码是否正确，或网络连接是否通畅！", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
                         self?.present(alert, animated: true, completion: nil)
@@ -88,20 +84,14 @@ extension KABindingViewController {
                     
                 case .failure(let error):
                     if error == .notLoginJC {
-                        self?.removeIndicator()
-                        
                         let alert = UIAlertController(title: "提示", message: "使用教务功能之前，请先登录论坛账号！", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
                         self?.present(alert, animated: true, completion: nil)
                     } else if error == .wrongPassword {
-                        self?.removeIndicator()
-                        
                         let alert = UIAlertController(title: "提示", message: "用户名或密码错误，请检查输入。", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
                         self?.present(alert, animated: true, completion: nil)
                     } else {
-                        self?.removeIndicator()
-                        
                         let alert = UIAlertController(title: "提示", message: "未知错误，请稍后再试。", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
                         self?.present(alert, animated: true, completion: nil)
@@ -125,6 +115,20 @@ extension KABindingViewController {
         stopLoading()
         
         loginBtn.isEnabled = true
+    }
+    
+    private func tabBarEnabled(_ boolean: Bool) {
+        guard let tabItems = tabBarController?.tabBar.items else { return }
+        
+        if boolean {
+            tabItems.forEach {
+                $0.isEnabled = true
+            }
+        } else {
+            tabItems.forEach {
+                $0.isEnabled = false
+            }
+        }
     }
     
     @objc private func dismissKeyboard() {

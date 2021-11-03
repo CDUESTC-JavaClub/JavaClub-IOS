@@ -34,8 +34,6 @@ class JCLoginViewController: UIViewController {
 extension JCLoginViewController {
     
     private func setup() {
-        initIndicator()
-        
         loginBtn.setTitle("", for: .normal)
         loginBtn.layer.cornerRadius = loginBtn.frame.width / 2
         
@@ -65,15 +63,14 @@ extension JCLoginViewController {
             
             if agreeCheckBtn.flag {
                 showIndicator()
+                dismissKeyboard()
                 
                 let info = JCLoginInfo(username: username, password: password)
                 appDelegate?.loginJC(info) { [weak self] in
                     self?.removeIndicator()
-                    self?.dismissKeyboard()
                     JCAccountManager.shared.getUserMedia()
                 } onFailure: { [weak self] in
                     self?.removeIndicator()
-                    self?.dismissKeyboard()
                     
                     let alert = UIAlertController(title: "提示", message: "登录失败，请检查输入或网络连接是否通畅！".localized(), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
@@ -122,18 +119,10 @@ extension JCLoginViewController {
     
     private func showIndicator() {
         startLoading()
-        
-        loginBtn.isEnabled = false
-        createBtn.isEnabled = false
-        forgotBtn.isEnabled = false
     }
     
     private func removeIndicator() {
         stopLoading()
-        
-        loginBtn.isEnabled = true
-        createBtn.isEnabled = true
-        forgotBtn.isEnabled = true
     }
     
     @objc private func dismissKeyboard() {

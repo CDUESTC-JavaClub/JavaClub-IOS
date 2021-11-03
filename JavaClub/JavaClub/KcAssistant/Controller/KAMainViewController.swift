@@ -50,6 +50,7 @@ extension KAMainViewController {
                 .instantiateViewController(withIdentifier: "KABindingViewController")
             as? KABindingViewController
             
+            addChild(bindingVC)
             view.addSubview(bindingVC.view)
             bindingVC.view.snp.makeConstraints { make in
                 make.top.leading.trailing.equalTo(view)
