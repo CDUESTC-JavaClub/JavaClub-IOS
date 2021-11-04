@@ -7,6 +7,12 @@
 
 ✨ 欢迎使用电子科技大学成都学院 Java 俱乐部 App（IOS端）~有任何问题，欢迎提交Issue或进群讨论！
 
+App一律使用论坛账号进行登陆，登陆后，绑定学号和密码即可使用教务系统和百叶计划功能。我们非常注重用户隐私，下面是我们的数据传输机制：
+
+![img](https://user-images.githubusercontent.com/31413093/140307619-7a87f084-d9c6-4014-9481-fada11e61a4e.jpeg)
+
+
+
 &nbsp;
 
 ## Known Issues 🔨
