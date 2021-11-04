@@ -91,6 +91,7 @@
 		B0CCEF0E27144425001235E9 /* JCCheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CCEF0D27144425001235E9 /* JCCheckboxButton.swift */; };
 		B0D3A18F27000AC80095229C /* JCMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D3A18E27000AC80095229C /* JCMainViewController.swift */; };
 		B0D62071273223DD0014F165 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D62070273223DD0014F165 /* Spinner.swift */; };
+		B0EA83A72733B09C0028ADF8 /* BALoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EA83A62733B09C0028ADF8 /* BALoginViewController.swift */; };
 		B0EFEB7A272FD2D600CAA2AE /* BALoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EFEB79272FD2D600CAA2AE /* BALoginInfo.swift */; };
 		B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F900C9270300420056A016 /* ViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
@@ -176,6 +177,7 @@
 		B0CCEF0D27144425001235E9 /* JCCheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCheckboxButton.swift; sourceTree = "<group>"; };
 		B0D3A18E27000AC80095229C /* JCMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCMainViewController.swift; sourceTree = "<group>"; };
 		B0D62070273223DD0014F165 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
+		B0EA83A62733B09C0028ADF8 /* BALoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BALoginViewController.swift; sourceTree = "<group>"; };
 		B0EFEB79272FD2D600CAA2AE /* BALoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BALoginInfo.swift; sourceTree = "<group>"; };
 		B0F900C9270300420056A016 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -395,6 +397,7 @@
 			children = (
 				B041668A272F75EB00117876 /* BAMainViewController.swift */,
 				B0416691272F8BAA00117876 /* BAContentViewController.swift */,
+				B0EA83A62733B09C0028ADF8 /* BALoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				B04C49582717F4AD00FBD9E7 /* CVScoreContentView.swift in Sources */,
 				B02032CE26FE05910048B6F6 /* ColorExtension.swift in Sources */,
 				B08F6FC527003F8C0015B354 /* ClassTableManager.swift in Sources */,
+				B0EA83A72733B09C0028ADF8 /* BALoginViewController.swift in Sources */,
 				B02EEF2926FDC0A00010515A /* JCWebViewController.swift in Sources */,
 				B04FEE2E27113D750065FFB6 /* TappableViewCell.swift in Sources */,
 				B035CAD02731234F0097AE68 /* LocalizableTextField.swift in Sources */,

@@ -25,7 +25,7 @@ class ScoreCollectionViewCell: UICollectionViewCell {
         
         if let item = item {
             config.title = item.className
-            config.detail = "学分 \(item.points) (绩点 \(item.credits))"
+            config.detail = "学分 \(item.credits) (绩点 \(item.points))"
             
             let score = item.redoScore > item.score ? item.redoScore : item.score
             config.icon = makeScoreImage(score: score)

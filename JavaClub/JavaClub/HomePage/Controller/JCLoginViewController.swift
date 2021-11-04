@@ -19,6 +19,9 @@ class JCLoginViewController: UIViewController {
     @IBOutlet var forgotBtn: UIButton!
     @IBOutlet var agreeCheckBtn: JCCheckboxButton!
     @IBOutlet var privacyBtn: UIButton!
+    @IBOutlet var interactionView: UIView!
+    @IBOutlet var usernameContainerView: DesignableView!
+    @IBOutlet var passwordContainerView: DesignableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +30,13 @@ class JCLoginViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
         
         setup()
+        configureAppearance()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        configureAppearance()
     }
 }
 
@@ -38,17 +48,33 @@ extension JCLoginViewController {
         loginBtn.layer.cornerRadius = loginBtn.frame.width / 2
         
         usernameField.layer.borderWidth = 1
-        usernameField.layer.borderColor = UIColor.label.cgColor
         usernameField.layer.cornerRadius = usernameField.frame.height / 2
         usernameField.clipsToBounds = true
         usernameField.autocorrectionType = .no
         usernameField.keyboardType = .alphabet
         
         passwordField.layer.borderWidth = 1
-        passwordField.layer.borderColor = UIColor.label.cgColor
         passwordField.layer.cornerRadius = passwordField.frame.height / 2
         passwordField.clipsToBounds = true
         passwordField.autocorrectionType = .no
+    }
+    
+    private func configureAppearance() {
+        if isDarkMode {
+            view.backgroundColor = UIColor(hex: "151515")
+            interactionView.backgroundColor = UIColor(hex: "151515")
+            usernameContainerView.backgroundColor = UIColor(hex: "151515")
+            passwordContainerView.backgroundColor = UIColor(hex: "151515")
+            usernameField.layer.borderColor = UIColor(hex: "C8C8C8")?.cgColor
+            passwordField.layer.borderColor = UIColor(hex: "C8C8C8")?.cgColor
+        } else {
+            view.backgroundColor = UIColor(hex: "FFFFFF")
+            interactionView.backgroundColor = UIColor(hex: "FFFFFF")
+            usernameContainerView.backgroundColor = UIColor(hex: "FFFFFF")
+            passwordContainerView.backgroundColor = UIColor(hex: "FFFFFF")
+            usernameField.layer.borderColor = UIColor.black.cgColor
+            passwordField.layer.borderColor = UIColor.black.cgColor
+        }
     }
     
     @IBAction func login() {

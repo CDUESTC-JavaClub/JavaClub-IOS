@@ -62,7 +62,7 @@
 
 "用户名和密码都不能为空，请检查输入！" = "The username and password cannot be empty, please check the input!";
 
-"已阅读并同意我们的" = "By continuing, you're agreed to our";
+"已阅读并同意我们的" = "I'm agreed to the";
 
 "隐私条款" = "privacy policy";
 
@@ -75,5 +75,7 @@
 "用户名/邮箱" = "Username/Email";
 
 "教务账号（学号）" = "Student ID";
+
+"学号" = "Student ID";
 
 "密码" = "Password";

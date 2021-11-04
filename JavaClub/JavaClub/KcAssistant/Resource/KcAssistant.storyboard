@@ -17,25 +17,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kc" translatesAutoresizingMaskIntoConstraints="NO" id="S7L-1w-ak9">
+                                <rect key="frame" x="147" y="94" width="120" height="120"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="Kpp-1a-x0D"/>
+                                    <constraint firstAttribute="width" constant="120" id="eSk-lC-PV7"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KJc-2U-hYC">
-                                <rect key="frame" x="20" y="273" width="374" height="360"/>
+                                <rect key="frame" x="20" y="358" width="374" height="190"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kc" translatesAutoresizingMaskIntoConstraints="NO" id="S7L-1w-ak9">
-                                        <rect key="frame" x="127" y="0.0" width="120" height="120"/>
-                                        <color key="tintColor" systemColor="labelColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="Tat-ky-hHg"/>
-                                            <constraint firstAttribute="width" constant="120" id="UT6-ky-Ky6"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="12"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKm-Fw-VjU" customClass="DesignableView" customModule="JavaClub" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="170" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="教务账号（学号）" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aVL-1D-gUz" customClass="LocalizableTextField" customModule="JavaClub" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -56,7 +56,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glK-wb-Qwn" customClass="DesignableView" customModule="JavaClub" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="230" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="60" width="374" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="z4n-px-Rt2" customClass="LocalizableTextField" customModule="JavaClub" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -77,7 +77,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDC-du-BLl">
-                                        <rect key="frame" x="162" y="310" width="50" height="50"/>
+                                        <rect key="frame" x="162" y="140" width="50" height="50"/>
                                         <color key="backgroundColor" red="0.37647058820000001" green="0.81960784310000001" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="vnz-Ic-OGN"/>
@@ -95,13 +95,11 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="jDC-du-BLl" secondAttribute="bottom" id="4II-Ec-MFH"/>
                                     <constraint firstItem="gKm-Fw-VjU" firstAttribute="leading" secondItem="KJc-2U-hYC" secondAttribute="leading" id="NYC-a3-0Yf"/>
-                                    <constraint firstItem="S7L-1w-ak9" firstAttribute="top" secondItem="KJc-2U-hYC" secondAttribute="top" id="Q2n-pf-5En"/>
                                     <constraint firstItem="jDC-du-BLl" firstAttribute="centerX" secondItem="KJc-2U-hYC" secondAttribute="centerX" id="T94-K3-GQN"/>
-                                    <constraint firstItem="S7L-1w-ak9" firstAttribute="centerX" secondItem="KJc-2U-hYC" secondAttribute="centerX" id="Ya9-WJ-iMS"/>
                                     <constraint firstAttribute="trailing" secondItem="gKm-Fw-VjU" secondAttribute="trailing" id="c4H-nb-aWI"/>
                                     <constraint firstItem="glK-wb-Qwn" firstAttribute="leading" secondItem="KJc-2U-hYC" secondAttribute="leading" id="dzi-QY-kg0"/>
+                                    <constraint firstItem="gKm-Fw-VjU" firstAttribute="top" secondItem="KJc-2U-hYC" secondAttribute="top" id="esB-ar-yfY"/>
                                     <constraint firstItem="jDC-du-BLl" firstAttribute="top" secondItem="glK-wb-Qwn" secondAttribute="bottom" constant="30" id="fzm-mz-cYv"/>
-                                    <constraint firstItem="gKm-Fw-VjU" firstAttribute="top" secondItem="S7L-1w-ak9" secondAttribute="bottom" constant="50" id="kZj-p3-0bq"/>
                                     <constraint firstAttribute="trailing" secondItem="glK-wb-Qwn" secondAttribute="trailing" id="rOU-d9-svT"/>
                                     <constraint firstItem="glK-wb-Qwn" firstAttribute="top" secondItem="gKm-Fw-VjU" secondAttribute="bottom" constant="10" id="wGU-JK-SUN"/>
                                 </constraints>
@@ -111,13 +109,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="nZX-Tq-DmT" firstAttribute="trailing" secondItem="KJc-2U-hYC" secondAttribute="trailing" constant="20" id="I5C-zz-eTg"/>
+                            <constraint firstItem="S7L-1w-ak9" firstAttribute="top" secondItem="nZX-Tq-DmT" secondAttribute="top" constant="50" id="Ke7-4t-Jb7"/>
+                            <constraint firstItem="S7L-1w-ak9" firstAttribute="centerX" secondItem="nZX-Tq-DmT" secondAttribute="centerX" id="Snh-nn-wh3"/>
                             <constraint firstItem="KJc-2U-hYC" firstAttribute="centerY" secondItem="nZX-Tq-DmT" secondAttribute="centerY" id="bYZ-CV-Cs3"/>
                             <constraint firstItem="KJc-2U-hYC" firstAttribute="leading" secondItem="nZX-Tq-DmT" secondAttribute="leading" constant="20" id="bb5-61-QxZ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="interactionView" destination="KJc-2U-hYC" id="iir-fd-o8q"/>
                         <outlet property="loginBtn" destination="jDC-du-BLl" id="ZnI-5l-2tw"/>
+                        <outlet property="passwordContainerView" destination="glK-wb-Qwn" id="Rxd-9p-j3e"/>
                         <outlet property="passwordField" destination="z4n-px-Rt2" id="MZc-V3-d0h"/>
+                        <outlet property="usernameContainerView" destination="gKm-Fw-VjU" id="5N7-8B-YRO"/>
                         <outlet property="usernameField" destination="aVL-1D-gUz" id="K1t-xu-5Xh"/>
                     </connections>
                 </viewController>
@@ -136,15 +139,15 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8P0-6z-dCc">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <userGuides>
-                                    <userLayoutGuide location="20" affinity="minX"/>
-                                    <userLayoutGuide location="395" affinity="minX"/>
+                                    <userLayoutGuide location="16" affinity="minX"/>
+                                    <userLayoutGuide location="398" affinity="minX"/>
                                 </userGuides>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Etp-6o-dWL">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HkT-CE-qEm" customClass="DesignableView" customModule="JavaClub" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="127" width="374" height="130"/>
+                                                <rect key="frame" x="16" y="127" width="382" height="130"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kc_student" translatesAutoresizingMaskIntoConstraints="NO" id="I9s-3a-Bl8">
                                                         <rect key="frame" x="10" y="10" width="110" height="110"/>
@@ -204,7 +207,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JAR-zD-Otq" customClass="DesignableView" customModule="JavaClub" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="272" width="374" height="50"/>
+                                                <rect key="frame" x="16" y="272" width="382" height="50"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kc_annouce" translatesAutoresizingMaskIntoConstraints="NO" id="ixb-xH-M8h">
                                                         <rect key="frame" x="10" y="10" width="30" height="30"/>
@@ -245,7 +248,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CeS-Pe-tNy" customClass="DesignableView" customModule="JavaClub" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="52" width="374" height="60"/>
+                                                <rect key="frame" x="16" y="52" width="382" height="60"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kc" translatesAutoresizingMaskIntoConstraints="NO" id="LCH-yb-wFb">
                                                         <rect key="frame" x="10" y="10" width="40" height="40"/>
@@ -304,19 +307,19 @@
                                             </tableView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="JAR-zD-Otq" secondAttribute="trailing" constant="20" id="3ng-Xv-eah"/>
+                                            <constraint firstAttribute="trailing" secondItem="JAR-zD-Otq" secondAttribute="trailing" constant="16" id="3ng-Xv-eah"/>
                                             <constraint firstItem="0DE-nx-gGn" firstAttribute="leading" secondItem="Etp-6o-dWL" secondAttribute="leading" id="5VU-lR-Y57"/>
                                             <constraint firstItem="HkT-CE-qEm" firstAttribute="top" secondItem="CeS-Pe-tNy" secondAttribute="bottom" constant="15" id="9FD-Wy-iYT"/>
-                                            <constraint firstAttribute="trailing" secondItem="CeS-Pe-tNy" secondAttribute="trailing" constant="20" id="ItB-sT-yX9"/>
+                                            <constraint firstAttribute="trailing" secondItem="CeS-Pe-tNy" secondAttribute="trailing" constant="16" id="ItB-sT-yX9"/>
                                             <constraint firstItem="CeS-Pe-tNy" firstAttribute="top" secondItem="Etp-6o-dWL" secondAttribute="top" constant="52" id="U3L-jz-p8t"/>
                                             <constraint firstAttribute="trailing" secondItem="0DE-nx-gGn" secondAttribute="trailing" id="XeI-Ve-f1S"/>
-                                            <constraint firstItem="JAR-zD-Otq" firstAttribute="leading" secondItem="Etp-6o-dWL" secondAttribute="leading" constant="20" id="hlN-1O-2dB"/>
+                                            <constraint firstItem="JAR-zD-Otq" firstAttribute="leading" secondItem="Etp-6o-dWL" secondAttribute="leading" constant="16" id="hlN-1O-2dB"/>
                                             <constraint firstItem="JAR-zD-Otq" firstAttribute="top" secondItem="HkT-CE-qEm" secondAttribute="bottom" constant="15" id="hv7-F2-TST"/>
                                             <constraint firstAttribute="bottom" secondItem="0DE-nx-gGn" secondAttribute="bottom" id="key-2A-vCk"/>
                                             <constraint firstItem="0DE-nx-gGn" firstAttribute="top" secondItem="JAR-zD-Otq" secondAttribute="bottom" constant="10" id="nPs-mP-AMb"/>
-                                            <constraint firstItem="HkT-CE-qEm" firstAttribute="leading" secondItem="Etp-6o-dWL" secondAttribute="leading" constant="20" id="sZ3-1z-ILN"/>
-                                            <constraint firstAttribute="trailing" secondItem="HkT-CE-qEm" secondAttribute="trailing" constant="20" id="ueH-gB-Y7P"/>
-                                            <constraint firstItem="CeS-Pe-tNy" firstAttribute="leading" secondItem="Etp-6o-dWL" secondAttribute="leading" constant="20" id="wem-IC-1N7"/>
+                                            <constraint firstItem="HkT-CE-qEm" firstAttribute="leading" secondItem="Etp-6o-dWL" secondAttribute="leading" constant="16" id="sZ3-1z-ILN"/>
+                                            <constraint firstAttribute="trailing" secondItem="HkT-CE-qEm" secondAttribute="trailing" constant="16" id="ueH-gB-Y7P"/>
+                                            <constraint firstItem="CeS-Pe-tNy" firstAttribute="leading" secondItem="Etp-6o-dWL" secondAttribute="leading" constant="16" id="wem-IC-1N7"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -362,12 +365,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <userGuides>
-                            <userLayoutGuide location="20" affinity="minX"/>
-                            <userLayoutGuide location="394" affinity="minX"/>
+                            <userLayoutGuide location="16" affinity="minX"/>
+                            <userLayoutGuide location="398" affinity="minX"/>
                         </userGuides>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIg-mi-TOC" customClass="DesignableView" customModule="JavaClub" customModuleProvider="target">
-                                <rect key="frame" x="20" y="44" width="374" height="130"/>
+                                <rect key="frame" x="16" y="44" width="382" height="130"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="graduationcap.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6Oz-Km-1ZG">
                                         <rect key="frame" x="20" y="25.5" width="80" height="82.5"/>
@@ -479,10 +482,10 @@
                         <constraints>
                             <constraint firstItem="mk7-iA-Jm2" firstAttribute="leading" secondItem="7oI-ki-G7B" secondAttribute="leading" id="1hI-Aa-Y5R"/>
                             <constraint firstItem="mk7-iA-Jm2" firstAttribute="top" secondItem="tIg-mi-TOC" secondAttribute="bottom" constant="20" id="9OB-IM-tVi"/>
-                            <constraint firstItem="7oI-ki-G7B" firstAttribute="trailing" secondItem="tIg-mi-TOC" secondAttribute="trailing" constant="20" id="L6k-O3-QIv"/>
+                            <constraint firstItem="7oI-ki-G7B" firstAttribute="trailing" secondItem="tIg-mi-TOC" secondAttribute="trailing" constant="16" id="L6k-O3-QIv"/>
                             <constraint firstItem="7oI-ki-G7B" firstAttribute="trailing" secondItem="mk7-iA-Jm2" secondAttribute="trailing" id="QoL-7B-kYN"/>
                             <constraint firstItem="tIg-mi-TOC" firstAttribute="top" secondItem="7oI-ki-G7B" secondAttribute="top" id="gna-HA-Nre"/>
-                            <constraint firstItem="tIg-mi-TOC" firstAttribute="leading" secondItem="7oI-ki-G7B" secondAttribute="leading" constant="20" id="h2f-bB-CYd"/>
+                            <constraint firstItem="tIg-mi-TOC" firstAttribute="leading" secondItem="7oI-ki-G7B" secondAttribute="leading" constant="16" id="h2f-bB-CYd"/>
                             <constraint firstItem="7oI-ki-G7B" firstAttribute="bottom" secondItem="mk7-iA-Jm2" secondAttribute="bottom" id="lo2-Ym-5wn"/>
                         </constraints>
                     </view>

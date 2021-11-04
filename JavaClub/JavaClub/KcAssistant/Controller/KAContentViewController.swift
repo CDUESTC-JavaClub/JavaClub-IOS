@@ -36,6 +36,8 @@ class KAContentViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        navigationController?.isNavigationBarHidden = true
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -62,7 +64,8 @@ extension KAContentViewController {
     
     private func configureAppearance() {
         if isDarkMode {
-            scrollView.backgroundColor = UIColor(hex: "000000")
+            scrollView.backgroundColor = UIColor(hex: "151515")
+            tableView.backgroundColor = UIColor(hex: "151515")
         } else {
             scrollView.backgroundColor = UIColor(hex: "F2F2F7")
         }
