@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         addObservers()
-        loginJCIfAvailable()
         
         return true
     }
@@ -70,7 +69,7 @@ extension AppDelegate {
         }
     }
     
-    private func loginJCIfAvailable() {
+    func loginJCIfAvailable() {
         if !Defaults[.firstLogin], let info = Defaults[.jcLoginInfo] {
             loginJC(info) {
                 print("DEBUG: Auto Login JC Succeeded.")

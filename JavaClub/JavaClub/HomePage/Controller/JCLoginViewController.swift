@@ -120,11 +120,11 @@ extension JCLoginViewController {
     }
     
     private func showIndicator() {
-        startLoading()
+        startLoading(for: .jc)
     }
     
     private func removeIndicator() {
-        stopLoading()
+        stopLoading(for: .jc)
     }
     
     @objc private func dismissKeyboard() {

@@ -5,12 +5,8 @@
 //  Created by Roy on 2021/9/28.
 //
 
-#if canImport(UIKit)
-
 import UIKit
 import SnapKit
-
-fileprivate let progressView = ProgressIndicator(frame: .zero)
 
 extension UIViewController {
     
@@ -23,25 +19,30 @@ extension UIViewController {
         }
     }
     
-    func startLoading() {
-        if !progressView.isAnimating {
-            progressView.foregroundColor = isDarkMode ? .gray : .white
-            view.addSubview(progressView)
-            progressView.snp.makeConstraints { make in
-                make.edges.equalTo(view)
-            }
-            
-            progressView.resume()
+    func startLoading(for tag: ProgressTag) {
+        let progressView = ProgressIndicator(frame: .zero)
+        progressView.tag = tag.rawValue
+        
+        progressView.foregroundColor = isDarkMode ? .gray : .white
+        view.addSubview(progressView)
+        progressView.snp.makeConstraints { make in
+            make.edges.equalTo(view)
         }
+        
+        progressView.resume()
     }
     
-    func stopLoading() {
-        if progressView.isAnimating {
-            progressView.removeFromSuperview()
-            
+    func stopLoading(for tag: ProgressTag) {
+        if let progressView = view.viewWithTag(tag.rawValue) as? ProgressIndicator {
             progressView.stop()
+            progressView.removeFromSuperview()
         }
     }
 }
 
-#endif
+
+enum ProgressTag: Int {
+    case jc = 1001
+    case jw = 1002
+    case by = 1003
+}

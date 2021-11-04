@@ -107,15 +107,11 @@ extension KABindingViewController {
     }
     
     private func showIndicator() {
-        startLoading()
-        
-        loginBtn.isEnabled = false
+        startLoading(for: .jw)
     }
     
     private func removeIndicator() {
-        stopLoading()
-        
-        loginBtn.isEnabled = true
+        stopLoading(for: .jw)
     }
     
     private func tabBarEnabled(_ boolean: Bool) {

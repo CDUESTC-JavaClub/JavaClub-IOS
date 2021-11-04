@@ -15,7 +15,15 @@ class JCMainViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(
             forName: .didUpdateJCLoginState,
             object: nil,
@@ -28,19 +36,15 @@ class JCMainViewController: UIViewController {
         }.tieToLifetime(of: self)
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        didResetJCState(Defaults[.sessionURL].isNil)
+        if !Defaults[.jcLoginInfo].isNil {
+            let delegate = UIApplication.shared.delegate as? AppDelegate
+            delegate?.loginJCIfAvailable()
+        } else {
+            didResetJCState(Defaults[.sessionURL].isNil)
+        }
     }
 }
 
@@ -55,7 +59,7 @@ extension JCMainViewController {
         
         if isLoggedIn {
             webVC.view.isHidden = false
-            stopLoading()
+            stopLoading(for: .jc)
         }
     }
     
@@ -99,7 +103,7 @@ extension JCMainViewController {
             
             if !JCLoginState.shared.jc {
                 webVC.view.isHidden = true
-                startLoading()
+                startLoading(for: .jc)
             }
         }
     }

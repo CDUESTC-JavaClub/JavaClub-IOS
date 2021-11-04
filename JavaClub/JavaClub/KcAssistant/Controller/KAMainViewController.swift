@@ -15,17 +15,6 @@ class KAMainViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        
-        NotificationCenter.default.addObserver(
-            forName: .didUpdateJWLoginState,
-            object: nil,
-            queue: .main,
-            using: didUpdateJWLoginState(_:)
-        )
-        
-        let _ = Defaults.observe(.enrollment, options: []) { [weak self] obj in
-            self?.didResetJWState(obj.newValue.isNil)
-        }.tieToLifetime(of: self)
     }
     
     required init?(coder: NSCoder) {
@@ -35,6 +24,16 @@ class KAMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(
+            forName: .didUpdateJWLoginState,
+            object: nil,
+            queue: .main,
+            using: didUpdateJWLoginState(_:)
+        )
+        
+        let _ = Defaults.observe(.enrollment) { [weak self] obj in
+            self?.didResetJWState(obj.newValue.isNil)
+        }.tieToLifetime(of: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -59,11 +58,9 @@ extension KAMainViewController {
             let isLoggedIn = userInfo[0]
         else { return }
         
-        #warning("需要先跑一遍，否则contentVC为空")
-        #warning("Defaults.observe可能未被调用")
         if isLoggedIn {
             contentVC.view.isHidden = false
-            stopLoading()
+            stopLoading(for: .jw)
         }
     }
     
@@ -103,7 +100,7 @@ extension KAMainViewController {
             
             if !JCLoginState.shared.jw {
                 contentVC.view.isHidden = true
-                startLoading()
+                startLoading(for: .jw)
             }
         }
     }

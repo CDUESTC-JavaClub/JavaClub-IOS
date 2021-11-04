@@ -29,9 +29,6 @@ class KAContentViewController: UIViewController {
             self?.didRefreshEnrollmentInfo(obj.newValue)
         }.tieToLifetime(of: self)
         
-        view.isHidden = true
-        startLoading()
-        
         setup()
         configureAppearance()
         configureModels()
