@@ -559,6 +559,9 @@
         <designable name="Ma3-cl-FEZ">
             <size key="intrinsicContentSize" width="29" height="18.5"/>
         </designable>
+        <designable name="Mte-aI-inm">
+            <size key="intrinsicContentSize" width="36" height="31"/>
+        </designable>
         <designable name="QGr-tz-H2o">
             <size key="intrinsicContentSize" width="214" height="13.5"/>
         </designable>

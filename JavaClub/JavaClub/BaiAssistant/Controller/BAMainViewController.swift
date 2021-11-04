@@ -56,10 +56,10 @@ extension BAMainViewController {
             let isLoggedIn = userInfo[0]
         else { return }
         
-//        if isLoggedIn {
-//            contentVC.view.isHidden = false
-//            stopLoading(for: .by)
-//        }
+        if isLoggedIn {
+            contentVC.view.isHidden = false
+            stopLoading(for: .by)
+        }
     }
     
     private func didResetBYState(_ reset: Bool) {
@@ -96,10 +96,10 @@ extension BAMainViewController {
                 make.bottom.equalTo(view.snp.bottomMargin)
             }
             
-//            if !JCLoginState.shared.by {
-//                contentVC.view.isHidden = true
-//                startLoading(for: .by)
-//            }
+            if !JCLoginState.shared.by {
+                contentVC.view.isHidden = true
+                startLoading(for: .by)
+            }
         }
     }
     

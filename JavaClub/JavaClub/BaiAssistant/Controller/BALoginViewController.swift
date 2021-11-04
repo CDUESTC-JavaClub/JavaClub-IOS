@@ -61,7 +61,19 @@ extension BALoginViewController {
             
             let info = BALoginInfo(id: username, password: password)
             
-            
+            BAAccountManager.shared.login(info: info) { [weak self] result in
+                self?.removeIndicator()
+                self?.tabBarEnabled(true)
+                
+                switch result {
+                case .success(let account):
+                    Defaults[.byAccount] = account
+                    JCLoginState.shared.by = true
+                    
+                case .failure(let error):
+                    print("Login BY Failed With Error: \(String(describing: error))")
+                }
+            }
         } else {
             let alert = UIAlertController(title: "提示", message: "用户名和密码都不能为空，请检查输入！".localized(), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
