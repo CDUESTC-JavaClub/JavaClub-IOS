@@ -62,6 +62,7 @@
 		B07399BE270A99220020AEB8 /* BAScoreAdding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BD270A99220020AEB8 /* BAScoreAdding.swift */; };
 		B07399C0270A99330020AEB8 /* BAScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BF270A99330020AEB8 /* BAScore.swift */; };
 		B07399C2270A99A70020AEB8 /* BAEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399C1270A99A70020AEB8 /* BAEvent.swift */; };
+		B08CFF8F2733D727000E07A4 /* TappableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08CFF8E2733D727000E07A4 /* TappableButton.swift */; };
 		B08F6FB027003EEC0015B354 /* KALoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAD27003EEB0015B354 /* KALoginInfo.swift */; };
 		B08F6FB127003EEC0015B354 /* KAEnrollment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAE27003EEB0015B354 /* KAEnrollment.swift */; };
 		B08F6FB227003EEC0015B354 /* KAClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAF27003EEB0015B354 /* KAClass.swift */; };
@@ -149,6 +150,7 @@
 		B07399BD270A99220020AEB8 /* BAScoreAdding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAScoreAdding.swift; sourceTree = "<group>"; };
 		B07399BF270A99330020AEB8 /* BAScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAScore.swift; sourceTree = "<group>"; };
 		B07399C1270A99A70020AEB8 /* BAEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAEvent.swift; sourceTree = "<group>"; };
+		B08CFF8E2733D727000E07A4 /* TappableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableButton.swift; sourceTree = "<group>"; };
 		B08F6FAD27003EEB0015B354 /* KALoginInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KALoginInfo.swift; sourceTree = "<group>"; };
 		B08F6FAE27003EEB0015B354 /* KAEnrollment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAEnrollment.swift; sourceTree = "<group>"; };
 		B08F6FAF27003EEB0015B354 /* KAClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAClass.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				B05B0D75271D05E300F48D52 /* NoRotateNavigationController.swift */,
 				B0AF9503272BE88100671BF7 /* LocalizableLabel.swift */,
 				B035CACF2731234F0097AE68 /* LocalizableTextField.swift */,
+				B08CFF8E2733D727000E07A4 /* TappableButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -716,6 +719,7 @@
 				B06F83FF2722BC4800069A23 /* KAClassTableObservable.swift in Sources */,
 				B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */,
 				B0093A012715539E00879AC5 /* ScoreCollectionViewCell.swift in Sources */,
+				B08CFF8F2733D727000E07A4 /* TappableButton.swift in Sources */,
 				24B72C6C2729897400DC1DB1 /* KATermSelectorView.swift in Sources */,
 				B0AF9504272BE88100671BF7 /* LocalizableLabel.swift in Sources */,
 				B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */,

@@ -179,7 +179,7 @@ extension STContentViewController {
         } else if JCLoginState.shared.jc {
             JCAccountManager.shared.getUserMedia()
         } else {
-            avatar.image = UIImage.fromColor(.clear)
+            avatar.image = UIImage(named: "user_holder")
         }
     }
     

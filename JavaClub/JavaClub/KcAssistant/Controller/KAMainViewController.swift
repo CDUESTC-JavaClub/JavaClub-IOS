@@ -40,8 +40,7 @@ class KAMainViewController: UIViewController {
         super.viewDidAppear(animated)
         
         if !Defaults[.jwLoginInfo].isNil {
-            let delegate = UIApplication.shared.delegate as? AppDelegate
-            delegate?.loginJWIfAvailable()
+            loginJWIfAvailable()
         } else {
             didResetJWState(Defaults[.enrollment].isNil)
         }
@@ -51,7 +50,7 @@ class KAMainViewController: UIViewController {
 
 // MARK: Private Methods -
 extension KAMainViewController {
-    
+       
     private func didUpdateJWLoginState(_ notification: Notification) {
         guard
             let userInfo = notification.userInfo as? [Int: Bool],
@@ -102,6 +101,43 @@ extension KAMainViewController {
                 contentVC.view.isHidden = true
                 startLoading(for: .jw)
             }
+        }
+    }
+    
+    func loginJWIfAvailable() {
+        if let jwInfo = Defaults[.jwLoginInfo], let user = Defaults[.jcUser] {
+            JCAccountManager.shared.loginJW(info: jwInfo, bind: user.studentID == nil) { result in
+                
+                switch result {
+                case .success(let success):
+                    if success {
+                        JCAccountManager.shared.getEnrollmentInfo { result in
+                            
+                            switch result {
+                            case .success(let enr):
+                                Defaults[.enrollment] = enr
+                                JCLoginState.shared.jw = true
+                                print("DEBUG: Auto Login JW Succeeded.")
+                                
+                            case .failure(let error):
+                                if error == .notLoginJC {
+                                    print("DEBUG: Please Login JC First.")
+                                } else {
+                                    print("DEBUG: Fetch Enrollment Info Failed With Error: \(String(describing: error))")
+                                }
+                            }
+                            
+                        }
+                    } else {
+                        print("DEBUG: Auto Login JW Failed. (Maybe Wrong Username Or Password)")
+                    }
+                    
+                case .failure(let error):
+                    print("DEBUG: Auto Login JW Failed With Error: \(String(describing: error)).")
+                }
+            }
+        } else {
+            print("DEBUG: JW Credential Lost.")
         }
     }
 }

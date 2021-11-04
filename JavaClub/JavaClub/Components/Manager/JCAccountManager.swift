@@ -122,16 +122,23 @@ extension JCAccountManager {
         if clean {
             ImageCache.default.clearDiskCache(completion: nil)
             
+            // JC
             Defaults[.jcUser] = nil
             Defaults[.jcLoginInfo] = nil
-            Defaults[.jwLoginInfo] = nil
             Defaults[.sessionURL] = nil
-            Defaults[.firstLogin] = true
             Defaults[.avatarURL] = nil
             Defaults[.bannerURL] = nil
+            
+            // JW
+            Defaults[.jwLoginInfo] = nil
+            Defaults[.firstLogin] = true
             Defaults[.enrollment] = nil
             Defaults[.classTableTerm] = 1
             Defaults[.classTableJsonData] = nil
+            
+            // BY
+            Defaults[.byLoginInfo] = nil
+            Defaults[.byAccount] = nil
             
             HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
             
