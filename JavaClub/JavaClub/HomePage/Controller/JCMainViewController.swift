@@ -39,7 +39,7 @@ class JCMainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if !Defaults[.jcLoginInfo].isNil {
+        if !Defaults[.jcLoginInfo].isNil, !JCLoginState.shared.jc {
             let delegate = UIApplication.shared.delegate as? AppDelegate
             delegate?.loginJCIfAvailable()
         } else {

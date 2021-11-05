@@ -48,7 +48,7 @@
 
 "百叶计划" = "BaiAssistant";
 
-"包含活动报名、活动取消、积分查询等功能" = "Contains event registration, event cancellation, BaiYe integral query, etc.";
+"包含活动报名、活动取消、积分查询等功能" = "Contains event registration, event cancellation, BaiYe credits query, etc.";
 
 "已达标" = "Accomplished";
 
@@ -77,3 +77,9 @@
 "学号" = "Student ID";
 
 "密码" = "Password";
+
+"所有活动" = "All Events";
+
+"我的活动" = "My Events";
+
+"百叶积分" = "BaiYe Credits";

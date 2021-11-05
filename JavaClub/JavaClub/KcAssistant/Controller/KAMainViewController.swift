@@ -39,7 +39,7 @@ class KAMainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if !Defaults[.jwLoginInfo].isNil {
+        if !Defaults[.jwLoginInfo].isNil, !JCLoginState.shared.jw {
             loginJWIfAvailable()
         } else {
             didResetJWState(Defaults[.enrollment].isNil)

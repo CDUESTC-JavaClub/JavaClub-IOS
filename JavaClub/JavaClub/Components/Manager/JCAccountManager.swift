@@ -28,6 +28,7 @@ enum JCError: Error {
     case illegalParameter
     case imgRetrieveFailed
     case selfGotReleased
+    case timeout
 }
 
 
@@ -237,9 +238,14 @@ extension JCAccountManager {
                 return
             }
             
+            guard let weakSelf = self else {
+                completion(.failure(.selfGotReleased))
+                return
+            }
+            
             do {
                 // Encrypt Password
-                let encryptedStr = try self?.encrypt(info.password, with: key)
+                let encryptedStr = try weakSelf.encrypt(info.password, with: key) ?? ""
                 
                 // Request To Bind StudentID
                 AF.request(
@@ -254,7 +260,8 @@ extension JCAccountManager {
                     ]
                     : [
                         "password": encryptedStr
-                    ]
+                    ],
+                    requestModifier: { $0.timeoutInterval = 10 }
                 ).response { response in
                     guard let data = response.data else {
                         completion(.failure(.noData))
@@ -301,7 +308,8 @@ extension JCAccountManager {
         
         AF.request(
             "https://api.cduestc.club/api/kc/info",
-            method: .post
+            method: .post,
+            requestModifier: { $0.timeoutInterval = 10 }
         ).response { response in
             guard let data = response.data else {
                 completion(.failure(.noData))
@@ -361,7 +369,8 @@ extension JCAccountManager {
         
         AF.request(
             "https://api.cduestc.club/api/kc/score",
-            method: .post
+            method: .post,
+            requestModifier: { $0.timeoutInterval = 10 }
         ).response { response in
             guard let data = response.data else {
                 completion(.failure(.noData))
@@ -430,7 +439,8 @@ extension JCAccountManager {
         AF.request(
             "https://api.cduestc.club/api/kc/table",
             method: .post,
-            parameters: ["term": "\(term)"]
+            parameters: ["term": "\(term)"],
+            requestModifier: { $0.timeoutInterval = 10 }
         ).response { response in
             guard let data = response.data else {
                 completion(.failure(.noData))
@@ -480,7 +490,7 @@ extension JCAccountManager {
     }
     
     private func requestPubKey(retry count: Int, _ completion: @escaping (Result<String, JCError>) -> Void) {
-        AF.request("https://api.cduestc.club/api/auth/public-key").response { [weak self] response in
+        AF.request("https://api.cduestc.club/api/auth/public-key", requestModifier: { $0.timeoutInterval = 10 }).response { [weak self] response in
             guard let data = response.data else {
                 completion(.failure(.noData))
                 return
@@ -510,7 +520,10 @@ extension JCAccountManager {
     }
     
     private func getSession(_ completion: @escaping (URL?, URL?, URL?) -> Void) {
-        AF.request("https://api.cduestc.club/api/auth/forum").response { response in
+        AF.request(
+            "https://api.cduestc.club/api/auth/forum",
+            requestModifier: { $0.timeoutInterval = 10 }
+        ).response { response in
             guard let data = response.data else {
                 print("DEBUG: Fetch User Media Failed (No Data Response).")
                 completion(nil, nil, nil)

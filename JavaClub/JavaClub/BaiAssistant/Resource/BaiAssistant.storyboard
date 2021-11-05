@@ -94,6 +94,9 @@
                                                 <color key="value" red="0.55294117647058827" green="0.89411764705882346" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="login" destination="CUn-6c-9Mi" eventType="touchUpInside" id="xPm-z3-nfS"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>

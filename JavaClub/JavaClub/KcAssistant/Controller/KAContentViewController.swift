@@ -70,6 +70,7 @@ extension KAContentViewController {
             tableView.backgroundColor = UIColor(hex: "151515")
         } else {
             scrollView.backgroundColor = UIColor(hex: "F2F2F7")
+            tableView.backgroundColor = UIColor(hex: "F2F2F7")
         }
         
         infoView.isDark = isDarkMode

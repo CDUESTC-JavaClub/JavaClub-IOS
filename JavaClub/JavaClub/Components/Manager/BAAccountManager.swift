@@ -82,6 +82,7 @@ extension BAAccountManager {
                                 }
                             } else {
                                 print("DEBUG: Get BY Information Failed.")
+                                completion(.failure(.badRequest))
                             }
                         }
                     } catch {
@@ -90,6 +91,7 @@ extension BAAccountManager {
                 }
             } else {
                 print("DEBUG: Login BY Failed.")
+                completion(.failure(.noData))
             }
         }
     }
@@ -351,22 +353,35 @@ extension BAAccountManager {
         AF.request(
             apiLink + path,
             method: .post,
-            parameters: parameters
+            parameters: parameters,
+            requestModifier: { $0.timeoutInterval = 10 }
         ).response { response in
-            guard
-                let statusCode = response.response?.statusCode,
-                statusCode == 200,
-                let data = response.data
-            else {
-                completion(.failure(.noData))
-                return
-            }
-            
-            do {
-                let json = try JSON(data: data)
-                completion(.success(json))
-            } catch {
-                completion(.failure(.parseErr))
+            switch response.result {
+            case .success:
+                guard
+                    let statusCode = response.response?.statusCode,
+                    statusCode == 200,
+                    let data = response.data
+                else {
+                    completion(.failure(.noData))
+                    return
+                }
+                
+                do {
+                    let json = try JSON(data: data)
+                    completion(.success(json))
+                } catch {
+                    completion(.failure(.parseErr))
+                }
+                
+            case .failure(let error):
+                if error.responseCode == NSURLErrorTimedOut {
+                    completion(.failure(.timeout))
+                    print("DEBUG: BY Request Timeout.")
+                } else {
+                    completion(.failure(.badRequest))
+                    print("DEBUG: BY Request Failed With Error: \(String(describing: error)).")
+                }
             }
         }
     }
