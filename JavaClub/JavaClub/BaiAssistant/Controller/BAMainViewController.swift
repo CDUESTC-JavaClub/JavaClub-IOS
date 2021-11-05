@@ -30,18 +30,20 @@ class BAMainViewController: UIViewController {
             using: didUpdateBYLoginState(_:)
         )
         
+        #warning("Test")
         let _ = Defaults.observe(.byAccount) { [weak self] obj in
-            self?.didResetBYState(obj.newValue.isNil)
+            self?.didResetBYState(false)
         }.tieToLifetime(of: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        #warning("Test")
         if !Defaults[.byLoginInfo].isNil {
             loginBYIfAvailable()
         } else {
-            didResetBYState(Defaults[.byAccount].isNil)
+            didResetBYState(false)
         }
     }
 }
@@ -56,10 +58,10 @@ extension BAMainViewController {
             let isLoggedIn = userInfo[0]
         else { return }
         
-        if isLoggedIn {
-            contentVC.view.isHidden = false
-            stopLoading(for: .by)
-        }
+//        if isLoggedIn {
+//            contentVC.view.isHidden = false
+//            stopLoading(for: .by)
+//        }
     }
     
     private func didResetBYState(_ reset: Bool) {
@@ -96,10 +98,10 @@ extension BAMainViewController {
                 make.bottom.equalTo(view.snp.bottomMargin)
             }
             
-            if !JCLoginState.shared.by {
-                contentVC.view.isHidden = true
-                startLoading(for: .by)
-            }
+//            if !JCLoginState.shared.by {
+//                contentVC.view.isHidden = true
+//                startLoading(for: .by)
+//            }
         }
     }
     

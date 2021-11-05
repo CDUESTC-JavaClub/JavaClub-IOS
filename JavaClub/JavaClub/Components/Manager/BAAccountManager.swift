@@ -375,7 +375,7 @@ extension BAAccountManager {
                 }
                 
             case .failure(let error):
-                if error.responseCode == NSURLErrorTimedOut {
+                if error._code == NSURLErrorTimedOut {
                     completion(.failure(.timeout))
                     print("DEBUG: BY Request Timeout.")
                 } else {
