@@ -102,6 +102,14 @@ extension STContentViewController {
     }
     
     private func configureModels() {
+        var versionInfo: String = "更多"
+        if
+            let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
+            let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+        {
+            versionInfo = "v\(version) (\(build))"
+        }
+        
         models = [
             TVSection(title: "绑定信息".localized(), options: [
                 ._static(model: TVStaticOption(title: "已绑定学号".localized(), icon: nil, value: Defaults[.jcUser]?.studentID ?? "")),
@@ -127,9 +135,11 @@ extension STContentViewController {
                     }
                 )),
             ]),
-            TVSection(title: "更多".localized(), options: [
+            TVSection(title: versionInfo, options: [
                 .tappable(model: TVTappableOption(title: "检查更新".localized(), icon: UIImage(named: "update_icon"), handler: {
-                    
+                    if let createURL = URL(string: "https://apps.apple.com/cn/app/javaclub/id1590327368?l=en") {
+                        UIApplication.shared.open(createURL)
+                    }
                 })),
                 .tappable(model: TVTappableOption(title: "退出登录".localized(), icon: UIImage(named: "logout_icon"), handler: { [weak self] in
                     if let tabBarController = self?.view.window?.rootViewController as? UITabBarController {
@@ -149,6 +159,7 @@ extension STContentViewController {
             tableView.backgroundColor = UIColor(hex: "151515")
         } else {
             view.backgroundColor = UIColor(hex: "F2F2F7")
+            tableView.backgroundColor = UIColor(hex: "F2F2F7")
         }
     }
     

@@ -58,6 +58,8 @@ extension KAContentViewController {
         // Set Inset For 20 Temporarily
         tableView.contentInset = .init(top: -30, left: 0, bottom: 20, right: 0)
         
+        // Disable Scrolling Temporarily
+        scrollView.isScrollEnabled = false
         scrollView.alwaysBounceVertical = true
         tableView.alwaysBounceVertical = false
     }

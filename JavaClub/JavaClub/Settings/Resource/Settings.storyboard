@@ -77,11 +77,11 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="74T-ca-xeA" secondAttribute="bottom" id="2L2-ou-jII"/>
                             <constraint firstItem="wa0-0D-gbw" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" id="B0Y-td-KMe"/>
                             <constraint firstItem="wa0-0D-gbw" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Dta-pL-Yuh"/>
                             <constraint firstItem="74T-ca-xeA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Kgv-re-g1g"/>
                             <constraint firstItem="wa0-0D-gbw" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="hIg-MG-Nkw"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="74T-ca-xeA" secondAttribute="bottom" id="hPK-Yk-vLI"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="74T-ca-xeA" secondAttribute="trailing" id="vlT-hd-XJk"/>
                             <constraint firstItem="74T-ca-xeA" firstAttribute="top" secondItem="wa0-0D-gbw" secondAttribute="bottom" id="x5Y-fC-rbX"/>
                         </constraints>
