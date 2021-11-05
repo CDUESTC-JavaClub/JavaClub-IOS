@@ -9,6 +9,14 @@ import UIKit
 
 @IBDesignable
 class UnderlineButton: UIButton {
+    
+    @IBInspectable var localizedKey: String? {
+        didSet {
+            guard let key = localizedKey else { return }
+            setTitle(NSLocalizedString(key, comment: ""), for: .normal)
+        }
+    }
+    
     @IBInspectable var titleString: String!
     @IBInspectable var titleStringColor: UIColor?
     
@@ -16,7 +24,7 @@ class UnderlineButton: UIButton {
         super.didMoveToWindow()
         
         setAttributedTitle(
-            NSAttributedString(string: titleString, attributes: [
+            NSAttributedString(string: titleString.localized(), attributes: [
                 .underlineStyle: NSUnderlineStyle.single.rawValue,
                 .foregroundColor: titleStringColor ?? .label
             ]),

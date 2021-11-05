@@ -118,7 +118,7 @@ struct KAClassDetailView: View {
             return "18:30~20:05"
             
         default:
-            return "第 \(index) 节"
+            return "第 \(index) 节".localized()
         }
     }
 }

@@ -11,6 +11,7 @@ import SwiftyJSON
 import Defaults
 import SwiftyRSA
 import WebKit
+import Kingfisher
 
 enum JCError: Error {
     case pubKeyReqFailure
@@ -20,11 +21,13 @@ enum JCError: Error {
     case encryptKeyErr
     case notLoginJC
     case notLoginJW
+    case notLoginBY
     case wrongPassword
     case unknown
     case castErr
     case illegalParameter
     case imgRetrieveFailed
+    case selfGotReleased
 }
 
 
@@ -111,29 +114,42 @@ extension JCAccountManager {
      *
      *  By default, JavaClub app will logout one's account by the time they terminate the app.
      */
-    func logout() {
+    func logout(clean: Bool = false) {
         AF.request("https://api.cduestc.club/api/auth/logout").response { _ in }
         
-        Defaults[.avatarURL] = nil
-        Defaults[.bannerURL] = nil
-        Defaults[.loginInfo] = nil
-        Defaults[.sessionURL] = nil
-        Defaults[.user] = nil
-        Defaults[.jwInfo] = nil
-        Defaults[.firstLogin] = true
-        Defaults[.enrollment] = nil
-        Defaults[.classTableTerm] = 1
-        Defaults[.classTableJsonData] = nil
+        JCLoginState.shared.logout()
         
-        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
-        
-        WKWebsiteDataStore
-            .default()
-            .removeData(
-                ofTypes: [WKWebsiteDataTypeCookies],
-                modifiedSince: Date.distantPast,
-                completionHandler: {}
-            )
+        if clean {
+            ImageCache.default.clearDiskCache(completion: nil)
+            
+            // JC
+            Defaults[.jcUser] = nil
+            Defaults[.jcLoginInfo] = nil
+            Defaults[.sessionURL] = nil
+            Defaults[.avatarURL] = nil
+            Defaults[.bannerURL] = nil
+            
+            // JW
+            Defaults[.jwLoginInfo] = nil
+            Defaults[.firstLogin] = true
+            Defaults[.enrollment] = nil
+            Defaults[.classTableTerm] = 1
+            Defaults[.classTableJsonData] = nil
+            
+            // BY
+            Defaults[.byLoginInfo] = nil
+            Defaults[.byAccount] = nil
+            
+            HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+            
+            WKWebsiteDataStore
+                .default()
+                .removeData(
+                    ofTypes: [WKWebsiteDataTypeCookies],
+                    modifiedSince: Date.distantPast,
+                    completionHandler: {}
+                )
+        }
     }
     
     /**
@@ -185,11 +201,14 @@ extension JCAccountManager {
      *  - Parameters:
      *      - completion: A block that tells the process is complete.
      */
-    func getUserMedia() {
+    func getUserMedia(_ completion: ((Bool) -> Void)? = nil) {
         // Refresh User Media
         JCAccountManager.shared.getSession { urlStr, avatar, banner in
             if Defaults[.sessionURL] == nil, let urlStr = urlStr {
                 Defaults[.sessionURL] = urlStr
+                completion?(true)
+            } else {
+                completion?(false)
             }
             
             if Defaults[.avatarURL] == nil, let avatar = avatar {
@@ -275,7 +294,7 @@ extension JCAccountManager {
      *      - completion: A block of what you wanna do with the result of one's enrollment info.
      */
     func getEnrollmentInfo(_ completion: @escaping (Result<KAEnrollment, JCError>) -> Void) {
-        guard Defaults[.jwInfo] != nil else {
+        guard Defaults[.jwLoginInfo] != nil else {
             completion(.failure(.notLoginJW))
             return
         }
@@ -335,7 +354,7 @@ extension JCAccountManager {
      *      - completion: A block of what you wanna do with the result of one's scores.
      */
     func getScore(_ completion: @escaping (Result<[KAScore], JCError>) -> Void) {
-        guard Defaults[.jwInfo] != nil else {
+        guard Defaults[.jwLoginInfo] != nil else {
             completion(.failure(.notLoginJW))
             return
         }

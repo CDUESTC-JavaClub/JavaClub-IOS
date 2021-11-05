@@ -26,13 +26,12 @@ class KAContentViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         let _ = Defaults.observe(.enrollment) { [weak self] obj in
-            self?.didUpdateEnrollmentState(obj.newValue)
+            self?.didRefreshEnrollmentInfo(obj.newValue)
         }.tieToLifetime(of: self)
         
         setup()
         configureAppearance()
         configureModels()
-        loadInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,13 +58,16 @@ extension KAContentViewController {
         // Set Inset For 20 Temporarily
         tableView.contentInset = .init(top: -30, left: 0, bottom: 20, right: 0)
         
+        // Disable Scrolling Temporarily
+        scrollView.isScrollEnabled = false
         scrollView.alwaysBounceVertical = true
         tableView.alwaysBounceVertical = false
     }
     
     private func configureAppearance() {
         if isDarkMode {
-            scrollView.backgroundColor = UIColor(hex: "000000")
+            scrollView.backgroundColor = UIColor(hex: "151515")
+            tableView.backgroundColor = UIColor(hex: "151515")
         } else {
             scrollView.backgroundColor = UIColor(hex: "F2F2F7")
         }
@@ -77,16 +79,16 @@ extension KAContentViewController {
     private func configureModels() {
         models = [
             TVSection(title: "", options: [
-                .tappable(model: TVTappableOption(title: "学期成绩查询", icon: UIImage(named: "score_icon"), handler: { [weak self] in
+                .tappable(model: TVTappableOption(title: "学期成绩查询".localized(), icon: UIImage(named: "score_icon"), handler: { [weak self] in
                     self?.navigationController?.isNavigationBarHidden = false
                     self?.navigationController?.pushViewController(KAScoreViewController(), animated: true)
                 })),
-                .tappable(model: TVTappableOption(title: "课程表查询", icon: UIImage(named: "classtable_icon"), handler: { [weak self] in
+                .tappable(model: TVTappableOption(title: "课程表查询".localized(), icon: UIImage(named: "classtable_icon"), handler: { [weak self] in
                     let classTableVC = UIHostingController(rootView: KAClassTableContentview())
                     self?.navigationController?.isNavigationBarHidden = false
                     self?.navigationController?.pushViewController(classTableVC, animated: true)
                 })),
-                .tappable(model: TVTappableOption(title: "学籍信息查询", icon: UIImage(named: "enrollment_icon"), handler: { [weak self] in
+                .tappable(model: TVTappableOption(title: "学籍信息查询".localized(), icon: UIImage(named: "enrollment_icon"), handler: { [weak self] in
                     self?.navigationController?.isNavigationBarHidden = false
                     
                     let enrollmentVC = UIStoryboard(name: "KcAssistant", bundle: .main)
@@ -100,16 +102,12 @@ extension KAContentViewController {
         tableView.reloadData()
     }
     
-    private func loadInfo() {
-        didUpdateEnrollmentState(Defaults[.enrollment])
-    }
-    
-    private func didUpdateEnrollmentState(_ enrollment: KAEnrollment?) {
+    private func didRefreshEnrollmentInfo(_ enrollment: KAEnrollment?) {
         if let enrollment = enrollment {
             nameLabel.text = enrollment.name
-            gradeLabel.text = "\(enrollment.grade)级 \(enrollment.direction)"
-            studentIDLabel.text = "学号：\(enrollment.studentID)"
-            deptLabel.text = "院系：\(enrollment.department)（\(enrollment.degree)）"
+            gradeLabel.text = "\(enrollment.grade)级 \(enrollment.direction)".localized()
+            studentIDLabel.text = "学号：\(enrollment.studentID)".localized()
+            deptLabel.text = "院系：\(enrollment.department)（\(enrollment.degree)）".localized()
         } else {
             nameLabel.text = "N/A"
             gradeLabel.text = ""

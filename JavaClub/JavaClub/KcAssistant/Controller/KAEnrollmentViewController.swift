@@ -58,7 +58,8 @@ extension KAEnrollmentViewController {
     
     private func configureAppearance() {
         if isDarkMode {
-            view.backgroundColor = UIColor(hex: "000000")
+            view.backgroundColor = UIColor(hex: "151515")
+            tableView.backgroundColor = UIColor(hex: "151515")
         } else {
             view.backgroundColor = UIColor(hex: "F2F2F7")
         }

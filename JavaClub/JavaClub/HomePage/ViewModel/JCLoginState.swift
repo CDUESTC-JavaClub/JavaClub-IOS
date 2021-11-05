@@ -11,33 +11,39 @@ import Defaults
 extension Notification.Name {
     static let didUpdateJCLoginState = Notification.Name("didUpdateJCLoginStateName")
     static let didUpdateJWLoginState = Notification.Name("didUpdateJWLoginStateName")
-    static let didUpdateBindingState = Notification.Name("didUpdateBindingStateName")
+    static let didUpdateBYLoginState = Notification.Name("didUpdateBYLoginStateName")
 }
 
 class JCLoginState: ObservableObject {
     static let shared = JCLoginState()
     
-    @Published var jc: Bool {
+    @Published var jc: Bool = false {
         didSet {
-            NotificationCenter.default.post(name: .didUpdateJCLoginState, object: nil)
+            NotificationCenter.default.post(name: .didUpdateJCLoginState, object: nil, userInfo: [0: jc])
         }
     }
     
-    @Published var jw: Bool {
+    @Published var jw: Bool = false {
         didSet {
-            NotificationCenter.default.post(name: .didUpdateJWLoginState, object: nil)
+            NotificationCenter.default.post(name: .didUpdateJWLoginState, object: nil, userInfo: [0: jw])
         }
     }
     
-    @Published var isBound: Bool {
+    @Published var by: Bool = false {
         didSet {
-            NotificationCenter.default.post(name: .didUpdateBindingState, object: nil)
+            NotificationCenter.default.post(name: .didUpdateBYLoginState, object: nil, userInfo: [0: by])
         }
     }
+    
+    @Published var isBound: Bool
     
     private init() {
-        jc = Defaults[.loginInfo] != nil
-        jw = Defaults[.jwInfo] != nil
-        isBound = Defaults[.user]?.studentID != nil
+        isBound = Defaults[.jcUser]?.studentID != nil
+    }
+    
+    func logout() {
+        jc = false
+        jw = false
+        by = false
     }
 }

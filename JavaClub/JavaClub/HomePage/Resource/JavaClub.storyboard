@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,138 +21,139 @@
                             <userLayoutGuide location="16" affinity="maxX"/>
                         </userGuides>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="BKF-aJ-5Sq">
-                                <rect key="frame" x="0.0" y="114" width="414" height="632"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOl-pS-4dZ">
+                                <rect key="frame" x="16" y="305.5" width="382" height="295.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="g2o-uA-6rn">
-                                        <rect key="frame" x="113.5" y="8" width="187.5" height="120"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="mQD-K9-akR"/>
-                                        </constraints>
-                                    </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="zGl-zs-fWP">
-                                        <rect key="frame" x="0.0" y="198" width="414" height="222"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EpY-Rd-oKf" customClass="DesignableView" customModule="JavaClub" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="e9l-ac-agj">
-                                                <rect key="frame" x="16" y="8" width="382" height="116"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EpY-Rd-oKf" customClass="DesignableView" customModule="JavaClub" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
-                                                        <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用户名/邮箱" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="axa-ga-oqA">
-                                                                <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                            </textField>
-                                                        </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="IQi-cn-4Q6"/>
-                                                            <constraint firstItem="axa-ga-oqA" firstAttribute="leading" secondItem="EpY-Rd-oKf" secondAttribute="leading" id="Vyq-Qs-v8q"/>
-                                                            <constraint firstAttribute="bottom" secondItem="axa-ga-oqA" secondAttribute="bottom" id="myH-5y-GJO"/>
-                                                            <constraint firstItem="axa-ga-oqA" firstAttribute="top" secondItem="EpY-Rd-oKf" secondAttribute="top" id="pnc-hO-lLh"/>
-                                                            <constraint firstAttribute="trailing" secondItem="axa-ga-oqA" secondAttribute="trailing" id="xKN-7m-Nlz"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hGi-WU-SDA" customClass="DesignableView" customModule="JavaClub" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="66" width="382" height="50"/>
-                                                        <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="FW3-n3-SBr">
-                                                                <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                                            </textField>
-                                                        </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                        <constraints>
-                                                            <constraint firstItem="FW3-n3-SBr" firstAttribute="leading" secondItem="hGi-WU-SDA" secondAttribute="leading" id="5Cm-7R-dUX"/>
-                                                            <constraint firstAttribute="bottom" secondItem="FW3-n3-SBr" secondAttribute="bottom" id="8Zc-bz-XNK"/>
-                                                            <constraint firstItem="FW3-n3-SBr" firstAttribute="top" secondItem="hGi-WU-SDA" secondAttribute="top" id="kiE-HK-NOf"/>
-                                                            <constraint firstAttribute="trailing" secondItem="FW3-n3-SBr" secondAttribute="trailing" id="meD-o3-zgM"/>
-                                                            <constraint firstAttribute="height" constant="50" id="upq-JS-UnM"/>
-                                                        </constraints>
-                                                    </view>
-                                                </subviews>
-                                            </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hH-2x-huI">
-                                                <rect key="frame" x="182" y="164" width="50" height="50"/>
-                                                <color key="backgroundColor" red="0.37647058823529411" green="0.81960784313725488" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="qAo-Tt-oaW"/>
-                                                    <constraint firstAttribute="height" constant="50" id="r4d-Zd-bmR"/>
-                                                </constraints>
-                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system"/>
-                                                <connections>
-                                                    <action selector="login" destination="EM6-ZV-m79" eventType="touchUpInside" id="s9g-Qz-Jqi"/>
-                                                </connections>
-                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用户名/邮箱" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="axa-ga-oqA" customClass="LocalizableTextField" customModule="JavaClub" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedPlaceHolder" value="用户名/邮箱"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="e9l-ac-agj" firstAttribute="leading" secondItem="zGl-zs-fWP" secondAttribute="leading" constant="16" id="6aM-5Y-bhp"/>
-                                            <constraint firstAttribute="trailing" secondItem="e9l-ac-agj" secondAttribute="trailing" constant="16" id="IB7-uO-m7t"/>
+                                            <constraint firstAttribute="bottom" secondItem="axa-ga-oqA" secondAttribute="bottom" id="0ln-5e-Iyw"/>
+                                            <constraint firstItem="axa-ga-oqA" firstAttribute="top" secondItem="EpY-Rd-oKf" secondAttribute="top" id="Mwz-Vj-8vD"/>
+                                            <constraint firstItem="axa-ga-oqA" firstAttribute="leading" secondItem="EpY-Rd-oKf" secondAttribute="leading" id="N7w-KO-aha"/>
+                                            <constraint firstAttribute="height" constant="50" id="QfR-Ex-pef"/>
+                                            <constraint firstAttribute="trailing" secondItem="axa-ga-oqA" secondAttribute="trailing" id="zUY-Pq-qig"/>
                                         </constraints>
-                                        <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1AB-Ou-TJo">
-                                        <rect key="frame" x="16" y="490" width="382" height="30"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hGi-WU-SDA" customClass="DesignableView" customModule="JavaClub" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="382" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KnU-vk-8zH" customClass="UnderlineButton" customModule="JavaClub" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
-                                                <color key="tintColor" red="0.37647058823529411" green="0.81960784313725488" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="创建账号"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="FW3-n3-SBr" customClass="LocalizableTextField" customModule="JavaClub" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="创建账号"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleStringColor">
-                                                        <color key="value" red="0.37647058823529411" green="0.81960784313725488" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedPlaceHolder" value="密码"/>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="createBtnDidClick:" destination="EM6-ZV-m79" eventType="touchUpInside" id="ry7-vz-yy2"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHe-WN-xRB" customClass="UnderlineButton" customModule="JavaClub" customModuleProvider="target">
-                                                <rect key="frame" x="191" y="0.0" width="191" height="30"/>
-                                                <color key="tintColor" red="0.37647058823529411" green="0.81960784313725488" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="忘记密码？"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="忘记密码?"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleStringColor">
-                                                        <color key="value" red="0.37647058823529411" green="0.81960784313725488" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="forgotBtnDidClick:" destination="EM6-ZV-m79" eventType="touchUpInside" id="uAj-Zo-rLN"/>
-                                                </connections>
-                                            </button>
+                                            </textField>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="926-We-59d"/>
+                                            <constraint firstItem="FW3-n3-SBr" firstAttribute="leading" secondItem="hGi-WU-SDA" secondAttribute="leading" id="Bif-Ra-b4n"/>
+                                            <constraint firstItem="FW3-n3-SBr" firstAttribute="top" secondItem="hGi-WU-SDA" secondAttribute="top" id="Odv-9I-XO2"/>
+                                            <constraint firstAttribute="trailing" secondItem="FW3-n3-SBr" secondAttribute="trailing" id="Tk3-We-wgw"/>
+                                            <constraint firstAttribute="bottom" secondItem="FW3-n3-SBr" secondAttribute="bottom" id="VmU-fZ-maA"/>
+                                            <constraint firstAttribute="height" constant="50" id="cLp-Wl-LL7"/>
                                         </constraints>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="IfZ-cG-ukx">
-                                        <rect key="frame" x="87.5" y="590" width="239.5" height="34"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hH-2x-huI" customClass="TappableButton" customModule="JavaClub" customModuleProvider="target">
+                                        <rect key="frame" x="166" y="140" width="50" height="50"/>
+                                        <color key="backgroundColor" red="0.37647058823529411" green="0.81960784313725488" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="2bK-JR-yoY"/>
+                                            <constraint firstAttribute="height" constant="50" id="Rsx-SU-3KN"/>
+                                        </constraints>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalColor">
+                                                <color key="value" red="0.37647058823529411" green="0.81960784313725488" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedColor">
+                                                <color key="value" red="0.55294117647058827" green="0.89411764705882346" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="login" destination="EM6-ZV-m79" eventType="touchUpInside" id="s9g-Qz-Jqi"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nL3-qN-AQy">
+                                        <rect key="frame" x="20" y="220" width="342" height="1"/>
+                                        <color key="backgroundColor" systemColor="separatorColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="GYP-Sk-khJ"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHe-WN-xRB" customClass="UnderlineButton" customModule="JavaClub" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="231" width="75.5" height="24.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24.5" id="DQ9-jU-4ch"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.37647058823529411" green="0.81960784313725488" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="忘记密码？" buttonSize="mini"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="忘记密码?"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="titleStringColor">
+                                                <color key="value" red="0.37647058823529411" green="0.81960784313725488" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="忘记密码?"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="forgotBtnDidClick:" destination="EM6-ZV-m79" eventType="touchUpInside" id="uAj-Zo-rLN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KnU-vk-8zH" customClass="UnderlineButton" customModule="JavaClub" customModuleProvider="target">
+                                        <rect key="frame" x="292.5" y="231" width="69.5" height="24.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24.5" id="KOp-fh-sA6"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.37647058823529411" green="0.81960784313725488" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="创建账号" buttonSize="mini"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="创建账号"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="titleStringColor">
+                                                <color key="value" red="0.37647058823529411" green="0.81960784313725488" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="创建账号"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="createBtnDidClick:" destination="EM6-ZV-m79" eventType="touchUpInside" id="ry7-vz-yy2"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="-15" translatesAutoresizingMaskIntoConstraints="NO" id="9Ip-3o-avK">
+                                        <rect key="frame" x="86" y="265.5" width="210" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tM9-yC-6q1" customClass="JCCheckboxButton" customModule="JavaClub" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="178" height="34"/>
-                                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tM9-yC-6q1" customClass="JCCheckboxButton" customModule="JavaClub" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="155.5" height="30"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="checked" title="已阅读并同意我们的" imagePadding="5"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="checked" title="已阅读并同意我们的" imagePadding="5" buttonSize="mini"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="已阅读并同意我们的"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="agreeCheckboxDidSwitch:" destination="EM6-ZV-m79" eventType="touchUpInside" id="X5V-dW-S3I"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jg6-Bj-l4f" customClass="UnderlineButton" customModule="JavaClub" customModuleProvider="target">
-                                                <rect key="frame" x="158" y="1.5" width="81.5" height="31"/>
-                                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jg6-Bj-l4f" customClass="UnderlineButton" customModule="JavaClub" customModuleProvider="target">
+                                                <rect key="frame" x="140.5" y="0.0" width="69.5" height="30"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="隐私条款"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="隐私条款" buttonSize="mini"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="titleStringColor">
-                                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="value" systemColor="labelColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="隐私条款"/>
                                                 </userDefinedRuntimeAttributes>
@@ -161,57 +162,107 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="0Ps-6L-RSo"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="1AB-Ou-TJo" secondAttribute="trailing" constant="16" id="EMX-aK-TAe"/>
-                                    <constraint firstItem="1AB-Ou-TJo" firstAttribute="leading" secondItem="BKF-aJ-5Sq" secondAttribute="leading" constant="16" id="Oez-wC-8vL"/>
-                                    <constraint firstItem="zGl-zs-fWP" firstAttribute="leading" secondItem="BKF-aJ-5Sq" secondAttribute="leading" id="Rif-cp-cT0"/>
-                                    <constraint firstAttribute="trailing" secondItem="zGl-zs-fWP" secondAttribute="trailing" id="bgb-tx-jXY"/>
+                                    <constraint firstAttribute="bottom" secondItem="9Ip-3o-avK" secondAttribute="bottom" id="1uM-hu-f06"/>
+                                    <constraint firstItem="IHe-WN-xRB" firstAttribute="leading" secondItem="nL3-qN-AQy" secondAttribute="leading" id="4kF-QG-YD4"/>
+                                    <constraint firstAttribute="trailing" secondItem="hGi-WU-SDA" secondAttribute="trailing" id="4oR-rd-Egh"/>
+                                    <constraint firstItem="KnU-vk-8zH" firstAttribute="trailing" secondItem="nL3-qN-AQy" secondAttribute="trailing" id="8vm-qz-L3f"/>
+                                    <constraint firstItem="EpY-Rd-oKf" firstAttribute="top" secondItem="FOl-pS-4dZ" secondAttribute="top" id="NIE-Co-0eW"/>
+                                    <constraint firstItem="2hH-2x-huI" firstAttribute="top" secondItem="hGi-WU-SDA" secondAttribute="bottom" constant="30" id="Rvh-RT-Iyr"/>
+                                    <constraint firstItem="9Ip-3o-avK" firstAttribute="centerX" secondItem="FOl-pS-4dZ" secondAttribute="centerX" id="Siu-or-IfW"/>
+                                    <constraint firstItem="2hH-2x-huI" firstAttribute="centerX" secondItem="FOl-pS-4dZ" secondAttribute="centerX" id="Sxv-bI-ap2"/>
+                                    <constraint firstItem="KnU-vk-8zH" firstAttribute="top" secondItem="nL3-qN-AQy" secondAttribute="bottom" constant="10" id="TDY-4S-1ZV"/>
+                                    <constraint firstItem="IHe-WN-xRB" firstAttribute="top" secondItem="nL3-qN-AQy" secondAttribute="bottom" constant="10" id="ULi-pC-Wo7"/>
+                                    <constraint firstItem="EpY-Rd-oKf" firstAttribute="leading" secondItem="FOl-pS-4dZ" secondAttribute="leading" id="W1i-Nz-TjE"/>
+                                    <constraint firstAttribute="trailing" secondItem="nL3-qN-AQy" secondAttribute="trailing" constant="20" id="ZAd-Ok-rAG"/>
+                                    <constraint firstAttribute="trailing" secondItem="EpY-Rd-oKf" secondAttribute="trailing" id="ZQZ-K4-OJC"/>
+                                    <constraint firstItem="hGi-WU-SDA" firstAttribute="leading" secondItem="FOl-pS-4dZ" secondAttribute="leading" id="cfD-4k-OGV"/>
+                                    <constraint firstItem="nL3-qN-AQy" firstAttribute="leading" secondItem="FOl-pS-4dZ" secondAttribute="leading" constant="20" id="fXQ-k6-oXe"/>
+                                    <constraint firstItem="nL3-qN-AQy" firstAttribute="top" secondItem="2hH-2x-huI" secondAttribute="bottom" constant="30" id="oge-zn-1x7"/>
+                                    <constraint firstItem="9Ip-3o-avK" firstAttribute="top" secondItem="IHe-WN-xRB" secondAttribute="bottom" constant="10" id="pBR-JQ-gOD"/>
+                                    <constraint firstItem="hGi-WU-SDA" firstAttribute="top" secondItem="EpY-Rd-oKf" secondAttribute="bottom" constant="10" id="zER-XO-dbT"/>
                                 </constraints>
-                                <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="0.0"/>
-                            </stackView>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lightColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="darkColor">
+                                        <color key="value" red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="g2o-uA-6rn">
+                                <rect key="frame" x="147" y="74" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="E0q-so-GWf"/>
+                                    <constraint firstAttribute="width" constant="120" id="YIN-4Z-o9f"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TGz-3j-88c"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="TGz-3j-88c" firstAttribute="trailing" secondItem="BKF-aJ-5Sq" secondAttribute="trailing" id="HMM-8k-Dr9"/>
-                            <constraint firstItem="BKF-aJ-5Sq" firstAttribute="leading" secondItem="TGz-3j-88c" secondAttribute="leading" id="Nl0-cE-0Ez"/>
-                            <constraint firstItem="BKF-aJ-5Sq" firstAttribute="top" secondItem="TGz-3j-88c" secondAttribute="top" constant="70" id="pc5-hJ-wyl"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="BKF-aJ-5Sq" secondAttribute="bottom" constant="20" id="vA8-tv-xiF"/>
+                            <constraint firstItem="g2o-uA-6rn" firstAttribute="top" secondItem="TGz-3j-88c" secondAttribute="top" constant="30" id="PMz-yG-t7g"/>
+                            <constraint firstItem="FOl-pS-4dZ" firstAttribute="centerY" secondItem="TGz-3j-88c" secondAttribute="centerY" id="fhM-Xn-9WY"/>
+                            <constraint firstItem="TGz-3j-88c" firstAttribute="trailing" secondItem="FOl-pS-4dZ" secondAttribute="trailing" constant="16" id="pCu-vc-5Yl"/>
+                            <constraint firstItem="g2o-uA-6rn" firstAttribute="centerX" secondItem="TGz-3j-88c" secondAttribute="centerX" id="scW-jz-T1e"/>
+                            <constraint firstItem="FOl-pS-4dZ" firstAttribute="leading" secondItem="TGz-3j-88c" secondAttribute="leading" constant="16" id="zwd-6d-ciW"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="agreeCheckBtn" destination="tM9-yC-6q1" id="GpF-D9-wlM"/>
                         <outlet property="createBtn" destination="KnU-vk-8zH" id="pLD-vQ-emx"/>
                         <outlet property="forgotBtn" destination="IHe-WN-xRB" id="eHw-dH-lql"/>
+                        <outlet property="interactionView" destination="FOl-pS-4dZ" id="1Xf-XQ-Uo4"/>
                         <outlet property="loginBtn" destination="2hH-2x-huI" id="Xc9-Qd-jAR"/>
-                        <outlet property="mainStackView" destination="BKF-aJ-5Sq" id="eWa-0s-gcN"/>
+                        <outlet property="passwordContainerView" destination="hGi-WU-SDA" id="tq6-eN-jhb"/>
                         <outlet property="passwordField" destination="FW3-n3-SBr" id="p2F-SW-Yps"/>
                         <outlet property="privacyBtn" destination="jg6-Bj-l4f" id="bEC-6p-Mj3"/>
+                        <outlet property="usernameContainerView" destination="EpY-Rd-oKf" id="GXt-8C-YSN"/>
                         <outlet property="usernameField" destination="axa-ga-oqA" id="MW8-pv-a5K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2g-hv-oZY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-17" y="95"/>
+            <point key="canvasLocation" x="-17.39130434782609" y="94.419642857142847"/>
         </scene>
     </scenes>
     <designables>
+        <designable name="FW3-n3-SBr">
+            <size key="intrinsicContentSize" width="29" height="17"/>
+        </designable>
         <designable name="IHe-WN-xRB">
-            <size key="intrinsicContentSize" width="88.5" height="31"/>
+            <size key="intrinsicContentSize" width="75.5" height="24.5"/>
         </designable>
         <designable name="KnU-vk-8zH">
-            <size key="intrinsicContentSize" width="81.5" height="31"/>
+            <size key="intrinsicContentSize" width="69.5" height="24.5"/>
+        </designable>
+        <designable name="axa-ga-oqA">
+            <size key="intrinsicContentSize" width="76" height="18.5"/>
         </designable>
         <designable name="jg6-Bj-l4f">
-            <size key="intrinsicContentSize" width="81.5" height="31"/>
+            <size key="intrinsicContentSize" width="69.5" height="24.5"/>
+        </designable>
+        <designable name="tM9-yC-6q1">
+            <size key="intrinsicContentSize" width="155.5" height="30"/>
         </designable>
     </designables>
     <resources>
         <image name="checked" width="20" height="20"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="logo" width="187.5" height="188.5"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

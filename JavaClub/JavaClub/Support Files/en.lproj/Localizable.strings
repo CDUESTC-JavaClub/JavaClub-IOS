@@ -1,0 +1,79 @@
+"加载中" = "Loading";
+
+"暂无法获取该学期课表，请稍后再试。" = "Can't get the semester class table, please try again later.";
+
+"获取失败..." = "Fetch failed...";
+
+"课程号：%@" = "Class ID：%@";
+
+"课程名：%@" = "Class Name：%@";
+
+"地点：%@" = "Locale: %@";
+
+"教师：%@" = "Teacher: %@";
+
+"错误" = "Error";
+
+"使用深色模式" = "Use Dark mode";
+
+"主题外观跟随系统" = "Use System Appearance";
+
+"外观设置" = "Appearance";
+
+"绑定信息" = "Binding";
+
+"检查更新" = "Check For Updates";
+
+"退出登录" = "Logout";
+
+"教务" = "KcAssistant";
+
+"设置" = "Settings";
+
+"已绑定学号" = "Student ID";
+
+"已绑定邮箱" = "Email";
+
+"学期成绩查询" = "Semester Score";
+
+"课程表查询" = "Class Table";
+
+"学籍信息查询" = "Enrollment Info";
+
+"暂无公告内容，敬请期待~" = "There's nothing much to see, please come back later~";
+
+"教务系统" = "KcAssistant";
+
+"包含成绩查询、课表查询、学籍查询等功能" = "Contains semester score quiries, class table queries, enrollment info queries, etc.";
+
+"百叶计划" = "BaiAssistant";
+
+"包含活动报名、活动取消、积分查询等功能" = "Contains event registration, event cancellation, BaiYe integral query, etc.";
+
+"已达标" = "Accomplished";
+
+"未达标" = "Failed";
+
+"登录失败，请检查输入或网络连接是否通畅！" = "Login failed, please check your input and make sure your network connection is available!";
+
+"在使用本软件之前，您需要同意我们的隐私条款！" = "Before using our software, you need to agree to our privacy policy! ";
+
+"用户名和密码都不能为空，请检查输入！" = "The username and password cannot be empty, please check the input!";
+
+"已阅读并同意我们的" = "I'm agreed to the";
+
+"隐私条款" = "privacy policy";
+
+"请先登录" = "Please Login First";
+
+"忘记密码?" = "Forgot password?";
+
+"创建账号" = "Sign Up";
+
+"用户名/邮箱" = "Username/Email";
+
+"教务账号（学号）" = "Student ID";
+
+"学号" = "Student ID";
+
+"密码" = "Password";

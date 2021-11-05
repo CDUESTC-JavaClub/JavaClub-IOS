@@ -14,31 +14,16 @@ struct LoadingIndicatorView: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
-            Section {
-                HStack(alignment: .center, spacing: 5) {
-                    RoundedRectangle(cornerRadius: 4)
-                        .fill(Color.accentColor)
-                        .frame(width: 15, height: animates ? 50 : 25)
-                    RoundedRectangle(cornerRadius: 4)
-                        .fill(Color.accentColor)
-                        .frame(width: 15, height: animates ? 25 : 50)
-                    RoundedRectangle(cornerRadius: 4)
-                        .fill(Color.accentColor)
-                        .frame(width: 15, height: animates ? 50 : 25)
-                }
-                .animation(
-                    Animation
-                        .easeInOut(duration: 0.4)
-                        .repeatForever(autoreverses: true)
-                )
-            }
-            .frame(width: 50, height: 50)
+            Spinner(animates: animates)
+                .frame(width: 30, height: 30)
+                .padding(.top, 25)
             
             Text("加载中")
                 .foregroundColor(Color.label)
+                .padding(.bottom, 10)
         }
         .padding(.vertical, 10)
-        .padding(.horizontal, 20)
+        .padding(.horizontal, 30)
         .background(colorScheme == .light ? Color.white : .gray)
         .cornerRadius(15)
         .onAppear {

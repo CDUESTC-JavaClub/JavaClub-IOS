@@ -35,6 +35,16 @@
 		B02EEF3E26FDD7BD0010515A /* JCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */; };
 		B02EEF4126FDDA140010515A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B02EEF4026FDDA140010515A /* SnapKit */; };
 		B02EEF4426FDDA870010515A /* JavaClub.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B02EEF4326FDDA870010515A /* JavaClub.storyboard */; };
+		B035CACA273105950097AE68 /* StrokeColorAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035CAC5273105940097AE68 /* StrokeColorAnimation.swift */; };
+		B035CACB273105950097AE68 /* ProgressShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035CAC6273105940097AE68 /* ProgressShapeLayer.swift */; };
+		B035CACC273105950097AE68 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035CAC7273105940097AE68 /* ProgressView.swift */; };
+		B035CACD273105950097AE68 /* RotationAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035CAC8273105950097AE68 /* RotationAnimation.swift */; };
+		B035CACE273105950097AE68 /* StrokeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035CAC9273105950097AE68 /* StrokeAnimation.swift */; };
+		B035CAD02731234F0097AE68 /* LocalizableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035CACF2731234F0097AE68 /* LocalizableTextField.swift */; };
+		B041668B272F75EB00117876 /* BAMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B041668A272F75EB00117876 /* BAMainViewController.swift */; };
+		B041668E272F762200117876 /* BaiAssistant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B041668D272F762200117876 /* BaiAssistant.storyboard */; };
+		B0416690272F7DAB00117876 /* BAAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B041668F272F7DAB00117876 /* BAAccountManager.swift */; };
+		B0416692272F8BAA00117876 /* BAContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0416691272F8BAA00117876 /* BAContentViewController.swift */; };
 		B044E43C27191AFE0097D04B /* KAClassTableContentview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044E43B27191AFE0097D04B /* KAClassTableContentview.swift */; };
 		B044E43E27191B2B0097D04B /* KAClassTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044E43D27191B2B0097D04B /* KAClassTableCell.swift */; };
 		B044E446271958490097D04B /* KAClassRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044E445271958490097D04B /* KAClassRealm.swift */; };
@@ -42,23 +52,17 @@
 		B04C49562717F42200FBD9E7 /* CVScoreContentConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C49552717F42200FBD9E7 /* CVScoreContentConfiguration.swift */; };
 		B04C49582717F4AD00FBD9E7 /* CVScoreContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C49572717F4AD00FBD9E7 /* CVScoreContentView.swift */; };
 		B04C495A2718138F00FBD9E7 /* ScoreImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C49592718138F00FBD9E7 /* ScoreImageView.swift */; };
-		B04C4963271841E500FBD9E7 /* BaiUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C495C271841E400FBD9E7 /* BaiUserInfoView.swift */; };
-		B04C4964271841E500FBD9E7 /* BAContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C495D271841E400FBD9E7 /* BAContentView.swift */; };
-		B04C4965271841E500FBD9E7 /* BaiActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C495E271841E400FBD9E7 /* BaiActionView.swift */; };
-		B04C4966271841E500FBD9E7 /* BaiScoreOverallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C495F271841E500FBD9E7 /* BaiScoreOverallView.swift */; };
-		B04C4967271841E500FBD9E7 /* BaiHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C4960271841E500FBD9E7 /* BaiHeaderView.swift */; };
-		B04C4968271841E500FBD9E7 /* BaiScoreMiniView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C4961271841E500FBD9E7 /* BaiScoreMiniView.swift */; };
-		B04C4969271841E500FBD9E7 /* BaiScoreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C4962271841E500FBD9E7 /* BaiScoreDetailView.swift */; };
 		B04FEE2E27113D750065FFB6 /* TappableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE2D27113D750065FFB6 /* TappableViewCell.swift */; };
 		B04FEE302711607A0065FFB6 /* TVSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE2F2711607A0065FFB6 /* TVSection.swift */; };
 		B04FEE32271168080065FFB6 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE31271168080065FFB6 /* SwitchTableViewCell.swift */; };
 		B04FEE3427116CC80065FFB6 /* StaticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE3327116CC80065FFB6 /* StaticTableViewCell.swift */; };
 		B05B0D76271D05E300F48D52 /* NoRotateNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05B0D75271D05E300F48D52 /* NoRotateNavigationController.swift */; };
 		B06F83FF2722BC4800069A23 /* KAClassTableObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06F83FE2722BC4800069A23 /* KAClassTableObservable.swift */; };
-		B07399BC270A98330020AEB8 /* BaiAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BB270A98330020AEB8 /* BaiAccount.swift */; };
-		B07399BE270A99220020AEB8 /* ScoreAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BD270A99220020AEB8 /* ScoreAdd.swift */; };
-		B07399C0270A99330020AEB8 /* ScoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BF270A99330020AEB8 /* ScoreData.swift */; };
-		B07399C2270A99A70020AEB8 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399C1270A99A70020AEB8 /* Activity.swift */; };
+		B07399BC270A98330020AEB8 /* BAAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BB270A98330020AEB8 /* BAAccount.swift */; };
+		B07399BE270A99220020AEB8 /* BAScoreAdding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BD270A99220020AEB8 /* BAScoreAdding.swift */; };
+		B07399C0270A99330020AEB8 /* BAScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BF270A99330020AEB8 /* BAScore.swift */; };
+		B07399C2270A99A70020AEB8 /* BAEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399C1270A99A70020AEB8 /* BAEvent.swift */; };
+		B08CFF8F2733D727000E07A4 /* TappableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08CFF8E2733D727000E07A4 /* TappableButton.swift */; };
 		B08F6FB027003EEC0015B354 /* KALoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAD27003EEB0015B354 /* KALoginInfo.swift */; };
 		B08F6FB127003EEC0015B354 /* KAEnrollment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAE27003EEB0015B354 /* KAEnrollment.swift */; };
 		B08F6FB227003EEC0015B354 /* KAClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAF27003EEB0015B354 /* KAClass.swift */; };
@@ -75,17 +79,22 @@
 		B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA927044BE500E5C9C6 /* KASection.swift */; };
 		B0A5D9A1272A49D300A8E3EE /* JCDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A5D9A0272A49D300A8E3EE /* JCDateManager.swift */; };
 		B0A5D9A4272A9CFE00A8E3EE /* NumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A5D9A3272A9CFE00A8E3EE /* NumberExtension.swift */; };
+		B0AF94FE272BE05A00671BF7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B0AF94FC272BE05A00671BF7 /* Localizable.strings */; };
+		B0AF9504272BE88100671BF7 /* LocalizableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AF9503272BE88100671BF7 /* LocalizableLabel.swift */; };
 		B0B84350270FE6F800C19B9B /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B8434F270FE6F800C19B9B /* RefreshableScrollView.swift */; };
 		B0B84352270FEB1700C19B9B /* KAContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B84351270FEB1700C19B9B /* KAContentViewController.swift */; };
 		B0B84354270FEBE300C19B9B /* KAMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B84353270FEBE300C19B9B /* KAMainViewController.swift */; };
 		B0B84357270FEC1B00C19B9B /* KcAssistant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B84356270FEC1B00C19B9B /* KcAssistant.storyboard */; };
 		B0B8435B271039F600C19B9B /* TappableItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B8435A271039F600C19B9B /* TappableItemView.swift */; };
+		B0BCD18427326D360075395B /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BCD18327326D360075395B /* ProgressIndicator.swift */; };
 		B0CCEF0927140D6C001235E9 /* KABindingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CCEF0827140D6C001235E9 /* KABindingViewController.swift */; };
 		B0CCEF0C27141EAB001235E9 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = B0CCEF0B27141EAB001235E9 /* DeviceKit */; };
 		B0CCEF0E27144425001235E9 /* JCCheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CCEF0D27144425001235E9 /* JCCheckboxButton.swift */; };
 		B0D3A18F27000AC80095229C /* JCMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D3A18E27000AC80095229C /* JCMainViewController.swift */; };
+		B0D62071273223DD0014F165 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D62070273223DD0014F165 /* Spinner.swift */; };
+		B0EA83A72733B09C0028ADF8 /* BALoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EA83A62733B09C0028ADF8 /* BALoginViewController.swift */; };
+		B0EFEB7A272FD2D600CAA2AE /* BALoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EFEB79272FD2D600CAA2AE /* BALoginInfo.swift */; };
 		B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F900C9270300420056A016 /* ViewControllerExtension.swift */; };
-		DD283610270981B200D3D988 /* BaiAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD28360F270981B200D3D988 /* BaiAccountManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +122,17 @@
 		B02EEF2826FDC0A00010515A /* JCWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCWebViewController.swift; sourceTree = "<group>"; };
 		B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCLoginViewController.swift; sourceTree = "<group>"; };
 		B02EEF4326FDDA870010515A /* JavaClub.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JavaClub.storyboard; sourceTree = "<group>"; };
+		B035CAC5273105940097AE68 /* StrokeColorAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrokeColorAnimation.swift; sourceTree = "<group>"; };
+		B035CAC6273105940097AE68 /* ProgressShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressShapeLayer.swift; sourceTree = "<group>"; };
+		B035CAC7273105940097AE68 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		B035CAC8273105950097AE68 /* RotationAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotationAnimation.swift; sourceTree = "<group>"; };
+		B035CAC9273105950097AE68 /* StrokeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrokeAnimation.swift; sourceTree = "<group>"; };
+		B035CACF2731234F0097AE68 /* LocalizableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableTextField.swift; sourceTree = "<group>"; };
+		B041668A272F75EB00117876 /* BAMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAMainViewController.swift; sourceTree = "<group>"; };
+		B041668D272F762200117876 /* BaiAssistant.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BaiAssistant.storyboard; sourceTree = "<group>"; };
+		B041668F272F7DAB00117876 /* BAAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAAccountManager.swift; sourceTree = "<group>"; };
+		B0416691272F8BAA00117876 /* BAContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAContentViewController.swift; sourceTree = "<group>"; };
+		B0416693272FB2A600117876 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		B044E43B27191AFE0097D04B /* KAClassTableContentview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAClassTableContentview.swift; sourceTree = "<group>"; };
 		B044E43D27191B2B0097D04B /* KAClassTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAClassTableCell.swift; sourceTree = "<group>"; };
 		B044E445271958490097D04B /* KAClassRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAClassRealm.swift; sourceTree = "<group>"; };
@@ -120,23 +140,17 @@
 		B04C49552717F42200FBD9E7 /* CVScoreContentConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVScoreContentConfiguration.swift; sourceTree = "<group>"; };
 		B04C49572717F4AD00FBD9E7 /* CVScoreContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVScoreContentView.swift; sourceTree = "<group>"; };
 		B04C49592718138F00FBD9E7 /* ScoreImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreImageView.swift; sourceTree = "<group>"; };
-		B04C495C271841E400FBD9E7 /* BaiUserInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaiUserInfoView.swift; sourceTree = "<group>"; };
-		B04C495D271841E400FBD9E7 /* BAContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BAContentView.swift; sourceTree = "<group>"; };
-		B04C495E271841E400FBD9E7 /* BaiActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaiActionView.swift; sourceTree = "<group>"; };
-		B04C495F271841E500FBD9E7 /* BaiScoreOverallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaiScoreOverallView.swift; sourceTree = "<group>"; };
-		B04C4960271841E500FBD9E7 /* BaiHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaiHeaderView.swift; sourceTree = "<group>"; };
-		B04C4961271841E500FBD9E7 /* BaiScoreMiniView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaiScoreMiniView.swift; sourceTree = "<group>"; };
-		B04C4962271841E500FBD9E7 /* BaiScoreDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaiScoreDetailView.swift; sourceTree = "<group>"; };
 		B04FEE2D27113D750065FFB6 /* TappableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableViewCell.swift; sourceTree = "<group>"; };
 		B04FEE2F2711607A0065FFB6 /* TVSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSection.swift; sourceTree = "<group>"; };
 		B04FEE31271168080065FFB6 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		B04FEE3327116CC80065FFB6 /* StaticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTableViewCell.swift; sourceTree = "<group>"; };
 		B05B0D75271D05E300F48D52 /* NoRotateNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRotateNavigationController.swift; sourceTree = "<group>"; };
 		B06F83FE2722BC4800069A23 /* KAClassTableObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAClassTableObservable.swift; sourceTree = "<group>"; };
-		B07399BB270A98330020AEB8 /* BaiAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiAccount.swift; sourceTree = "<group>"; };
-		B07399BD270A99220020AEB8 /* ScoreAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreAdd.swift; sourceTree = "<group>"; };
-		B07399BF270A99330020AEB8 /* ScoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreData.swift; sourceTree = "<group>"; };
-		B07399C1270A99A70020AEB8 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		B07399BB270A98330020AEB8 /* BAAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAAccount.swift; sourceTree = "<group>"; };
+		B07399BD270A99220020AEB8 /* BAScoreAdding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAScoreAdding.swift; sourceTree = "<group>"; };
+		B07399BF270A99330020AEB8 /* BAScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAScore.swift; sourceTree = "<group>"; };
+		B07399C1270A99A70020AEB8 /* BAEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAEvent.swift; sourceTree = "<group>"; };
+		B08CFF8E2733D727000E07A4 /* TappableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableButton.swift; sourceTree = "<group>"; };
 		B08F6FAD27003EEB0015B354 /* KALoginInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KALoginInfo.swift; sourceTree = "<group>"; };
 		B08F6FAE27003EEB0015B354 /* KAEnrollment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAEnrollment.swift; sourceTree = "<group>"; };
 		B08F6FAF27003EEB0015B354 /* KAClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAClass.swift; sourceTree = "<group>"; };
@@ -153,16 +167,21 @@
 		B0973FA927044BE500E5C9C6 /* KASection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KASection.swift; sourceTree = "<group>"; };
 		B0A5D9A0272A49D300A8E3EE /* JCDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCDateManager.swift; sourceTree = "<group>"; };
 		B0A5D9A3272A9CFE00A8E3EE /* NumberExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberExtension.swift; sourceTree = "<group>"; };
+		B0AF94FD272BE05A00671BF7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B0AF9503272BE88100671BF7 /* LocalizableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableLabel.swift; sourceTree = "<group>"; };
 		B0B8434F270FE6F800C19B9B /* RefreshableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableScrollView.swift; sourceTree = "<group>"; };
 		B0B84351270FEB1700C19B9B /* KAContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAContentViewController.swift; sourceTree = "<group>"; };
 		B0B84353270FEBE300C19B9B /* KAMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAMainViewController.swift; sourceTree = "<group>"; };
 		B0B84356270FEC1B00C19B9B /* KcAssistant.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KcAssistant.storyboard; sourceTree = "<group>"; };
 		B0B8435A271039F600C19B9B /* TappableItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableItemView.swift; sourceTree = "<group>"; };
+		B0BCD18327326D360075395B /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		B0CCEF0827140D6C001235E9 /* KABindingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KABindingViewController.swift; sourceTree = "<group>"; };
 		B0CCEF0D27144425001235E9 /* JCCheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCheckboxButton.swift; sourceTree = "<group>"; };
 		B0D3A18E27000AC80095229C /* JCMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCMainViewController.swift; sourceTree = "<group>"; };
+		B0D62070273223DD0014F165 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
+		B0EA83A62733B09C0028ADF8 /* BALoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BALoginViewController.swift; sourceTree = "<group>"; };
+		B0EFEB79272FD2D600CAA2AE /* BALoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BALoginInfo.swift; sourceTree = "<group>"; };
 		B0F900C9270300420056A016 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
-		DD28360F270981B200D3D988 /* BaiAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiAccountManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +246,7 @@
 		B02032D126FE37B40048B6F6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B035CAC4273105800097AE68 /* ProgressView */,
 				B02032D226FE37C20048B6F6 /* DesignableView.swift */,
 				B01AA9B026FF2ADD000D3E4A /* LoadingIndicatorView.swift */,
 				B0B8434F270FE6F800C19B9B /* RefreshableScrollView.swift */,
@@ -234,6 +254,9 @@
 				B00939FD27151D3200879AC5 /* UnderlineButton.swift */,
 				B04C49592718138F00FBD9E7 /* ScoreImageView.swift */,
 				B05B0D75271D05E300F48D52 /* NoRotateNavigationController.swift */,
+				B0AF9503272BE88100671BF7 /* LocalizableLabel.swift */,
+				B035CACF2731234F0097AE68 /* LocalizableTextField.swift */,
+				B08CFF8E2733D727000E07A4 /* TappableButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -294,6 +317,7 @@
 				B02EEF0026FDB2780010515A /* Assets.xcassets */,
 				B02EEF0226FDB2780010515A /* LaunchScreen.storyboard */,
 				B02EEF0526FDB2780010515A /* Info.plist */,
+				B0AF94FC272BE05A00671BF7 /* Localizable.strings */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -342,8 +366,9 @@
 		B02EEF2726FDC0810010515A /* BaiAssistant */ = {
 			isa = PBXGroup;
 			children = (
-				B04C495B271841D000FBD9E7 /* View */,
+				B0416689272F75CC00117876 /* Controller */,
 				B07399BA270A98100020AEB8 /* Model */,
+				B041668C272F75FE00117876 /* Resource */,
 			);
 			path = BaiAssistant;
 			sourceTree = "<group>";
@@ -352,6 +377,38 @@
 			isa = PBXGroup;
 			children = (
 				B02EEF4326FDDA870010515A /* JavaClub.storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		B035CAC4273105800097AE68 /* ProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				B035CAC7273105940097AE68 /* ProgressView.swift */,
+				B035CAC6273105940097AE68 /* ProgressShapeLayer.swift */,
+				B035CAC8273105950097AE68 /* RotationAnimation.swift */,
+				B035CAC9273105950097AE68 /* StrokeAnimation.swift */,
+				B035CAC5273105940097AE68 /* StrokeColorAnimation.swift */,
+				B0BCD18327326D360075395B /* ProgressIndicator.swift */,
+				B0D62070273223DD0014F165 /* Spinner.swift */,
+			);
+			path = ProgressView;
+			sourceTree = "<group>";
+		};
+		B0416689272F75CC00117876 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B041668A272F75EB00117876 /* BAMainViewController.swift */,
+				B0416691272F8BAA00117876 /* BAContentViewController.swift */,
+				B0EA83A62733B09C0028ADF8 /* BALoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B041668C272F75FE00117876 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				B041668D272F762200117876 /* BaiAssistant.storyboard */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -401,20 +458,6 @@
 			path = Configuration;
 			sourceTree = "<group>";
 		};
-		B04C495B271841D000FBD9E7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B04C495D271841E400FBD9E7 /* BAContentView.swift */,
-				B04C495E271841E400FBD9E7 /* BaiActionView.swift */,
-				B04C4960271841E500FBD9E7 /* BaiHeaderView.swift */,
-				B04C4962271841E500FBD9E7 /* BaiScoreDetailView.swift */,
-				B04C4961271841E500FBD9E7 /* BaiScoreMiniView.swift */,
-				B04C495F271841E500FBD9E7 /* BaiScoreOverallView.swift */,
-				B04C495C271841E400FBD9E7 /* BaiUserInfoView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		B06F83FD2722BC2900069A23 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,10 +469,11 @@
 		B07399BA270A98100020AEB8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B07399BB270A98330020AEB8 /* BaiAccount.swift */,
-				B07399BD270A99220020AEB8 /* ScoreAdd.swift */,
-				B07399BF270A99330020AEB8 /* ScoreData.swift */,
-				B07399C1270A99A70020AEB8 /* Activity.swift */,
+				B0EFEB79272FD2D600CAA2AE /* BALoginInfo.swift */,
+				B07399BB270A98330020AEB8 /* BAAccount.swift */,
+				B07399BD270A99220020AEB8 /* BAScoreAdding.swift */,
+				B07399BF270A99330020AEB8 /* BAScore.swift */,
+				B07399C1270A99A70020AEB8 /* BAEvent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -479,7 +523,7 @@
 			isa = PBXGroup;
 			children = (
 				B08F6FC327003F8C0015B354 /* JCAccountManager.swift */,
-				DD28360F270981B200D3D988 /* BaiAccountManager.swift */,
+				B041668F272F7DAB00117876 /* BAAccountManager.swift */,
 				B08F6FC227003F8C0015B354 /* ClassTableManager.swift */,
 				B0A5D9A0272A49D300A8E3EE /* JCDateManager.swift */,
 			);
@@ -570,6 +614,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = B02EEEEB26FDB2760010515A;
 			packageReferences = (
@@ -595,7 +640,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B041668E272F762200117876 /* BaiAssistant.storyboard in Resources */,
 				B0B84357270FEC1B00C19B9B /* KcAssistant.storyboard in Resources */,
+				B0AF94FE272BE05A00671BF7 /* Localizable.strings in Resources */,
 				B02EEF4426FDDA870010515A /* JavaClub.storyboard in Resources */,
 				B02EEF0426FDB2780010515A /* LaunchScreen.storyboard in Resources */,
 				B02EEF0126FDB2780010515A /* Assets.xcassets in Resources */,
@@ -610,6 +657,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B035CACB273105950097AE68 /* ProgressShapeLayer.swift in Sources */,
+				B035CACA273105950097AE68 /* StrokeColorAnimation.swift in Sources */,
 				B08F6FCD270040010015B354 /* JCLoginInfo.swift in Sources */,
 				B02EEEF826FDB2760010515A /* AppDelegate.swift in Sources */,
 				B0B84352270FEB1700C19B9B /* KAContentViewController.swift in Sources */,
@@ -618,32 +667,38 @@
 				B0CCEF0927140D6C001235E9 /* KABindingViewController.swift in Sources */,
 				B08F6FCE270040010015B354 /* JCUser.swift in Sources */,
 				B08F6FD02700401E0015B354 /* STMainViewController.swift in Sources */,
+				B0D62071273223DD0014F165 /* Spinner.swift in Sources */,
 				B08F6FCA27003FD60015B354 /* JCNoticeView.swift in Sources */,
 				B04C49582717F4AD00FBD9E7 /* CVScoreContentView.swift in Sources */,
 				B02032CE26FE05910048B6F6 /* ColorExtension.swift in Sources */,
 				B08F6FC527003F8C0015B354 /* ClassTableManager.swift in Sources */,
+				B0EA83A72733B09C0028ADF8 /* BALoginViewController.swift in Sources */,
 				B02EEF2926FDC0A00010515A /* JCWebViewController.swift in Sources */,
 				B04FEE2E27113D750065FFB6 /* TappableViewCell.swift in Sources */,
-				B07399C2270A99A70020AEB8 /* Activity.swift in Sources */,
+				B035CAD02731234F0097AE68 /* LocalizableTextField.swift in Sources */,
+				B041668B272F75EB00117876 /* BAMainViewController.swift in Sources */,
+				B0EFEB7A272FD2D600CAA2AE /* BALoginInfo.swift in Sources */,
+				B035CACD273105950097AE68 /* RotationAnimation.swift in Sources */,
+				B07399C2270A99A70020AEB8 /* BAEvent.swift in Sources */,
 				24B72C6E2729898C00DC1DB1 /* KAClassDetailView.swift in Sources */,
 				B04C49562717F42200FBD9E7 /* CVScoreContentConfiguration.swift in Sources */,
 				B01AA9B126FF2ADD000D3E4A /* LoadingIndicatorView.swift in Sources */,
 				B04C495A2718138F00FBD9E7 /* ScoreImageView.swift in Sources */,
+				B035CACE273105950097AE68 /* StrokeAnimation.swift in Sources */,
 				B02EEEFA26FDB2760010515A /* SceneDelegate.swift in Sources */,
-				B07399BE270A99220020AEB8 /* ScoreAdd.swift in Sources */,
+				B0BCD18427326D360075395B /* ProgressIndicator.swift in Sources */,
+				B0416692272F8BAA00117876 /* BAContentViewController.swift in Sources */,
+				B07399BE270A99220020AEB8 /* BAScoreAdding.swift in Sources */,
 				B02032CB26FE05910048B6F6 /* StringExtension.swift in Sources */,
 				B0CCEF0E27144425001235E9 /* JCCheckboxButton.swift in Sources */,
 				B08F6FB227003EEC0015B354 /* KAClass.swift in Sources */,
 				B02EEF1126FDB5760010515A /* JCTabBarController.swift in Sources */,
-				B04C4968271841E500FBD9E7 /* BaiScoreMiniView.swift in Sources */,
 				B02032D326FE37C20048B6F6 /* DesignableView.swift in Sources */,
-				B04C4967271841E500FBD9E7 /* BaiHeaderView.swift in Sources */,
 				B0A5D9A1272A49D300A8E3EE /* JCDateManager.swift in Sources */,
-				B04C4969271841E500FBD9E7 /* BaiScoreDetailView.swift in Sources */,
 				B02E4F1F2701BB7C00EA3DDB /* TVOption.swift in Sources */,
 				B02032CC26FE05910048B6F6 /* ViewPlaceholder.swift in Sources */,
+				B035CACC273105950097AE68 /* ProgressView.swift in Sources */,
 				B0973FA62703FE4200E5C9C6 /* KAScore.swift in Sources */,
-				B04C4965271841E500FBD9E7 /* BaiActionView.swift in Sources */,
 				B08F6FC627003F8C0015B354 /* JCAccountManager.swift in Sources */,
 				B02032D026FE05910048B6F6 /* AvailabilityCheck.swift in Sources */,
 				B0B84350270FE6F800C19B9B /* RefreshableScrollView.swift in Sources */,
@@ -655,27 +710,26 @@
 				B044E43C27191AFE0097D04B /* KAClassTableContentview.swift in Sources */,
 				B05B0D76271D05E300F48D52 /* NoRotateNavigationController.swift in Sources */,
 				B02032CD26FE05910048B6F6 /* ImageExtension.swift in Sources */,
+				B0416690272F7DAB00117876 /* BAAccountManager.swift in Sources */,
 				B0B84354270FEBE300C19B9B /* KAMainViewController.swift in Sources */,
 				B0A5D9A4272A9CFE00A8E3EE /* NumberExtension.swift in Sources */,
 				B00939FE27151D3200879AC5 /* UnderlineButton.swift in Sources */,
-				B04C4963271841E500FBD9E7 /* BaiUserInfoView.swift in Sources */,
 				B02032CF26FE05910048B6F6 /* ViewExtension.swift in Sources */,
 				B01AA9B726FF4C55000D3E4A /* JCLoginState.swift in Sources */,
 				B06F83FF2722BC4800069A23 /* KAClassTableObservable.swift in Sources */,
 				B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */,
 				B0093A012715539E00879AC5 /* ScoreCollectionViewCell.swift in Sources */,
+				B08CFF8F2733D727000E07A4 /* TappableButton.swift in Sources */,
 				24B72C6C2729897400DC1DB1 /* KATermSelectorView.swift in Sources */,
+				B0AF9504272BE88100671BF7 /* LocalizableLabel.swift in Sources */,
 				B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */,
-				B04C4964271841E500FBD9E7 /* BAContentView.swift in Sources */,
 				B0973FA32703FC0300E5C9C6 /* KAScoreViewController.swift in Sources */,
 				B08F6FD5270048B40015B354 /* STContentViewController.swift in Sources */,
 				B04FEE32271168080065FFB6 /* SwitchTableViewCell.swift in Sources */,
-				B07399C0270A99330020AEB8 /* ScoreData.swift in Sources */,
+				B07399C0270A99330020AEB8 /* BAScore.swift in Sources */,
 				B04C494F2717C05C00FBD9E7 /* KAEnrollmentViewController.swift in Sources */,
-				B04C4966271841E500FBD9E7 /* BaiScoreOverallView.swift in Sources */,
-				DD283610270981B200D3D988 /* BaiAccountManager.swift in Sources */,
 				B04FEE302711607A0065FFB6 /* TVSection.swift in Sources */,
-				B07399BC270A98330020AEB8 /* BaiAccount.swift in Sources */,
+				B07399BC270A98330020AEB8 /* BAAccount.swift in Sources */,
 				B044E446271958490097D04B /* KAClassRealm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -691,6 +745,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		B0AF94FC272BE05A00671BF7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B0AF94FD272BE05A00671BF7 /* en */,
+				B0416693272FB2A600117876 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -698,6 +761,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -759,6 +823,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -816,7 +881,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 987;
+				CURRENT_PROJECT_VERSION = 1289;
 				DEVELOPMENT_TEAM = S6ZX968578;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "JavaClub/Support Files/Info.plist";
@@ -845,7 +910,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 987;
+				CURRENT_PROJECT_VERSION = 1289;
 				DEVELOPMENT_TEAM = S6ZX968578;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "JavaClub/Support Files/Info.plist";

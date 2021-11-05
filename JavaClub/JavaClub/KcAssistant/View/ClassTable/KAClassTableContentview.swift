@@ -9,7 +9,7 @@ import UIKit
 import SwiftUI
 import Defaults
 
-fileprivate var colorHash: [String?] = Array(repeating: nil, count: 20)
+fileprivate var colorHash: [String?]!
 
 fileprivate let colorSet: [String] = [
     "#30AB43", "#FF483D", "#D8873D", "#EAC822", "#5BB974",
@@ -47,7 +47,7 @@ struct KAClassTableContentview: View {
                             showTermSelector = true
                         } label: {
                             HStack(spacing: 0) {
-                                Text(JCDateManager.shared.formatted(for: term) ?? "获取失败...")
+                                Text(JCDateManager.shared.formatted(for: term) ?? NSLocalizedString("获取失败...", comment: ""))
                                 
                                 Image(systemName: "chevron.down")
                                     .renderingMode(.template)
@@ -58,7 +58,7 @@ struct KAClassTableContentview: View {
                     
                     HStack(spacing: 0) {
                         ForEach(1 ..< 8) { index in
-                            Text("周\(index.chinese ?? "\(index)")")
+                            Text("周\(index == 7 ? "日" : (index.chinese ?? "\(index)"))")
                                 .frame(width: geo.size.width / 7, height: 30)
                                 .foregroundColor(.white)
                                 .background(Color(hex: "413258"))
@@ -121,13 +121,10 @@ struct KAClassTableContentview: View {
             }
         }
         .alert(isPresented: $presentAlert) {
-            Alert(title: Text("错误"), message: Text("暂无法获取该学期课表，请稍后再试。"), dismissButton: .default(Text("Got it!")))
+            Alert(title: Text("错误".localized()), message: Text("暂无法获取该学期课表，请稍后再试。".localized()), dismissButton: .default(Text("Got it!")))
         }
         .onAppear {
             refresh(for: term)
-        }
-        .onDisappear {
-            colorHash = Array(repeating: nil, count: 20)
         }
         .onChange(of: term) { newValue in
             refresh(for: newValue)
@@ -136,6 +133,8 @@ struct KAClassTableContentview: View {
     
     func refresh(for term: Int) {
         showIndicator = true
+        colorHash = Array(repeating: nil, count: 20)
+        observable.classes = []
         
         JCAccountManager.shared.getClassTable(term: term) { result in
             switch result {

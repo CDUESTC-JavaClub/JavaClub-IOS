@@ -7,6 +7,15 @@
 
 import UIKit
 
+@IBDesignable
 class JCCheckboxButton: UIButton {
+    
+    @IBInspectable var localizedKey: String? {
+        didSet {
+            guard let key = localizedKey else { return }
+            setTitle(NSLocalizedString(key, comment: ""), for: .normal)
+        }
+    }
+    
     var flag = true
 }

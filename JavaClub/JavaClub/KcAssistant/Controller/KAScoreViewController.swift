@@ -42,8 +42,15 @@ class KAScoreViewController: UIViewController {
         collectionView.alwaysBounceVertical = true
         collectionView.refreshControl = refreshControl
         
+        configureAppearance()
         configureCollectionView()
         didRefresh()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        configureAppearance()
     }
 }
 
@@ -55,6 +62,14 @@ extension KAScoreViewController {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view)
+        }
+    }
+    
+    private func configureAppearance() {
+        if isDarkMode {
+            collectionView.backgroundColor = UIColor(hex: "151515")
+        } else {
+            collectionView.backgroundColor = UIColor(hex: "F2F2F7")
         }
     }
     

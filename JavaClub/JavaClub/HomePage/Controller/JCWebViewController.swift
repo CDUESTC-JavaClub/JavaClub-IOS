@@ -36,6 +36,11 @@ class JCWebViewController: UIViewController {
         
         webView.frame = view.bounds
     }
+    
+    
+    func reload() {
+        webView.reload()
+    }
 }
 
 

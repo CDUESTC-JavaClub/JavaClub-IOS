@@ -16,11 +16,11 @@ struct KAClassTableCell: View {
         GeometryReader { geo in
             VStack(spacing: 5) {
                 if _class.form == .singular {
-                    Text("单周")
+                    Text("单周".localized())
                         .font(.system(size: 12))
                         .foregroundColor(.white)
                 } else if _class.form == .even {
-                    Text("双周")
+                    Text("双周".localized())
                         .font(.system(size: 12))
                         .foregroundColor(.white)
                 }
