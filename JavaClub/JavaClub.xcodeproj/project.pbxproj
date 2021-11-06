@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		243EF3102736566C000E59ED /* JCEulaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243EF30F2736566C000E59ED /* JCEulaViewController.swift */; };
+		243EF3122736567F000E59ED /* EULA.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 243EF3112736567F000E59ED /* EULA.pdf */; };
 		24B72C6C2729897400DC1DB1 /* KATermSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B72C6B2729897400DC1DB1 /* KATermSelectorView.swift */; };
 		24B72C6E2729898C00DC1DB1 /* KAClassDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B72C6D2729898C00DC1DB1 /* KAClassDetailView.swift */; };
 		B00939FE27151D3200879AC5 /* UnderlineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00939FD27151D3200879AC5 /* UnderlineButton.swift */; };
@@ -98,6 +100,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		243EF30F2736566C000E59ED /* JCEulaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEulaViewController.swift; sourceTree = "<group>"; };
+		243EF3112736567F000E59ED /* EULA.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = EULA.pdf; sourceTree = "<group>"; };
 		24B72C6B2729897400DC1DB1 /* KATermSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KATermSelectorView.swift; sourceTree = "<group>"; };
 		24B72C6D2729898C00DC1DB1 /* KAClassDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAClassDetailView.swift; sourceTree = "<group>"; };
 		B00939FD27151D3200879AC5 /* UnderlineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineButton.swift; sourceTree = "<group>"; };
@@ -217,8 +221,9 @@
 			isa = PBXGroup;
 			children = (
 				B0D3A18E27000AC80095229C /* JCMainViewController.swift */,
-				B02EEF2826FDC0A00010515A /* JCWebViewController.swift */,
 				B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */,
+				B02EEF2826FDC0A00010515A /* JCWebViewController.swift */,
+				243EF30F2736566C000E59ED /* JCEulaViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				B02EEF0026FDB2780010515A /* Assets.xcassets */,
 				B02EEF0226FDB2780010515A /* LaunchScreen.storyboard */,
 				B02EEF0526FDB2780010515A /* Info.plist */,
+				243EF3112736567F000E59ED /* EULA.pdf */,
 				B0AF94FC272BE05A00671BF7 /* Localizable.strings */,
 			);
 			path = "Support Files";
@@ -647,6 +653,7 @@
 				B02EEF0426FDB2780010515A /* LaunchScreen.storyboard in Resources */,
 				B02EEF0126FDB2780010515A /* Assets.xcassets in Resources */,
 				B08F6FD32700488F0015B354 /* Settings.storyboard in Resources */,
+				243EF3122736567F000E59ED /* EULA.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -710,6 +717,7 @@
 				B044E43C27191AFE0097D04B /* KAClassTableContentview.swift in Sources */,
 				B05B0D76271D05E300F48D52 /* NoRotateNavigationController.swift in Sources */,
 				B02032CD26FE05910048B6F6 /* ImageExtension.swift in Sources */,
+				243EF3102736566C000E59ED /* JCEulaViewController.swift in Sources */,
 				B0416690272F7DAB00117876 /* BAAccountManager.swift in Sources */,
 				B0B84354270FEBE300C19B9B /* KAMainViewController.swift in Sources */,
 				B0A5D9A4272A9CFE00A8E3EE /* NumberExtension.swift in Sources */,
@@ -881,7 +889,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1295;
+				CURRENT_PROJECT_VERSION = 1334;
 				DEVELOPMENT_TEAM = S6ZX968578;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "JavaClub/Support Files/Info.plist";
@@ -910,7 +918,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1295;
+				CURRENT_PROJECT_VERSION = 1334;
 				DEVELOPMENT_TEAM = S6ZX968578;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "JavaClub/Support Files/Info.plist";

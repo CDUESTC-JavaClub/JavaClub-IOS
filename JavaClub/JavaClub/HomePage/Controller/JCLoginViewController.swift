@@ -128,9 +128,10 @@ extension JCLoginViewController {
     }
     
     @IBAction func privacyBtnDidClick(_ sender: UIButton) {
-        if let privacyURL = URL(string: "https://study.cduestc.club/index.php?help/privacy-policy/") {
-            UIApplication.shared.open(privacyURL)
-        }
+        let eulaVC = JCEulaViewController()
+        let eulaNavController = UINavigationController(rootViewController: eulaVC)
+        
+        present(eulaNavController, animated: true, completion: nil)
     }
     
     @IBAction func createBtnDidClick(_ sender: UIButton) {

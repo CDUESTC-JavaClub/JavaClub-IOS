@@ -74,6 +74,7 @@ extension JCMainViewController {
                 .instantiateViewController(withIdentifier: "JCLoginViewController")
             as? JCLoginViewController
             
+            addChild(loginVC)
             view.addSubview(loginVC.view)
             loginVC.view.snp.makeConstraints { make in
                 make.edges.equalTo(view)
