@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		243EF3102736566C000E59ED /* JCEulaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243EF30F2736566C000E59ED /* JCEulaViewController.swift */; };
 		243EF3122736567F000E59ED /* EULA.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 243EF3112736567F000E59ED /* EULA.pdf */; };
+		243EF31A2736878F000E59ED /* BAAllEventsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243EF3192736878E000E59ED /* BAAllEventsContentView.swift */; };
+		243EF31C273687BE000E59ED /* BAAllEventsContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 243EF31B273687BE000E59ED /* BAAllEventsContentView.xib */; };
+		243EF31E27368864000E59ED /* BAMyEventsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243EF31D27368864000E59ED /* BAMyEventsContentView.swift */; };
+		243EF3202736887B000E59ED /* BAMyEventsContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 243EF31F2736887B000E59ED /* BAMyEventsContentView.xib */; };
+		243EF322273688BD000E59ED /* BAAllEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243EF321273688BD000E59ED /* BAAllEventsViewController.swift */; };
+		243EF324273688D1000E59ED /* BAMyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243EF323273688D1000E59ED /* BAMyEventsViewController.swift */; };
 		24B72C6C2729897400DC1DB1 /* KATermSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B72C6B2729897400DC1DB1 /* KATermSelectorView.swift */; };
 		24B72C6E2729898C00DC1DB1 /* KAClassDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B72C6D2729898C00DC1DB1 /* KAClassDetailView.swift */; };
 		B00939FE27151D3200879AC5 /* UnderlineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00939FD27151D3200879AC5 /* UnderlineButton.swift */; };
@@ -102,6 +108,12 @@
 /* Begin PBXFileReference section */
 		243EF30F2736566C000E59ED /* JCEulaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEulaViewController.swift; sourceTree = "<group>"; };
 		243EF3112736567F000E59ED /* EULA.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = EULA.pdf; sourceTree = "<group>"; };
+		243EF3192736878E000E59ED /* BAAllEventsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAAllEventsContentView.swift; sourceTree = "<group>"; };
+		243EF31B273687BE000E59ED /* BAAllEventsContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BAAllEventsContentView.xib; sourceTree = "<group>"; };
+		243EF31D27368864000E59ED /* BAMyEventsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAMyEventsContentView.swift; sourceTree = "<group>"; };
+		243EF31F2736887B000E59ED /* BAMyEventsContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BAMyEventsContentView.xib; sourceTree = "<group>"; };
+		243EF321273688BD000E59ED /* BAAllEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAAllEventsViewController.swift; sourceTree = "<group>"; };
+		243EF323273688D1000E59ED /* BAMyEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAMyEventsViewController.swift; sourceTree = "<group>"; };
 		24B72C6B2729897400DC1DB1 /* KATermSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KATermSelectorView.swift; sourceTree = "<group>"; };
 		24B72C6D2729898C00DC1DB1 /* KAClassDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAClassDetailView.swift; sourceTree = "<group>"; };
 		B00939FD27151D3200879AC5 /* UnderlineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineButton.swift; sourceTree = "<group>"; };
@@ -206,6 +218,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		243EF313273685D6000E59ED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				243EF314273686B8000E59ED /* Events */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		243EF314273686B8000E59ED /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				243EF315273686C9000E59ED /* AllEvents */,
+				243EF316273686D0000E59ED /* MyEvents */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		243EF315273686C9000E59ED /* AllEvents */ = {
+			isa = PBXGroup;
+			children = (
+				243EF3192736878E000E59ED /* BAAllEventsContentView.swift */,
+				243EF31B273687BE000E59ED /* BAAllEventsContentView.xib */,
+			);
+			path = AllEvents;
+			sourceTree = "<group>";
+		};
+		243EF316273686D0000E59ED /* MyEvents */ = {
+			isa = PBXGroup;
+			children = (
+				243EF31D27368864000E59ED /* BAMyEventsContentView.swift */,
+				243EF31F2736887B000E59ED /* BAMyEventsContentView.xib */,
+			);
+			path = MyEvents;
+			sourceTree = "<group>";
+		};
+		243EF318273686EF000E59ED /* Score */ = {
+			isa = PBXGroup;
+			children = (
+				B04C49502717DCE700FBD9E7 /* CollectionView */,
+			);
+			path = Score;
+			sourceTree = "<group>";
+		};
 		B00939FF27152C1F00879AC5 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,7 +294,6 @@
 		B02032C426FE05760048B6F6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				B04C49502717DCE700FBD9E7 /* CollectionView */,
 				B00939FF27152C1F00879AC5 /* TableView */,
 				B0D3A181270000680095229C /* Manager */,
 				B02032D126FE37B40048B6F6 /* View */,
@@ -373,6 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				B0416689272F75CC00117876 /* Controller */,
+				243EF313273685D6000E59ED /* View */,
 				B07399BA270A98100020AEB8 /* Model */,
 				B041668C272F75FE00117876 /* Resource */,
 			);
@@ -407,6 +462,8 @@
 				B041668A272F75EB00117876 /* BAMainViewController.swift */,
 				B0416691272F8BAA00117876 /* BAContentViewController.swift */,
 				B0EA83A62733B09C0028ADF8 /* BALoginViewController.swift */,
+				243EF321273688BD000E59ED /* BAAllEventsViewController.swift */,
+				243EF323273688D1000E59ED /* BAMyEventsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -433,6 +490,7 @@
 		B044E43A27191AE90097D04B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				243EF318273686EF000E59ED /* Score */,
 				B044E43927191ADC0097D04B /* ClassTable */,
 			);
 			path = View;
@@ -647,12 +705,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B041668E272F762200117876 /* BaiAssistant.storyboard in Resources */,
+				243EF31C273687BE000E59ED /* BAAllEventsContentView.xib in Resources */,
 				B0B84357270FEC1B00C19B9B /* KcAssistant.storyboard in Resources */,
 				B0AF94FE272BE05A00671BF7 /* Localizable.strings in Resources */,
 				B02EEF4426FDDA870010515A /* JavaClub.storyboard in Resources */,
 				B02EEF0426FDB2780010515A /* LaunchScreen.storyboard in Resources */,
 				B02EEF0126FDB2780010515A /* Assets.xcassets in Resources */,
 				B08F6FD32700488F0015B354 /* Settings.storyboard in Resources */,
+				243EF3202736887B000E59ED /* BAMyEventsContentView.xib in Resources */,
 				243EF3122736567F000E59ED /* EULA.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -684,6 +744,7 @@
 				B04FEE2E27113D750065FFB6 /* TappableViewCell.swift in Sources */,
 				B035CAD02731234F0097AE68 /* LocalizableTextField.swift in Sources */,
 				B041668B272F75EB00117876 /* BAMainViewController.swift in Sources */,
+				243EF324273688D1000E59ED /* BAMyEventsViewController.swift in Sources */,
 				B0EFEB7A272FD2D600CAA2AE /* BALoginInfo.swift in Sources */,
 				B035CACD273105950097AE68 /* RotationAnimation.swift in Sources */,
 				B07399C2270A99A70020AEB8 /* BAEvent.swift in Sources */,
@@ -698,6 +759,7 @@
 				B07399BE270A99220020AEB8 /* BAScoreAdding.swift in Sources */,
 				B02032CB26FE05910048B6F6 /* StringExtension.swift in Sources */,
 				B0CCEF0E27144425001235E9 /* JCCheckboxButton.swift in Sources */,
+				243EF31A2736878F000E59ED /* BAAllEventsContentView.swift in Sources */,
 				B08F6FB227003EEC0015B354 /* KAClass.swift in Sources */,
 				B02EEF1126FDB5760010515A /* JCTabBarController.swift in Sources */,
 				B02032D326FE37C20048B6F6 /* DesignableView.swift in Sources */,
@@ -725,6 +787,7 @@
 				B02032CF26FE05910048B6F6 /* ViewExtension.swift in Sources */,
 				B01AA9B726FF4C55000D3E4A /* JCLoginState.swift in Sources */,
 				B06F83FF2722BC4800069A23 /* KAClassTableObservable.swift in Sources */,
+				243EF322273688BD000E59ED /* BAAllEventsViewController.swift in Sources */,
 				B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */,
 				B0093A012715539E00879AC5 /* ScoreCollectionViewCell.swift in Sources */,
 				B08CFF8F2733D727000E07A4 /* TappableButton.swift in Sources */,
@@ -734,6 +797,7 @@
 				B0973FA32703FC0300E5C9C6 /* KAScoreViewController.swift in Sources */,
 				B08F6FD5270048B40015B354 /* STContentViewController.swift in Sources */,
 				B04FEE32271168080065FFB6 /* SwitchTableViewCell.swift in Sources */,
+				243EF31E27368864000E59ED /* BAMyEventsContentView.swift in Sources */,
 				B07399C0270A99330020AEB8 /* BAScore.swift in Sources */,
 				B04C494F2717C05C00FBD9E7 /* KAEnrollmentViewController.swift in Sources */,
 				B04FEE302711607A0065FFB6 /* TVSection.swift in Sources */,
