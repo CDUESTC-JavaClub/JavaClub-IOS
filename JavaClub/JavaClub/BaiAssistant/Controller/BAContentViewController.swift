@@ -77,7 +77,8 @@ extension BAContentViewController {
         models = [
             TVSection(title: "", options: [
                 .tappable(model: TVTappableOption(title: "所有活动".localized(), icon: UIImage(named: "all_events_icon"), handler: { [weak self] in
-                    
+                    self?.navigationController?.isNavigationBarHidden = false
+                    self?.navigationController?.pushViewController(BAAllEventsViewController(), animated: true)
                 })),
                 .tappable(model: TVTappableOption(title: "我的活动".localized(), icon: UIImage(named: "my_events_icon"), handler: { [weak self] in
                     
@@ -113,32 +114,32 @@ extension BAContentViewController {
             }
         }
         
-        BAAccountManager.shared.getScore { [weak self] result in
-            DispatchQueue.main.async {
-                if let byScore = try? result.get() {
-                    self?.totalScoreLabel.text = "\(byScore.all)"
-                    self?.bxScoreLabel.text = "\(byScore.bx)"
-                    self?.jmScoreLabel.text = "\(byScore.jm)"
-                    self?.dxScoreLabel.text = "\(byScore.dx)"
-                    self?.mdScoreLabel.text = "\(byScore.md)"
-                    
-                    if byScore.bx >= 10 && byScore.jm >= 30 && byScore.dx >= 10 && byScore.md >= 10 {
-                        self?.statusHintLabel.text = "已达标"
-                    } else {
-                        self?.statusHintLabel.text = "未达标"
-                    }
-                } else {
-                    self?.totalScoreLabel.text = "0"
-                    self?.bxScoreLabel.text = "0"
-                    self?.jmScoreLabel.text = "0"
-                    self?.dxScoreLabel.text = "0"
-                    self?.mdScoreLabel.text = "0"
-                    self?.statusHintLabel.text = "未达标"
-                    
-                    print("DEBUG: Refresh BY Credits Failed.")
-                }
-            }
-        }
+//        BAAccountManager.shared.getScore { [weak self] result in
+//            DispatchQueue.main.async {
+//                if let byScore = try? result.get() {
+//                    self?.totalScoreLabel.text = "\(byScore.all)"
+//                    self?.bxScoreLabel.text = "\(byScore.bx)"
+//                    self?.jmScoreLabel.text = "\(byScore.jm)"
+//                    self?.dxScoreLabel.text = "\(byScore.dx)"
+//                    self?.mdScoreLabel.text = "\(byScore.md)"
+//
+//                    if byScore.bx >= 10 && byScore.jm >= 30 && byScore.dx >= 10 && byScore.md >= 10 {
+//                        self?.statusHintLabel.text = "已达标"
+//                    } else {
+//                        self?.statusHintLabel.text = "未达标"
+//                    }
+//                } else {
+//                    self?.totalScoreLabel.text = "0"
+//                    self?.bxScoreLabel.text = "0"
+//                    self?.jmScoreLabel.text = "0"
+//                    self?.dxScoreLabel.text = "0"
+//                    self?.mdScoreLabel.text = "0"
+//                    self?.statusHintLabel.text = "未达标"
+//
+//                    print("DEBUG: Refresh BY Credits Failed.")
+//                }
+//            }
+//        }
     }
 }
 

@@ -19,7 +19,7 @@ class BAAllEventsViewController: UIViewController {
         BAEvent(
             eventID: 1,
             eventName: "社会实践 1",
-            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            coverUrl: "http://i-1-zswxy.52pictu.com/2020/0819/b39ab197281e4700985e47f082e4d4dc.jpg",
             hospital: "",
             startDate: Date(),
             type: "md",
@@ -31,7 +31,7 @@ class BAAllEventsViewController: UIViewController {
         BAEvent(
             eventID: 1,
             eventName: "社会实践 2",
-            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            coverUrl: "http://i-1-zswxy.52pictu.com/2020/0819/b39ab197281e4700985e47f082e4d4dc.jpg",
             hospital: "",
             startDate: Date(),
             type: "dx",
@@ -43,7 +43,7 @@ class BAAllEventsViewController: UIViewController {
         BAEvent(
             eventID: 1,
             eventName: "社会实践 3",
-            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            coverUrl: "http://i-1-zswxy.52pictu.com/2020/0819/b39ab197281e4700985e47f082e4d4dc.jpg",
             hospital: "",
             startDate: Date(),
             type: "bx",
@@ -55,7 +55,7 @@ class BAAllEventsViewController: UIViewController {
         BAEvent(
             eventID: 1,
             eventName: "社会实践 4",
-            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            coverUrl: "http://i-1-zswxy.52pictu.com/2020/0819/b39ab197281e4700985e47f082e4d4dc.jpg",
             hospital: "",
             startDate: Date(),
             type: "jm",
@@ -67,7 +67,7 @@ class BAAllEventsViewController: UIViewController {
         BAEvent(
             eventID: 1,
             eventName: "社会实践 5",
-            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            coverUrl: "http://i-1-zswxy.52pictu.com/2020/0819/b39ab197281e4700985e47f082e4d4dc.jpg",
             hospital: "",
             startDate: Date(),
             type: "dx",
@@ -79,7 +79,7 @@ class BAAllEventsViewController: UIViewController {
         BAEvent(
             eventID: 1,
             eventName: "社会实践 6",
-            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            coverUrl: "http://i-1-zswxy.52pictu.com/2020/0819/b39ab197281e4700985e47f082e4d4dc.jpg",
             hospital: "",
             startDate: Date(),
             type: "bx",
@@ -91,7 +91,7 @@ class BAAllEventsViewController: UIViewController {
         BAEvent(
             eventID: 1,
             eventName: "社会实践 7",
-            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            coverUrl: "http://i-1-zswxy.52pictu.com/2020/0819/b39ab197281e4700985e47f082e4d4dc.jpg",
             hospital: "",
             startDate: Date(),
             type: "md",
@@ -103,7 +103,7 @@ class BAAllEventsViewController: UIViewController {
         BAEvent(
             eventID: 1,
             eventName: "社会实践 8",
-            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            coverUrl: "http://i-1-zswxy.52pictu.com/2020/0819/b39ab197281e4700985e47f082e4d4dc.jpg",
             hospital: "",
             startDate: Date(),
             type: "dx",
@@ -115,7 +115,7 @@ class BAAllEventsViewController: UIViewController {
         BAEvent(
             eventID: 1,
             eventName: "社会实践 9",
-            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            coverUrl: "http://i-1-zswxy.52pictu.com/2020/0819/b39ab197281e4700985e47f082e4d4dc.jpg",
             hospital: "",
             startDate: Date(),
             type: "jm",
@@ -127,7 +127,7 @@ class BAAllEventsViewController: UIViewController {
         BAEvent(
             eventID: 1,
             eventName: "社会实践 10",
-            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            coverUrl: "http://i-1-zswxy.52pictu.com/2020/0819/b39ab197281e4700985e47f082e4d4dc.jpg",
             hospital: "",
             startDate: Date(),
             type: "jm",
@@ -145,6 +145,7 @@ class BAAllEventsViewController: UIViewController {
         
         configureCollectionView()
         configureAppearance()
+        configureModels(with: [])
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -200,7 +201,7 @@ extension BAAllEventsViewController {
     }
     
     private func configureModels(with events: [BAEvent]) {
-        
+        applySnapshot()
     }
 }
 
