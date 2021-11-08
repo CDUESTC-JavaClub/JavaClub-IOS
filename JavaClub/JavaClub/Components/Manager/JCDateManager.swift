@@ -72,7 +72,7 @@ extension JCDateManager {
                 let futureDate = Calendar.current.date(byAdding: dateComponents, to: dateEnrolled),
                 let futureYear = Calendar.current.dateComponents([.year], from: futureDate).year
             {
-                return "\(futureYear)-\(futureYear + 1) 学年（\(first.contains(term) ? "上" : "下")）"
+                return String.localized("%@-%@ 学年（%@）", with: "\(futureYear)", "\(futureYear + 1)", "\(first.contains(term) ? "上".localized() : "下".localized())")
             }
         }
         

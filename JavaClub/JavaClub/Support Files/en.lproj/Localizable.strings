@@ -83,3 +83,29 @@
 "我的活动" = "My Events";
 
 "百叶积分" = "BaiYe Credits";
+
+"上" = "First Semester";
+
+"下" = "Second Semester";
+
+"%@ 学年 - %@" = "%@ year - %@";
+
+"%@-%@ 学年（%@）" = "%@-%@ year (%@)";
+
+"学期成绩查询" = "Semester Score";
+
+"周一" = "Mon";
+
+"周二" = "Tue";
+
+"周三" = "Wed";
+
+"周四" = "Thu";
+
+"周五" = "Fri";
+
+"周六" = "Sat";
+
+"周日" = "Sun";
+
+"百叶计划活动列表" = "";

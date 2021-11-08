@@ -58,7 +58,7 @@ struct KAClassTableContentview: View {
                     
                     HStack(spacing: 0) {
                         ForEach(1 ..< 8) { index in
-                            Text("周\(index == 7 ? "日" : (index.chinese ?? "\(index)"))")
+                            Text(selectWeekday(with: index))
                                 .frame(width: geo.size.width / 7, height: 30)
                                 .foregroundColor(.white)
                                 .background(Color(hex: "413258"))
@@ -170,5 +170,33 @@ struct KAClassTableContentview: View {
         colorHash[unicode] = className
         
         return UIColor(hex: colorSet[unicode])
+    }
+    
+    func selectWeekday(with index: Int) -> String {
+        switch index {
+        case 1:
+            return "周一".localized()
+            
+        case 2:
+            return "周二".localized()
+            
+        case 3:
+            return "周三".localized()
+            
+        case 4:
+            return "周四".localized()
+            
+        case 5:
+            return "周五".localized()
+            
+        case 6:
+            return "周六".localized()
+            
+        case 7:
+            return "周日".localized()
+            
+        default:
+            return ""
+        }
     }
 }

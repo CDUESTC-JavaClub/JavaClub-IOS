@@ -6,12 +6,213 @@
 //
 
 import UIKit
+import SnapKit
 
 class BAAllEventsViewController: UIViewController {
+    private var collectionView: UICollectionView!
+    private lazy var dataSource = makeDataSource()
+    
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, BAEvent>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, BAEvent>
+    
+    let models: [BAEvent] = [
+        BAEvent(
+            eventID: 1,
+            eventName: "社会实践 1",
+            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            hospital: "",
+            startDate: Date(),
+            type: "md",
+            place: "二教308",
+            maxCount: 100,
+            regCount: 67,
+            status: "报名中"
+        ),
+        BAEvent(
+            eventID: 1,
+            eventName: "社会实践 2",
+            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            hospital: "",
+            startDate: Date(),
+            type: "dx",
+            place: "二教109",
+            maxCount: 100,
+            regCount: 67,
+            status: "报名中"
+        ),
+        BAEvent(
+            eventID: 1,
+            eventName: "社会实践 3",
+            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            hospital: "",
+            startDate: Date(),
+            type: "bx",
+            place: "二教110",
+            maxCount: 100,
+            regCount: 67,
+            status: "报名中"
+        ),
+        BAEvent(
+            eventID: 1,
+            eventName: "社会实践 4",
+            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            hospital: "",
+            startDate: Date(),
+            type: "jm",
+            place: "二教312",
+            maxCount: 100,
+            regCount: 67,
+            status: "报名中"
+        ),
+        BAEvent(
+            eventID: 1,
+            eventName: "社会实践 5",
+            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            hospital: "",
+            startDate: Date(),
+            type: "dx",
+            place: "二教401",
+            maxCount: 100,
+            regCount: 67,
+            status: "报名中"
+        ),
+        BAEvent(
+            eventID: 1,
+            eventName: "社会实践 6",
+            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            hospital: "",
+            startDate: Date(),
+            type: "bx",
+            place: "二教403",
+            maxCount: 100,
+            regCount: 67,
+            status: "报名中"
+        ),
+        BAEvent(
+            eventID: 1,
+            eventName: "社会实践 7",
+            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            hospital: "",
+            startDate: Date(),
+            type: "md",
+            place: "二教504",
+            maxCount: 100,
+            regCount: 67,
+            status: "报名中"
+        ),
+        BAEvent(
+            eventID: 1,
+            eventName: "社会实践 8",
+            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            hospital: "",
+            startDate: Date(),
+            type: "dx",
+            place: "二教103",
+            maxCount: 100,
+            regCount: 67,
+            status: "报名中"
+        ),
+        BAEvent(
+            eventID: 1,
+            eventName: "社会实践 9",
+            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            hospital: "",
+            startDate: Date(),
+            type: "jm",
+            place: "二教105",
+            maxCount: 100,
+            regCount: 67,
+            status: "报名中"
+        ),
+        BAEvent(
+            eventID: 1,
+            eventName: "社会实践 10",
+            coverUrl: "https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png",
+            hospital: "",
+            startDate: Date(),
+            type: "jm",
+            place: "二教314",
+            maxCount: 100,
+            regCount: 67,
+            status: "报名中"
+        ),
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        title = "百叶计划活动列表".localized()
+        
+        configureCollectionView()
+        configureAppearance()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        configureAppearance()
+    }
+}
+
+
+extension BAAllEventsViewController {
+    
+    private func configureAppearance() {
+        if isDarkMode {
+            collectionView.backgroundColor = UIColor(hex: "151515")
+        } else {
+            collectionView.backgroundColor = UIColor(hex: "F2F2F7")
+        }
+    }
+    
+    private func configureCollectionView() {
+        let layoutConfig = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        let listLayout = UICollectionViewCompositionalLayout.list(using: layoutConfig)
+        
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: listLayout)
+        collectionView.delegate = self
+        view.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    private func makeDataSource() -> DataSource {
+        let cellRegistration = UICollectionView.CellRegistration<BAAllEventsCollectionViewCell, BAEvent> { cell, indexPath, item in
+            cell.item = item
+        }
+        
+        let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, item in
+            let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item)
+            return cell
+        }
+        
+        return dataSource
+    }
+    
+    private func applySnapshot(animates: Bool = true) {
+        var snapshot = Snapshot()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(models, toSection: .main)
+        
+        dataSource.apply(snapshot, animatingDifferences: animates)
+    }
+    
+    private func configureModels(with events: [BAEvent]) {
+        
+    }
+}
+
+
+extension BAAllEventsViewController: UICollectionViewDelegate {
+    
+}
+
+
+extension BAAllEventsViewController {
+    
+    enum Section {
+        case main
     }
 }

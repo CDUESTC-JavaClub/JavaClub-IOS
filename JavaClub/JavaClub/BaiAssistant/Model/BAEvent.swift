@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BAEvent {
+struct BAEvent: Hashable {
     /* 活动编号 */
     let eventID: Int;
     /* 活动名称 */

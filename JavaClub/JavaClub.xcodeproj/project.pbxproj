@@ -60,6 +60,11 @@
 		B04C49562717F42200FBD9E7 /* CVScoreContentConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C49552717F42200FBD9E7 /* CVScoreContentConfiguration.swift */; };
 		B04C49582717F4AD00FBD9E7 /* CVScoreContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C49572717F4AD00FBD9E7 /* CVScoreContentView.swift */; };
 		B04C495A2718138F00FBD9E7 /* ScoreImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04C49592718138F00FBD9E7 /* ScoreImageView.swift */; };
+		B04F3E03273901AD003F96D7 /* TappableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04F3E02273901AD003F96D7 /* TappableImageView.swift */; };
+		B04F3E0627390535003F96D7 /* BAAllEventsContentConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04F3E0527390535003F96D7 /* BAAllEventsContentConfiguration.swift */; };
+		B04F3E082739059B003F96D7 /* BAMyEventsContentConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04F3E072739059B003F96D7 /* BAMyEventsContentConfiguration.swift */; };
+		B04F3E0A2739084D003F96D7 /* BAAllEventsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04F3E092739084D003F96D7 /* BAAllEventsCollectionViewCell.swift */; };
+		B04F3E0C27390C0E003F96D7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04F3E0B27390C0E003F96D7 /* DateExtension.swift */; };
 		B04FEE2E27113D750065FFB6 /* TappableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE2D27113D750065FFB6 /* TappableViewCell.swift */; };
 		B04FEE302711607A0065FFB6 /* TVSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE2F2711607A0065FFB6 /* TVSection.swift */; };
 		B04FEE32271168080065FFB6 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FEE31271168080065FFB6 /* SwitchTableViewCell.swift */; };
@@ -156,6 +161,11 @@
 		B04C49552717F42200FBD9E7 /* CVScoreContentConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVScoreContentConfiguration.swift; sourceTree = "<group>"; };
 		B04C49572717F4AD00FBD9E7 /* CVScoreContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVScoreContentView.swift; sourceTree = "<group>"; };
 		B04C49592718138F00FBD9E7 /* ScoreImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreImageView.swift; sourceTree = "<group>"; };
+		B04F3E02273901AD003F96D7 /* TappableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableImageView.swift; sourceTree = "<group>"; };
+		B04F3E0527390535003F96D7 /* BAAllEventsContentConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAAllEventsContentConfiguration.swift; sourceTree = "<group>"; };
+		B04F3E072739059B003F96D7 /* BAMyEventsContentConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAMyEventsContentConfiguration.swift; sourceTree = "<group>"; };
+		B04F3E092739084D003F96D7 /* BAAllEventsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAAllEventsCollectionViewCell.swift; sourceTree = "<group>"; };
+		B04F3E0B27390C0E003F96D7 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		B04FEE2D27113D750065FFB6 /* TappableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableViewCell.swift; sourceTree = "<group>"; };
 		B04FEE2F2711607A0065FFB6 /* TVSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSection.swift; sourceTree = "<group>"; };
 		B04FEE31271168080065FFB6 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
@@ -221,24 +231,26 @@
 		243EF313273685D6000E59ED /* View */ = {
 			isa = PBXGroup;
 			children = (
-				243EF314273686B8000E59ED /* Events */,
+				243EF314273686B8000E59ED /* CollectionView */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		243EF314273686B8000E59ED /* Events */ = {
+		243EF314273686B8000E59ED /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
 				243EF315273686C9000E59ED /* AllEvents */,
 				243EF316273686D0000E59ED /* MyEvents */,
 			);
-			path = Events;
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 		243EF315273686C9000E59ED /* AllEvents */ = {
 			isa = PBXGroup;
 			children = (
 				243EF3192736878E000E59ED /* BAAllEventsContentView.swift */,
+				B04F3E0527390535003F96D7 /* BAAllEventsContentConfiguration.swift */,
+				B04F3E092739084D003F96D7 /* BAAllEventsCollectionViewCell.swift */,
 				243EF31B273687BE000E59ED /* BAAllEventsContentView.xib */,
 			);
 			path = AllEvents;
@@ -248,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				243EF31D27368864000E59ED /* BAMyEventsContentView.swift */,
+				B04F3E072739059B003F96D7 /* BAMyEventsContentConfiguration.swift */,
 				243EF31F2736887B000E59ED /* BAMyEventsContentView.xib */,
 			);
 			path = MyEvents;
@@ -316,6 +329,7 @@
 				B0AF9503272BE88100671BF7 /* LocalizableLabel.swift */,
 				B035CACF2731234F0097AE68 /* LocalizableTextField.swift */,
 				B08CFF8E2733D727000E07A4 /* TappableButton.swift */,
+				B04F3E02273901AD003F96D7 /* TappableImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -623,6 +637,7 @@
 				B02032C926FE05910048B6F6 /* ViewExtension.swift */,
 				B0F900C9270300420056A016 /* ViewControllerExtension.swift */,
 				B0A5D9A3272A9CFE00A8E3EE /* NumberExtension.swift */,
+				B04F3E0B27390C0E003F96D7 /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -725,6 +740,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B035CACB273105950097AE68 /* ProgressShapeLayer.swift in Sources */,
+				B04F3E0C27390C0E003F96D7 /* DateExtension.swift in Sources */,
 				B035CACA273105950097AE68 /* StrokeColorAnimation.swift in Sources */,
 				B08F6FCD270040010015B354 /* JCLoginInfo.swift in Sources */,
 				B02EEEF826FDB2760010515A /* AppDelegate.swift in Sources */,
@@ -736,6 +752,7 @@
 				B08F6FD02700401E0015B354 /* STMainViewController.swift in Sources */,
 				B0D62071273223DD0014F165 /* Spinner.swift in Sources */,
 				B08F6FCA27003FD60015B354 /* JCNoticeView.swift in Sources */,
+				B04F3E082739059B003F96D7 /* BAMyEventsContentConfiguration.swift in Sources */,
 				B04C49582717F4AD00FBD9E7 /* CVScoreContentView.swift in Sources */,
 				B02032CE26FE05910048B6F6 /* ColorExtension.swift in Sources */,
 				B08F6FC527003F8C0015B354 /* ClassTableManager.swift in Sources */,
@@ -765,6 +782,7 @@
 				B02032D326FE37C20048B6F6 /* DesignableView.swift in Sources */,
 				B0A5D9A1272A49D300A8E3EE /* JCDateManager.swift in Sources */,
 				B02E4F1F2701BB7C00EA3DDB /* TVOption.swift in Sources */,
+				B04F3E03273901AD003F96D7 /* TappableImageView.swift in Sources */,
 				B02032CC26FE05910048B6F6 /* ViewPlaceholder.swift in Sources */,
 				B035CACC273105950097AE68 /* ProgressView.swift in Sources */,
 				B0973FA62703FE4200E5C9C6 /* KAScore.swift in Sources */,
@@ -780,12 +798,14 @@
 				B05B0D76271D05E300F48D52 /* NoRotateNavigationController.swift in Sources */,
 				B02032CD26FE05910048B6F6 /* ImageExtension.swift in Sources */,
 				243EF3102736566C000E59ED /* JCEulaViewController.swift in Sources */,
+				B04F3E0A2739084D003F96D7 /* BAAllEventsCollectionViewCell.swift in Sources */,
 				B0416690272F7DAB00117876 /* BAAccountManager.swift in Sources */,
 				B0B84354270FEBE300C19B9B /* KAMainViewController.swift in Sources */,
 				B0A5D9A4272A9CFE00A8E3EE /* NumberExtension.swift in Sources */,
 				B00939FE27151D3200879AC5 /* UnderlineButton.swift in Sources */,
 				B02032CF26FE05910048B6F6 /* ViewExtension.swift in Sources */,
 				B01AA9B726FF4C55000D3E4A /* JCLoginState.swift in Sources */,
+				B04F3E0627390535003F96D7 /* BAAllEventsContentConfiguration.swift in Sources */,
 				B06F83FF2722BC4800069A23 /* KAClassTableObservable.swift in Sources */,
 				243EF322273688BD000E59ED /* BAAllEventsViewController.swift in Sources */,
 				B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */,
