@@ -180,7 +180,7 @@ extension STContentViewController {
             retrieveImage(avatarURL, for: "avatarKey") { [weak self] result in
                 switch result {
                 case .success(let image):
-                    self?.avatar.image = image
+                    self?.avatar.image = image ?? UIImage(named: "user_holder")
                     print("DEBUG: Fetch Avatar Succeeded.")
                     
                 case .failure(let error):
@@ -199,7 +199,7 @@ extension STContentViewController {
             retrieveImage(bannerURL, for: "bannerKey") { [weak self] result in
                 switch result {
                 case .success(let image):
-                    self?.banner.image = image
+                    self?.banner.image = image ?? UIImage(named: "login_bg")
                     print("DEBUG: Fetch Banner Succeeded.")
                     
                 case .failure(let error):
@@ -213,7 +213,7 @@ extension STContentViewController {
         }
     }
     
-    private func retrieveImage(_ imgURL: URL, for key: String, completion: @escaping (Result<UIImage, JCError>) -> Void) {
+    private func retrieveImage(_ imgURL: URL, for key: String, completion: @escaping (Result<UIImage?, JCError>) -> Void) {
         ImageDownloader.default.downloadImage(with: imgURL) { result in
             switch result {
             case .success(let data):
@@ -228,7 +228,7 @@ extension STContentViewController {
                     switch result {
                     case .success(let data):
                         print("DEBUG: Using Local Cached Image.")
-                        completion(.success(data.image!))
+                        completion(.success(data.image))
                         
                     case .failure(let error):
                         print("DEBUG: Get Local Image Failed With Error: \(String(describing: error))")

@@ -7,6 +7,6 @@
 
 import UIKit
 
-class BAAllEventsContentView: UIView, UIContentView {
-    
-}
+//class BAAllEventsContentView: UIView, UIContentView {
+//    
+//}

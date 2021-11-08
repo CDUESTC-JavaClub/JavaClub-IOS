@@ -147,7 +147,7 @@ extension KAScoreViewController {
             }
         }
         
-        for (_key, _value) in modelDict.sorted(by: { $0.0 < $1.0 }) {
+        for (_key, _value) in modelDict.sorted(by: { $0.0 > $1.0 }) {
             let section = KASection(title: _key, scores: _value)
             _models.append(section)
         }
