@@ -17,7 +17,7 @@ struct BAAllEventsContentConfiguration: UIContentConfiguration, Hashable {
     var status: String?
     
     func makeContentView() -> UIView & UIContentView {
-        return BAAllEventsContentView(configuration: self)
+        BAAllEventsContentView(configuration: self)
     }
     
     func updated(for state: UIConfigurationState) -> BAAllEventsContentConfiguration {

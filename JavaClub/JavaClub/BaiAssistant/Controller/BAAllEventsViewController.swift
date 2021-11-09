@@ -144,8 +144,8 @@ class BAAllEventsViewController: UIViewController {
         title = "百叶计划活动列表".localized()
         
         configureCollectionView()
-        configureAppearance()
         configureModels(with: [])
+        configureAppearance()
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

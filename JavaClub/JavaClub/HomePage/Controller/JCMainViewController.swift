@@ -8,10 +8,13 @@
 import UIKit
 import Defaults
 import SnapKit
+import Reachability
 
 class JCMainViewController: UIViewController {
     private var loginVC: JCLoginViewController!
     private var webVC: JCWebViewController!
+    private var refreshVC: JCRefreshViewController!
+    private let reachability = try? Reachability()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -31,9 +34,31 @@ class JCMainViewController: UIViewController {
             using: didUpdateJCLoginState(_:)
         )
         
-        let _ = Defaults.observe(.sessionURL) { [weak self] obj in
+        let _ = Defaults.observe(.sessionURL, options: []) { [weak self] obj in
             self?.didResetJCState(obj.newValue.isNil)
         }.tieToLifetime(of: self)
+        
+        if let reachability = reachability {
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(reachabilityDidChange(_:)),
+                name: .reachabilityChanged,
+                object: reachability
+            )
+            
+            do {
+                try reachability.startNotifier()
+                print("DEBUG: Reachability Notifier Start Succeeded.")
+            } catch {
+                print("DEBUG: Reachability Notifier Start Failed.")
+            }
+        } else {
+            print("DEBUG: Reachability Initialization Failed.")
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,9 +66,9 @@ class JCMainViewController: UIViewController {
         
         if !Defaults[.jcLoginInfo].isNil, !JCLoginState.shared.jc {
             let delegate = UIApplication.shared.delegate as? AppDelegate
-            delegate?.loginJCIfAvailable()
-        } else {
-            didResetJCState(Defaults[.sessionURL].isNil)
+            delegate?.loginJCIfAvailable(onFailure: {
+                
+            })
         }
     }
 }
@@ -106,6 +131,45 @@ extension JCMainViewController {
                 webVC.view.isHidden = true
                 startLoading(for: .jc)
             }
+        }
+    }
+    
+    @objc private func reachabilityDidChange(_ notification: Notification) {
+        guard let status = notification.object as? Reachability else { return }
+        switch status.connection {
+        case .cellular, .wifi:
+            print("DEBUG: Internet Connection Is Good.")
+            
+            if !refreshVC.isNil {
+                refreshVC.view.removeFromSuperview()
+                refreshVC = nil
+            }
+            
+            didResetJCState(Defaults[.sessionURL].isNil)
+            
+        default:
+            print("DEBUG: No Internet Connection.")
+            
+            if !loginVC.isNil {
+                loginVC.view.removeFromSuperview()
+                loginVC = nil
+            } else if !webVC.isNil {
+                webVC.view.removeFromSuperview()
+                webVC = nil
+            }
+            
+            refreshVC =  UIStoryboard(name: "JavaClub", bundle: .main)
+                .instantiateViewController(withIdentifier: "JCRefreshViewController")
+            as? JCRefreshViewController
+            
+            refreshVC.updateLabelText(with: "网络异常，请检查网络后重试。")
+            
+            view.addSubview(refreshVC.view)
+            refreshVC.view.snp.makeConstraints { make in
+                make.edges.equalTo(view)
+            }
+            
+            tabBarController?.tabBar.isHidden = true
         }
     }
 }

@@ -9,7 +9,18 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BAAllEventsContentView" customModule="JavaClub" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="iN0-l3-epB" id="rpr-bZ-nuA"/>
+                <outlet property="eventIconView" destination="rEp-Em-lIe" id="Md8-f2-OtC"/>
+                <outlet property="locationLabel" destination="7Pa-vJ-dfn" id="vTu-yD-XvF"/>
+                <outlet property="statusLabel" destination="2er-9a-2AV" id="vI6-eU-PdR"/>
+                <outlet property="timeLabel" destination="LFu-cu-9Ju" id="nKy-xn-V9E"/>
+                <outlet property="titleLabel" destination="oag-93-hjo" id="QwU-cc-stU"/>
+                <outlet property="typeIconView" destination="Zg5-fx-uZ6" id="FNU-iW-xK7"/>
+                <outlet property="typeLabel" destination="ifi-xv-gFI" id="apu-Ok-7sB"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="516" height="100"/>

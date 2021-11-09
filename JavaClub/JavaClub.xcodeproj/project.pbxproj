@@ -92,6 +92,9 @@
 		B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA927044BE500E5C9C6 /* KASection.swift */; };
 		B0A5D9A1272A49D300A8E3EE /* JCDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A5D9A0272A49D300A8E3EE /* JCDateManager.swift */; };
 		B0A5D9A4272A9CFE00A8E3EE /* NumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A5D9A3272A9CFE00A8E3EE /* NumberExtension.swift */; };
+		B0AE9B75273A210F009CFBD6 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = B0AE9B74273A210F009CFBD6 /* Reachability */; };
+		B0AE9B77273A4229009CFBD6 /* JCRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AE9B76273A4229009CFBD6 /* JCRefreshViewController.swift */; };
+		B0AE9B79273A5170009CFBD6 /* LocalizableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AE9B78273A5170009CFBD6 /* LocalizableButton.swift */; };
 		B0AF94FE272BE05A00671BF7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B0AF94FC272BE05A00671BF7 /* Localizable.strings */; };
 		B0AF9504272BE88100671BF7 /* LocalizableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AF9503272BE88100671BF7 /* LocalizableLabel.swift */; };
 		B0B84350270FE6F800C19B9B /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B8434F270FE6F800C19B9B /* RefreshableScrollView.swift */; };
@@ -193,6 +196,8 @@
 		B0973FA927044BE500E5C9C6 /* KASection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KASection.swift; sourceTree = "<group>"; };
 		B0A5D9A0272A49D300A8E3EE /* JCDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCDateManager.swift; sourceTree = "<group>"; };
 		B0A5D9A3272A9CFE00A8E3EE /* NumberExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberExtension.swift; sourceTree = "<group>"; };
+		B0AE9B76273A4229009CFBD6 /* JCRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCRefreshViewController.swift; sourceTree = "<group>"; };
+		B0AE9B78273A5170009CFBD6 /* LocalizableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableButton.swift; sourceTree = "<group>"; };
 		B0AF94FD272BE05A00671BF7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B0AF9503272BE88100671BF7 /* LocalizableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableLabel.swift; sourceTree = "<group>"; };
 		B0B8434F270FE6F800C19B9B /* RefreshableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableScrollView.swift; sourceTree = "<group>"; };
@@ -220,6 +225,7 @@
 				B02EEF1426FDB9030010515A /* Defaults in Frameworks */,
 				B02EEF4126FDDA140010515A /* SnapKit in Frameworks */,
 				B0093A0A27159E0E00879AC5 /* SwiftyRSA in Frameworks */,
+				B0AE9B75273A210F009CFBD6 /* Reachability in Frameworks */,
 				B02EEF2026FDBA300010515A /* SwiftyJSON in Frameworks */,
 				B02EEF1726FDB9110010515A /* Alamofire in Frameworks */,
 			);
@@ -292,6 +298,7 @@
 				B02EEF3D26FDD7BD0010515A /* JCLoginViewController.swift */,
 				B02EEF2826FDC0A00010515A /* JCWebViewController.swift */,
 				243EF30F2736566C000E59ED /* JCEulaViewController.swift */,
+				B0AE9B76273A4229009CFBD6 /* JCRefreshViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -328,6 +335,7 @@
 				B05B0D75271D05E300F48D52 /* NoRotateNavigationController.swift */,
 				B0AF9503272BE88100671BF7 /* LocalizableLabel.swift */,
 				B035CACF2731234F0097AE68 /* LocalizableTextField.swift */,
+				B0AE9B78273A5170009CFBD6 /* LocalizableButton.swift */,
 				B08CFF8E2733D727000E07A4 /* TappableButton.swift */,
 				B04F3E02273901AD003F96D7 /* TappableImageView.swift */,
 			);
@@ -666,6 +674,7 @@
 				B02EEF4026FDDA140010515A /* SnapKit */,
 				B0CCEF0B27141EAB001235E9 /* DeviceKit */,
 				B0093A0927159E0E00879AC5 /* SwiftyRSA */,
+				B0AE9B74273A210F009CFBD6 /* Reachability */,
 			);
 			productName = JavaClub;
 			productReference = B02EEEF426FDB2760010515A /* JavaClub.app */;
@@ -704,6 +713,7 @@
 				B02EEF3F26FDDA140010515A /* XCRemoteSwiftPackageReference "SnapKit" */,
 				B0CCEF0A27141EAB001235E9 /* XCRemoteSwiftPackageReference "DeviceKit" */,
 				B0093A0827159E0E00879AC5 /* XCRemoteSwiftPackageReference "SwiftyRSA" */,
+				B0AE9B73273A210F009CFBD6 /* XCRemoteSwiftPackageReference "Reachability" */,
 			);
 			productRefGroup = B02EEEF526FDB2760010515A /* Products */;
 			projectDirPath = "";
@@ -815,7 +825,9 @@
 				B0AF9504272BE88100671BF7 /* LocalizableLabel.swift in Sources */,
 				B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */,
 				B0973FA32703FC0300E5C9C6 /* KAScoreViewController.swift in Sources */,
+				B0AE9B79273A5170009CFBD6 /* LocalizableButton.swift in Sources */,
 				B08F6FD5270048B40015B354 /* STContentViewController.swift in Sources */,
+				B0AE9B77273A4229009CFBD6 /* JCRefreshViewController.swift in Sources */,
 				B04FEE32271168080065FFB6 /* SwitchTableViewCell.swift in Sources */,
 				243EF31E27368864000E59ED /* BAMyEventsContentView.swift in Sources */,
 				B07399C0270A99330020AEB8 /* BAScore.swift in Sources */,
@@ -1097,6 +1109,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		B0AE9B73273A210F009CFBD6 /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		B0CCEF0A27141EAB001235E9 /* XCRemoteSwiftPackageReference "DeviceKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devicekit/DeviceKit";
@@ -1137,6 +1157,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B02EEF3F26FDDA140010515A /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		B0AE9B74273A210F009CFBD6 /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0AE9B73273A210F009CFBD6 /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
 		};
 		B0CCEF0B27141EAB001235E9 /* DeviceKit */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -69,16 +69,21 @@ extension AppDelegate {
         }
     }
     
-    func loginJCIfAvailable() {
+    func loginJCIfAvailable(onFailure: (() -> Void)? = nil) {
         if !Defaults[.firstLogin], let info = Defaults[.jcLoginInfo] {
             loginJC(info) {
                 print("DEBUG: Auto Login JC Succeeded.")
                 JCLoginState.shared.jc = true
             } onFailure: {
                 print("DEBUG: Auto Login JC Failed.")
+                onFailure?()
             }
         } else {
             print("DEBUG: First Login Or Login Info Not Found.")
+            
+            if !Defaults[.jcLoginInfo].isNil {
+                JCAccountManager.shared.logout(clean: true)
+            }
         }
     }
     

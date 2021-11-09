@@ -16,17 +16,21 @@ class BAAllEventsCollectionViewCell: UICollectionViewListCell {
         
         if let item = item {
             newConfig.title = item.eventName
-            retrieveImage(for: item.coverUrl) { img in
-                DispatchQueue.main.async {
-                    newConfig.eventIcon = img
-                }
-            }
+//            retrieveImage(for: item.coverUrl) { img in
+//                DispatchQueue.main.async {
+//                    newConfig.eventIcon = img
+//                }
+//            }
+            #warning("Image Placeholder")
+            newConfig.eventIcon = UIImage(named: "img_placeholder")
             newConfig.time = item.startDate.formatted()
             newConfig.location = item.place
             newConfig.typeIcon = selectIcon(for: item.type)
             newConfig.type = item.type
             newConfig.status = item.status
         }
+        
+        contentConfiguration = newConfig
     }
     
     private func retrieveImage(for urlStr: String, _ completion: @escaping (UIImage?) -> Void) {
@@ -49,16 +53,16 @@ class BAAllEventsCollectionViewCell: UICollectionViewListCell {
     private func selectIcon(for type: String) -> UIImage? {
         switch type {
         case "md":
-            return UIImage(named: "bai_icon_md")
+            return UIImage(named: "bai_icon_md")?.withTintColor(UIColor(hex: "A54E44") ?? .systemRed)
             
         case "dx":
-            return UIImage(named: "bai_icon_dx")
+            return UIImage(named: "bai_icon_dx")?.withTintColor(UIColor(hex: "769A6A") ?? .systemGreen)
             
         case "jm":
-            return UIImage(named: "bai_icon_jm")
+            return UIImage(named: "bai_icon_jm")?.withTintColor(UIColor(hex: "E8CB76") ?? .systemYellow)
             
         case "bx":
-            return UIImage(named: "bai_icon_bx")
+            return UIImage(named: "bai_icon_bx")?.withTintColor(UIColor(hex: "648EC1") ?? .systemBlue)
             
         default:
             return nil
