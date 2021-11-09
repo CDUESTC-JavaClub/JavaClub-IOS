@@ -14,7 +14,6 @@ class JCMainViewController: UIViewController {
     private var loginVC: JCLoginViewController!
     private var webVC: JCWebViewController!
     private var refreshVC: JCRefreshViewController!
-    private let reachability = try? Reachability()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -37,28 +36,22 @@ class JCMainViewController: UIViewController {
         let _ = Defaults.observe(.sessionURL, options: []) { [weak self] obj in
             self?.didResetJCState(obj.newValue.isNil)
         }.tieToLifetime(of: self)
-        
-        if let reachability = reachability {
-            NotificationCenter.default.addObserver(
-                self,
-                selector: #selector(reachabilityDidChange(_:)),
-                name: .reachabilityChanged,
-                object: reachability
-            )
-            
-            do {
-                try reachability.startNotifier()
-                print("DEBUG: Reachability Notifier Start Succeeded.")
-            } catch {
-                print("DEBUG: Reachability Notifier Start Failed.")
-            }
-        } else {
-            print("DEBUG: Reachability Initialization Failed.")
-        }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if !Defaults[.jcLoginInfo].isNil, !JCLoginState.shared.jc {
+            loginJCIfAvailable { [weak self] success in
+                if success {
+                    self?.didResetJCState(Defaults[.sessionURL].isNil)
+                } else {
+                    self?.autoLoginJCFailed()
+                }
+            }
+        } else {
+            didResetJCState(Defaults[.sessionURL].isNil)
+        }
     }
 }
 
@@ -73,6 +66,7 @@ extension JCMainViewController {
         
         if isLoggedIn {
             stopLoading(for: .jc)
+            tabBarEnabled(true)
         }
     }
     
@@ -127,56 +121,9 @@ extension JCMainViewController {
         }
     }
     
-    @objc private func reachabilityDidChange(_ notification: Notification) {
-        guard let status = notification.object as? Reachability else { return }
-        
-        switch status.connection {
-        case .cellular, .wifi:
-            print("DEBUG: Internet Connection Is Good.")
-            
-            if !refreshVC.isNil {
-                refreshVC.view.removeFromSuperview()
-                refreshVC = nil
-            }
-            
-            if !Defaults[.jcLoginInfo].isNil, !JCLoginState.shared.jc {
-                loginJCIfAvailable { [weak self] success in
-                    if success {
-                        self?.didResetJCState(Defaults[.sessionURL].isNil)
-                    } else {
-                        self?.autoLoginJCFailed()
-                    }
-                }
-            } else {
-                didResetJCState(Defaults[.sessionURL].isNil)
-            }
-            
-        default:
-            print("DEBUG: No Internet Connection.")
-            
-            if !loginVC.isNil {
-                loginVC.view.removeFromSuperview()
-                loginVC = nil
-            } else if !webVC.isNil {
-                webVC.view.removeFromSuperview()
-                webVC = nil
-            }
-            
-            refreshVC =  UIStoryboard(name: "JavaClub", bundle: .main)
-                .instantiateViewController(withIdentifier: "JCRefreshViewController")
-            as? JCRefreshViewController
-            
-            view.addSubview(refreshVC.view)
-            refreshVC.view.snp.makeConstraints { make in
-                make.edges.equalTo(view)
-            }
-            
-            tabBarController?.tabBar.isHidden = true
-        }
-    }
-    
     private func loginJCIfAvailable(_ completion: ((Bool) -> Void)? = nil) {
         startLoading(for: .jc)
+        tabBarEnabled(false)
         
         let delegate = UIApplication.shared.delegate as? AppDelegate
         delegate?.loginJCIfAvailable(completion)
@@ -184,6 +131,7 @@ extension JCMainViewController {
     
     private func autoLoginJCFailed() {
         stopLoading(for: .jc)
+        tabBarEnabled(false)
         
         if !webVC.isNil {
             webVC.view.removeFromSuperview()
@@ -199,6 +147,8 @@ extension JCMainViewController {
                 self?.loginJCIfAvailable { success in
                     if success {
                         self?.didResetJCState(Defaults[.sessionURL].isNil)
+                    } else {
+                        self?.stopLoading(for: .jc)
                     }
                 }
             }
@@ -207,8 +157,20 @@ extension JCMainViewController {
             refreshVC.view.snp.makeConstraints { make in
                 make.edges.equalTo(view)
             }
-            
-            tabBarController?.tabBar.isHidden = true
+        }
+    }
+    
+    private func tabBarEnabled(_ boolean: Bool) {
+        guard let tabItems = tabBarController?.tabBar.items else { return }
+        
+        if boolean {
+            tabItems.forEach {
+                $0.isEnabled = true
+            }
+        } else {
+            tabItems.forEach {
+                $0.isEnabled = false
+            }
         }
     }
 }

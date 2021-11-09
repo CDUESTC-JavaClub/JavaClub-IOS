@@ -8,8 +8,6 @@
 import UIKit
 
 class JCRefreshViewController: UIViewController {
-    @IBOutlet var hintLabel: LocalizableLabel!
-    
     var onTapGesture: (() -> Void)?
 
     override func viewDidLoad() {
