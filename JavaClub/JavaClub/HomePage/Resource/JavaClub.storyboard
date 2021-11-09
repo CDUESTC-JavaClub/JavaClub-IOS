@@ -243,8 +243,8 @@
                                             <constraint firstAttribute="height" constant="100" id="CvB-dD-1cA"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网络异常，请检查网络后重试。" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8g-Wl-6XH" customClass="LocalizableLabel" customModule="JavaClub" customModuleProvider="target">
-                                        <rect key="frame" x="87" y="100" width="200" height="42"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网络异常，请检查网络后轻触重试。" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8g-Wl-6XH" customClass="LocalizableLabel" customModule="JavaClub" customModuleProvider="target">
+                                        <rect key="frame" x="73" y="100" width="228.5" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="sbZ-cQ-1W1"/>
                                         </constraints>
@@ -252,7 +252,7 @@
                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="网络异常，请检查网络后重试。"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="网络异常，请检查网络后轻触重试。"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
@@ -268,7 +268,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="hintLabel" destination="w8g-Wl-6XH" id="chd-jH-aWK"/>
+                        <outlet property="hintLabel" destination="w8g-Wl-6XH" id="XOA-1e-o7v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KLd-ui-Km3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -299,7 +299,7 @@
             <size key="intrinsicContentSize" width="155.5" height="30"/>
         </designable>
         <designable name="w8g-Wl-6XH">
-            <size key="intrinsicContentSize" width="200" height="17"/>
+            <size key="intrinsicContentSize" width="228.5" height="17"/>
         </designable>
     </designables>
     <resources>

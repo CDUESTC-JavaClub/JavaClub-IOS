@@ -23,10 +23,6 @@ class JCRefreshViewController: UIViewController {
 
 extension JCRefreshViewController {
     
-    func updateLabelText(with textStr: String) {
-        hintLabel.localizedKey = textStr
-    }
-    
     @objc private func tapped() {
         onTapGesture?()
     }

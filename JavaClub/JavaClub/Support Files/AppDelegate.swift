@@ -61,6 +61,7 @@ extension AppDelegate {
                     case .failure(let error):
                         print("DEBUG: Fetch User Info Failed With Error: \(String(describing: error))")
                         JCAccountManager.shared.logout(clean: true)
+                        onFailure?()
                     }
                 }
             } else {
@@ -69,14 +70,15 @@ extension AppDelegate {
         }
     }
     
-    func loginJCIfAvailable(onFailure: (() -> Void)? = nil) {
+    func loginJCIfAvailable(_ completion: ((Bool) -> Void)? = nil) {
         if !Defaults[.firstLogin], let info = Defaults[.jcLoginInfo] {
             loginJC(info) {
                 print("DEBUG: Auto Login JC Succeeded.")
                 JCLoginState.shared.jc = true
+                completion?(true)
             } onFailure: {
                 print("DEBUG: Auto Login JC Failed.")
-                onFailure?()
+                completion?(false)
             }
         } else {
             print("DEBUG: First Login Or Login Info Not Found.")

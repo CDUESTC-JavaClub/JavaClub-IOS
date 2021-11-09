@@ -110,6 +110,6 @@
 
 "百叶计划活动列表" = "All BaiYe Events";
 
-"网络异常，请检查网络后重试。" = "Connection lost. Please check your Internet status and try again.";
+"网络异常，请检查网络后轻触重试。" = "Connection lost. Please check your Internet status and tap to retry.";
 
 "退出" = "Terminate";

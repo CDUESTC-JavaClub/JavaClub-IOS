@@ -57,19 +57,8 @@ class JCMainViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        if !Defaults[.jcLoginInfo].isNil, !JCLoginState.shared.jc {
-            let delegate = UIApplication.shared.delegate as? AppDelegate
-            delegate?.loginJCIfAvailable(onFailure: {
-                
-            })
-        }
     }
 }
 
@@ -83,7 +72,6 @@ extension JCMainViewController {
         else { return }
         
         if isLoggedIn {
-            webVC.view.isHidden = false
             stopLoading(for: .jc)
         }
     }
@@ -93,6 +81,11 @@ extension JCMainViewController {
             if !webVC.isNil {
                 webVC.view.removeFromSuperview()
                 webVC = nil
+            }
+            
+            if !refreshVC.isNil {
+                refreshVC.view.removeFromSuperview()
+                refreshVC = nil
             }
             
             loginVC = UIStoryboard(name: "JavaClub", bundle: .main)
@@ -112,6 +105,11 @@ extension JCMainViewController {
                 loginVC = nil
             }
             
+            if !refreshVC.isNil {
+                refreshVC.view.removeFromSuperview()
+                refreshVC = nil
+            }
+            
             if webVC == nil, let sessionURL = Defaults[.sessionURL] {
                 let url = !Defaults[.firstLogin] ? JCAccountManager.shared.javaClubURL : sessionURL
                 webVC = JCWebViewController(url: url)
@@ -126,16 +124,12 @@ extension JCMainViewController {
             }
             
             tabBarController?.tabBar.isHidden = false
-            
-            if !JCLoginState.shared.jc {
-                webVC.view.isHidden = true
-                startLoading(for: .jc)
-            }
         }
     }
     
     @objc private func reachabilityDidChange(_ notification: Notification) {
         guard let status = notification.object as? Reachability else { return }
+        
         switch status.connection {
         case .cellular, .wifi:
             print("DEBUG: Internet Connection Is Good.")
@@ -145,7 +139,17 @@ extension JCMainViewController {
                 refreshVC = nil
             }
             
-            didResetJCState(Defaults[.sessionURL].isNil)
+            if !Defaults[.jcLoginInfo].isNil, !JCLoginState.shared.jc {
+                loginJCIfAvailable { [weak self] success in
+                    if success {
+                        self?.didResetJCState(Defaults[.sessionURL].isNil)
+                    } else {
+                        self?.autoLoginJCFailed()
+                    }
+                }
+            } else {
+                didResetJCState(Defaults[.sessionURL].isNil)
+            }
             
         default:
             print("DEBUG: No Internet Connection.")
@@ -162,7 +166,42 @@ extension JCMainViewController {
                 .instantiateViewController(withIdentifier: "JCRefreshViewController")
             as? JCRefreshViewController
             
-            refreshVC.updateLabelText(with: "网络异常，请检查网络后重试。")
+            view.addSubview(refreshVC.view)
+            refreshVC.view.snp.makeConstraints { make in
+                make.edges.equalTo(view)
+            }
+            
+            tabBarController?.tabBar.isHidden = true
+        }
+    }
+    
+    private func loginJCIfAvailable(_ completion: ((Bool) -> Void)? = nil) {
+        startLoading(for: .jc)
+        
+        let delegate = UIApplication.shared.delegate as? AppDelegate
+        delegate?.loginJCIfAvailable(completion)
+    }
+    
+    private func autoLoginJCFailed() {
+        stopLoading(for: .jc)
+        
+        if !webVC.isNil {
+            webVC.view.removeFromSuperview()
+            webVC = nil
+        }
+        
+        if refreshVC.isNil {
+            refreshVC =  UIStoryboard(name: "JavaClub", bundle: .main)
+                .instantiateViewController(withIdentifier: "JCRefreshViewController")
+            as? JCRefreshViewController
+            
+            refreshVC.onTapGesture = { [weak self] in
+                self?.loginJCIfAvailable { success in
+                    if success {
+                        self?.didResetJCState(Defaults[.sessionURL].isNil)
+                    }
+                }
+            }
             
             view.addSubview(refreshVC.view)
             refreshVC.view.snp.makeConstraints { make in
