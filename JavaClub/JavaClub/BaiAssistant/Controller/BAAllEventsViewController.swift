@@ -209,6 +209,8 @@ extension BAAllEventsViewController {
             .instantiateViewController(withIdentifier: "BAEventDetailViewController")
         as! BAEventDetailViewController
         
+        detailVC.eventItem = item
+        
         view.addSubview(detailVC.view)
         detailVC.view.translatesAutoresizingMaskIntoConstraints = false
         detailVC.view.snp.makeConstraints { make in

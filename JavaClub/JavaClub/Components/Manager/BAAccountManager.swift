@@ -180,6 +180,33 @@ extension BAAccountManager {
     }
     
     /**
+     *  获取活动的Description
+     *
+     *  - Parameters:
+     *      -
+     */
+    func eventDetails(for eventID: Int, _ completion: @escaping (Result<String, JCError>) -> Void) {
+        guard let account = Defaults[.byAccount] else {
+            completion(.failure(.notLoginBY))
+            return
+        }
+        
+        let parameters = [
+            "token": account.token,
+            "url": String(eventID)
+        ]
+        
+        AFTask("/Api/During/details", parameters: parameters) { result in
+            if let result = try? result.get() {
+                completion(.success(result["data"].stringValue))
+            } else {
+                print("DEBUG: Failed To Get Event Details.")
+                completion(.failure(.noData))
+            }
+        }
+    }
+    
+    /**
      *  报名参加活动
      *
      *  - Parameters:

@@ -719,6 +719,9 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="报名"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="applyDidClick:" destination="g5h-th-3lX" eventType="touchUpInside" id="yS0-29-rx4"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BdW-sC-8dJ" customClass="LocalizableButton" customModule="JavaClub" customModuleProvider="target">
                                         <rect key="frame" x="170" y="0.0" width="120" height="31"/>
@@ -732,6 +735,9 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="我再想想"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="cancelDidClick:" destination="g5h-th-3lX" eventType="touchUpInside" id="P8X-M5-otB"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -747,6 +753,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="applyBtn" destination="7EC-cM-aq9" id="TvP-63-jTu"/>
+                        <outlet property="cancelbTN" destination="BdW-sC-8dJ" id="9Vw-iY-OND"/>
                         <outlet property="dateLabel" destination="J9m-Qv-tqf" id="naq-VH-gJ8"/>
                         <outlet property="descriptionLabel" destination="9pI-0S-MUz" id="d4O-ta-zd6"/>
                         <outlet property="eventImgView" destination="0hi-yB-DNW" id="4FS-H5-vNv"/>
