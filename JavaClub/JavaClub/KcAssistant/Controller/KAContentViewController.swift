@@ -86,6 +86,7 @@ extension KAContentViewController {
                 })),
                 .tappable(model: TVTappableOption(title: "课程表查询".localized(), icon: UIImage(named: "classtable_icon"), handler: { [weak self] in
                     let classTableVC = UIHostingController(rootView: KAClassTableContentview())
+                    classTableVC.title = "课程表查询".localized()
                     self?.navigationController?.isNavigationBarHidden = false
                     self?.navigationController?.pushViewController(classTableVC, animated: true)
                 })),
