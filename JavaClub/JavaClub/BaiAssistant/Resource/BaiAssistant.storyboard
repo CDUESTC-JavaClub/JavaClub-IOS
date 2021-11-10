@@ -746,6 +746,15 @@
                             <constraint firstItem="Hxm-j8-aUW" firstAttribute="centerX" secondItem="wZj-3x-pxV" secondAttribute="centerX" id="xJv-NB-qa9"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="J9m-Qv-tqf" id="naq-VH-gJ8"/>
+                        <outlet property="descriptionLabel" destination="9pI-0S-MUz" id="d4O-ta-zd6"/>
+                        <outlet property="eventImgView" destination="0hi-yB-DNW" id="4FS-H5-vNv"/>
+                        <outlet property="locationLabel" destination="gog-uN-i5p" id="OqX-QC-Ig6"/>
+                        <outlet property="peopleCountLabel" destination="MM2-rC-co1" id="Fgb-Y8-x0Z"/>
+                        <outlet property="statusLabel" destination="PtC-iS-VSk" id="tW7-sR-Q2L"/>
+                        <outlet property="titleLabel" destination="imH-Qg-zxG" id="YYK-e5-3Hb"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1198.5507246376812" y="114.50892857142857"/>

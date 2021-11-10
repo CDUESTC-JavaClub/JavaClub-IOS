@@ -215,10 +215,6 @@ extension BAAllEventsViewController {
             make.edges.equalTo(view)
         }
     }
-    
-    private func dismissEventDetail() {
-        
-    }
 }
 
 

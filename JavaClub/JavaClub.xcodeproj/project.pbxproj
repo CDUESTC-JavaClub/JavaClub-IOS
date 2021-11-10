@@ -77,6 +77,7 @@
 		B07399C0270A99330020AEB8 /* BAScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BF270A99330020AEB8 /* BAScore.swift */; };
 		B07399C2270A99A70020AEB8 /* BAEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399C1270A99A70020AEB8 /* BAEvent.swift */; };
 		B0858C41273B72A000B01027 /* BAEventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0858C40273B72A000B01027 /* BAEventDetailViewController.swift */; };
+		B0858C43273BA65300B01027 /* JCImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0858C42273BA65300B01027 /* JCImageManager.swift */; };
 		B08CFF8F2733D727000E07A4 /* TappableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08CFF8E2733D727000E07A4 /* TappableButton.swift */; };
 		B08F6FB027003EEC0015B354 /* KALoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAD27003EEB0015B354 /* KALoginInfo.swift */; };
 		B08F6FB127003EEC0015B354 /* KAEnrollment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAE27003EEB0015B354 /* KAEnrollment.swift */; };
@@ -182,6 +183,7 @@
 		B07399BF270A99330020AEB8 /* BAScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAScore.swift; sourceTree = "<group>"; };
 		B07399C1270A99A70020AEB8 /* BAEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAEvent.swift; sourceTree = "<group>"; };
 		B0858C40273B72A000B01027 /* BAEventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAEventDetailViewController.swift; sourceTree = "<group>"; };
+		B0858C42273BA65300B01027 /* JCImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCImageManager.swift; sourceTree = "<group>"; };
 		B08CFF8E2733D727000E07A4 /* TappableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableButton.swift; sourceTree = "<group>"; };
 		B08F6FAD27003EEB0015B354 /* KALoginInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KALoginInfo.swift; sourceTree = "<group>"; };
 		B08F6FAE27003EEB0015B354 /* KAEnrollment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAEnrollment.swift; sourceTree = "<group>"; };
@@ -616,6 +618,7 @@
 				B041668F272F7DAB00117876 /* BAAccountManager.swift */,
 				B08F6FC227003F8C0015B354 /* ClassTableManager.swift */,
 				B0A5D9A0272A49D300A8E3EE /* JCDateManager.swift */,
+				B0858C42273BA65300B01027 /* JCImageManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -766,6 +769,7 @@
 				B08F6FCA27003FD60015B354 /* JCNoticeView.swift in Sources */,
 				B04F3E082739059B003F96D7 /* BAMyEventsContentConfiguration.swift in Sources */,
 				B04C49582717F4AD00FBD9E7 /* CVScoreContentView.swift in Sources */,
+				B0858C43273BA65300B01027 /* JCImageManager.swift in Sources */,
 				B02032CE26FE05910048B6F6 /* ColorExtension.swift in Sources */,
 				B08F6FC527003F8C0015B354 /* ClassTableManager.swift in Sources */,
 				B0858C41273B72A000B01027 /* BAEventDetailViewController.swift in Sources */,

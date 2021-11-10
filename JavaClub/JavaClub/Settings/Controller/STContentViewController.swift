@@ -7,7 +7,6 @@
 
 import UIKit
 import Defaults
-import Kingfisher
 
 class STContentViewController: UIViewController {
     @IBOutlet var banner: UIImageView!
@@ -179,12 +178,13 @@ extension STContentViewController {
         if let avatarURL = avatarURL {
             retrieveImage(avatarURL, for: "avatarKey") { [weak self] result in
                 switch result {
-                case .success(let image):
-                    self?.avatar.image = image ?? UIImage(named: "user_holder")
-                    print("DEBUG: Fetch Avatar Succeeded.")
+                    case .success(let image):
+                        self?.avatar.image = image
+                        print("DEBUG: Fetch Avatar Succeeded.")
                     
-                case .failure(let error):
-                    print("DEBUG: Fetch Avatar Failed With Error: \(String(describing: error))")
+                    case .failure(let error):
+                        self?.avatar.image = UIImage(named: "user_holder")
+                        print("DEBUG: Fetch Avatar Failed With Error: \(String(describing: error))")
                 }
             }
         } else if JCLoginState.shared.jc {
@@ -198,12 +198,13 @@ extension STContentViewController {
         if let bannerURL = bannerURL {
             retrieveImage(bannerURL, for: "bannerKey") { [weak self] result in
                 switch result {
-                case .success(let image):
-                    self?.banner.image = image ?? UIImage(named: "login_bg")
-                    print("DEBUG: Fetch Banner Succeeded.")
+                    case .success(let image):
+                        self?.banner.image = image
+                        print("DEBUG: Fetch Banner Succeeded.")
                     
-                case .failure(let error):
-                    print("DEBUG: Fetch Banner Failed With Error: \(String(describing: error))")
+                    case .failure(let error):
+                        self?.banner.image = UIImage(named: "login_bg")
+                        print("DEBUG: Fetch Banner Failed With Error: \(String(describing: error))")
                 }
             }
         } else if JCLoginState.shared.jc {
@@ -213,25 +214,21 @@ extension STContentViewController {
         }
     }
     
-    private func retrieveImage(_ imgURL: URL, for key: String, completion: @escaping (Result<UIImage?, JCError>) -> Void) {
-        ImageDownloader.default.downloadImage(with: imgURL) { result in
-            switch result {
-            case .success(let data):
-                ImageCache.default.storeToDisk(data.originalData, forKey: key)
+    private func retrieveImage(_ imgURL: URL, for key: String, completion: @escaping (Result<UIImage, JCError>) -> Void) {
+        JCImageManager.shared.fetch(from: imgURL) { result in
+            if let result = result {
+                JCImageManager.shared.store(result.originalData, forKey: key)
                 print("DEBUG: Fetch Image Succeeded.")
-                completion(.success(data.image))
+                completion(.success(result.image))
+            } else {
+                print("DEBUG: Fetch Image Failed. Getting Local.")
                 
-            case .failure(let error):
-                print("DEBUG: Fetch Image Failed With Error: \(String(describing: error))")
-                
-                ImageCache.default.retrieveImage(forKey: key) { result in
-                    switch result {
-                    case .success(let data):
+                JCImageManager.shared.local(for: key) { img in
+                    if let img = img {
                         print("DEBUG: Using Local Cached Image.")
-                        completion(.success(data.image))
-                        
-                    case .failure(let error):
-                        print("DEBUG: Get Local Image Failed With Error: \(String(describing: error))")
+                        completion(.success(img))
+                    } else {
+                        print("DEBUG: Get Local Image Failed.")
                         completion(.failure(.imgRetrieveFailed))
                     }
                 }

@@ -41,23 +41,6 @@ class BAAllEventsCollectionViewCell: UICollectionViewListCell {
 
 extension BAAllEventsCollectionViewCell {
     
-    private func retrieveImage(for urlStr: String, _ completion: @escaping (UIImage?) -> Void) {
-        guard let imgURL = URL(string: urlStr) else {
-            completion(UIImage(named: "event_holder"))
-            return
-        }
-        
-        ImageDownloader.default.downloadImage(with: imgURL) { result in
-            switch result {
-            case .success(let data):
-                completion(data.image)
-                
-            case .failure(let error):
-                print("DEBUG: Fetch Event Image Failed With Error: \(String(describing: error))")
-            }
-        }
-    }
-    
     private func selectType(for rawType: String) -> String {
         switch rawType {
             case "md":
