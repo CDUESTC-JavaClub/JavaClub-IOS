@@ -23,10 +23,10 @@ class BAAllEventsViewController: UIViewController {
             hospital: "",
             startDate: Date(),
             type: "md",
-            place: "二教308",
+            place: "二教308 反馈区别还烦请",
             maxCount: 100,
             regCount: 67,
-            status: "报名中"
+            status: 4
         ),
         BAEvent(
             eventID: 1,
@@ -38,7 +38,7 @@ class BAAllEventsViewController: UIViewController {
             place: "二教109",
             maxCount: 100,
             regCount: 67,
-            status: "报名中"
+            status: 4
         ),
         BAEvent(
             eventID: 1,
@@ -50,7 +50,7 @@ class BAAllEventsViewController: UIViewController {
             place: "二教110",
             maxCount: 100,
             regCount: 67,
-            status: "报名中"
+            status: 7
         ),
         BAEvent(
             eventID: 1,
@@ -62,7 +62,7 @@ class BAAllEventsViewController: UIViewController {
             place: "二教312",
             maxCount: 100,
             regCount: 67,
-            status: "报名中"
+            status: 5
         ),
         BAEvent(
             eventID: 1,
@@ -74,7 +74,7 @@ class BAAllEventsViewController: UIViewController {
             place: "二教401",
             maxCount: 100,
             regCount: 67,
-            status: "报名中"
+            status: 5
         ),
         BAEvent(
             eventID: 1,
@@ -86,7 +86,7 @@ class BAAllEventsViewController: UIViewController {
             place: "二教403",
             maxCount: 100,
             regCount: 67,
-            status: "报名中"
+            status: 8
         ),
         BAEvent(
             eventID: 1,
@@ -98,7 +98,7 @@ class BAAllEventsViewController: UIViewController {
             place: "二教504",
             maxCount: 100,
             regCount: 67,
-            status: "报名中"
+            status: 8
         ),
         BAEvent(
             eventID: 1,
@@ -110,7 +110,7 @@ class BAAllEventsViewController: UIViewController {
             place: "二教103",
             maxCount: 100,
             regCount: 67,
-            status: "报名中"
+            status: 4
         ),
         BAEvent(
             eventID: 1,
@@ -122,7 +122,7 @@ class BAAllEventsViewController: UIViewController {
             place: "二教105",
             maxCount: 100,
             regCount: 67,
-            status: "报名中"
+            status: 7
         ),
         BAEvent(
             eventID: 1,
@@ -134,7 +134,7 @@ class BAAllEventsViewController: UIViewController {
             place: "二教314",
             maxCount: 100,
             regCount: 67,
-            status: "报名中"
+            status: 5
         ),
     ]
 
@@ -203,11 +203,35 @@ extension BAAllEventsViewController {
     private func configureModels(with events: [BAEvent]) {
         applySnapshot()
     }
+    
+    private func showEventDetail(for item: BAEvent?, at indexPath: IndexPath) {
+        let detailVC = UIStoryboard(name: "BaiAssistant", bundle: .main)
+            .instantiateViewController(withIdentifier: "BAEventDetailViewController")
+        as! BAEventDetailViewController
+        
+        view.addSubview(detailVC.view)
+        detailVC.view.translatesAutoresizingMaskIntoConstraints = false
+        detailVC.view.snp.makeConstraints { make in
+            make.edges.equalTo(view)
+        }
+    }
+    
+    private func dismissEventDetail() {
+        
+    }
 }
 
 
+// MARK: CollectionView Delegate
 extension BAAllEventsViewController: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? BAAllEventsCollectionViewCell else { return }
+        
+        cell.backgroundColor = .lightGray
+        
+        showEventDetail(for: cell.item, at: indexPath)
+    }
 }
 
 

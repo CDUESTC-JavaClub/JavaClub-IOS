@@ -41,6 +41,8 @@ class JCMainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        navigationController?.isNavigationBarHidden = true
+        
         if !Defaults[.jcLoginInfo].isNil, !JCLoginState.shared.jc {
             loginJCIfAvailable { [weak self] success in
                 if success {

@@ -27,5 +27,5 @@ struct BAEvent: Hashable {
     /* 当前参加人数 */
     let regCount: Int
     /* 活动状态 */
-    let status: String
+    let status: Int
 }

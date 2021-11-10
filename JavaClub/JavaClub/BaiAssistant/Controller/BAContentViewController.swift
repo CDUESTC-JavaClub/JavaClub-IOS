@@ -37,6 +37,12 @@ class BAContentViewController: UIViewController {
         configureModels()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.isNavigationBarHidden = false
+    }
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
@@ -63,9 +69,11 @@ extension BAContentViewController {
     
     private func configureAppearance() {
         if isDarkMode {
+            view.backgroundColor = UIColor(hex: "151515")
             scrollView.backgroundColor = UIColor(hex: "151515")
             tableView.backgroundColor = UIColor(hex: "151515")
         } else {
+            view.backgroundColor = UIColor(hex: "F2F2F7")
             scrollView.backgroundColor = UIColor(hex: "F2F2F7")
             tableView.backgroundColor = UIColor(hex: "F2F2F7")
         }
@@ -77,7 +85,7 @@ extension BAContentViewController {
         models = [
             TVSection(title: "", options: [
                 .tappable(model: TVTappableOption(title: "所有活动".localized(), icon: UIImage(named: "all_events_icon"), handler: { [weak self] in
-                    self?.navigationController?.isNavigationBarHidden = false
+//                    self?.navigationController?.isNavigationBarHidden = false
                     self?.navigationController?.pushViewController(BAAllEventsViewController(), animated: true)
                 })),
                 .tappable(model: TVTappableOption(title: "我的活动".localized(), icon: UIImage(named: "my_events_icon"), handler: { [weak self] in

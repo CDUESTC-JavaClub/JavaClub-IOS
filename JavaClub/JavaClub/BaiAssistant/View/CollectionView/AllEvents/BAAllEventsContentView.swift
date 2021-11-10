@@ -70,7 +70,9 @@ extension BAAllEventsContentView {
         timeLabel.text = configuration.time
         locationLabel.text = configuration.location
         typeIconView.image = configuration.typeIcon
+        typeIconView.tintColor = configuration.tintColor
         typeLabel.text = configuration.type
-        statusLabel.text = configuration.status
+        statusLabel.text = "（\(configuration.status ?? "未知")）"
+        statusLabel.textColor = configuration.statusLabelColor
     }
 }

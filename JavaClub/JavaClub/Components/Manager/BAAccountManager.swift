@@ -165,7 +165,7 @@ extension BAAccountManager {
                         place: json["place"].stringValue,
                         maxCount: json["minimum"].intValue,
                         regCount: json["reg_num"].intValue,
-                        status: json["status"].stringValue
+                        status: json["status"].intValue
                     )
                     
                     eventsArr.append(event)
@@ -418,7 +418,7 @@ extension BAAccountManager {
                         place: json["place"].stringValue,
                         maxCount: json["minimum"].intValue,
                         regCount: json["reg_num"].intValue,
-                        status: json["status"].stringValue
+                        status: json["status"].intValue
                     )
                     
                     eventArr.append(event)

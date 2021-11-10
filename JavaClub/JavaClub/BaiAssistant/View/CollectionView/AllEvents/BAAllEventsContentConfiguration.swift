@@ -13,8 +13,10 @@ struct BAAllEventsContentConfiguration: UIContentConfiguration, Hashable {
     var time: String?
     var location: String?
     var typeIcon: UIImage?
+    var tintColor: UIColor!
     var type: String?
     var status: String?
+    var statusLabelColor: UIColor!
     
     func makeContentView() -> UIView & UIContentView {
         BAAllEventsContentView(configuration: self)

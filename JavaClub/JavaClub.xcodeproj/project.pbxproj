@@ -76,6 +76,7 @@
 		B07399BE270A99220020AEB8 /* BAScoreAdding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BD270A99220020AEB8 /* BAScoreAdding.swift */; };
 		B07399C0270A99330020AEB8 /* BAScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399BF270A99330020AEB8 /* BAScore.swift */; };
 		B07399C2270A99A70020AEB8 /* BAEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399C1270A99A70020AEB8 /* BAEvent.swift */; };
+		B0858C41273B72A000B01027 /* BAEventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0858C40273B72A000B01027 /* BAEventDetailViewController.swift */; };
 		B08CFF8F2733D727000E07A4 /* TappableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08CFF8E2733D727000E07A4 /* TappableButton.swift */; };
 		B08F6FB027003EEC0015B354 /* KALoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAD27003EEB0015B354 /* KALoginInfo.swift */; };
 		B08F6FB127003EEC0015B354 /* KAEnrollment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAE27003EEB0015B354 /* KAEnrollment.swift */; };
@@ -180,6 +181,7 @@
 		B07399BD270A99220020AEB8 /* BAScoreAdding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAScoreAdding.swift; sourceTree = "<group>"; };
 		B07399BF270A99330020AEB8 /* BAScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAScore.swift; sourceTree = "<group>"; };
 		B07399C1270A99A70020AEB8 /* BAEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAEvent.swift; sourceTree = "<group>"; };
+		B0858C40273B72A000B01027 /* BAEventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAEventDetailViewController.swift; sourceTree = "<group>"; };
 		B08CFF8E2733D727000E07A4 /* TappableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableButton.swift; sourceTree = "<group>"; };
 		B08F6FAD27003EEB0015B354 /* KALoginInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KALoginInfo.swift; sourceTree = "<group>"; };
 		B08F6FAE27003EEB0015B354 /* KAEnrollment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAEnrollment.swift; sourceTree = "<group>"; };
@@ -257,7 +259,6 @@
 				243EF3192736878E000E59ED /* BAAllEventsContentView.swift */,
 				B04F3E0527390535003F96D7 /* BAAllEventsContentConfiguration.swift */,
 				B04F3E092739084D003F96D7 /* BAAllEventsCollectionViewCell.swift */,
-				243EF31B273687BE000E59ED /* BAAllEventsContentView.xib */,
 			);
 			path = AllEvents;
 			sourceTree = "<group>";
@@ -267,7 +268,6 @@
 			children = (
 				243EF31D27368864000E59ED /* BAMyEventsContentView.swift */,
 				B04F3E072739059B003F96D7 /* BAMyEventsContentConfiguration.swift */,
-				243EF31F2736887B000E59ED /* BAMyEventsContentView.xib */,
 			);
 			path = MyEvents;
 			sourceTree = "<group>";
@@ -487,6 +487,7 @@
 				B0EA83A62733B09C0028ADF8 /* BALoginViewController.swift */,
 				243EF321273688BD000E59ED /* BAAllEventsViewController.swift */,
 				243EF323273688D1000E59ED /* BAMyEventsViewController.swift */,
+				B0858C40273B72A000B01027 /* BAEventDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -495,6 +496,8 @@
 			isa = PBXGroup;
 			children = (
 				B041668D272F762200117876 /* BaiAssistant.storyboard */,
+				243EF31B273687BE000E59ED /* BAAllEventsContentView.xib */,
+				243EF31F2736887B000E59ED /* BAMyEventsContentView.xib */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -765,6 +768,7 @@
 				B04C49582717F4AD00FBD9E7 /* CVScoreContentView.swift in Sources */,
 				B02032CE26FE05910048B6F6 /* ColorExtension.swift in Sources */,
 				B08F6FC527003F8C0015B354 /* ClassTableManager.swift in Sources */,
+				B0858C41273B72A000B01027 /* BAEventDetailViewController.swift in Sources */,
 				B0EA83A72733B09C0028ADF8 /* BALoginViewController.swift in Sources */,
 				B02EEF2926FDC0A00010515A /* JCWebViewController.swift in Sources */,
 				B04FEE2E27113D750065FFB6 /* TappableViewCell.swift in Sources */,

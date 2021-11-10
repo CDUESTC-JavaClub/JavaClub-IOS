@@ -37,8 +37,8 @@ class KAMainViewController: UIViewController {
         }.tieToLifetime(of: self)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         if !Defaults[.jwLoginInfo].isNil, !JCLoginState.shared.jw {
             loginJWIfAvailable { [weak self] success in
@@ -67,6 +67,10 @@ extension KAMainViewController {
         if isLoggedIn {
             stopLoading(for: .jw)
             tabBarEnabled(true)
+            
+            if !contentVC.isNil {
+                contentVC.view.isHidden = false
+            }
         }
     }
     
@@ -96,6 +100,8 @@ extension KAMainViewController {
             contentVC = UIStoryboard(name: "KcAssistant", bundle: .main)
                 .instantiateViewController(withIdentifier: "KAContentViewController")
             as? KAContentViewController
+            
+            contentVC.view.isHidden = true
             
             addChild(contentVC)
             view.addSubview(contentVC.view)
