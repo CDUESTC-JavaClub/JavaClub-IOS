@@ -21,7 +21,7 @@ class KAScoreViewController: UIViewController {
     
     private let collectionView: UICollectionView = {
         var layoutConfig = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-        layoutConfig.headerMode = .firstItemInSection
+//        layoutConfig.headerMode = .firstItemInSection
         let layout = UICollectionViewCompositionalLayout.list(using: layoutConfig)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
@@ -127,7 +127,6 @@ extension KAScoreViewController {
             }
             
             sectionSnapshot.append(listItems, to: headerItem)
-//            sectionSnapshot.expand([headerItem])
             
             dataSource.apply(sectionSnapshot, to: section, animatingDifferences: animates)
         }

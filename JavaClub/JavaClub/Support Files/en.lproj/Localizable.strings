@@ -45,9 +45,9 @@
 
 "下" = "Second Semester";
 
-"%@ 学年 - %@" = "%@ year - %@";
+"%@ 学年 - %@" = "%@ - %@";
 
-"%@-%@ 学年（%@）" = "%@-%@ year (%@)";
+"%@-%@ 学年（%@）" = "%@-%@ (%@)";
 
 // MARK: KC ClassTable
 "暂无法获取该学期课表，请稍后再试。" = "Can't get the semester class table, please try again later.";
@@ -125,6 +125,10 @@
 // MARK: BY All Events
 "百叶计划活动列表" = "All BaiYe Events";
 
+// MARK: BY My Events
+"待参加的活动" = "Pending";
+
+"已完成的活动" = "Finished";
 
 // MARK: Settings
 

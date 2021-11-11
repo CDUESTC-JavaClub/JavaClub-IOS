@@ -90,6 +90,8 @@
 		B08F6FD02700401E0015B354 /* STMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FCF2700401E0015B354 /* STMainViewController.swift */; };
 		B08F6FD32700488F0015B354 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B08F6FD22700488F0015B354 /* Settings.storyboard */; };
 		B08F6FD5270048B40015B354 /* STContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FD4270048B40015B354 /* STContentViewController.swift */; };
+		B091EEE6273CEFB500D322D3 /* BAMyEventsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B091EEE5273CEFB500D322D3 /* BAMyEventsCollectionViewCell.swift */; };
+		B091EEE8273D10C100D322D3 /* BAQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B091EEE7273D10C000D322D3 /* BAQRCodeViewController.swift */; };
 		B0973FA32703FC0300E5C9C6 /* KAScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA22703FC0300E5C9C6 /* KAScoreViewController.swift */; };
 		B0973FA62703FE4200E5C9C6 /* KAScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA52703FE4200E5C9C6 /* KAScore.swift */; };
 		B0973FAA27044BE500E5C9C6 /* KASection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0973FA927044BE500E5C9C6 /* KASection.swift */; };
@@ -196,6 +198,8 @@
 		B08F6FCF2700401E0015B354 /* STMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STMainViewController.swift; sourceTree = "<group>"; };
 		B08F6FD22700488F0015B354 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		B08F6FD4270048B40015B354 /* STContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STContentViewController.swift; sourceTree = "<group>"; };
+		B091EEE5273CEFB500D322D3 /* BAMyEventsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAMyEventsCollectionViewCell.swift; sourceTree = "<group>"; };
+		B091EEE7273D10C000D322D3 /* BAQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAQRCodeViewController.swift; sourceTree = "<group>"; };
 		B0973FA22703FC0300E5C9C6 /* KAScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAScoreViewController.swift; sourceTree = "<group>"; };
 		B0973FA52703FE4200E5C9C6 /* KAScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAScore.swift; sourceTree = "<group>"; };
 		B0973FA927044BE500E5C9C6 /* KASection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KASection.swift; sourceTree = "<group>"; };
@@ -270,6 +274,7 @@
 			children = (
 				243EF31D27368864000E59ED /* BAMyEventsContentView.swift */,
 				B04F3E072739059B003F96D7 /* BAMyEventsContentConfiguration.swift */,
+				B091EEE5273CEFB500D322D3 /* BAMyEventsCollectionViewCell.swift */,
 			);
 			path = MyEvents;
 			sourceTree = "<group>";
@@ -490,6 +495,7 @@
 				243EF321273688BD000E59ED /* BAAllEventsViewController.swift */,
 				243EF323273688D1000E59ED /* BAMyEventsViewController.swift */,
 				B0858C40273B72A000B01027 /* BAEventDetailViewController.swift */,
+				B091EEE7273D10C000D322D3 /* BAQRCodeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -799,6 +805,7 @@
 				B02032D326FE37C20048B6F6 /* DesignableView.swift in Sources */,
 				B0A5D9A1272A49D300A8E3EE /* JCDateManager.swift in Sources */,
 				B02E4F1F2701BB7C00EA3DDB /* TVOption.swift in Sources */,
+				B091EEE8273D10C100D322D3 /* BAQRCodeViewController.swift in Sources */,
 				B04F3E03273901AD003F96D7 /* TappableImageView.swift in Sources */,
 				B02032CC26FE05910048B6F6 /* ViewPlaceholder.swift in Sources */,
 				B035CACC273105950097AE68 /* ProgressView.swift in Sources */,
@@ -842,6 +849,7 @@
 				B04C494F2717C05C00FBD9E7 /* KAEnrollmentViewController.swift in Sources */,
 				B04FEE302711607A0065FFB6 /* TVSection.swift in Sources */,
 				B07399BC270A98330020AEB8 /* BAAccount.swift in Sources */,
+				B091EEE6273CEFB500D322D3 /* BAMyEventsCollectionViewCell.swift in Sources */,
 				B044E446271958490097D04B /* KAClassRealm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

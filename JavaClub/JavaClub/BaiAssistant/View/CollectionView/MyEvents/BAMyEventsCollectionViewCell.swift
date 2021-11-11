@@ -1,35 +1,35 @@
 //
-//  BAAllEventsCollectionViewCell.swift
+//  BAMyEventsCollectionViewCell.swift
 //  JavaClub
 //
-//  Created by Roy on 2021/11/8.
+//  Created by Roy on 2021/11/11.
 //
 
 import UIKit
-import Kingfisher
 
-class BAAllEventsCollectionViewCell: UICollectionViewListCell {
+class BAMyEventsCollectionViewCell: UICollectionViewCell {
     var item: BAEvent?
     
+    @available(iOS 13.0, *)
+    var osTheme: UIUserInterfaceStyle {
+        return UIScreen.main.traitCollection.userInterfaceStyle
+    }
+    
     override func updateConfiguration(using state: UICellConfigurationState) {
-        var newConfig = BAAllEventsContentConfiguration().updated(for: state)
+        var bgConfig = UIBackgroundConfiguration.listGroupedCell()
+        bgConfig.backgroundColor = osTheme == .light ? UIColor(hex: "FFFFFF") : UIColor(hex: "1C1C1E")
+        backgroundConfiguration = bgConfig
+        
+        var newConfig = BAMyEventsContentConfiguration().updated(for: state)
         
         if let item = item {
             newConfig.title = item.eventName
-            JCImageManager.shared.fetch(from: item.coverUrl) { result in
-                DispatchQueue.main.async {
-                    newConfig.eventIcon = result?.image ?? UIImage(named: "event_holder")
-                }
-            }
             newConfig.time = item.startDate.formatted()
             newConfig.location = item.place
             let iconResult = selectIcon(for: item.type)
             newConfig.typeIcon = iconResult.0
             newConfig.tintColor = iconResult.1
             newConfig.type = selectType(for: item.type)
-            let statusResult = selectStatus(for: item.status)
-            newConfig.status = statusResult.0
-            newConfig.statusLabelColor = statusResult.1
         }
         
         contentConfiguration = newConfig
@@ -37,7 +37,7 @@ class BAAllEventsCollectionViewCell: UICollectionViewListCell {
 }
 
 
-fileprivate extension BAAllEventsCollectionViewCell {
+fileprivate extension BAMyEventsCollectionViewCell {
     
     private func selectType(for rawType: String) -> String {
         switch rawType {
@@ -55,26 +55,6 @@ fileprivate extension BAAllEventsCollectionViewCell {
             
             default:
                 return ""
-        }
-    }
-    
-    private func selectStatus(for status: Int) -> (String, UIColor) {
-        
-        switch status {
-            case 4:
-                return ("报名中", .systemGreen)
-            
-            case 5:
-                return ("报名结束", .systemRed)
-            
-            case 7:
-                return ("活动中", .systemYellow)
-                
-            case 8:
-                return ("已结束", .lightGray)
-            
-            default:
-                return ("未知", .label)
         }
     }
     

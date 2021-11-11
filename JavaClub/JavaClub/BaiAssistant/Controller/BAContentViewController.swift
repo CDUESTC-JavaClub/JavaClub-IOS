@@ -89,7 +89,8 @@ extension BAContentViewController {
                     self?.navigationController?.pushViewController(BAAllEventsViewController(), animated: true)
                 })),
                 .tappable(model: TVTappableOption(title: "我的活动".localized(), icon: UIImage(named: "my_events_icon"), handler: { [weak self] in
-                    
+//                    self?.navigationController?.isNavigationBarHidden = false
+                    self?.navigationController?.pushViewController(BAMyEventsViewController(), animated: true)
                 })),
                 .tappable(model: TVTappableOption(title: "百叶积分".localized(), icon: UIImage(named: "credits_icon"), handler: { [weak self] in
                     

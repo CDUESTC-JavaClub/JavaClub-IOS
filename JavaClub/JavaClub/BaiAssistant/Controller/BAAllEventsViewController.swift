@@ -11,8 +11,9 @@ import Defaults
 
 class BAAllEventsViewController: UIViewController {
     private var collectionView: UICollectionView!
+    private let refreshControl = UIRefreshControl()
     private lazy var dataSource = makeDataSource()
-    private var detailVC: BAEventDetailViewController? = nil
+    private var detailVC: BAEventDetailViewController?
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, BAEvent>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, BAEvent>
@@ -173,8 +174,15 @@ extension BAAllEventsViewController {
         let listLayout = UICollectionViewCompositionalLayout.list(using: layoutConfig)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: listLayout)
+        collectionView.alwaysBounceVertical = true
         collectionView.delaysContentTouches = false
         collectionView.delegate = self
+        refreshControl.addTarget(
+            self,
+            action: #selector(didRefresh),
+            for: .valueChanged
+        )
+        collectionView.refreshControl = refreshControl
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.snp.makeConstraints { make in
@@ -216,7 +224,7 @@ extension BAAllEventsViewController {
         
         detailVC.eventItem = item
         detailVC.cancelDidTap = { [weak self] in
-            self?.dismissEventDetail(at: indexPath)
+            self?.dismissEventDetail()
         }
         
         view.addSubview(detailVC.view)
@@ -226,13 +234,20 @@ extension BAAllEventsViewController {
         }
     }
     
-    private func dismissEventDetail(at indexPath: IndexPath) {
+    private func dismissEventDetail() {
         if detailVC.isNil { return }
         
         detailVC?.view.removeFromSuperview()
         detailVC = nil
+    }
+    
+    @objc private func didRefresh() {
+        startLoading(for: .score)
         
-//        collectionView.deselectItem(at: indexPath, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.stopLoading(for: .score)
+            self?.refreshControl.endRefreshing()
+        }
     }
 }
 
