@@ -16,12 +16,11 @@ class BAAllEventsCollectionViewCell: UICollectionViewListCell {
         
         if let item = item {
             newConfig.title = item.eventName
-//            retrieveImage(for: item.coverUrl) { img in
-//                DispatchQueue.main.async {
-//                    newConfig.eventIcon = img
-//                }
-//            }
-            #warning("Image Placeholder")
+            JCImageManager.shared.fetch(from: item.coverUrl) { result in
+                DispatchQueue.main.async {
+                    newConfig.eventIcon = result?.image ?? UIImage(named: "event_holder")
+                }
+            }
             newConfig.eventIcon = UIImage(named: "img_placeholder")
             newConfig.time = item.startDate.formatted()
             newConfig.location = item.place

@@ -138,7 +138,9 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="155.5" height="30"/>
                                                 <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="checked" title="已阅读并同意我们的" imagePadding="5" buttonSize="mini"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="checked" title="已阅读并同意我们的" imagePadding="5" buttonSize="mini">
+                                                    <fontDescription key="titleFontDescription" name=".SFUI-Regular" family=".AppleSystemUIFont" pointSize="1"/>
+                                                </buttonConfiguration>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="已阅读并同意我们的"/>
                                                 </userDefinedRuntimeAttributes>
@@ -150,7 +152,9 @@
                                                 <rect key="frame" x="140.5" y="0.0" width="94" height="30"/>
                                                 <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="用户许可协议" buttonSize="mini"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="用户许可协议" buttonSize="mini">
+                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleFootnote"/>
+                                                </buttonConfiguration>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="titleStringColor">
                                                         <color key="value" systemColor="labelColor"/>

@@ -8,7 +8,6 @@
 import UIKit
 import Defaults
 import SnapKit
-import Reachability
 
 class JCMainViewController: UIViewController {
     private var loginVC: JCLoginViewController!

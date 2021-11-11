@@ -7,10 +7,12 @@
 
 import UIKit
 import SnapKit
+import Defaults
 
 class BAAllEventsViewController: UIViewController {
     private var collectionView: UICollectionView!
     private lazy var dataSource = makeDataSource()
+    private var detailVC: BAEventDetailViewController? = nil
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, BAEvent>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, BAEvent>
@@ -171,6 +173,7 @@ extension BAAllEventsViewController {
         let listLayout = UICollectionViewCompositionalLayout.list(using: layoutConfig)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: listLayout)
+        collectionView.delaysContentTouches = false
         collectionView.delegate = self
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -209,13 +212,27 @@ extension BAAllEventsViewController {
             .instantiateViewController(withIdentifier: "BAEventDetailViewController")
         as! BAEventDetailViewController
         
+        self.detailVC = detailVC
+        
         detailVC.eventItem = item
+        detailVC.cancelDidTap = { [weak self] in
+            self?.dismissEventDetail(at: indexPath)
+        }
         
         view.addSubview(detailVC.view)
         detailVC.view.translatesAutoresizingMaskIntoConstraints = false
         detailVC.view.snp.makeConstraints { make in
             make.edges.equalTo(view)
         }
+    }
+    
+    private func dismissEventDetail(at indexPath: IndexPath) {
+        if detailVC.isNil { return }
+        
+        detailVC?.view.removeFromSuperview()
+        detailVC = nil
+        
+//        collectionView.deselectItem(at: indexPath, animated: true)
     }
 }
 
@@ -226,7 +243,9 @@ extension BAAllEventsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? BAAllEventsCollectionViewCell else { return }
         
-        cell.backgroundColor = .lightGray
+        cell.backgroundColor = UIColor(hex: "F8F8F8")
+        
+        collectionView.deselectItem(at: indexPath, animated: true)
         
         showEventDetail(for: cell.item, at: indexPath)
     }

@@ -16,9 +16,10 @@ class BAEventDetailViewController: UIViewController {
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var applyBtn: LocalizableButton!
-    @IBOutlet var cancelbTN: LocalizableButton!
+    @IBOutlet var cancelBtn: LocalizableButton!
     
     var eventItem: BAEvent?
+    var cancelDidTap: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,8 +59,7 @@ extension BAEventDetailViewController {
     }
     
     @IBAction private func cancelDidClick(_ sender: UIButton) {
-        view.removeFromSuperview()
-        
+        cancelDidTap?()
     }
     
     private func selectStatus(for status: Int) -> String {
