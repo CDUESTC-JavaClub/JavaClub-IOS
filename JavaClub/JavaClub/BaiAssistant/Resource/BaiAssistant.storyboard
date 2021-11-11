@@ -168,14 +168,11 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="eRW-jI-2Qg">
-                                                        <rect key="frame" x="60" y="8" width="214" height="44"/>
+                                                        <rect key="frame" x="60" y="12" width="214" height="36.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="百叶计划" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hT-o2-wff" customClass="LocalizableLabel" customModule="JavaClub" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="101.5" height="30.5"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="30.5" id="blA-aC-Yxq"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="77.5" height="23"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                                 <userDefinedRuntimeAttributes>
@@ -183,7 +180,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="包含活动报名、活动取消、积分查询等功能" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGr-tz-H2o" customClass="LocalizableLabel" customModule="JavaClub" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="30.5" width="214" height="13.5"/>
+                                                                <rect key="frame" x="0.0" y="23" width="214" height="13.5"/>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -768,7 +765,7 @@
     </scenes>
     <designables>
         <designable name="2hT-o2-wff">
-            <size key="intrinsicContentSize" width="101.5" height="30"/>
+            <size key="intrinsicContentSize" width="77.5" height="23"/>
         </designable>
         <designable name="HPW-2I-mJB">
             <size key="intrinsicContentSize" width="37" height="14.5"/>

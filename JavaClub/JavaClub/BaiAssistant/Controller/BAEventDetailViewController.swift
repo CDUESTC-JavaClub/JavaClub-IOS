@@ -45,7 +45,10 @@ extension BAEventDetailViewController {
         dateLabel.text = event.startDate.formatted()
         locationLabel.text = event.place
         peopleCountLabel.text = "\(event.regCount)/\(event.maxCount)"
-        statusLabel.text = selectStatus(for: event.status)
+        peopleCountLabel.textColor = event.regCount < event.maxCount ? .systemGreen : .systemRed
+        let statusResult = selectStatus(for: event.status)
+        statusLabel.text = statusResult.0
+        statusLabel.textColor = statusResult.1
 //        BAAccountManager.shared.eventDetails(for: event.eventID) { [weak self] result in
 //            DispatchQueue.main.async {
 //                self?.descriptionLabel.text = try? result.get()
@@ -62,23 +65,23 @@ extension BAEventDetailViewController {
         cancelDidTap?()
     }
     
-    private func selectStatus(for status: Int) -> String {
+    private func selectStatus(for status: Int) -> (String, UIColor) {
         
         switch status {
             case 4:
-                return "报名中"
+                return ("报名中", .systemGreen)
             
             case 5:
-                return "报名结束"
+                return ("报名结束", .systemRed)
             
             case 7:
-                return "活动中"
+                return ("活动中", .systemYellow)
                 
             case 8:
-                return "已结束"
+                return ("已结束", .lightGray)
             
             default:
-                return "未知"
+                return ("未知", .label)
         }
     }
 }

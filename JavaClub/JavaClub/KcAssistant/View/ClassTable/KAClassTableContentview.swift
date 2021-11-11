@@ -47,7 +47,7 @@ struct KAClassTableContentview: View {
                             showTermSelector = true
                         } label: {
                             HStack(spacing: 0) {
-                                Text(JCDateManager.shared.formatted(for: term) ?? NSLocalizedString("获取失败...", comment: ""))
+                                Text(JCTermManager.shared.formatted(for: term) ?? NSLocalizedString("获取失败...", comment: ""))
                                 
                                 Image(systemName: "chevron.down")
                                     .renderingMode(.template)
