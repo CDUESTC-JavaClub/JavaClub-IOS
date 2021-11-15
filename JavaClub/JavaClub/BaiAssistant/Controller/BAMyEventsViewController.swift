@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class BAMyEventsViewController: UIViewController {
     private var collectionView: UICollectionView!
@@ -281,6 +282,9 @@ extension BAMyEventsViewController {
         
         detailVC.eventItem = item
         detailVC.resignDidTap = { [weak self] in
+            self?.dismissEventDetail()
+        }
+        detailVC.dismissHandler = { [weak self] in
             self?.dismissEventDetail()
         }
         
