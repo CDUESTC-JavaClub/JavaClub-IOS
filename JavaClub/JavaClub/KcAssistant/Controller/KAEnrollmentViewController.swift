@@ -77,7 +77,6 @@ extension KAEnrollmentViewController {
         campusLabel.text = info.campus
         systemLabel.text = "\(info.enrollmentForm) (\(info.enrollmentStatus))"
         
-        let icon = UIImage(systemName: "rosette")
         var options: [TVOptionType] = []
         
         for (_key, _value) in infoDict {
@@ -144,7 +143,7 @@ extension KAEnrollmentViewController {
                         localizedTitle = _key
                 }
                 
-                let opt: TVOptionType = ._static(model: TVStaticOption(title: localizedTitle.localized(), icon: icon, value: _value))
+                let opt: TVOptionType = ._static(model: TVStaticOption(title: localizedTitle.localized(), icon: nil, value: _value))
                 options.append(opt)
             }
         }

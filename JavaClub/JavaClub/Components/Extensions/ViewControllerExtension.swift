@@ -48,4 +48,5 @@ enum ProgressTag: Int {
     case score = 1004
     case allEvents = 1005
     case myEvents = 1006
+    case myCredits = 1007
 }

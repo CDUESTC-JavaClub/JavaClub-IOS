@@ -16,6 +16,7 @@ class BAMyEventsViewController: UIViewController {
     private var detailVC: BAQRCodeViewController?
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, DataItem>
+    typealias CellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Section>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, DataItem>
     typealias SectionSnapshot = NSDiffableDataSourceSectionSnapshot<DataItem>
     
@@ -203,7 +204,7 @@ extension BAMyEventsViewController {
     }
     
     private func makeDataSource() -> DataSource {
-        let headerCellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Section> { cell, indexPath, header in
+        let headerCellRegistration = CellRegistration { cell, indexPath, header in
             var content = cell.defaultContentConfiguration()
             content.text = header.title
             cell.contentConfiguration = content

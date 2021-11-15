@@ -89,7 +89,11 @@ extension BAContentViewController {
                     self?.navigationController?.pushViewController(BAMyEventsViewController(), animated: true)
                 })),
                 .tappable(model: TVTappableOption(title: "百叶积分".localized(), icon: UIImage(named: "credits_icon"), handler: { [weak self] in
+                    let infoVC = UIStoryboard(name: "BaiAssistant", bundle: .main)
+                        .instantiateViewController(withIdentifier: "BACreditsViewController")
+                    as! BACreditsViewController
                     
+                    self?.navigationController?.pushViewController(infoVC, animated: true)
                 })),
             ]),
         ]

@@ -15,6 +15,11 @@
 		243EF3202736887B000E59ED /* BAMyEventsContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 243EF31F2736887B000E59ED /* BAMyEventsContentView.xib */; };
 		243EF322273688BD000E59ED /* BAAllEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243EF321273688BD000E59ED /* BAAllEventsViewController.swift */; };
 		243EF324273688D1000E59ED /* BAMyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243EF323273688D1000E59ED /* BAMyEventsViewController.swift */; };
+		24A246E427427835000BBAF1 /* BACreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A246E327427835000BBAF1 /* BACreditsViewController.swift */; };
+		24A246E627427A20000BBAF1 /* BAMyCreditsContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24A246E527427A20000BBAF1 /* BAMyCreditsContentView.xib */; };
+		24A246E927427DE5000BBAF1 /* BAMyCreditsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A246E827427DE5000BBAF1 /* BAMyCreditsContentView.swift */; };
+		24A246EB27427E00000BBAF1 /* BAMyCreditsContentConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A246EA27427E00000BBAF1 /* BAMyCreditsContentConfiguration.swift */; };
+		24A246ED27427E17000BBAF1 /* BAMyCreditsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A246EC27427E17000BBAF1 /* BAMyCreditsCollectionViewCell.swift */; };
 		24B72C6C2729897400DC1DB1 /* KATermSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B72C6B2729897400DC1DB1 /* KATermSelectorView.swift */; };
 		24B72C6E2729898C00DC1DB1 /* KAClassDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B72C6D2729898C00DC1DB1 /* KAClassDetailView.swift */; };
 		B00939FE27151D3200879AC5 /* UnderlineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00939FD27151D3200879AC5 /* UnderlineButton.swift */; };
@@ -127,6 +132,11 @@
 		243EF31F2736887B000E59ED /* BAMyEventsContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BAMyEventsContentView.xib; sourceTree = "<group>"; };
 		243EF321273688BD000E59ED /* BAAllEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAAllEventsViewController.swift; sourceTree = "<group>"; };
 		243EF323273688D1000E59ED /* BAMyEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAMyEventsViewController.swift; sourceTree = "<group>"; };
+		24A246E327427835000BBAF1 /* BACreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BACreditsViewController.swift; sourceTree = "<group>"; };
+		24A246E527427A20000BBAF1 /* BAMyCreditsContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BAMyCreditsContentView.xib; sourceTree = "<group>"; };
+		24A246E827427DE5000BBAF1 /* BAMyCreditsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAMyCreditsContentView.swift; sourceTree = "<group>"; };
+		24A246EA27427E00000BBAF1 /* BAMyCreditsContentConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAMyCreditsContentConfiguration.swift; sourceTree = "<group>"; };
+		24A246EC27427E17000BBAF1 /* BAMyCreditsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAMyCreditsCollectionViewCell.swift; sourceTree = "<group>"; };
 		24B72C6B2729897400DC1DB1 /* KATermSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KATermSelectorView.swift; sourceTree = "<group>"; };
 		24B72C6D2729898C00DC1DB1 /* KAClassDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAClassDetailView.swift; sourceTree = "<group>"; };
 		B00939FD27151D3200879AC5 /* UnderlineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineButton.swift; sourceTree = "<group>"; };
@@ -257,6 +267,7 @@
 			children = (
 				243EF315273686C9000E59ED /* AllEvents */,
 				243EF316273686D0000E59ED /* MyEvents */,
+				24A246E727427DBF000BBAF1 /* MyCredits */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -287,6 +298,34 @@
 				B04C49502717DCE700FBD9E7 /* CollectionView */,
 			);
 			path = Score;
+			sourceTree = "<group>";
+		};
+		24A246E1274277FE000BBAF1 /* MyEvents */ = {
+			isa = PBXGroup;
+			children = (
+				243EF323273688D1000E59ED /* BAMyEventsViewController.swift */,
+				B091EEE7273D10C000D322D3 /* BAQRCodeViewController.swift */,
+			);
+			path = MyEvents;
+			sourceTree = "<group>";
+		};
+		24A246E227427808000BBAF1 /* AllEvents */ = {
+			isa = PBXGroup;
+			children = (
+				243EF321273688BD000E59ED /* BAAllEventsViewController.swift */,
+				B0858C40273B72A000B01027 /* BAEventDetailViewController.swift */,
+			);
+			path = AllEvents;
+			sourceTree = "<group>";
+		};
+		24A246E727427DBF000BBAF1 /* MyCredits */ = {
+			isa = PBXGroup;
+			children = (
+				24A246E827427DE5000BBAF1 /* BAMyCreditsContentView.swift */,
+				24A246EA27427E00000BBAF1 /* BAMyCreditsContentConfiguration.swift */,
+				24A246EC27427E17000BBAF1 /* BAMyCreditsCollectionViewCell.swift */,
+			);
+			path = MyCredits;
 			sourceTree = "<group>";
 		};
 		B00939FF27152C1F00879AC5 /* TableView */ = {
@@ -492,13 +531,12 @@
 		B0416689272F75CC00117876 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				24A246E227427808000BBAF1 /* AllEvents */,
+				24A246E1274277FE000BBAF1 /* MyEvents */,
 				B041668A272F75EB00117876 /* BAMainViewController.swift */,
 				B0416691272F8BAA00117876 /* BAContentViewController.swift */,
 				B0EA83A62733B09C0028ADF8 /* BALoginViewController.swift */,
-				243EF321273688BD000E59ED /* BAAllEventsViewController.swift */,
-				243EF323273688D1000E59ED /* BAMyEventsViewController.swift */,
-				B0858C40273B72A000B01027 /* BAEventDetailViewController.swift */,
-				B091EEE7273D10C000D322D3 /* BAQRCodeViewController.swift */,
+				24A246E327427835000BBAF1 /* BACreditsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -509,6 +547,7 @@
 				B041668D272F762200117876 /* BaiAssistant.storyboard */,
 				243EF31B273687BE000E59ED /* BAAllEventsContentView.xib */,
 				243EF31F2736887B000E59ED /* BAMyEventsContentView.xib */,
+				24A246E527427A20000BBAF1 /* BAMyCreditsContentView.xib */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -744,6 +783,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B041668E272F762200117876 /* BaiAssistant.storyboard in Resources */,
+				24A246E627427A20000BBAF1 /* BAMyCreditsContentView.xib in Resources */,
 				243EF31C273687BE000E59ED /* BAAllEventsContentView.xib in Resources */,
 				B0B84357270FEC1B00C19B9B /* KcAssistant.storyboard in Resources */,
 				B0AF94FE272BE05A00671BF7 /* Localizable.strings in Resources */,
@@ -779,6 +819,7 @@
 				B04F3E082739059B003F96D7 /* BAMyEventsContentConfiguration.swift in Sources */,
 				B04C49582717F4AD00FBD9E7 /* CVScoreContentView.swift in Sources */,
 				B0858C43273BA65300B01027 /* JCImageManager.swift in Sources */,
+				24A246E427427835000BBAF1 /* BACreditsViewController.swift in Sources */,
 				B02032CE26FE05910048B6F6 /* ColorExtension.swift in Sources */,
 				B08F6FC527003F8C0015B354 /* ClassTableManager.swift in Sources */,
 				B0858C41273B72A000B01027 /* BAEventDetailViewController.swift in Sources */,
@@ -802,6 +843,7 @@
 				B0416692272F8BAA00117876 /* BAContentViewController.swift in Sources */,
 				B07399BE270A99220020AEB8 /* BAScoreAdding.swift in Sources */,
 				B02032CB26FE05910048B6F6 /* StringExtension.swift in Sources */,
+				24A246E927427DE5000BBAF1 /* BAMyCreditsContentView.swift in Sources */,
 				B0CCEF0E27144425001235E9 /* JCCheckboxButton.swift in Sources */,
 				243EF31A2736878F000E59ED /* BAAllEventsContentView.swift in Sources */,
 				B08F6FB227003EEC0015B354 /* KAClass.swift in Sources */,
@@ -853,7 +895,9 @@
 				B04C494F2717C05C00FBD9E7 /* KAEnrollmentViewController.swift in Sources */,
 				B04FEE302711607A0065FFB6 /* TVSection.swift in Sources */,
 				B07399BC270A98330020AEB8 /* BAAccount.swift in Sources */,
+				24A246ED27427E17000BBAF1 /* BAMyCreditsCollectionViewCell.swift in Sources */,
 				B091EEE6273CEFB500D322D3 /* BAMyEventsCollectionViewCell.swift in Sources */,
+				24A246EB27427E00000BBAF1 /* BAMyCreditsContentConfiguration.swift in Sources */,
 				B044E446271958490097D04B /* KAClassRealm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

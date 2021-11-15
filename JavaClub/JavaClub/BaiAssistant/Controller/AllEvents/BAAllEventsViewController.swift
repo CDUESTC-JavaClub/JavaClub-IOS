@@ -17,6 +17,7 @@ class BAAllEventsViewController: UIViewController {
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, BAEvent>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, BAEvent>
+    typealias CellRegistration = UICollectionView.CellRegistration<BAAllEventsCollectionViewCell, BAEvent>
     
     let models: [BAEvent] = [
         BAEvent(
@@ -197,7 +198,7 @@ extension BAAllEventsViewController {
     }
     
     private func makeDataSource() -> DataSource {
-        let cellRegistration = UICollectionView.CellRegistration<BAAllEventsCollectionViewCell, BAEvent> { cell, indexPath, item in
+        let cellRegistration = CellRegistration { cell, indexPath, item in
             cell.item = item
         }
         

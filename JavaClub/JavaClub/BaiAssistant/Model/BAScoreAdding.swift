@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BAScoreAdding {
+struct BAScoreAdding: Hashable {
     var eventName: String
     var eventID: Int
     var score: Int
