@@ -21,6 +21,7 @@ fileprivate let colorSet: [String] = [
 struct KAClassTableContentview: View {
     @ObservedObject private var observable: KAClassTableObservable = .shared
     @Default(.classTableTerm) var term
+    @State var navTitle = ""
     @State var presentAlert = false
     @State var showIndicator = false
     @State var showTermSelector = false
@@ -42,20 +43,6 @@ struct KAClassTableContentview: View {
         ZStack {
             GeometryReader { geo in
                 VStack(spacing: 0) {
-                    VStack {
-                        Button {
-                            showTermSelector = true
-                        } label: {
-                            HStack(spacing: 0) {
-                                Text(JCTermManager.shared.formatted(for: term) ?? NSLocalizedString("获取失败...", comment: ""))
-                                
-                                Image(systemName: "chevron.down")
-                                    .renderingMode(.template)
-                            }
-                        }
-                    }
-                    .padding(.bottom, 10)
-                    
                     HStack(spacing: 0) {
                         ForEach(1 ..< 8) { index in
                             Text(selectWeekday(with: index))
@@ -120,14 +107,26 @@ struct KAClassTableContentview: View {
                 )
             }
         }
+        .navigationTitle(navTitle)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            Button {
+                showTermSelector = true
+            } label: {
+                Image(systemName: "calendar")
+                    .foregroundColor(.label)
+            }
+        }
         .alert(isPresented: $presentAlert) {
             Alert(title: Text("错误".localized()), message: Text("暂无法获取该学期课表，请稍后再试。".localized()), dismissButton: .default(Text("Got it!")))
         }
         .onAppear {
             refresh(for: term)
+            navTitle = JCTermManager.shared.formatted(for: term) ?? "获取失败...".localized()
         }
         .onChange(of: term) { newValue in
             refresh(for: newValue)
+            navTitle = JCTermManager.shared.formatted(for: term) ?? "获取失败...".localized()
         }
     }
     
