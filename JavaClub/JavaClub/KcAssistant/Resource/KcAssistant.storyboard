@@ -318,8 +318,8 @@
                                             <constraint firstAttribute="trailing" secondItem="JAR-zD-Otq" secondAttribute="trailing" constant="16" id="3ng-Xv-eah"/>
                                             <constraint firstItem="0DE-nx-gGn" firstAttribute="leading" secondItem="Etp-6o-dWL" secondAttribute="leading" id="5VU-lR-Y57"/>
                                             <constraint firstItem="HkT-CE-qEm" firstAttribute="top" secondItem="CeS-Pe-tNy" secondAttribute="bottom" constant="15" id="9FD-Wy-iYT"/>
+                                            <constraint firstItem="CeS-Pe-tNy" firstAttribute="top" secondItem="Etp-6o-dWL" secondAttribute="topMargin" id="EmK-Ev-dEd"/>
                                             <constraint firstAttribute="trailing" secondItem="CeS-Pe-tNy" secondAttribute="trailing" constant="16" id="ItB-sT-yX9"/>
-                                            <constraint firstItem="CeS-Pe-tNy" firstAttribute="top" secondItem="Etp-6o-dWL" secondAttribute="top" constant="52" id="U3L-jz-p8t"/>
                                             <constraint firstAttribute="trailing" secondItem="0DE-nx-gGn" secondAttribute="trailing" id="XeI-Ve-f1S"/>
                                             <constraint firstItem="JAR-zD-Otq" firstAttribute="leading" secondItem="Etp-6o-dWL" secondAttribute="leading" constant="16" id="hlN-1O-2dB"/>
                                             <constraint firstItem="JAR-zD-Otq" firstAttribute="top" secondItem="HkT-CE-qEm" secondAttribute="bottom" constant="15" id="hv7-F2-TST"/>

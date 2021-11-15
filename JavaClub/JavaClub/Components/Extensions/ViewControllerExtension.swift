@@ -23,7 +23,7 @@ extension UIViewController {
         let progressView = ProgressIndicator(frame: .zero)
         progressView.tag = tag.rawValue
         
-        progressView.foregroundColor = isDarkMode ? .gray : .white
+        progressView.foregroundColor = isDarkMode ? .secondarySystemBackground : .white
         view.addSubview(progressView)
         progressView.snp.makeConstraints { make in
             make.edges.equalTo(view)

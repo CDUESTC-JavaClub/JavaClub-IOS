@@ -42,8 +42,10 @@ class STContentViewController: UIViewController {
         configureModels()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.isNavigationBarHidden = true
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -97,18 +99,10 @@ extension STContentViewController {
         tableView.delegate = self
         tableView.dataSource = self
         // Set Inset For 20 Temporarily
-        tableView.contentInset = .init(top: 0, left: 0, bottom: 20, right: 0)
+//        tableView.contentInset = .init(top: 0, left: 0, bottom: 20, right: 0)
     }
     
     private func configureModels() {
-        var versionInfo: String = "更多"
-        if
-            let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
-            let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
-        {
-            versionInfo = "v\(version) (\(build))"
-        }
-        
         models = [
             TVSection(title: "绑定信息".localized(), options: [
                 ._static(model: TVStaticOption(title: "已绑定学号".localized(), icon: nil, value: Defaults[.jcUser]?.studentID ?? "")),
@@ -134,7 +128,15 @@ extension STContentViewController {
                     }
                 )),
             ]),
-            TVSection(title: versionInfo, options: [
+            TVSection(title: "", options: [
+                .tappable(model: TVTappableOption(title: "关于我们".localized(), icon: UIImage(named: "about_us_icon"), handler: { [weak self] in
+                    let infoVC = UIStoryboard(name: "Settings", bundle: .main)
+                        .instantiateViewController(withIdentifier: "STInfoViewController")
+                    as! STInfoViewController
+                    
+                    self?.navigationController?.isNavigationBarHidden = false
+                    self?.navigationController?.pushViewController(infoVC, animated: true)
+                })),
                 .tappable(model: TVTappableOption(title: "检查更新".localized(), icon: UIImage(named: "update_icon"), handler: {
                     if let createURL = URL(string: "https://apps.apple.com/cn/app/javaclub/id1590327368?l=en") {
                         UIApplication.shared.open(createURL)

@@ -36,14 +36,14 @@ struct KATermSelectorView: View {
                     isShown = false
                 } label: {
                     Text(JCTermManager.shared.formatted(for: index) ?? "获取失败...".localized())
-                        .foregroundColor(selected == index ? Color(hex: "413258") : .accentColor)
+                        .foregroundColor(selected == index ? .accentColor : .label)
                 }
                 .frame(width: 250, height: 20)
                 .padding(.vertical, 5)
             }
         }
         .padding(.bottom, 20)
-        .background(colorScheme == .light ? Color.white : .gray)
+        .background(colorScheme == .light ? Color.white : .secondarySystemBackground)
         .cornerRadius(15)
     }
 }

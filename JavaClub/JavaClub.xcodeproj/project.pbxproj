@@ -78,6 +78,7 @@
 		B07399C2270A99A70020AEB8 /* BAEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07399C1270A99A70020AEB8 /* BAEvent.swift */; };
 		B0858C41273B72A000B01027 /* BAEventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0858C40273B72A000B01027 /* BAEventDetailViewController.swift */; };
 		B0858C43273BA65300B01027 /* JCImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0858C42273BA65300B01027 /* JCImageManager.swift */; };
+		B0859FBC274234AF00D8BBC2 /* STInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0859FBB274234AF00D8BBC2 /* STInfoViewController.swift */; };
 		B08CFF8F2733D727000E07A4 /* TappableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08CFF8E2733D727000E07A4 /* TappableButton.swift */; };
 		B08F6FB027003EEC0015B354 /* KALoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAD27003EEB0015B354 /* KALoginInfo.swift */; };
 		B08F6FB127003EEC0015B354 /* KAEnrollment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F6FAE27003EEB0015B354 /* KAEnrollment.swift */; };
@@ -186,6 +187,7 @@
 		B07399C1270A99A70020AEB8 /* BAEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAEvent.swift; sourceTree = "<group>"; };
 		B0858C40273B72A000B01027 /* BAEventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAEventDetailViewController.swift; sourceTree = "<group>"; };
 		B0858C42273BA65300B01027 /* JCImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCImageManager.swift; sourceTree = "<group>"; };
+		B0859FBB274234AF00D8BBC2 /* STInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STInfoViewController.swift; sourceTree = "<group>"; };
 		B08CFF8E2733D727000E07A4 /* TappableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableButton.swift; sourceTree = "<group>"; };
 		B08F6FAD27003EEB0015B354 /* KALoginInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KALoginInfo.swift; sourceTree = "<group>"; };
 		B08F6FAE27003EEB0015B354 /* KAEnrollment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAEnrollment.swift; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 			children = (
 				B08F6FCF2700401E0015B354 /* STMainViewController.swift */,
 				B08F6FD4270048B40015B354 /* STContentViewController.swift */,
+				B0859FBB274234AF00D8BBC2 /* STInfoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -791,6 +794,7 @@
 				24B72C6E2729898C00DC1DB1 /* KAClassDetailView.swift in Sources */,
 				B04C49562717F42200FBD9E7 /* CVScoreContentConfiguration.swift in Sources */,
 				B01AA9B126FF2ADD000D3E4A /* LoadingIndicatorView.swift in Sources */,
+				B0859FBC274234AF00D8BBC2 /* STInfoViewController.swift in Sources */,
 				B04C495A2718138F00FBD9E7 /* ScoreImageView.swift in Sources */,
 				B035CACE273105950097AE68 /* StrokeAnimation.swift in Sources */,
 				B02EEEFA26FDB2760010515A /* SceneDelegate.swift in Sources */,

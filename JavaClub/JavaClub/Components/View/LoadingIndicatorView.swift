@@ -24,7 +24,7 @@ struct LoadingIndicatorView: View {
         }
         .padding(.vertical, 10)
         .padding(.horizontal, 30)
-        .background(colorScheme == .light ? Color.white : .gray)
+        .background(colorScheme == .light ? Color.white : .secondarySystemBackground)
         .cornerRadius(15)
         .onAppear {
             animates = true

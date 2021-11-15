@@ -26,6 +26,7 @@ class JCTabBarController: UITabBarController {
         appearance.backgroundColor = .systemBackground
         tabBar.tintColor = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first?.tintColor
         tabBar.standardAppearance = appearance
+        tabBar.isTranslucent = false
         if #available(iOS 15.0, *) {
             tabBar.scrollEdgeAppearance = appearance
         }
@@ -41,8 +42,8 @@ extension JCTabBarController {
     private func setupVCs() {
         viewControllers = [
             createNavController(for: JCMainViewController(), title: "JavaClub", image: UIImage(named: "nav_home")!),
-            createNavController(for: KAMainViewController(), title: "教务".localized(), image: UIImage(named: "nav_kc")!, swipEnabled: false),
-            createNavController(for: BAMainViewController(), title: "百叶计划".localized(), image: UIImage(named: "nav_bai")!),
+            createNavController(for: KAMainViewController(), title: "教务".localized(), image: UIImage(named: "nav_kc")!, navBarHidden: false),
+            createNavController(for: BAMainViewController(), title: "百叶计划".localized(), image: UIImage(named: "nav_bai")!, navBarHidden: false),
             createNavController(for: STMainViewController(), title: "设置".localized(), image: UIImage(named: "nav_settings")!),
         ]
     }
@@ -51,12 +52,13 @@ extension JCTabBarController {
         for rootViewController: UIViewController,
         title: String,
         image: UIImage,
+        navBarHidden: Bool = true,
         swipEnabled: Bool = true
     ) -> UINavigationController {
         let navController = NoRotateNavigationController(rootViewController: rootViewController)
         navController.tabBarItem.title = title
         navController.tabBarItem.image = image
-        navController.isNavigationBarHidden = true
+        navController.isNavigationBarHidden = navBarHidden
         navController.interactivePopGestureRecognizer?.isEnabled = swipEnabled
         
         return navController

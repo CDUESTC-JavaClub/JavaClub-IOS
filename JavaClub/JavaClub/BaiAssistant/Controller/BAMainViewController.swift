@@ -39,8 +39,6 @@ class BAMainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.isNavigationBarHidden = false
-        
         #warning("Test")
         if !Defaults[.byLoginInfo].isNil {
             loginBYIfAvailable()

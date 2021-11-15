@@ -39,8 +39,6 @@ class BAContentViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        navigationController?.isNavigationBarHidden = false
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -85,11 +83,9 @@ extension BAContentViewController {
         models = [
             TVSection(title: "", options: [
                 .tappable(model: TVTappableOption(title: "所有活动".localized(), icon: UIImage(named: "all_events_icon"), handler: { [weak self] in
-//                    self?.navigationController?.isNavigationBarHidden = false
                     self?.navigationController?.pushViewController(BAAllEventsViewController(), animated: true)
                 })),
                 .tappable(model: TVTappableOption(title: "我的活动".localized(), icon: UIImage(named: "my_events_icon"), handler: { [weak self] in
-//                    self?.navigationController?.isNavigationBarHidden = false
                     self?.navigationController?.pushViewController(BAMyEventsViewController(), animated: true)
                 })),
                 .tappable(model: TVTappableOption(title: "百叶积分".localized(), icon: UIImage(named: "credits_icon"), handler: { [weak self] in

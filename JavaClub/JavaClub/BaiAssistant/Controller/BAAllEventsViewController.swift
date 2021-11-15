@@ -145,6 +145,12 @@ class BAAllEventsViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         title = "百叶计划活动列表".localized()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "slider.horizontal.3"),
+            style: .plain,
+            target: self,
+            action: #selector(filterDidTap)
+        )
         
         configureCollectionView()
         configureModels(with: [])
@@ -248,6 +254,10 @@ extension BAAllEventsViewController {
             self?.stopLoading(for: .score)
             self?.refreshControl.endRefreshing()
         }
+    }
+    
+    @objc private func filterDidTap() {
+        
     }
 }
 

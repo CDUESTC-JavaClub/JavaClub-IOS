@@ -28,6 +28,7 @@ class STMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        addChild(contentVC)
         view.addSubview(contentVC.view)
         contentVC.view.snp.makeConstraints { make in
             make.edges.equalTo(view)

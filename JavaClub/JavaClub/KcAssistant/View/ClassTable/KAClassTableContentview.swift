@@ -57,7 +57,7 @@ struct KAClassTableContentview: View {
                             ForEach(observable.classes, id: \.id) {
                                 KAClassTableCell(
                                     _class: $0,
-                                    color: Color(selectColor(with: $0.name) ?? .gray),
+                                    color: Color(selectColor(with: $0.name) ?? .secondarySystemBackground),
                                     onTapGesture: { _class in
                                         showingClass = _class
                                         showClassDetail = true
@@ -114,7 +114,6 @@ struct KAClassTableContentview: View {
                 showTermSelector = true
             } label: {
                 Image(systemName: "calendar")
-                    .foregroundColor(.label)
             }
         }
         .alert(isPresented: $presentAlert) {
