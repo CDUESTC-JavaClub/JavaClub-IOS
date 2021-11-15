@@ -39,6 +39,27 @@ class BAContentViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if
+            let bx = Int(bxScoreLabel.text ?? "0"),
+            let jm = Int(jmScoreLabel.text ?? "0"),
+            let dx = Int(dxScoreLabel.text ?? "0"),
+            let md = Int(mdScoreLabel.text ?? "0")
+        {
+            if bx >= 10 || jm >= 30 || dx >= 10 || md >= 10 {
+                statusHintLabel.text = "已达标".localized()
+                statusHintLabel.textColor = .systemGreen
+            } else {
+                statusHintLabel.text = "未达标".localized()
+                statusHintLabel.textColor = .systemYellow
+            }
+            
+            totalScoreLabel.text = "\(bx + jm + dx + md)"
+        } else {
+            totalScoreLabel.text = "0"
+            statusHintLabel.text = "获取失败...".localized()
+            statusHintLabel.textColor = .systemRed
+        }
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
