@@ -105,8 +105,8 @@ extension STContentViewController {
     private func configureModels() {
         models = [
             TVSection(title: "绑定信息".localized(), options: [
-                ._static(model: TVStaticOption(title: "已绑定学号".localized(), icon: nil, value: Defaults[.jcUser]?.studentID ?? "")),
-                ._static(model: TVStaticOption(title: "已绑定邮箱".localized(), icon: nil, value: Defaults[.jcUser]?.email ?? "")),
+                ._static(model: TVStaticOption(title: "已绑定学号".localized(), icon: nil, value: Defaults[.jcUser]?.studentID ?? "未绑定".localized())),
+                ._static(model: TVStaticOption(title: "已绑定邮箱".localized(), icon: nil, value: Defaults[.jcUser]?.email ?? "未绑定".localized())),
             ]),
             TVSection(title: "外观设置".localized(), options: [
                 .switchable(model: TVSwitchOption(

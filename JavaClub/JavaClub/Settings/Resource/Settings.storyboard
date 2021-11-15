@@ -131,6 +131,9 @@
                                 <rect key="frame" x="152" y="284.5" width="110" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="即刻加入群聊"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="即刻加入群聊"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="joinGroupDidTap:" destination="mXi-U2-9au" eventType="touchUpInside" id="aw6-AF-5g2"/>
                                 </connections>

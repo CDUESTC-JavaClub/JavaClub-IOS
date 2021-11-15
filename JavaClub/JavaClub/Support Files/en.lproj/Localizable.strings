@@ -140,6 +140,10 @@
 
 "绑定信息" = "Binding";
 
+"未绑定" = "Not Bound";
+
+"关于我们" = "About Us";
+
 "检查更新" = "Check For Updates";
 
 "退出登录" = "Logout";
@@ -149,6 +153,12 @@
 "已绑定邮箱" = "Email";
 
 "请先登录" = "Please Login First";
+
+"即刻加入群聊" = "Join our QQ group now";
+
+"或者" = "or";
+
+"发送邮件反馈到：" = "You can send a feedback email to：";
 
 // MARK: TabBar
 

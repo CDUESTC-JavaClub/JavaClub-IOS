@@ -28,6 +28,15 @@ class KABindingViewController: UIViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let id = Defaults[.jcUser]?.studentID {
+            usernameField.text = "\(id)"
+            usernameField.isUserInteractionEnabled = false
+        }
+    }
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
