@@ -10,7 +10,6 @@ import SwiftUI
 import SnapKit
 
 class KAScoreViewController: UIViewController {
-    private let indicatorView = _UIHostingView(rootView: LoadingIndicatorView())
     private lazy var dataSource = makeDataSource()
     private let refreshControl = UIRefreshControl()
     private var models: [KASection] = []
@@ -22,7 +21,7 @@ class KAScoreViewController: UIViewController {
     
     private let collectionView: UICollectionView = {
         var layoutConfig = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-        layoutConfig.headerMode = .firstItemInSection
+//        layoutConfig.headerMode = .firstItemInSection
         let layout = UICollectionViewCompositionalLayout.list(using: layoutConfig)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
@@ -34,6 +33,8 @@ class KAScoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        title = "学期成绩查询".localized()
+        
         refreshControl.addTarget(
             self,
             action: #selector(didRefresh),
@@ -126,7 +127,6 @@ extension KAScoreViewController {
             }
             
             sectionSnapshot.append(listItems, to: headerItem)
-//            sectionSnapshot.expand([headerItem])
             
             dataSource.apply(sectionSnapshot, to: section, animatingDifferences: animates)
         }
@@ -137,8 +137,8 @@ extension KAScoreViewController {
         var modelDict = [String: [KAScore]]()
         
         scores.forEach { item in
-            let term = item.term == 1 ? "上" : "下"
-            let title = "\(item.year) 学年 - \(term)"
+            let term = item.term == 1 ? "上".localized() : "下".localized()
+            let title = String.localized("%@ 学年 - %@", with: "\(item.year)", "\(term)")
             
             if modelDict[title] != nil {
                 modelDict[title]!.append(item)
@@ -147,7 +147,7 @@ extension KAScoreViewController {
             }
         }
         
-        for (_key, _value) in modelDict.sorted(by: { $0.0 < $1.0 }) {
+        for (_key, _value) in modelDict.sorted(by: { $0.0 > $1.0 }) {
             let section = KASection(title: _key, scores: _value)
             _models.append(section)
         }
@@ -158,13 +158,13 @@ extension KAScoreViewController {
     }
     
     @objc private func didRefresh() {
-        showIndicator()
+        startLoading(for: .score)
         
         JCAccountManager.shared.getScore { [weak self] result in
             switch result {
             case .success(let scores):
                 self?.configureModels(with: scores)
-                self?.removeIndicator()
+                self?.stopLoading(for: .score)
                 
             case .failure(let error):
                 if error == .notLoginJW {
@@ -172,27 +172,11 @@ extension KAScoreViewController {
                 } else {
                     print("DEBUG: Refresh Score With Error: \(String(describing: error))")
                 }
-                self?.removeIndicator()
+                self?.stopLoading(for: .score)
             }
         }
         
         refreshControl.endRefreshing()
-    }
-    
-    private func showIndicator() {
-        view.addSubview(indicatorView)
-        
-        indicatorView.snp.makeConstraints { make in
-            make.center.equalTo(self.view)
-            make.width.equalTo(200)
-            make.height.equalTo(100)
-        }
-    }
-    
-    private func removeIndicator() {
-        indicatorView.snp.removeConstraints()
-        
-        indicatorView.removeFromSuperview()
     }
 }
 

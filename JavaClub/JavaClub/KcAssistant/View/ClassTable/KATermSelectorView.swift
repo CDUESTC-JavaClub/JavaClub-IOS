@@ -30,20 +30,20 @@ struct KATermSelectorView: View {
             .frame(width: 250, height: 20)
             .padding(.top, 10)
             
-            ForEach(1 ..< (JCDateManager.shared.term() ?? 0) + 1) { index in
+            ForEach(1 ..< (JCTermManager.shared.term() ?? 0) + 1) { index in
                 Button {
                     selected = index
                     isShown = false
                 } label: {
-                    Text(JCDateManager.shared.formatted(for: index) ?? "获取失败...".localized())
-                        .foregroundColor(selected == index ? Color(hex: "413258") : .accentColor)
+                    Text(JCTermManager.shared.formatted(for: index) ?? "获取失败...".localized())
+                        .foregroundColor(selected == index ? .accentColor : .label)
                 }
                 .frame(width: 250, height: 20)
                 .padding(.vertical, 5)
             }
         }
         .padding(.bottom, 20)
-        .background(colorScheme == .light ? Color.white : .gray)
+        .background(colorScheme == .light ? Color.white : .secondarySystemBackground)
         .cornerRadius(15)
     }
 }

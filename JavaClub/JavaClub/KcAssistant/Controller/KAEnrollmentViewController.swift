@@ -26,6 +26,8 @@ class KAEnrollmentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        title = "学籍信息查询".localized()
+        
         refreshControl.addTarget(
             self,
             action: #selector(didRefresh),
@@ -81,73 +83,73 @@ extension KAEnrollmentViewController {
         for (_key, _value) in infoDict {
             
             if var _value = _value as? String {
-                var localizedTitle: String?
+                var localizedTitle: String = ""
                 
                 switch _key {
-                case "campus":
-                    localizedTitle = "所属校区"
+                    case "campus":
+                        localizedTitle = "所属校区"
                     
-                case "degree":
-                    localizedTitle = "学历层次"
+                    case "degree":
+                        localizedTitle = "学历层次"
                     
-                case "system":
-                    localizedTitle = "学制"
+                    case "system":
+                        localizedTitle = "学制"
                     
-                case "dateEnrolled":
-                    localizedTitle = "入学日期"
-                    
-                    let index = _value.index(_value.startIndex, offsetBy: 9)
-                    _value = String(_value.prefix(through: index))
-                    
-                case "dateGraduation":
-                    localizedTitle = "毕业日期"
-                    
-                    let index = _value.index(_value.startIndex, offsetBy: 9)
-                    _value = String(_value.prefix(through: index))
-                    
-                case "department":
-                    localizedTitle = "院系"
-                    
-                case "subject":
-                    localizedTitle = "专业"
-                    
-                case "grade":
-                    localizedTitle = "年级"
-                    
-                case "direction":
-                    localizedTitle = "方向"
-                    
-                case "_class":
-                    localizedTitle = "所属班级"
-                    
-                case "enrollmentForm":
-                    localizedTitle = "学籍形式"
-                    
-                case "enrollmentStatus":
-                    localizedTitle = "学籍状态"
-                    
-                case "name":
-                    localizedTitle = "姓名"
-                    
-                case "engName":
-                    localizedTitle = "英文名"
-                    
-                case "gender":
-                    localizedTitle = "性别"
-                    
-                case "studentID":
-                    localizedTitle = "学号"
-                    
-                default:
-                    break
+                    case "dateEnrolled":
+                        localizedTitle = "入学日期"
+                        
+                        let index = _value.index(_value.startIndex, offsetBy: 9)
+                        _value = String(_value.prefix(through: index))
+                        
+                    case "dateGraduation":
+                        localizedTitle = "毕业日期"
+                        
+                        let index = _value.index(_value.startIndex, offsetBy: 9)
+                        _value = String(_value.prefix(through: index))
+                        
+                    case "department":
+                        localizedTitle = "院系"
+                        
+                    case "subject":
+                        localizedTitle = "专业"
+                        
+                    case "grade":
+                        localizedTitle = "年级"
+                        
+                    case "direction":
+                        localizedTitle = "方向"
+                        
+                    case "_class":
+                        localizedTitle = "所属班级"
+                        
+                    case "enrollmentForm":
+                        localizedTitle = "学籍形式"
+                        
+                    case "enrollmentStatus":
+                        localizedTitle = "学籍状态"
+                        
+                    case "name":
+                        localizedTitle = "姓名"
+                        
+                    case "engName":
+                        localizedTitle = "英文名"
+                        
+                    case "gender":
+                        localizedTitle = "性别"
+                        
+                    case "studentID":
+                        localizedTitle = "学号"
+                        
+                    default:
+                        localizedTitle = _key
                 }
                 
-                let opt: TVOptionType = ._static(model: TVStaticOption(title: localizedTitle ?? _key, icon: icon, value: _value))
+                let opt: TVOptionType = ._static(model: TVStaticOption(title: localizedTitle.localized(), icon: icon, value: _value))
                 options.append(opt)
             }
         }
         
-        models = [TVSection(title: "详细信息", options: options)]
+        models = [TVSection(title: "详细信息".localized(), options: options)]
         
         tableView.reloadData()
     }

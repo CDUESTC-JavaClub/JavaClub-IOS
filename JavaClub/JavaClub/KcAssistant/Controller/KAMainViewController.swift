@@ -12,6 +12,7 @@ import SnapKit
 class KAMainViewController: UIViewController {
     private var contentVC: KAContentViewController!
     private var bindingVC: KABindingViewController!
+    private var refreshVC: JCRefreshViewController!
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -36,11 +37,17 @@ class KAMainViewController: UIViewController {
         }.tieToLifetime(of: self)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        if !Defaults[.jwLoginInfo].isNil {
-            loginJWIfAvailable()
+        if !Defaults[.jwLoginInfo].isNil, !JCLoginState.shared.jw {
+            loginJWIfAvailable { [weak self] success in
+                if success {
+                    self?.didResetJWState(Defaults[.enrollment].isNil)
+                } else {
+                    self?.autoLoginJWFailed()
+                }
+            }
         } else {
             didResetJWState(Defaults[.enrollment].isNil)
         }
@@ -58,8 +65,12 @@ extension KAMainViewController {
         else { return }
         
         if isLoggedIn {
-            contentVC.view.isHidden = false
             stopLoading(for: .jw)
+            tabBarEnabled(true)
+            
+            if !contentVC.isNil {
+                contentVC.view.isHidden = false
+            }
         }
     }
     
@@ -90,21 +101,20 @@ extension KAMainViewController {
                 .instantiateViewController(withIdentifier: "KAContentViewController")
             as? KAContentViewController
             
+            contentVC.view.isHidden = true
+            
             addChild(contentVC)
             view.addSubview(contentVC.view)
             contentVC.view.snp.makeConstraints { make in
                 make.top.leading.trailing.equalTo(view)
                 make.bottom.equalTo(view.snp.bottomMargin)
             }
-            
-            if !JCLoginState.shared.jw {
-                contentVC.view.isHidden = true
-                startLoading(for: .jw)
-            }
         }
     }
     
-    func loginJWIfAvailable() {
+    func loginJWIfAvailable(_ completion: ((Bool) -> Void)? = nil) {
+        startLoading(for: .jw)
+        
         if let jwInfo = Defaults[.jwLoginInfo], let user = Defaults[.jcUser] {
             JCAccountManager.shared.loginJW(info: jwInfo, bind: user.studentID == nil) { result in
                 
@@ -118,6 +128,7 @@ extension KAMainViewController {
                                 Defaults[.enrollment] = enr
                                 JCLoginState.shared.jw = true
                                 print("DEBUG: Auto Login JW Succeeded.")
+                                completion?(true)
                                 
                             case .failure(let error):
                                 if error == .notLoginJC {
@@ -125,19 +136,68 @@ extension KAMainViewController {
                                 } else {
                                     print("DEBUG: Fetch Enrollment Info Failed With Error: \(String(describing: error))")
                                 }
+                                completion?(false)
                             }
                             
                         }
                     } else {
                         print("DEBUG: Auto Login JW Failed. (Maybe Wrong Username Or Password)")
+                        completion?(false)
                     }
                     
                 case .failure(let error):
                     print("DEBUG: Auto Login JW Failed With Error: \(String(describing: error)).")
+                    completion?(false)
                 }
             }
         } else {
             print("DEBUG: JW Credential Lost.")
+            completion?(false)
+        }
+    }
+    
+    private func autoLoginJWFailed() {
+        stopLoading(for: .jw)
+        tabBarEnabled(false)
+        
+        if !contentVC.isNil {
+            contentVC.view.removeFromSuperview()
+            contentVC = nil
+        }
+        
+        if refreshVC.isNil {
+            refreshVC =  UIStoryboard(name: "JavaClub", bundle: .main)
+                .instantiateViewController(withIdentifier: "JCRefreshViewController")
+            as? JCRefreshViewController
+            
+            refreshVC.onTapGesture = { [weak self] in
+                self?.loginJWIfAvailable { success in
+                    if success {
+                        self?.didResetJWState(Defaults[.enrollment].isNil)
+                    } else {
+                        self?.stopLoading(for: .jw)
+                    }
+                }
+            }
+            
+            view.addSubview(refreshVC.view)
+            refreshVC.view.snp.makeConstraints { make in
+                make.edges.equalTo(view)
+            }
+        }
+    }
+    
+    private func tabBarEnabled(_ boolean: Bool) {
+        guard let tabItems = tabBarController?.tabBar.items else { return }
+        
+        if boolean {
+            tabItems.forEach {
+                $0.isEnabled = true
+            }
+        } else {
+            tabItems.forEach {
+                $0.isEnabled = false
+            }
         }
     }
 }

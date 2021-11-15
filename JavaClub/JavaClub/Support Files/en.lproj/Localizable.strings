@@ -1,58 +1,9 @@
+// MARK: App General
 "加载中" = "Loading";
-
-"暂无法获取该学期课表，请稍后再试。" = "Can't get the semester class table, please try again later.";
 
 "获取失败..." = "Fetch failed...";
 
-"课程号：%@" = "Class ID：%@";
-
-"课程名：%@" = "Class Name：%@";
-
-"地点：%@" = "Locale: %@";
-
-"教师：%@" = "Teacher: %@";
-
 "错误" = "Error";
-
-"使用深色模式" = "Use Dark mode";
-
-"主题外观跟随系统" = "Use System Appearance";
-
-"外观设置" = "Appearance";
-
-"绑定信息" = "Binding";
-
-"检查更新" = "Check For Updates";
-
-"退出登录" = "Logout";
-
-"教务" = "KcAssistant";
-
-"设置" = "Settings";
-
-"已绑定学号" = "Student ID";
-
-"已绑定邮箱" = "Email";
-
-"学期成绩查询" = "Semester Score";
-
-"课程表查询" = "Class Table";
-
-"学籍信息查询" = "Enrollment Info";
-
-"暂无公告内容，敬请期待~" = "There's nothing much to see, please come back later~";
-
-"教务系统" = "KcAssistant";
-
-"包含成绩查询、课表查询、学籍查询等功能" = "Contains semester score quiries, class table queries, enrollment info queries, etc.";
-
-"百叶计划" = "BaiAssistant";
-
-"包含活动报名、活动取消、积分查询等功能" = "Contains event registration, event cancellation, BaiYe integral query, etc.";
-
-"已达标" = "Accomplished";
-
-"未达标" = "Failed";
 
 "登录失败，请检查输入或网络连接是否通畅！" = "Login failed, please check your input and make sure your network connection is available!";
 
@@ -62,9 +13,7 @@
 
 "已阅读并同意我们的" = "I'm agreed to the";
 
-"隐私条款" = "privacy policy";
-
-"请先登录" = "Please Login First";
+"用户许可协议" = "User License Agreement";
 
 "忘记密码?" = "Forgot password?";
 
@@ -77,3 +26,150 @@
 "学号" = "Student ID";
 
 "密码" = "Password";
+
+"加载失败，点击重试。" = "Failed to load. Please tap the screen to retry.";
+
+// MARK: KC General
+"暂无公告内容，敬请期待~" = "There's nothing much to see, please come back later~";
+
+"课程表查询" = "Class Table";
+
+"学籍信息查询" = "Enrollment Info";
+
+"学期成绩查询" = "Semester Score";
+
+"包含成绩查询、课表查询、学籍查询等功能" = "Contains semester score quiries, class table queries, enrollment info queries, etc.";
+
+// MARK: KC Score
+"上" = "First Semester";
+
+"下" = "Second Semester";
+
+"%@ 学年 - %@" = "%@ - %@";
+
+"%@-%@ 学年（%@）" = "%@-%@ (%@)";
+
+// MARK: KC ClassTable
+"暂无法获取该学期课表，请稍后再试。" = "Can't get the semester class table, please try again later.";
+
+"周一" = "Mon";
+
+"周二" = "Tue";
+
+"周三" = "Wed";
+
+"周四" = "Thu";
+
+"周五" = "Fri";
+
+"周六" = "Sat";
+
+"周日" = "Sun";
+
+"课程号：%@" = "Class ID：%@";
+
+"课程名：%@" = "Class Name：%@";
+
+"地点：%@" = "Locale: %@";
+
+"教师：%@" = "Teacher: %@";
+
+// MARK: KC Enrollment
+"所属校区" = "Campus Belonging";
+
+"学历层次" = "Degree";
+
+"学制" = "Length Of Schooling";
+
+"入学日期" = "Enrollment Date";
+   
+"毕业日期" = "Graduation Date";
+
+"院系" = "Department";
+    
+"专业" = "Subject";
+    
+"年级" = "Grade";
+    
+"方向" = "Direction";
+    
+"所属班级" = "Class";
+    
+"学籍形式" = "Study Form";
+    
+"学籍状态" = "Enrollment Status";
+    
+"姓名" = "Chinese Name";
+    
+"英文名" = "English Name";
+    
+"性别" = "Gender";
+    
+"学号" = "Student ID";
+
+"详细信息" = "Details";
+
+// MARK: BY General
+"包含活动报名、活动取消、积分查询等功能" = "Contains event registration, event cancellation, BaiYe credits query, etc.";
+
+"已达标" = "Accomplished";
+
+"未达标" = "Failed";
+
+"所有活动" = "All Events";
+
+"我的活动" = "My Events";
+
+"百叶积分" = "BaiYe Credits";
+
+// MARK: BY All Events
+"百叶计划活动列表" = "All BaiYe Events";
+
+// MARK: BY My Events
+"待参加的活动" = "Pending";
+
+"已完成的活动" = "Finished";
+
+// MARK: Settings
+
+"使用深色模式" = "Use Dark mode";
+
+"主题外观跟随系统" = "Use System Appearance";
+
+"外观设置" = "Appearance";
+
+"绑定信息" = "Binding";
+
+"未绑定" = "Not Bound";
+
+"关于我们" = "About Us";
+
+"检查更新" = "Check For Updates";
+
+"退出登录" = "Logout";
+
+"已绑定学号" = "Student ID";
+
+"已绑定邮箱" = "Email";
+
+"请先登录" = "Please Login First";
+
+"即刻加入群聊" = "Join our QQ group now";
+
+"或者" = "or";
+
+"发送邮件反馈到：" = "You can send a feedback email to：";
+
+// MARK: TabBar
+
+"教务" = "KcAssistant";
+
+"设置" = "Settings";
+
+"教务系统" = "KcAssistant";
+
+"百叶计划" = "BaiAssistant";
+
+// MARK: BY Events Detail View
+"报名" = "Apply";
+"我再想想" = "Maybe Later";

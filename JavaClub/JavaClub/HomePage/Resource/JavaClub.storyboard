@@ -132,13 +132,15 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="-15" translatesAutoresizingMaskIntoConstraints="NO" id="9Ip-3o-avK">
-                                        <rect key="frame" x="86" y="265.5" width="210" height="30"/>
+                                        <rect key="frame" x="74" y="265.5" width="234.5" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tM9-yC-6q1" customClass="JCCheckboxButton" customModule="JavaClub" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="155.5" height="30"/>
                                                 <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="checked" title="已阅读并同意我们的" imagePadding="5" buttonSize="mini"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="checked" title="已阅读并同意我们的" imagePadding="5" buttonSize="mini">
+                                                    <fontDescription key="titleFontDescription" name=".SFUI-Regular" family=".AppleSystemUIFont" pointSize="1"/>
+                                                </buttonConfiguration>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="已阅读并同意我们的"/>
                                                 </userDefinedRuntimeAttributes>
@@ -147,15 +149,17 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jg6-Bj-l4f" customClass="UnderlineButton" customModule="JavaClub" customModuleProvider="target">
-                                                <rect key="frame" x="140.5" y="0.0" width="69.5" height="30"/>
+                                                <rect key="frame" x="140.5" y="0.0" width="94" height="30"/>
                                                 <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="隐私条款" buttonSize="mini"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="用户许可协议" buttonSize="mini">
+                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleFootnote"/>
+                                                </buttonConfiguration>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="titleStringColor">
                                                         <color key="value" systemColor="labelColor"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="隐私条款"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="用户许可协议"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="privacyBtnDidClick:" destination="EM6-ZV-m79" eventType="touchUpInside" id="fpp-ju-B8Z"/>
@@ -188,14 +192,6 @@
                                     <constraint firstItem="9Ip-3o-avK" firstAttribute="top" secondItem="IHe-WN-xRB" secondAttribute="bottom" constant="10" id="pBR-JQ-gOD"/>
                                     <constraint firstItem="hGi-WU-SDA" firstAttribute="top" secondItem="EpY-Rd-oKf" secondAttribute="bottom" constant="10" id="zER-XO-dbT"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="lightColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="darkColor">
-                                        <color key="value" red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="g2o-uA-6rn">
                                 <rect key="frame" x="147" y="74" width="120" height="120"/>
@@ -232,8 +228,62 @@
             </objects>
             <point key="canvasLocation" x="-17.39130434782609" y="94.419642857142847"/>
         </scene>
+        <!--Refresh View Controller-->
+        <scene sceneID="UiW-4n-qX1">
+            <objects>
+                <viewController storyboardIdentifier="JCRefreshViewController" id="Vjd-K9-qMz" customClass="JCRefreshViewController" customModule="JavaClub" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2uQ-TO-5wb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pgh-En-ZPY">
+                                <rect key="frame" x="20" y="382" width="374" height="142"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="refresh" translatesAutoresizingMaskIntoConstraints="NO" id="6OK-Or-wXD">
+                                        <rect key="frame" x="137" y="0.0" width="100" height="100"/>
+                                        <color key="tintColor" systemColor="secondaryLabelColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="bvh-wP-amc"/>
+                                            <constraint firstAttribute="width" constant="100" id="lHK-UU-t47"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加载失败，点击重试。" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIP-XG-vkz" customClass="LocalizableLabel" customModule="JavaClub" customModuleProvider="target">
+                                        <rect key="frame" x="115.5" y="100" width="143" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="cTR-wI-5Yr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="加载失败，点击重试。"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9sp-c5-8aB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pgh-En-ZPY" firstAttribute="centerX" secondItem="9sp-c5-8aB" secondAttribute="centerX" id="9W7-Ir-PqR"/>
+                            <constraint firstItem="pgh-En-ZPY" firstAttribute="trailing" secondItem="9sp-c5-8aB" secondAttribute="trailing" constant="-20" id="Qca-mo-W1W"/>
+                            <constraint firstItem="pgh-En-ZPY" firstAttribute="leading" secondItem="9sp-c5-8aB" secondAttribute="leading" constant="20" id="lHi-ec-dX1"/>
+                            <constraint firstItem="pgh-En-ZPY" firstAttribute="centerY" secondItem="9sp-c5-8aB" secondAttribute="centerY" id="lUn-gY-Tna"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QVf-CV-Ikq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1135" y="94"/>
+        </scene>
     </scenes>
     <designables>
+        <designable name="2hH-2x-huI">
+            <size key="intrinsicContentSize" width="36" height="31"/>
+        </designable>
+        <designable name="BIP-XG-vkz">
+            <size key="intrinsicContentSize" width="143" height="17"/>
+        </designable>
         <designable name="FW3-n3-SBr">
             <size key="intrinsicContentSize" width="29" height="17"/>
         </designable>
@@ -247,7 +297,7 @@
             <size key="intrinsicContentSize" width="76" height="18.5"/>
         </designable>
         <designable name="jg6-Bj-l4f">
-            <size key="intrinsicContentSize" width="69.5" height="24.5"/>
+            <size key="intrinsicContentSize" width="94" height="24.5"/>
         </designable>
         <designable name="tM9-yC-6q1">
             <size key="intrinsicContentSize" width="155.5" height="30"/>
@@ -257,8 +307,12 @@
         <image name="checked" width="20" height="20"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="logo" width="187.5" height="188.5"/>
+        <image name="refresh" width="200" height="200"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="separatorColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

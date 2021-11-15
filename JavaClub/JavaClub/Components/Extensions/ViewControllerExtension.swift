@@ -23,7 +23,7 @@ extension UIViewController {
         let progressView = ProgressIndicator(frame: .zero)
         progressView.tag = tag.rawValue
         
-        progressView.foregroundColor = isDarkMode ? .gray : .white
+        progressView.foregroundColor = isDarkMode ? .secondarySystemBackground : .white
         view.addSubview(progressView)
         progressView.snp.makeConstraints { make in
             make.edges.equalTo(view)
@@ -45,4 +45,7 @@ enum ProgressTag: Int {
     case jc = 1001
     case jw = 1002
     case by = 1003
+    case score = 1004
+    case allEvents = 1005
+    case myEvents = 1006
 }

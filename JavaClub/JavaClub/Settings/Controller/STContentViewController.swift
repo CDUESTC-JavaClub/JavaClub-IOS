@@ -7,7 +7,6 @@
 
 import UIKit
 import Defaults
-import Kingfisher
 
 class STContentViewController: UIViewController {
     @IBOutlet var banner: UIImageView!
@@ -43,8 +42,10 @@ class STContentViewController: UIViewController {
         configureModels()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.isNavigationBarHidden = true
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -98,22 +99,14 @@ extension STContentViewController {
         tableView.delegate = self
         tableView.dataSource = self
         // Set Inset For 20 Temporarily
-        tableView.contentInset = .init(top: 0, left: 0, bottom: 20, right: 0)
+//        tableView.contentInset = .init(top: 0, left: 0, bottom: 20, right: 0)
     }
     
     private func configureModels() {
-        var versionInfo: String = "更多"
-        if
-            let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
-            let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
-        {
-            versionInfo = "v\(version) (\(build))"
-        }
-        
         models = [
             TVSection(title: "绑定信息".localized(), options: [
-                ._static(model: TVStaticOption(title: "已绑定学号".localized(), icon: nil, value: Defaults[.jcUser]?.studentID ?? "")),
-                ._static(model: TVStaticOption(title: "已绑定邮箱".localized(), icon: nil, value: Defaults[.jcUser]?.email ?? "")),
+                ._static(model: TVStaticOption(title: "已绑定学号".localized(), icon: nil, value: Defaults[.jcUser]?.studentID ?? "未绑定".localized())),
+                ._static(model: TVStaticOption(title: "已绑定邮箱".localized(), icon: nil, value: Defaults[.jcUser]?.email ?? "未绑定".localized())),
             ]),
             TVSection(title: "外观设置".localized(), options: [
                 .switchable(model: TVSwitchOption(
@@ -135,7 +128,15 @@ extension STContentViewController {
                     }
                 )),
             ]),
-            TVSection(title: versionInfo, options: [
+            TVSection(title: "", options: [
+                .tappable(model: TVTappableOption(title: "关于我们".localized(), icon: UIImage(named: "about_us_icon"), handler: { [weak self] in
+                    let infoVC = UIStoryboard(name: "Settings", bundle: .main)
+                        .instantiateViewController(withIdentifier: "STInfoViewController")
+                    as! STInfoViewController
+                    
+                    self?.navigationController?.isNavigationBarHidden = false
+                    self?.navigationController?.pushViewController(infoVC, animated: true)
+                })),
                 .tappable(model: TVTappableOption(title: "检查更新".localized(), icon: UIImage(named: "update_icon"), handler: {
                     if let createURL = URL(string: "https://apps.apple.com/cn/app/javaclub/id1590327368?l=en") {
                         UIApplication.shared.open(createURL)
@@ -179,12 +180,13 @@ extension STContentViewController {
         if let avatarURL = avatarURL {
             retrieveImage(avatarURL, for: "avatarKey") { [weak self] result in
                 switch result {
-                case .success(let image):
-                    self?.avatar.image = image
-                    print("DEBUG: Fetch Avatar Succeeded.")
+                    case .success(let image):
+                        self?.avatar.image = image
+                        print("DEBUG: Fetch Avatar Succeeded.")
                     
-                case .failure(let error):
-                    print("DEBUG: Fetch Avatar Failed With Error: \(String(describing: error))")
+                    case .failure(let error):
+                        self?.avatar.image = UIImage(named: "user_holder")
+                        print("DEBUG: Fetch Avatar Failed With Error: \(String(describing: error))")
                 }
             }
         } else if JCLoginState.shared.jc {
@@ -198,12 +200,13 @@ extension STContentViewController {
         if let bannerURL = bannerURL {
             retrieveImage(bannerURL, for: "bannerKey") { [weak self] result in
                 switch result {
-                case .success(let image):
-                    self?.banner.image = image
-                    print("DEBUG: Fetch Banner Succeeded.")
+                    case .success(let image):
+                        self?.banner.image = image
+                        print("DEBUG: Fetch Banner Succeeded.")
                     
-                case .failure(let error):
-                    print("DEBUG: Fetch Banner Failed With Error: \(String(describing: error))")
+                    case .failure(let error):
+                        self?.banner.image = UIImage(named: "login_bg")
+                        print("DEBUG: Fetch Banner Failed With Error: \(String(describing: error))")
                 }
             }
         } else if JCLoginState.shared.jc {
@@ -214,24 +217,20 @@ extension STContentViewController {
     }
     
     private func retrieveImage(_ imgURL: URL, for key: String, completion: @escaping (Result<UIImage, JCError>) -> Void) {
-        ImageDownloader.default.downloadImage(with: imgURL) { result in
-            switch result {
-            case .success(let data):
-                ImageCache.default.storeToDisk(data.originalData, forKey: key)
+        JCImageManager.shared.fetch(from: imgURL) { result in
+            if let result = result {
+                JCImageManager.shared.store(result.originalData, forKey: key)
                 print("DEBUG: Fetch Image Succeeded.")
-                completion(.success(data.image))
+                completion(.success(result.image))
+            } else {
+                print("DEBUG: Fetch Image Failed. Getting Local.")
                 
-            case .failure(let error):
-                print("DEBUG: Fetch Image Failed With Error: \(String(describing: error))")
-                
-                ImageCache.default.retrieveImage(forKey: key) { result in
-                    switch result {
-                    case .success(let data):
+                JCImageManager.shared.local(for: key) { img in
+                    if let img = img {
                         print("DEBUG: Using Local Cached Image.")
-                        completion(.success(data.image!))
-                        
-                    case .failure(let error):
-                        print("DEBUG: Get Local Image Failed With Error: \(String(describing: error))")
+                        completion(.success(img))
+                    } else {
+                        print("DEBUG: Get Local Image Failed.")
                         completion(.failure(.imgRetrieveFailed))
                     }
                 }

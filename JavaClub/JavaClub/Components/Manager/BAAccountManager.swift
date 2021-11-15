@@ -82,6 +82,7 @@ extension BAAccountManager {
                                 }
                             } else {
                                 print("DEBUG: Get BY Information Failed.")
+                                completion(.failure(.badRequest))
                             }
                         }
                     } catch {
@@ -90,6 +91,7 @@ extension BAAccountManager {
                 }
             } else {
                 print("DEBUG: Login BY Failed.")
+                completion(.failure(.noData))
             }
         }
     }
@@ -163,7 +165,7 @@ extension BAAccountManager {
                         place: json["place"].stringValue,
                         maxCount: json["minimum"].intValue,
                         regCount: json["reg_num"].intValue,
-                        status: json["status"].stringValue
+                        status: json["status"].intValue
                     )
                     
                     eventsArr.append(event)
@@ -172,6 +174,33 @@ extension BAAccountManager {
                 completion(.success(eventsArr))
             } else {
                 print("DEBUG: Fetch My Events Failed.")
+                completion(.failure(.noData))
+            }
+        }
+    }
+    
+    /**
+     *  获取活动的Description
+     *
+     *  - Parameters:
+     *      -
+     */
+    func eventDetails(for eventID: Int, _ completion: @escaping (Result<String, JCError>) -> Void) {
+        guard let account = Defaults[.byAccount] else {
+            completion(.failure(.notLoginBY))
+            return
+        }
+        
+        let parameters = [
+            "token": account.token,
+            "url": String(eventID)
+        ]
+        
+        AFTask("/Api/During/details", parameters: parameters) { result in
+            if let result = try? result.get() {
+                completion(.success(result["data"].stringValue))
+            } else {
+                print("DEBUG: Failed To Get Event Details.")
                 completion(.failure(.noData))
             }
         }
@@ -351,22 +380,35 @@ extension BAAccountManager {
         AF.request(
             apiLink + path,
             method: .post,
-            parameters: parameters
+            parameters: parameters,
+            requestModifier: { $0.timeoutInterval = 10 }
         ).response { response in
-            guard
-                let statusCode = response.response?.statusCode,
-                statusCode == 200,
-                let data = response.data
-            else {
-                completion(.failure(.noData))
-                return
-            }
-            
-            do {
-                let json = try JSON(data: data)
-                completion(.success(json))
-            } catch {
-                completion(.failure(.parseErr))
+            switch response.result {
+            case .success:
+                guard
+                    let statusCode = response.response?.statusCode,
+                    statusCode == 200,
+                    let data = response.data
+                else {
+                    completion(.failure(.noData))
+                    return
+                }
+                
+                do {
+                    let json = try JSON(data: data)
+                    completion(.success(json))
+                } catch {
+                    completion(.failure(.parseErr))
+                }
+                
+            case .failure(let error):
+                if error._code == NSURLErrorTimedOut {
+                    completion(.failure(.timeout))
+                    print("DEBUG: BY Request Timeout.")
+                } else {
+                    completion(.failure(.badRequest))
+                    print("DEBUG: BY Request Failed With Error: \(String(describing: error)).")
+                }
             }
         }
     }
@@ -403,7 +445,7 @@ extension BAAccountManager {
                         place: json["place"].stringValue,
                         maxCount: json["minimum"].intValue,
                         regCount: json["reg_num"].intValue,
-                        status: json["status"].stringValue
+                        status: json["status"].intValue
                     )
                     
                     eventArr.append(event)

@@ -71,7 +71,9 @@ extension BALoginViewController {
                     JCLoginState.shared.by = true
                     
                 case .failure(let error):
-                    print("Login BY Failed With Error: \(String(describing: error))")
+                    let alert = UIAlertController(title: "提示", message: "错误：\(String(describing: error))，请稍后再试。", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+                    self?.present(alert, animated: true, completion: nil)
                 }
             }
         } else {

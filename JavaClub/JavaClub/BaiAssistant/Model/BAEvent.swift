@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BAEvent {
+struct BAEvent: Hashable {
     /* 活动编号 */
     let eventID: Int;
     /* 活动名称 */
@@ -27,5 +27,5 @@ struct BAEvent {
     /* 当前参加人数 */
     let regCount: Int
     /* 活动状态 */
-    let status: String
+    let status: Int
 }

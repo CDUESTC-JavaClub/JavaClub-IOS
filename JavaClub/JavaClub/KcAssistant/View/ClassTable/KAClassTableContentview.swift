@@ -21,6 +21,7 @@ fileprivate let colorSet: [String] = [
 struct KAClassTableContentview: View {
     @ObservedObject private var observable: KAClassTableObservable = .shared
     @Default(.classTableTerm) var term
+    @State var navTitle = ""
     @State var presentAlert = false
     @State var showIndicator = false
     @State var showTermSelector = false
@@ -42,23 +43,9 @@ struct KAClassTableContentview: View {
         ZStack {
             GeometryReader { geo in
                 VStack(spacing: 0) {
-                    VStack {
-                        Button {
-                            showTermSelector = true
-                        } label: {
-                            HStack(spacing: 0) {
-                                Text(JCDateManager.shared.formatted(for: term) ?? NSLocalizedString("获取失败...", comment: ""))
-                                
-                                Image(systemName: "chevron.down")
-                                    .renderingMode(.template)
-                            }
-                        }
-                    }
-                    .padding(.bottom, 10)
-                    
                     HStack(spacing: 0) {
                         ForEach(1 ..< 8) { index in
-                            Text("周\(index == 7 ? "日" : (index.chinese ?? "\(index)"))")
+                            Text(selectWeekday(with: index))
                                 .frame(width: geo.size.width / 7, height: 30)
                                 .foregroundColor(.white)
                                 .background(Color(hex: "413258"))
@@ -70,7 +57,7 @@ struct KAClassTableContentview: View {
                             ForEach(observable.classes, id: \.id) {
                                 KAClassTableCell(
                                     _class: $0,
-                                    color: Color(selectColor(with: $0.name) ?? .gray),
+                                    color: Color(selectColor(with: $0.name) ?? .secondarySystemBackground),
                                     onTapGesture: { _class in
                                         showingClass = _class
                                         showClassDetail = true
@@ -120,14 +107,25 @@ struct KAClassTableContentview: View {
                 )
             }
         }
+        .navigationTitle(navTitle)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            Button {
+                showTermSelector = true
+            } label: {
+                Image(systemName: "calendar")
+            }
+        }
         .alert(isPresented: $presentAlert) {
             Alert(title: Text("错误".localized()), message: Text("暂无法获取该学期课表，请稍后再试。".localized()), dismissButton: .default(Text("Got it!")))
         }
         .onAppear {
             refresh(for: term)
+            navTitle = JCTermManager.shared.formatted(for: term) ?? "获取失败...".localized()
         }
         .onChange(of: term) { newValue in
             refresh(for: newValue)
+            navTitle = JCTermManager.shared.formatted(for: term) ?? "获取失败...".localized()
         }
     }
     
@@ -170,5 +168,33 @@ struct KAClassTableContentview: View {
         colorHash[unicode] = className
         
         return UIColor(hex: colorSet[unicode])
+    }
+    
+    func selectWeekday(with index: Int) -> String {
+        switch index {
+        case 1:
+            return "周一".localized()
+            
+        case 2:
+            return "周二".localized()
+            
+        case 3:
+            return "周三".localized()
+            
+        case 4:
+            return "周四".localized()
+            
+        case 5:
+            return "周五".localized()
+            
+        case 6:
+            return "周六".localized()
+            
+        case 7:
+            return "周日".localized()
+            
+        default:
+            return ""
+        }
     }
 }

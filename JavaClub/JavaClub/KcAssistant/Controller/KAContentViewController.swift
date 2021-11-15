@@ -36,8 +36,6 @@ class KAContentViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        navigationController?.isNavigationBarHidden = true
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -70,6 +68,7 @@ extension KAContentViewController {
             tableView.backgroundColor = UIColor(hex: "151515")
         } else {
             scrollView.backgroundColor = UIColor(hex: "F2F2F7")
+            tableView.backgroundColor = UIColor(hex: "F2F2F7")
         }
         
         infoView.isDark = isDarkMode
@@ -80,17 +79,14 @@ extension KAContentViewController {
         models = [
             TVSection(title: "", options: [
                 .tappable(model: TVTappableOption(title: "学期成绩查询".localized(), icon: UIImage(named: "score_icon"), handler: { [weak self] in
-                    self?.navigationController?.isNavigationBarHidden = false
                     self?.navigationController?.pushViewController(KAScoreViewController(), animated: true)
                 })),
                 .tappable(model: TVTappableOption(title: "课程表查询".localized(), icon: UIImage(named: "classtable_icon"), handler: { [weak self] in
                     let classTableVC = UIHostingController(rootView: KAClassTableContentview())
-                    self?.navigationController?.isNavigationBarHidden = false
+//                    classTableVC.title = "课程表查询".localized()
                     self?.navigationController?.pushViewController(classTableVC, animated: true)
                 })),
                 .tappable(model: TVTappableOption(title: "学籍信息查询".localized(), icon: UIImage(named: "enrollment_icon"), handler: { [weak self] in
-                    self?.navigationController?.isNavigationBarHidden = false
-                    
                     let enrollmentVC = UIStoryboard(name: "KcAssistant", bundle: .main)
                         .instantiateViewController(withIdentifier: "KAEnrollmentViewController")
                     as! KAEnrollmentViewController

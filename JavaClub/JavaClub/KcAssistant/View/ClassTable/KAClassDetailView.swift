@@ -95,7 +95,7 @@ struct KAClassDetailView: View {
             .frame(height: 20)
         }
         .padding(.bottom, 20)
-        .background(colorScheme == .light ? Color.white : .gray)
+        .background(colorScheme == .light ? Color.white : .secondarySystemBackground)
         .cornerRadius(15)
     }
     

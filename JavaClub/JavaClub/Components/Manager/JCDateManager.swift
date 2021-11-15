@@ -8,15 +8,15 @@
 import Foundation
 import Defaults
 
-class JCDateManager {
-    static let shared = JCDateManager()
+class JCTermManager {
+    static let shared = JCTermManager()
     
     private init() {}
 }
 
 
 // MARK: Shared Methods -
-extension JCDateManager {
+extension JCTermManager {
     
     func term() -> Int? {
         guard let enrollmentInfo = Defaults[.enrollment] else {
@@ -72,7 +72,7 @@ extension JCDateManager {
                 let futureDate = Calendar.current.date(byAdding: dateComponents, to: dateEnrolled),
                 let futureYear = Calendar.current.dateComponents([.year], from: futureDate).year
             {
-                return "\(futureYear)-\(futureYear + 1) 学年（\(first.contains(term) ? "上" : "下")）"
+                return String.localized("%@-%@ 学年（%@）", with: "\(futureYear)", "\(futureYear + 1)", "\(first.contains(term) ? "上".localized() : "下".localized())")
             }
         }
         
@@ -82,7 +82,7 @@ extension JCDateManager {
 
 
 // MARK: Private Methods -
-extension JCDateManager {
+extension JCTermManager {
     
     private func termCheck(with month: Int) -> Int {
         if (9 ... 12).contains(month) || (1 ..< 3).contains(month) {

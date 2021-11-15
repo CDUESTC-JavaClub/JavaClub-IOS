@@ -63,6 +63,10 @@ extension String {
     func localized(withComment comment: String? = nil) -> String {
         return NSLocalizedString(self, comment: comment ?? "")
     }
+    
+    static func localized(_ key: String, with values: String...) -> String {
+        String(format: key.localized(), arguments: values)
+    }
 }
 
 extension String.Encoding {
