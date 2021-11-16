@@ -71,7 +71,7 @@
                                     <constraint firstItem="gQA-xG-Trp" firstAttribute="centerX" secondItem="wa0-0D-gbw" secondAttribute="centerX" id="vdD-9i-PSa"/>
                                 </constraints>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="74T-ca-xeA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="74T-ca-xeA">
                                 <rect key="frame" x="0.0" y="336" width="414" height="526"/>
                             </tableView>
                         </subviews>
@@ -209,6 +209,12 @@
     <designables>
         <designable name="RO0-sh-9RU">
             <size key="intrinsicContentSize" width="167" height="31"/>
+        </designable>
+        <designable name="iI3-9i-iD7">
+            <size key="intrinsicContentSize" width="106.5" height="16"/>
+        </designable>
+        <designable name="v6Y-eL-MtG">
+            <size key="intrinsicContentSize" width="29" height="17"/>
         </designable>
     </designables>
     <resources>
