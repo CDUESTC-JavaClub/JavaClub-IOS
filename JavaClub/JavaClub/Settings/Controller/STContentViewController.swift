@@ -182,11 +182,11 @@ extension STContentViewController {
                 switch result {
                     case .success(let image):
                         self?.avatar.image = image
-                        print("DEBUG: Fetch Avatar Succeeded.")
+                        logger.debug("Fetch Avatar Succeeded.")
                     
                     case .failure(let error):
                         self?.avatar.image = UIImage(named: "user_holder")
-                        print("DEBUG: Fetch Avatar Failed With Error: \(String(describing: error))")
+                        logger.error("Fetch Avatar Failed With Error:", context: String(describing: error))
                 }
             }
         } else if JCLoginState.shared.jc {
@@ -202,11 +202,11 @@ extension STContentViewController {
                 switch result {
                     case .success(let image):
                         self?.banner.image = image
-                        print("DEBUG: Fetch Banner Succeeded.")
+                        logger.debug("Fetch Banner Succeeded.")
                     
                     case .failure(let error):
                         self?.banner.image = UIImage(named: "login_bg")
-                        print("DEBUG: Fetch Banner Failed With Error: \(String(describing: error))")
+                        logger.error("Fetch Banner Failed With Error:", context: String(describing: error))
                 }
             }
         } else if JCLoginState.shared.jc {
@@ -220,17 +220,16 @@ extension STContentViewController {
         JCImageManager.shared.fetch(from: imgURL) { result in
             if let result = result {
                 JCImageManager.shared.store(result.originalData, forKey: key)
-                print("DEBUG: Fetch Image Succeeded.")
                 completion(.success(result.image))
             } else {
-                print("DEBUG: Fetch Image Failed. Getting Local.")
+                logger.warning("Fetch Image Failed. Getting Local.")
                 
                 JCImageManager.shared.local(for: key) { img in
                     if let img = img {
-                        print("DEBUG: Using Local Cached Image.")
+                        logger.debug("Using Local Cached Image.")
                         completion(.success(img))
                     } else {
-                        print("DEBUG: Get Local Image Failed.")
+                        logger.warning("Get Local Image Failed.")
                         completion(.failure(.imgRetrieveFailed))
                     }
                 }

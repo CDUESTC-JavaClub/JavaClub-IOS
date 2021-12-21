@@ -7,6 +7,9 @@
 
 import UIKit
 import Defaults
+import SwiftyBeaver
+
+let logger = SwiftyBeaver.self
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        setupLogger()
         addObservers()
         
         return true
@@ -54,14 +58,14 @@ extension AppDelegate {
                 
                 JCAccountManager.shared.getInfo { result in
                     switch result {
-                    case .success(let userInfo):
-                        Defaults[.jcUser] = userInfo
-                        onSuccess?()
-                        
-                    case .failure(let error):
-                        print("DEBUG: Fetch User Info Failed With Error: \(String(describing: error))")
-                        JCAccountManager.shared.logout(clean: true)
-                        onFailure?()
+                        case .success(let userInfo):
+                            Defaults[.jcUser] = userInfo
+                            onSuccess?()
+                            
+                        case .failure(let error):
+                            logger.error("Fetch User Info Failed With Error:", context: String(describing: error))
+                            JCAccountManager.shared.logout(clean: true)
+                            onFailure?()
                     }
                 }
             } else {
@@ -73,15 +77,15 @@ extension AppDelegate {
     func loginJCIfAvailable(_ completion: ((Bool) -> Void)? = nil) {
         if !Defaults[.firstLogin], let info = Defaults[.jcLoginInfo] {
             loginJC(info) {
-                print("DEBUG: Auto Login JC Succeeded.")
+                logger.debug("Auto Login JC Succeeded.")
                 JCLoginState.shared.jc = true
                 completion?(true)
             } onFailure: {
-                print("DEBUG: Auto Login JC Failed.")
+                logger.warning("Auto Login JC Failed.")
                 completion?(false)
             }
         } else {
-            print("DEBUG: First Login Or Login Info Not Found.")
+            logger.warning("First Login Or Login Info Not Found.")
             
             if !Defaults[.jcLoginInfo].isNil {
                 JCAccountManager.shared.logout(clean: true)
@@ -93,6 +97,13 @@ extension AppDelegate {
         let _ = Defaults.observe(.jcUser) { obj in
             JCLoginState.shared.isBound = obj.newValue?.studentID != nil
         }.tieToLifetime(of: self)
+    }
+    
+    private func setupLogger() {
+        let console = ConsoleDestination()
+        console.format = "$DHH:mm:ss$d $C$L$c: $M $X"
+        
+        logger.addDestination(console)
     }
 }
 

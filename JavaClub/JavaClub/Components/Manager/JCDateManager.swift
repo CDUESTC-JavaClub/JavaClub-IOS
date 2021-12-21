@@ -20,7 +20,7 @@ extension JCTermManager {
     
     func term() -> Int? {
         guard let enrollmentInfo = Defaults[.enrollment] else {
-            print("DEBUG: Get Current Term Failed: No Enrollment Info.")
+            logger.warning("Get Current Term Failed: No Enrollment Info.")
             return nil
         }
         
@@ -50,7 +50,7 @@ extension JCTermManager {
             enrollmentInfo.degree == "本科" && (1 ... 8).contains(term) ||
                 enrollmentInfo.degree == "专科" && (1 ... 6).contains(term)
         else {
-            print("DEBUG: Get Duration Failed: No Enrollment Info Or Invalid Term.")
+            logger.warning("Get Duration Failed: No Enrollment Info Or Invalid Term.")
             return nil
         }
         

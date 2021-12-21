@@ -45,7 +45,7 @@ class STMainViewController: UIViewController {
     private func refresh() {
         // Check Refresh Rate (3 min)
         if Date().timeIntervalSince(lastRefreshTime) < 180 {
-            print("DEBUG: Not Enough Time For Next Refresh.")
+            logger.warning("Not Enough Time For Next Refresh.")
             return
         } else {
             lastRefreshTime = Date()

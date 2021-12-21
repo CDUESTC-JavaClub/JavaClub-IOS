@@ -34,7 +34,7 @@ extension JCImageManager {
                     completion(data)
                     
                 case .failure(let error):
-                    print("DEBUG: Fetch Event Image Failed With Error: \(String(describing: error))")
+                    logger.error("Fetch Event Image Failed With Error:", context: String(describing: error))
                     completion(nil)
             }
         }
@@ -44,11 +44,11 @@ extension JCImageManager {
         ImageCache.default.retrieveImage(forKey: key) { result in
             switch result {
                 case .success(let data):
-                    print("DEBUG: Using Local Cached Image.")
+                    logger.debug("Using Local Cached Image.")
                     completion(data.image)
                     
                 case .failure(let error):
-                    print("DEBUG: Get Local Image Failed With Error: \(String(describing: error))")
+                    logger.error("Get Local Image Failed With Error:", context: String(describing: error))
                     completion(nil)
             }
         }

@@ -120,6 +120,7 @@
 		B0D62071273223DD0014F165 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D62070273223DD0014F165 /* Spinner.swift */; };
 		B0EA83A72733B09C0028ADF8 /* BALoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EA83A62733B09C0028ADF8 /* BALoginViewController.swift */; };
 		B0EFEB7A272FD2D600CAA2AE /* BALoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EFEB79272FD2D600CAA2AE /* BALoginInfo.swift */; };
+		B0F57BC1277177C400A6AA0B /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = B0F57BC0277177C400A6AA0B /* SwiftyBeaver */; };
 		B0F900CA270300420056A016 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F900C9270300420056A016 /* ViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -248,6 +249,7 @@
 				B0093A0A27159E0E00879AC5 /* SwiftyRSA in Frameworks */,
 				B02EEF2026FDBA300010515A /* SwiftyJSON in Frameworks */,
 				B02EEF1726FDB9110010515A /* Alamofire in Frameworks */,
+				B0F57BC1277177C400A6AA0B /* SwiftyBeaver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -729,6 +731,7 @@
 				B02EEF4026FDDA140010515A /* SnapKit */,
 				B0CCEF0B27141EAB001235E9 /* DeviceKit */,
 				B0093A0927159E0E00879AC5 /* SwiftyRSA */,
+				B0F57BC0277177C400A6AA0B /* SwiftyBeaver */,
 			);
 			productName = JavaClub;
 			productReference = B02EEEF426FDB2760010515A /* JavaClub.app */;
@@ -767,6 +770,7 @@
 				B02EEF3F26FDDA140010515A /* XCRemoteSwiftPackageReference "SnapKit" */,
 				B0CCEF0A27141EAB001235E9 /* XCRemoteSwiftPackageReference "DeviceKit" */,
 				B0093A0827159E0E00879AC5 /* XCRemoteSwiftPackageReference "SwiftyRSA" */,
+				B0F57BBF277177C400A6AA0B /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
 			);
 			productRefGroup = B02EEEF526FDB2760010515A /* Products */;
 			projectDirPath = "";
@@ -1183,6 +1187,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		B0F57BBF277177C400A6AA0B /* XCRemoteSwiftPackageReference "SwiftyBeaver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyBeaver/SwiftyBeaver";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1220,6 +1232,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B0CCEF0A27141EAB001235E9 /* XCRemoteSwiftPackageReference "DeviceKit" */;
 			productName = DeviceKit;
+		};
+		B0F57BC0277177C400A6AA0B /* SwiftyBeaver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0F57BBF277177C400A6AA0B /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
+			productName = SwiftyBeaver;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

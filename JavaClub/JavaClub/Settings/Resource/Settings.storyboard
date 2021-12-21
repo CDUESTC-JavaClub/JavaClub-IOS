@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -127,10 +126,13 @@
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhj-65-Nl7" customClass="LocalizableButton" customModule="JavaClub" customModuleProvider="target">
-                                <rect key="frame" x="152" y="284.5" width="110" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="即刻加入群聊"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hhj-65-Nl7" customClass="LocalizableButton" customModule="JavaClub" customModuleProvider="target">
+                                <rect key="frame" x="161" y="284.5" width="92" height="30"/>
+                                <color key="tintColor" systemColor="linkColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="即刻加入群聊">
+                                    <color key="titleColor" systemColor="linkColor"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="即刻加入群聊"/>
                                 </userDefinedRuntimeAttributes>
@@ -139,7 +141,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="或者" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6Y-eL-MtG" customClass="LocalizableLabel" customModule="JavaClub" customModuleProvider="target">
-                                <rect key="frame" x="192.5" y="335.5" width="29" height="17"/>
+                                <rect key="frame" x="192.5" y="334.5" width="29" height="17"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
@@ -147,7 +149,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发送邮件反馈到：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iI3-9i-iD7" customClass="LocalizableLabel" customModule="JavaClub" customModuleProvider="target">
-                                <rect key="frame" x="154" y="372.5" width="106.5" height="16"/>
+                                <rect key="frame" x="154" y="371.5" width="106.5" height="16"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -162,13 +164,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RO0-sh-9RU" customClass="UnderlineButton" customModule="JavaClub" customModuleProvider="target">
-                                <rect key="frame" x="123.5" y="393.5" width="167" height="31"/>
+                                <rect key="frame" x="131" y="392.5" width="152" height="30"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="royrao2333@126.com"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="titleStringColor">
-                                        <color key="value" name="AccentColor"/>
+                                        <color key="value" systemColor="linkColor"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -198,6 +200,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="joinBtn" destination="hhj-65-Nl7" id="JTQ-gd-ddy"/>
                         <outlet property="versionLabel" destination="d4u-Ip-wRo" id="2uU-mP-8ie"/>
                     </connections>
                 </viewController>
@@ -208,7 +211,7 @@
     </scenes>
     <designables>
         <designable name="RO0-sh-9RU">
-            <size key="intrinsicContentSize" width="167" height="31"/>
+            <size key="intrinsicContentSize" width="152" height="30"/>
         </designable>
         <designable name="iI3-9i-iD7">
             <size key="intrinsicContentSize" width="106.5" height="16"/>
@@ -221,11 +224,11 @@
         <image name="icon" width="341.5" height="341.5"/>
         <image name="login_bg" width="1536" height="2048"/>
         <image name="user_holder" width="72" height="72"/>
-        <namedColor name="AccentColor">
-            <color red="0.37599998712539673" green="0.81999999284744263" blue="0.68199998140335083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

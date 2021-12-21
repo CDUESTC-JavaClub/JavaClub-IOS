@@ -56,11 +56,11 @@ extension JCAccountManager {
             var key: String?
             
             switch result {
-            case .success(let _key):
-                key = _key
-                
-            case .failure(let error):
-                print("DEBUG: Request Public Key Failed With Error: \(String(describing: error))")
+                case .success(let _key):
+                    key = _key
+                    
+                case .failure(let error):
+                    logger.error("Request Public Key Failed With Error:", context: String(describing: error))
             }
             
             guard let key = key else {
@@ -96,15 +96,13 @@ extension JCAccountManager {
                             completion(.success(success))
                         } else {
                             completion(.failure(.badRequest))
-                            print("DEBUG: Login JC Failed With Code: \(status)")
+                            logger.warning("Login JC Failed With Code:", context: status)
                         }
                     } catch {
-                        print("DEBUG: (Load JSON) \(error.localizedDescription)")
                         completion(.failure(.parseErr))
                     }
                 }
             } catch {
-                print("DEBUG: (Encrypt) \(error.localizedDescription)")
                 completion(.failure(.encryptKeyErr))
             }
         }
@@ -187,11 +185,10 @@ extension JCAccountManager {
                     completion(.failure(.notLoginJC))
                 } else {
                     completion(.failure(.badRequest))
-                    print("DEBUG: Fetch User Info Failed With Code: \(status)")
+                    logger.warning("Fetch User Info Failed With Code:", context: status)
                 }
             } catch {
                 completion(.failure(.parseErr))
-                print("DEBUG: \(error.localizedDescription)")
             }
         }
     }
@@ -280,16 +277,14 @@ extension JCAccountManager {
                             completion(.failure(.wrongPassword))
                         } else {
                             completion(.failure(.badRequest))
-                            print("DEBUG: Login JW Failed With Code: \(status)")
+                            logger.warning("Login JW Failed With Code:", context: status)
                         }
                     } catch {
                         completion(.failure(.parseErr))
-                        print("DEBUG: \(error.localizedDescription)")
                     }
                 }
             } catch {
                 completion(.failure(.encryptKeyErr))
-                print("DEBUG: (Encrypt) \(error.localizedDescription)")
             }
         }
     }
@@ -346,11 +341,10 @@ extension JCAccountManager {
                     completion(.failure(.notLoginJC))
                 } else {
                     completion(.failure(.badRequest))
-                    print("DEBUG: Fetch Enrollment Info Failed With Code: \(status)")
+                    logger.warning("Fetch Enrollment Info Failed With Code:", context: status)
                 }
             } catch {
                 completion(.failure(.parseErr))
-                print("DEBUG: \(error.localizedDescription)")
             }
         }
     }
@@ -408,11 +402,10 @@ extension JCAccountManager {
                     completion(.failure(.notLoginJC))
                 } else {
                     completion(.failure(.badRequest))
-                    print("DEBUG: Fetch Score Failed With Code: \(status)")
+                    logger.warning("Fetch Score Failed With Code:", context: status)
                 }
             } catch {
                 completion(.failure(.parseErr))
-                print("DEBUG: \(error.localizedDescription)")
             }
         }
     }
@@ -462,11 +455,10 @@ extension JCAccountManager {
                     completion(.failure(.notLoginJC))
                 } else {
                     completion(.failure(.badRequest))
-                    print("DEBUG: Fetch Class Table Failed With Code: \(status)")
+                    logger.warning("Fetch Class Table Failed With Code:", context: status)
                 }
             } catch {
                 completion(.failure(.parseErr))
-                print("DEBUG: \(error.localizedDescription)")
             }
         }
     }
@@ -501,10 +493,10 @@ extension JCAccountManager {
                 let jsonStr = (try JSON(data: data))["data"].stringValue
                 
                 if status == 200, jsonStr != "failed" {
-                    print("DEBUG: Request Public Key Succeeded.")
+                    logger.debug("Request Public Key Succeeded.")
                     completion(.success(jsonStr))
                 } else {
-                    print("DEBUG: Request Public Key Failed.")
+                    logger.warning("Request Public Key Failed.")
                     
                     if count != 0 {
                         self?.requestPubKey(retry: count - 1, completion)
@@ -514,7 +506,6 @@ extension JCAccountManager {
                 }
             } catch {
                 completion(.failure(.parseErr))
-                print("DEBUG: \(error.localizedDescription)")
             }
         }
     }
@@ -525,7 +516,7 @@ extension JCAccountManager {
             requestModifier: { $0.timeoutInterval = 10 }
         ).response { response in
             guard let data = response.data else {
-                print("DEBUG: Fetch User Media Failed (No Data Response).")
+                logger.warning("Fetch User Media Failed (No Data Response).")
                 completion(nil, nil, nil)
                 return
             }
@@ -545,14 +536,14 @@ extension JCAccountManager {
                     let avatarURL = URL(string: avatar)
                     let bannerURL = URL(string: banner)
                     
-                    print("DEBUG: Fetch User Media Succeeded.")
+                    logger.debug("Fetch User Media Succeeded.")
                     completion(url, avatarURL, bannerURL)
                 } else {
-                    print("DEBUG: Fetch User Media Failed.")
+                    logger.warning("Fetch User Media Failed.")
                     completion(nil, nil, nil)
                 }
             } catch {
-                print("DEBUG: Fetch User Media Failed With Error: \(error.localizedDescription)")
+                logger.error("Fetch User Media Failed With Error:", context: error.localizedDescription)
                 completion(nil, nil, nil)
             }
         }

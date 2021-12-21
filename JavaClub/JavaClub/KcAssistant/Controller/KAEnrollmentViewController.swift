@@ -158,17 +158,17 @@ extension KAEnrollmentViewController {
         
         JCAccountManager.shared.getEnrollmentInfo { [weak self] result in
             switch result {
-            case .success(let info):
-                self?.configureModels(with: info)
-                self?.removeIndicator()
-                
-            case .failure(let error):
-                if error == .notLoginJW {
-                    print("DEBUG: Used JW Before Login.")
-                } else {
-                    print("DEBUG: Refresh Enrollment Info With Error: \(String(describing: error))")
-                }
-                self?.removeIndicator()
+                case .success(let info):
+                    self?.configureModels(with: info)
+                    self?.removeIndicator()
+                    
+                case .failure(let error):
+                    if error == .notLoginJW {
+                        logger.warning("Used JW Before Login.")
+                    } else {
+                        logger.error("Refresh Enrollment Info With Error:", context: String(describing: error))
+                    }
+                    self?.removeIndicator()
             }
         }
         

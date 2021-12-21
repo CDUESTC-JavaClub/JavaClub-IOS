@@ -94,6 +94,7 @@ extension JCMainViewController {
             }
             
             tabBarController?.tabBar.isHidden = true
+            tabBarController?.tabBar.isTranslucent = true
         } else {
             if !loginVC.isNil {
                 loginVC.view.removeFromSuperview()
@@ -119,6 +120,7 @@ extension JCMainViewController {
             }
             
             tabBarController?.tabBar.isHidden = false
+            tabBarController?.tabBar.isTranslucent = false
         }
     }
     

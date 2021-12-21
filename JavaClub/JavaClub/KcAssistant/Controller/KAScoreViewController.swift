@@ -168,9 +168,9 @@ extension KAScoreViewController {
                 
             case .failure(let error):
                 if error == .notLoginJW {
-                    print("DEBUG: Used JW Before Login.")
+                    logger.warning("Used JW Before Login.")
                 } else {
-                    print("DEBUG: Refresh Score With Error: \(String(describing: error))")
+                    logger.error("Refresh Score With Error: ", context: String(describing: error))
                 }
                 self?.stopLoading(for: .score)
             }

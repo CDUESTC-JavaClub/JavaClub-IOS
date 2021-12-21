@@ -119,39 +119,39 @@ extension KAMainViewController {
             JCAccountManager.shared.loginJW(info: jwInfo, bind: user.studentID == nil) { result in
                 
                 switch result {
-                case .success(let success):
-                    if success {
-                        JCAccountManager.shared.getEnrollmentInfo { result in
-                            
-                            switch result {
-                            case .success(let enr):
-                                Defaults[.enrollment] = enr
-                                JCLoginState.shared.jw = true
-                                print("DEBUG: Auto Login JW Succeeded.")
-                                completion?(true)
+                    case .success(let success):
+                        if success {
+                            JCAccountManager.shared.getEnrollmentInfo { result in
                                 
-                            case .failure(let error):
-                                if error == .notLoginJC {
-                                    print("DEBUG: Please Login JC First.")
-                                } else {
-                                    print("DEBUG: Fetch Enrollment Info Failed With Error: \(String(describing: error))")
+                                switch result {
+                                case .success(let enr):
+                                    Defaults[.enrollment] = enr
+                                    JCLoginState.shared.jw = true
+                                        logger.debug("Auto Login JW Succeeded.")
+                                    completion?(true)
+                                    
+                                case .failure(let error):
+                                    if error == .notLoginJC {
+                                        logger.warning("Please Login JC First.")
+                                    } else {
+                                        logger.error("Fetch Enrollment Info Failed With Error:", context: String(describing: error))
+                                    }
+                                    completion?(false)
                                 }
-                                completion?(false)
+                                
                             }
-                            
+                        } else {
+                            logger.warning("Auto Login JW Failed. (Maybe Wrong Username Or Password)")
+                            completion?(false)
                         }
-                    } else {
-                        print("DEBUG: Auto Login JW Failed. (Maybe Wrong Username Or Password)")
-                        completion?(false)
-                    }
                     
-                case .failure(let error):
-                    print("DEBUG: Auto Login JW Failed With Error: \(String(describing: error)).")
-                    completion?(false)
+                    case .failure(let error):
+                        logger.error("Auto Login JW Failed With Error:", context: String(describing: error))
+                        completion?(false)
                 }
             }
         } else {
-            print("DEBUG: JW Credential Lost.")
+            logger.warning("JW Credential Lost.")
             completion?(false)
         }
     }

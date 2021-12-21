@@ -138,7 +138,7 @@ extension BAContentViewController {
                     if let account = try? result.get() {
                         Defaults[.byAccount] = account
                     } else {
-                        print("DEBUG: Refresh BY Info Failed.")
+                        logger.warning("Refresh BY Info Failed.")
                     }
                 }
             }
@@ -166,7 +166,7 @@ extension BAContentViewController {
 //                    self?.mdScoreLabel.text = "0"
 //                    self?.statusHintLabel.text = "未达标"
 //
-//                    print("DEBUG: Refresh BY Credits Failed.")
+//                    logger.warning("Refresh BY Credits Failed.")
 //                }
 //            }
 //        }

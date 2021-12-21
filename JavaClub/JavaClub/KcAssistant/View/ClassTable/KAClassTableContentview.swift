@@ -136,21 +136,21 @@ struct KAClassTableContentview: View {
         
         JCAccountManager.shared.getClassTable(term: term) { result in
             switch result {
-            case .success(let classes):
-                observable.classes = classes
-                showIndicator = false
-                print("DEBUG: Fetched Class Table Successfully.")
-                
-            case .failure(let error):
-                showIndicator = false
-                print("DEBUG: Fetching Class Table Failed With Error: \(String(describing: error)), using local data.")
-                
-                if let local = ClassTableManager.shared.fromLocal() {
-                    observable.classes = local
-                    print("DEBUG: Used Local Data.")
-                } else {
-                    presentAlert = true
-                }
+                case .success(let classes):
+                    observable.classes = classes
+                    showIndicator = false
+                    logger.debug("Fetched Class Table Successfully.")
+                    
+                case .failure(let error):
+                    showIndicator = false
+                    logger.error("Fetching Class Table Failed With Error:", context: String(describing: error))
+                    
+                    if let local = ClassTableManager.shared.fromLocal() {
+                        observable.classes = local
+                        logger.debug("Used Local Data.")
+                    } else {
+                        presentAlert = true
+                    }
             }
         }
     }

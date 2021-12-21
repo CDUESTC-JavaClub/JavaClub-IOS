@@ -81,7 +81,7 @@ extension BAAccountManager {
                                     completion(.failure(.parseErr))
                                 }
                             } else {
-                                print("DEBUG: Get BY Information Failed.")
+                                logger.warning("Get BY Information Failed.")
                                 completion(.failure(.badRequest))
                             }
                         }
@@ -90,7 +90,7 @@ extension BAAccountManager {
                     }
                 }
             } else {
-                print("DEBUG: Login BY Failed.")
+                logger.warning("Login BY Failed.")
                 completion(.failure(.noData))
             }
         }
@@ -173,7 +173,7 @@ extension BAAccountManager {
                 
                 completion(.success(eventsArr))
             } else {
-                print("DEBUG: Fetch My Events Failed.")
+                logger.warning("Fetch My Events Failed.")
                 completion(.failure(.noData))
             }
         }
@@ -200,7 +200,7 @@ extension BAAccountManager {
             if let result = try? result.get() {
                 completion(.success(result["data"].stringValue))
             } else {
-                print("DEBUG: Failed To Get Event Details.")
+                logger.warning("Failed To Get Event Details.")
                 completion(.failure(.noData))
             }
         }
@@ -228,7 +228,7 @@ extension BAAccountManager {
             if let result = try? result.get() {
                 completion(.success(result["type"].stringValue))
             } else {
-                print("DEBUG: Failed To Sign Up Event.")
+                logger.warning("Failed To Sign Up Event.")
                 completion(.failure(.noData))
             }
         }
@@ -256,7 +256,7 @@ extension BAAccountManager {
             if let result = try? result.get() {
                 completion(.success(result["type"].stringValue))
             } else {
-                print("DEBUG: Failed To Cancel Event.")
+                logger.warning("Failed To Cancel Event.")
                 completion(.failure(.noData))
             }
         }
@@ -289,7 +289,7 @@ extension BAAccountManager {
                 
                 completion(.success(score))
             } else {
-                print("DEBUG: Failed To Get BY Score.")
+                logger.warning("Failed To Get BY Score.")
                 completion(.failure(.noData))
             }
         }
@@ -330,7 +330,7 @@ extension BAAccountManager {
                 
                 completion(.success(recordsArr))
             } else {
-                print("DEBUG: Failed To Cancel Event.")
+                logger.warning("Failed To Cancel Event.")
                 completion(.failure(.noData))
             }
         }
@@ -357,7 +357,7 @@ extension BAAccountManager {
                 
                 completion(.success(recordsArr))
             } else {
-                print("DEBUG: Failed To Cancel Event.")
+                logger.warning("Failed To Cancel Event.")
                 completion(.failure(.noData))
             }
         }
@@ -404,10 +404,10 @@ extension BAAccountManager {
             case .failure(let error):
                 if error._code == NSURLErrorTimedOut {
                     completion(.failure(.timeout))
-                    print("DEBUG: BY Request Timeout.")
+                    logger.warning("BY Request Timeout.")
                 } else {
                     completion(.failure(.badRequest))
-                    print("DEBUG: BY Request Failed With Error: \(String(describing: error)).")
+                    logger.error("BY Request Failed With Error:", context: String(describing: error))
                 }
             }
         }
@@ -453,7 +453,7 @@ extension BAAccountManager {
                 
                 completion(.success(eventArr))
             } else {
-                print("DEBUG: Fetch Events Failed.")
+                logger.warning("Fetch Events Failed.")
                 completion(.failure(.noData))
             }
         }

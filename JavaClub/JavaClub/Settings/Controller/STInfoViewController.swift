@@ -8,6 +8,7 @@
 import UIKit
 
 class STInfoViewController: UIViewController {
+    @IBOutlet var joinBtn: UIButton!
     @IBOutlet var versionLabel: UILabel!
 
     override func viewDidLoad() {
@@ -19,6 +20,8 @@ class STInfoViewController: UIViewController {
         {
             versionLabel.text = "v\(version) (\(build))"
         }
+        
+        joinBtn.layer.cornerRadius = joinBtn.frame.height * 0.2
     }
 }
 
